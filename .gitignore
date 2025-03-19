@@ -1,0 +1,44 @@
+# Node.js 依赖
+node_modules/
+pnpm-lock.yaml
+*.log
+
+# Vite 相关
+.vite/
+dist/
+.cache/
+*.local
+
+# Storybook 相关
+.storybook/out/
+.storybook/.cache/
+storybook-static/
+
+# VitePress 相关
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# 测试 & 构建
+coverage/
+tests/output/
+*.test.js
+*.test.ts
+jest-cache/
+jest-transform-cache/
+*.spec.ts
+
+# 编辑器 & 操作系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+
+# 打包 & 发布
+*.tgz
+*.bak
+*.tmp
+
+*storybook.log

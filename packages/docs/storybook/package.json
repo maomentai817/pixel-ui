@@ -1,0 +1,30 @@
+{
+  "name": "@pixel-ui/storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.4.1",
+  "devDependencies": {
+    "@chromatic-com/storybook": "3",
+    "@storybook/addon-essentials": "8.6.7",
+    "@storybook/addon-onboarding": "8.6.7",
+    "@storybook/blocks": "8.6.7",
+    "@storybook/experimental-addon-test": "8.6.7",
+    "@storybook/test": "8.6.7",
+    "@storybook/vue3": "8.6.7",
+    "@storybook/vue3-vite": "8.6.7",
+    "@vitest/browser": "^3.0.9",
+    "@vitest/coverage-v8": "^3.0.9",
+    "playwright": "^1.51.1",
+    "storybook": "8.6.7",
+    "vitest": "^3.0.9"
+  }
+}
