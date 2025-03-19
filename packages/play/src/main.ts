@@ -1,5 +1,11 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import PixelUI from 'pixel-ui'
+import 'virtual:uno.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+// install pixel-ui components
+app.use(PixelUI)
+
+app.mount('#app')
