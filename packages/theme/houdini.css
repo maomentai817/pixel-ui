@@ -1,0 +1,168 @@
+@font-face {
+  font-family: 'Zpix';
+  src: url('./fonts/zpix.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PS2P';
+  src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --px-font-family: "Zpix", "PS2P", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+/* font */
+@property --px-font-size-base {
+  syntax: "<length>";
+  initial-value: 16px;
+  inherits: false;
+}
+@property --px-font-weight-base {
+  syntax: "<number>";
+  initial-value: 400;
+  inherits: false;
+}
+/* background-color */
+@property --px-bg-color-base {
+  syntax: "<color>";
+  initial-value: #fff;
+  inherits: false;
+}
+@property --px-bg-color-primary {
+  syntax: "<color>";
+  initial-value: #209cee;
+  inherits: false;
+}
+@property --px-bg-color-success {
+  syntax: "<color>";
+  initial-value: #92cc41;
+  inherits: false;
+}
+@property --px-bg-color-warning {
+  syntax: "<color>";
+  initial-value: #f7d51d;
+  inherits: false;
+}
+@property --px-bg-color-danger {
+  syntax: "<color>";
+  initial-value: #8c2022;
+  inherits: false;
+}
+@property --px-bg-color-disabled {
+  syntax: "<color>";
+  initial-value: #d3d3d3;
+  inherits: false;
+}
+/* background-shadow-color */
+@property --px-bg-shadow-color-base {
+  syntax: "<color>";
+  initial-value: #adafbc;
+  inherits: false;
+}
+@property --px-bg-shadow-color-primary {
+  syntax: "<color>";
+  initial-value: #006bb3;
+  inherits: false;
+}
+@property --px-bg-shadow-color-success {
+  syntax: "<color>";
+  initial-value: #4aa52e;
+  inherits: false;
+}
+@property --px-bg-shadow-color-warning {
+  syntax: "<color>";
+  initial-value: #e59400;
+  inherits: false;
+}
+@property --px-bg-shadow-color-danger {
+  syntax: "<color>";
+  initial-value: #8c2022;
+  inherits: false;
+}
+/* text-color */
+@property --px-text-color-base {
+  syntax: "<color>";
+  initial-value: #212529;
+  inherits: false;
+}
+@property --px-text-color-primary {
+  syntax: "<color>";
+  initial-value: #209cee;
+  inherits: false;
+}
+@property --px-text-color-success {
+  syntax: "<color>";
+  initial-value: #92cc41;
+  inherits: false;
+}
+@property --px-text-color-warning {
+  syntax: "<color>";
+  initial-value: #f7d51d;
+  inherits: false;
+}
+@property --px-text-color-danger {
+  syntax: "<color>";
+  initial-value: #8c2022;
+  inherits: false;
+}
+@property --px-text-color-disabled {
+  syntax: "<color>";
+  initial-value: #d3d3d3;
+  inherits: false;
+}
+/* fill-hover-color */
+@property --px-fill-hover-color-base {
+  syntax: "<color>";
+  initial-value: #e7e7e7;
+  inherits: false;
+}
+@property --px-fill-hover-color-primary {
+  syntax: "<color>";
+  initial-value: #108de0;
+  inherits: false;
+}
+@property --px-fill-hover-color-success {
+  syntax: "<color>";
+  initial-value: #76c442;
+  inherits: false;
+}
+@property --px-fill-hover-color-warning {
+  syntax: "<color>";
+  initial-value: #f2c409;
+  inherits: false;
+}
+@property --px-fill-hover-color-danger {
+  syntax: "<color>";
+  initial-value: #ce372b;
+  inherits: false;
+}
+/* border-color */
+@property --px-border-color-base {
+  syntax: "<color>";
+  initial-value: #212529;
+  inherits: false;
+}
+@property --px-border-color-primary {
+  syntax: "<color>";
+  initial-value: #108de0;
+  inherits: false;
+}
+@property --px-border-color-success {
+  syntax: "<color>";
+  initial-value: #76c442;
+  inherits: false;
+}
+@property --px-border-color-warning {
+  syntax: "<color>";
+  initial-value: #f2c409;
+  inherits: false;
+}
+@property --px-border-color-danger {
+  syntax: "<color>";
+  initial-value: #ce372b;
+  inherits: false;
+}
