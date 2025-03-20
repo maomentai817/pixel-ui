@@ -10,13 +10,13 @@ dist/
 *.local
 
 # Storybook 相关
-.storybook/out/
-.storybook/.cache/
-storybook-static/
+packages/docs/storybook/.storybook/out/
+packages/docs/storybook/.storybook/.cache/
+packages/docs/storybook/storybook-static/
 
 # VitePress 相关
-docs/.vitepress/cache/
-docs/.vitepress/dist/
+packages/docs/vitepress/.vitepress/cache/
+packages/docs/vitepress/.vitepress/dist/
 
 # 测试 & 构建
 coverage/
