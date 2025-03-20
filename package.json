@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter @pixel-ui/play dev"
+    "dev": "pnpm --filter @pixel-ui/play dev",
+    "docs:dev": "pnpm --filter @pixel-ui/vitepress dev",
+    "docs:build": "pnpm --filter @pixel-ui/vitepress build",
+    "docs:preview": "pnpm --filter @pixel-ui/vitepress preview",
+    "test": "echo 'todo'"
   },
   "keywords": [],
   "author": "",
