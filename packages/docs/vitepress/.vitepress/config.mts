@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Pixel-UI",
   description: "A CSS_Houdini Pixel-style UI Library🐱",
+  base: '/pixel-ui/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
