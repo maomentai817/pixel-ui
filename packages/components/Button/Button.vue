@@ -16,13 +16,18 @@ const slots = defineSlots()
 const _ref = ref<HTMLButtonElement>()
 
 // CSS Houdini Paint Worklet
-const paint = () => { 
-  if ('paintWorklet' in CSS) { 
-    (CSS as any).paintWorklet.addModule(workletURL)
-  } else { 
-    console.warn('CSS Houdini Paint Worklet API is not supported in this browser.') 
+const paint = () => {
+  try {
+    if ('paintWorklet' in CSS) {
+      (CSS as any).paintWorklet.addModule(workletURL);
+    } else {
+      console.warn('CSS Houdini Paint Worklet API is not supported in this browser.');
+    }
+  } catch (error) {
+    console.error('Error loading Paint Worklet:', error);
   }
-}
+};
+
 onMounted(async () => { 
   paint()
 })
