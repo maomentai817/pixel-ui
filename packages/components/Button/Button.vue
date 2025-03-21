@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue' 
+import { ref, onMounted } from 'vue' 
 import type { ButtonProps } from './types'
+import workletURL from '../worklets/pixelbox.js?url'
 
 defineOptions({
   name: 'PxButton'
@@ -13,6 +14,18 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 const slots = defineSlots()
 
 const _ref = ref<HTMLButtonElement>()
+
+// CSS Houdini Paint Worklet
+const paint = () => { 
+  if ('paintWorklet' in CSS) { 
+    (CSS as any).paintWorklet.addModule(workletURL)
+  } else { 
+    console.warn('CSS Houdini Paint Worklet API is not supported in this browser.') 
+  }
+}
+onMounted(async () => { 
+  paint()
+})
 </script>
 
 <template>
@@ -37,5 +50,5 @@ const _ref = ref<HTMLButtonElement>()
 </template>
 
 <style scoped>
-
+@import './style.css';
 </style>

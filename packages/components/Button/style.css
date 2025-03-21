@@ -1,0 +1,133 @@
+.px-button {
+  --px-button-font-weight: var(--px-font-weight-base);
+  --px-button-border-color: var(--px-border-color-base);
+  --px-button-bg-color: var(--px-bg-color-base);
+  --px-button-text-color: var(--px-text-color-base);
+  --px-button-text-color-disabled: var(--px-text-color-disabled);
+  --px-button-bg-color-disabled: var(--px-bg-color-disabled);
+  --px-button-border-color-disabled: var(--px-border-color-disabled);
+  --px-button-hover-bg-color: var(--px-fill-hover-color-base);
+  --px-button-font-size: var(--px-font-size-base);
+}
+
+.px-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+  color: var(--px-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: var(--px-transition-duration);
+  font-weight: var(--px-button-font-weight);
+  user-select: none;
+  vertical-align: baseline;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--px-button-bg-color);
+  border-width: var(--px-border-width-base);
+  border-style: solid;
+  border-color: var(--px-button-border-color);
+  border-width: 0;
+  height: 40px;
+  padding: 15px;
+  margin: 0 3px;
+  font-size: var(--px-button-font-size);
+  font-family: var(--px-font-family);
+  /* CSS Houdini Paint */
+  background-image: paint(pixelbox);
+  --px-border: 3px;
+  --px-border-radius: 0px;
+  --px-border-color: var(--px-border-color-base);
+  --px-bg-color: transparent;
+  --px-bg-shadow-border: 3px;
+  --px-bg-shadow-color: var(--px-bg-shadow-color-base);
+  --px-bg-shadow-position: bottom-right;
+}
+/* button hover */
+.px-button:hover {
+  --px-bg-color: var(--px-fill-hover-color-base);
+  --px-bg-shadow-border: 4px;
+}
+/* button active */
+.px-button:active {
+  --px-bg-shadow-position: top-left;
+}
+/* button type */
+/* primary */
+.px-button--primary {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-bg-color-primary);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-primary);
+}
+.px-button--primary:hover {
+  --px-bg-color: var(--px-fill-hover-color-primary);
+  --px-bg-shadow-border: 4px;
+}
+/* success */
+.px-button--success {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-bg-color-success);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-success);
+}
+.px-button--success:hover {
+  --px-bg-color: var(--px-fill-hover-color-success);
+  --px-bg-shadow-border: 4px;
+}
+/* warning */
+.px-button--warning {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-bg-color-warning);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-warning);
+}
+.px-button--warning:hover {
+  --px-bg-color: var(--px-fill-hover-color-warning);
+  --px-bg-shadow-border: 4px;
+}
+/* danger */
+.px-button--danger {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-bg-color-danger);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-danger);
+}
+.px-button--danger:hover {
+  --px-bg-color: var(--px-fill-hover-color-danger);
+  --px-bg-shadow-border: 4px;
+}
+/* disabled */
+.px-button.is-disabled {
+  cursor: not-allowed;
+  --px-button-text-color: var(--px-text-color-disabled);
+  --px-bg-color: var(--px-bg-color-disabled);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-base);
+}
+.px-button.is-disabled:hover {
+  cursor: not-allowed;
+  --px-bg-shadow-border: 3px;
+}
+.px-button.is-disabled:active {
+  --px-bg-shadow-position: bottom-right;
+}
+/* button size */
+.px-button--small {
+  height: 34px;
+  padding: 12px;
+  --px-button-font-size: var(--px-font-size-small);
+}
+.px-button--large {
+  height: 46px;
+  padding: 15px;
+}
+/* plain */
+/* round */
+.px-button.is-round {
+  --px-border-radius: 2px;
+}
+/* circle */
+.px-button.is-circle {
+  --px-border-radius: 3px;
+}

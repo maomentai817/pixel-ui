@@ -4,6 +4,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
 }
 @font-face {
   font-family: 'PS2P';
@@ -11,14 +12,23 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-00FF;
 }
 :root {
-  --px-font-family: "Zpix", "PS2P", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --px-font-family: "PS2P", "Zpix", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+html {
+  cursor: var(--px-cursor-base-src), auto;
 }
 /* font */
 @property --px-font-size-base {
   syntax: "<length>";
-  initial-value: 16px;
+  initial-value: 14px;
+  inherits: false;
+}
+@property --px-font-size-small {
+  syntax: "<length>";
+  initial-value: 12px;
   inherits: false;
 }
 @property --px-font-weight-base {
@@ -49,12 +59,12 @@
 }
 @property --px-bg-color-danger {
   syntax: "<color>";
-  initial-value: #8c2022;
+  initial-value: #e76e55;
   inherits: false;
 }
 @property --px-bg-color-disabled {
   syntax: "<color>";
-  initial-value: #d3d3d3;
+  initial-value: #ccc;
   inherits: false;
 }
 /* background-shadow-color */
@@ -89,6 +99,11 @@
   initial-value: #212529;
   inherits: false;
 }
+@property --px-text-color-white {
+  syntax: "<color>";
+  initial-value: #fff;
+  inherits: false;
+}
 @property --px-text-color-primary {
   syntax: "<color>";
   initial-value: #209cee;
@@ -106,12 +121,12 @@
 }
 @property --px-text-color-danger {
   syntax: "<color>";
-  initial-value: #8c2022;
+  initial-value: #e76e55;
   inherits: false;
 }
 @property --px-text-color-disabled {
   syntax: "<color>";
-  initial-value: #d3d3d3;
+  initial-value: #4d4d4d;
   inherits: false;
 }
 /* fill-hover-color */
@@ -164,5 +179,28 @@
 @property --px-border-color-danger {
   syntax: "<color>";
   initial-value: #ce372b;
+  inherits: false;
+}
+/* border */
+@property --px-border-width-base {
+  syntax: "<length>";
+  initial-value: 4px;
+  inherits: false;
+}
+/* cursor */
+@property --px-cursor-pointer-src {
+  syntax: "<url>";
+  initial-value: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC');
+  inherits: false;
+}
+@property --px-cursor-base-src {
+  syntax: "<url>";
+  initial-value: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABFklEQVRYR9WXURLDIAhE6/0PbSdOtUpcd1Gnpv1KGpTHBpCE1/cXq+vrMph7dGvXZTtpfW10DCA5jrH1H0Jhs5E0hnZdCR+vb5S8Nn8mQCeS9BdSalYJqMBjAGzq59xAESN7VFVUgV8AZB/dZBR7QTFDCqGquvUBVVoEtgIwpQRzmANSFHgWQKExHdIrPeuMvQNDarXe6nC/AutgV3JW+6bgqQLeV8FekRtgV+ToDKEKnACYKsfZjjkam7a0ZpYTytwmgainpC3HvwBocgKOxqRjehoR9DFKNFYtOwCGYCszobeCbl26N6yyQ6g8X/Wex/rBPsNEV6qAMaJPMynIHQCoSqS9JSMmwef51LflTgCRszU7DvAGiV6mHWfsaVUAAAAASUVORK5CYII=');
+  inherits: false;
+}
+/* transition */
+@property --px-transition-duration {
+  syntax: "<time>";
+  initial-value: 0.2s;
   inherits: false;
 }
