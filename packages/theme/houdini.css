@@ -67,6 +67,27 @@ html {
   initial-value: #ccc;
   inherits: false;
 }
+/* lignt-color */
+@property --px-light-color-primary {
+  syntax: "<color>";
+  initial-value: #ecf5ff;
+  inherits: false;
+}
+@property --px-light-color-success {
+  syntax: "<color>";
+  initial-value: #f0f9eb;
+  inherits: false;
+}
+@property --px-light-color-warning {
+  syntax: "<color>";
+  initial-value: #fdf6ec;
+  inherits: false;
+}
+@property --px-light-color-danger {
+  syntax: "<color>";
+  initial-value: #fab6b6;
+  inherits: false;
+}
 /* background-shadow-color */
 @property --px-bg-shadow-color-base {
   syntax: "<color>";
