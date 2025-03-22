@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue' 
-import type { ButtonProps } from './types'
+import { throttle } from 'lodash-es'
+import type { ButtonProps,ButtonEmits, ButtonInstance } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
 
 defineOptions({
@@ -9,11 +10,24 @@ defineOptions({
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
   nativeType: 'button',
+  useThrottle: true,
+  throttleDuration: 500
 })
 
 const slots = defineSlots()
 
 const _ref = ref<HTMLButtonElement>()
+
+const emit = defineEmits<ButtonEmits>()
+
+// 点击节流逻辑
+const handleBtnClick = (e: MouseEvent) => emit('click', e)
+const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration)
+
+// 暴露方法
+defineExpose<ButtonInstance>({
+  ref: _ref
+})
 
 // CSS Houdini Paint Worklet
 const paint = () => {
@@ -49,6 +63,7 @@ onMounted(async () => {
       'is-disabled': disabled,
       'is-loading': loading,
     }"
+    @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
     <slot></slot>
   </component>

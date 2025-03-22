@@ -1,4 +1,4 @@
-import type { Component } from 'vue'
+import type { Component, Ref } from 'vue'
 
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
 export type NativeType = 'button' | 'submit' | 'reset'
@@ -94,4 +94,12 @@ export interface ButtonProps {
    * @default 500
    */
   throttleDuration?: number
+}
+
+export interface ButtonEmits { 
+  (e: 'click', val: MouseEvent): void
+}
+
+export interface ButtonInstance { 
+  ref: Ref<HTMLButtonElement | void>
 }
