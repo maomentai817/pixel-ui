@@ -1,0 +1,93 @@
+.px-icon {
+  --px-icon-color: var(--px-text-color-base);
+  --px-icon-animation-duration: var(--px-animation-duration);
+}
+.px-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--px-icon-color);
+}
+/* flip 镜像翻转 */
+.px-icon.px-icon--horizontal {
+  transform: scaleX(-1);
+}
+.px-icon.px-icon--vertical {
+  transform: scaleY(-1);
+}
+.px-icon.px-icon--both {
+  transform: scale(-1, -1);
+}
+/* 动画效果处理 */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.px-icon.is-spin {
+  animation: spin var(--px-icon-animation-duration) linear infinite;
+}
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  30% { 
+    transform: translateY(-3px); 
+  }
+  50% { 
+    transform: translateY(2px); 
+  }
+  70% { 
+    transform: translateY(-1px); 
+  }
+}
+.px-icon.is-bounce {
+  animation: bounce var(--px-icon-animation-duration) linear infinite;
+}
+@keyframes shake {
+  0%, 100% { 
+    transform: translateX(0); 
+  }
+  10%, 90% { 
+    transform: translateX(-2px); 
+  }
+  20%, 80% {
+    transform: translateX(2px); 
+  }
+  30%, 50%, 70% { 
+    transform: translateX(-3px); 
+  }
+  40%, 60% { 
+    transform: translateX(3px); 
+  }
+}
+.px-icon.is-shake {
+  animation: shake var(--px-icon-animation-duration) linear infinite;
+}
+@keyframes beat {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.1); 
+  }
+}
+.px-icon.is-beat {
+  animation: beat var(--px-icon-animation-duration) linear infinite;
+}
+/* 基本type */
+.px-icon.px-icon--primary {
+  --px-icon-color: var(--px-text-color-primary);
+}
+.px-icon.px-icon--success {
+  --px-icon-color: var(--px-text-color-success);
+}
+.px-icon.px-icon--warning {
+  --px-icon-color: var(--px-text-color-warning);
+}
+.px-icon.px-icon--danger {
+  --px-icon-color: var(--px-text-color-danger);
+}

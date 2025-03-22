@@ -225,3 +225,9 @@ html {
   initial-value: 0.2s;
   inherits: false;
 }
+/* animation */
+@property --px-animation-duration {
+  syntax: "<time>";
+  initial-value: 2s;
+  inherits: false;
+}

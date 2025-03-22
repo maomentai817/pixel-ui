@@ -41,6 +41,23 @@
   <px-button type="danger" circle>Danger</px-button>
   <px-button disabled circle>Disabled</px-button>
   <px-button disabled circle>1</px-button>
+  <br />
+  <br />
+  <px-icon icon="face-thinking-solid"></px-icon>
+  <px-icon icon="face-thinking-solid" size="30"></px-icon>
+  <px-icon icon="face-thinking-solid" color="red"></px-icon>
+  <px-icon icon="face-thinking-solid" type="primary"></px-icon>
+  <px-icon icon="face-thinking-solid" type="success"></px-icon>
+  <px-icon icon="face-thinking-solid" type="warning"></px-icon>
+  <px-icon icon="face-thinking-solid" type="danger"></px-icon>
+  <px-icon icon="face-thinking-solid" flip="horizontal"></px-icon>
+  <px-icon icon="face-thinking-solid" flip="vertical"></px-icon>
+  <px-icon icon="face-thinking-solid" flip="both"></px-icon>
+  <px-icon icon="face-thinking-solid" rotation="180"></px-icon>
+  <px-icon icon="face-thinking-solid" spin></px-icon>
+  <px-icon icon="face-thinking-solid" bounce></px-icon>
+  <px-icon icon="face-thinking-solid" shake></px-icon>
+  <px-icon icon="face-thinking-solid" beat></px-icon>
 </template>
 
 <style scoped>
