@@ -85,7 +85,7 @@ html {
 }
 @property --px-light-color-danger {
   syntax: "<color>";
-  initial-value: rgb(250, 240, 240);
+  initial-value: #faf0f0;
   inherits: false;
 }
 /* background-shadow-color */

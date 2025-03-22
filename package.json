@@ -37,6 +37,7 @@
     "vue-tsc": "^1.8.27"
   },
   "dependencies": {
+    "@hackernoon/pixel-icon-library": "^1.0.5",
     "@pixel-ui/hooks": "workspace:*",
     "@pixel-ui/theme": "workspace:*",
     "@pixel-ui/utils": "workspace:*",
