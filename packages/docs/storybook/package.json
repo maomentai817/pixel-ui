@@ -13,6 +13,7 @@
   "packageManager": "pnpm@10.4.1",
   "devDependencies": {
     "@chromatic-com/storybook": "3",
+    "@storybook/addon-actions": "^8.6.8",
     "@storybook/addon-essentials": "8.6.7",
     "@storybook/addon-onboarding": "8.6.7",
     "@storybook/blocks": "8.6.7",

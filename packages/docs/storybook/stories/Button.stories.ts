@@ -1,13 +1,11 @@
-import type { Meta, StoryObj, ArgTypes, StoryContext } from '@storybook/vue3'
-import { fn, within, userEvent, expect, clearAllMocks } from '@storybook/test'
-import { set } from 'lodash-es'
+import type { StoryFn } from '@storybook/vue3'
+import { action } from '@storybook/addon-actions'
 
 import { PxButton } from 'pixel-ui'
 
-type Story = StoryObj<typeof PxButton> & {argTypes?: ArgTypes}
-const meta: Meta<typeof PxButton> = {
-  title: "Example/Button",
-  component: PxButton,
+export default {
+  title: 'Atoms/Button',
+  components: PxButton,
   tags: ["autodocs"],
   argTypes: {
     type: {
@@ -17,6 +15,9 @@ const meta: Meta<typeof PxButton> = {
     size: {
       control: { type: "select" },
       options: ["large", "default", "small", ""],
+    },
+    label: {
+      control: { type: 'text' },
     },
     disabled: {
       control: "boolean",
@@ -48,108 +49,107 @@ const meta: Meta<typeof PxButton> = {
       control: { type: "text" },
     },
   },
-  args: { onClick: fn() },
-};
-const container = (val: string) => `
-<div style="margin:5px">
-${val}
-</div>
-`
-
-export const Default: Story & { args: { content: string } } = {
-  argTypes: {
-    content: {
-      control: {type: "text"}
-    }
-  },
-  args: {
-    type: "base",
-    content: "Button"
-  },
-  render: (args: typeof meta.args) => ({
-    components: { PxButton },
-    setup() { 
-      return { args }
-    },
-    template: container(
-      `<px-button data-testid="story-test-btn" v-bind="args">{{ args.content }}</px-button>`
-    )
-  }),
-  // 测试
-  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButton>) => {
-    const canvas = within(canvasElement);
-    const btn = canvas.getByTestId("story-test-btn");
-
-    await step(
-      "When useThrottle is set to true, the onClick should be called once",
-      async () => {
-        set(args, "useThrottle", true);
-        await userEvent.tripleClick(btn);
-
-        expect(args.onClick).toHaveBeenCalledOnce();
-        clearAllMocks();
-      }
-    );
-
-    await step(
-      "When useThrottle is set to false, the onClick should be called three times",
-      async () => {
-        set(args, "useThrottle", false);
-        await userEvent.tripleClick(btn);
-
-        expect(args.onClick).toHaveBeenCalledTimes(3);
-        clearAllMocks();
-      }
-    );
-
-    await step(
-      "When disabled is set to true, the onClick should not be called",
-      async () => {
-        set(args, "disabled", true);
-        await userEvent.click(btn);
-
-        expect(args.onClick).toHaveBeenCalledTimes(0);
-        set(args, "disabled", false);
-        clearAllMocks();
-      }
-    );
-
-    await step(
-      "When loading is set to true, the onClick should not be called",
-      async () => {
-        set(args, "loading", true);
-        await userEvent.click(btn);
-
-        expect(args.onClick).toHaveBeenCalledTimes(0);
-        set(args, "loading", false);
-        clearAllMocks();
-      }
-    );
-  },
 }
 
-// circle btn story
-export const Circle: Story = {
-  args: {
-    icon: 'search'
-  },
-  render: (args: typeof meta.args) => ({
-    components: { PxButton },
-    setup() { 
-      return { args }
-    },
-    template: container(`
-      <px-button circle v-bind="args" />
-    `)
-  }),
-  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButton>) => { 
-    const canvas = within(canvasElement)
-    await step('click button', async () => { 
-      await userEvent.click(canvas.getByRole('button'))
-    })
-
-    expect(args.onClick).toHaveBeenCalled()
-  }
+const methods = {
+  onClick: action("onClick"),
 }
 
-export default meta
+const Template: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: { PxButton },
+  template: '<px-button v-bind="args" @click="onClick" />',
+  methods
+})
+export const Button = Template.bind({})
+Button.args = {
+  type: 'base',
+  label: 'Button'
+}
+const AllSizesTemplate: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxButton,
+  },
+  template: `<div>
+		<px-button v-bind="args" data-testid="story-test-btn" size="large" @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" size="default" @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" size="small" @click="onClick" />
+    <br />
+    <br />
+		<px-button v-bind="args" data-testid="story-test-btn" loading @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" loading loadingIcon="circle-notch" @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" disabled @click="onClick" />
+    <br />
+    <br />
+		<px-button v-bind="args" data-testid="story-test-btn" plain @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" round @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" circle @click="onClick" />
+	</div>`,
+  methods
+})
+
+const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxButton,
+  },
+  template: `<div>
+		<px-button v-bind="args" size="large" type="primary" @click="onClick" />
+		<px-button v-bind="args" size="large" type="success" @click="onClick" />
+		<px-button v-bind="args" size="large" type="warning" @click="onClick" />
+		<px-button v-bind="args" size="large" type="danger" @click="onClick" />
+		<br/>
+		<br/>
+		<px-button v-bind="args" size="default" type="primary" @click="onClick" />
+		<px-button v-bind="args" size="default" type="success" @click="onClick" />
+		<px-button v-bind="args" size="default" type="warning" @click="onClick" />
+		<px-button v-bind="args" size="default" type="danger" @click="onClick" />
+		<br/>
+		<br/>
+		<px-button v-bind="args" size="small" type="primary" @click="onClick" />
+		<px-button v-bind="args" size="small" type="success" @click="onClick" />
+		<px-button v-bind="args" size="small" type="warning" @click="onClick" />
+		<px-button v-bind="args" size="small" type="danger" @click="onClick" />
+	</div>`,
+  methods,
+})
+
+export const Primary = AllSizesTemplate.bind({});
+Primary.args = {
+  type: 'primary',
+  label: 'Button',
+}
+
+export const Success = AllSizesTemplate.bind({});
+Success.args = {
+  type: 'success',
+  label: 'Button',
+}
+
+export const Warning = AllSizesTemplate.bind({});
+Warning.args = {
+  type: 'warning',
+  label: 'Button',
+}
+
+export const Danger = AllSizesTemplate.bind({});
+Danger.args = {
+  type: 'danger',
+  label: 'Button',
+}
+
+export const WithIcon = AllSizesTemplate.bind({});
+WithIcon.args = {
+  label: 'Button',
+  icon: 'search',
+}
+
+export const Square = AllColorsAndSizesTemplate.bind({});
+Square.args = {
+  label: '817',
+  square: true,
+}

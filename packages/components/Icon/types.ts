@@ -22,7 +22,7 @@ export interface IconProps {
    * @property size
    * @type px
    * @description 图标大小
-   * @default "16"
+   * @default "14"
    */
   size?: number;
   /**

@@ -5,7 +5,7 @@ import { PxIcon } from 'pixel-ui'
 type Story = StoryObj<typeof PxIcon> & { argTypes?: ArgTypes }
 
 const meta: Meta<typeof PxIcon> = {
-  title: 'Example/Icon',
+  title: 'Atoms/Icon',
   component: PxIcon,
   tags: ['autodocs'],
   argTypes: {

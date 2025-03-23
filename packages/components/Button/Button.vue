@@ -23,7 +23,7 @@ const emit = defineEmits<ButtonEmits>()
 
 // 服务于单个圆形icon
 const iconStyle = computed(() => ({
-  marginRight: slots.default ? "6px" : "0px",
+  marginRight: props.label || slots.default ? "6px" : "0px",
 }))
 
 // 点击节流逻辑
@@ -88,7 +88,9 @@ onMounted(async () => {
       :icon="icon"
       :style="iconStyle"
     />
-    <slot></slot>
+    <span v-if="label || $slots.default">
+			<slot>{{ label }}</slot>
+		</span>
   </component>
 </template>
 

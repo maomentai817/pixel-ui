@@ -7,7 +7,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<IconProps>(), {
-  size: 24,
+  size: 14,
 })
 
 // icon 部分简单属性样式处理

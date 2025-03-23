@@ -107,6 +107,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: '3'
         version: 3.2.6(react@19.0.0)(storybook@8.6.7(prettier@3.5.3))
+      '@storybook/addon-actions':
+        specifier: ^8.6.8
+        version: 8.6.8(storybook@8.6.7(prettier@3.5.3))
       '@storybook/addon-essentials':
         specifier: 8.6.7
         version: 8.6.7(@types/react@19.0.11)(storybook@8.6.7(prettier@3.5.3))
@@ -1033,6 +1036,11 @@ packages:
     resolution: {integrity: sha512-XgZCwIcZGThEyD7e2q7rN/jzg7ZHUxn/ln403eex04jWAGBBbtC2IVuowwCWV8HwDihnhpCZEP6HlgjakOYZbQ==}
     peerDependencies:
       storybook: ^8.6.7
+
+  '@storybook/addon-actions@8.6.8':
+    resolution: {integrity: sha512-ZTlbWMTosU6kyBeJmZUA3gsMl5iiztAJ2+hE/KhxBTdEpPl2xVWxmkv8iLFmmic6MW4WIvCzVg5Qth+rJlFMzw==}
+    peerDependencies:
+      storybook: ^8.6.8
 
   '@storybook/addon-backgrounds@8.6.7':
     resolution: {integrity: sha512-aDFzi83gDhYn0+FGjRYbY5TfBtoG/UgVr9Abi7s5ceabZRhPrYikMyFX0o8V3Z8COl6wUmWmF1luYE4MfXgN2g==}
@@ -4494,6 +4502,15 @@ snapshots:
   '@sinclair/typebox@0.27.8': {}
 
   '@storybook/addon-actions@8.6.7(storybook@8.6.7(prettier@3.5.3))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@types/uuid': 9.0.8
+      dequal: 2.0.3
+      polished: 4.3.1
+      storybook: 8.6.7(prettier@3.5.3)
+      uuid: 9.0.1
+
+  '@storybook/addon-actions@8.6.8(storybook@8.6.7(prettier@3.5.3))':
     dependencies:
       '@storybook/global': 5.0.0
       '@types/uuid': 9.0.8
