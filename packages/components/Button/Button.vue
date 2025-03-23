@@ -3,7 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { throttle } from 'lodash-es'
 import type { ButtonProps,ButtonEmits, ButtonInstance } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
-import { PxIcon } from 'pixel-ui'
+import PxIcon from '../Icon/Icon.vue'
 
 defineOptions({
   name: 'PxButton'
