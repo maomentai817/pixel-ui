@@ -10,42 +10,54 @@ export default {
   argTypes: {
     type: {
       control: { type: "select" },
+      description: "按钮类型",
       options: ["base", "primary", "success", "warning", "danger", ""],
     },
     size: {
       control: { type: "select" },
+      description: "按钮尺寸",
       options: ["large", "default", "small", ""],
     },
     label: {
+      description: "按钮内容(可被插槽覆盖)",
       control: { type: 'text' },
     },
     disabled: {
+      description: "禁用按钮",
       control: "boolean",
     },
     loading: {
+      description: "加载中",
       control: "boolean",
     },
     useThrottle: {
+      description: "节流阀",
       control: "boolean",
     },
     throttleDuration: {
+      description: "节流时间间隔",
       control: "number",
     },
     autofocus: {
+      description: "自动聚焦",
       control: "boolean",
     },
     tag: {
+      description: "元素类型",
       control: { type: "select" },
       options: ["button", "a", "div"],
     },
     nativeType: {
+      description: "原生type属性",
       control: { type: "select" },
       options: ["button", "submit", "reset", ""],
     },
     icon: {
+      description: "图标",
       control: { type: "text" },
     },
     loadingIcon: {
+      description: "加载图标",
       control: { type: "text" },
     },
   },
@@ -121,25 +133,25 @@ const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
 export const Primary = AllSizesTemplate.bind({});
 Primary.args = {
   type: 'primary',
-  label: 'Button',
+  label: 'Primary',
 }
 
 export const Success = AllSizesTemplate.bind({});
 Success.args = {
   type: 'success',
-  label: 'Button',
+  label: 'Success',
 }
 
 export const Warning = AllSizesTemplate.bind({});
 Warning.args = {
   type: 'warning',
-  label: 'Button',
+  label: 'Warning',
 }
 
 export const Danger = AllSizesTemplate.bind({});
 Danger.args = {
   type: 'danger',
-  label: 'Button',
+  label: 'Danger',
 }
 
 export const WithIcon = AllSizesTemplate.bind({});

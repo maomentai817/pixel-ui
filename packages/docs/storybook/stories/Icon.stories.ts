@@ -54,7 +54,7 @@ const meta: Meta<typeof PxIcon> = {
   },
   args: {
     icon: 'face-thinking-solid',
-    size: 24,
+    size: 14,
     type: 'base'
   }
 }
