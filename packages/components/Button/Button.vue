@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue' 
+import { ref, onMounted, computed } from 'vue' 
 import { throttle } from 'lodash-es'
 import type { ButtonProps,ButtonEmits, ButtonInstance } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
+import { PxIcon } from 'pixel-ui'
 
 defineOptions({
   name: 'PxButton'
@@ -19,6 +20,11 @@ const slots = defineSlots()
 const _ref = ref<HTMLButtonElement>()
 
 const emit = defineEmits<ButtonEmits>()
+
+// 服务于单个圆形icon
+const iconStyle = computed(() => ({
+  marginRight: slots.default ? "6px" : "0px",
+}))
 
 // 点击节流逻辑
 const handleBtnClick = (e: MouseEvent) => emit('click', e)
@@ -49,9 +55,10 @@ onMounted(async () => {
 
 <template>
   <component
-    :is="props.tag"
     ref="_ref"
     class="px-button"
+    :is="tag"
+    :autofocus="autofocus"
     :type="tag === 'button' ? nativeType : void 0"
     :disabled="disabled || loading ? true : void 0"
     :class="{
@@ -65,6 +72,21 @@ onMounted(async () => {
     }"
     @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
+    <template v-if="loading">
+      <slot name="loading">
+        <px-icon 
+          class="loading-icon"
+          spin
+          :icon="loadingIcon ?? 'spinner'"
+          :style="iconStyle"
+        />
+      </slot>
+    </template>
+    <px-icon 
+      v-if="icon && !loading"
+      :icon="icon"
+      :style="iconStyle"
+    />
     <slot></slot>
   </component>
 </template>
