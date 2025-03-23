@@ -28,7 +28,7 @@ const iconStyle = computed(() => ({
 
 // 点击节流逻辑
 const handleBtnClick = (e: MouseEvent) => emit('click', e)
-const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration)
+const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration, {trailing: false})
 
 // 暴露方法
 defineExpose<ButtonInstance>({
@@ -39,14 +39,15 @@ defineExpose<ButtonInstance>({
 const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
-      (CSS as any).paintWorklet.addModule(workletURL);
+      (CSS as any).paintWorklet.addModule(workletURL)
     } else {
-      console.warn('CSS Houdini Paint Worklet API is not supported in this browser.');
+      console.warn('CSS Houdini Paint Worklet API is not supported in this browser.')
     }
+    // (CSS as any).paintWorklet.addModule(workletURL)
   } catch (error) {
-    console.error('Error loading Paint Worklet:', error);
+    console.error('Error loading Paint Worklet:', error)
   }
-};
+}
 
 onMounted(async () => { 
   paint()
