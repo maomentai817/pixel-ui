@@ -3,7 +3,15 @@ class pixelBox {
   static get inputProperties() {
     return [
       `--px-border`,
+      `--px-border-t`,
+      `--px-border-r`,
+      `--px-border-b`,
+      `--px-border-l`,
       `--px-border-radius`,
+      `--px-border-radius-lt`,
+      `--px-border-radius-rt`,
+      `--px-border-radius-lb`,
+      `--px-border-radius-rb`,
       `--px-border-color`,
       `--px-bg-color`,
       `--px-bg-shadow-border`,
@@ -35,6 +43,18 @@ class pixelBox {
       .get(`--px-bg-shadow-color`)
       .toString()
       .trim();
+    
+    // button-group border-radius control
+    const lt = parseInt(props.get(`--px-border-radius-lt`)) || 0;
+    const rt = parseInt(props.get(`--px-border-radius-rt`)) || 0;
+    const lb = parseInt(props.get(`--px-border-radius-lb`)) || 0;
+    const rb = parseInt(props.get(`--px-border-radius-rb`)) || 0;
+
+    // button-group border-width control
+    const pbBorderT = parseInt(props.get(`--px-border-t`)) || 0;
+    const pbBorderR = parseInt(props.get(`--px-border-r`)) || 0;
+    const pbBorderB = parseInt(props.get(`--px-border-b`)) || 0;
+    const pbBorderL = parseInt(props.get(`--px-border-l`)) || 0;
 
     ctx.fillStyle = pbBackgroundColor;
 
@@ -243,71 +263,87 @@ class pixelBox {
 
       for (var i = 1; i <= pbBorderRadius; i++) {
         // LEFT TOP RADIUS
-        ctx.fillRect(
-          (pbBorder * (pbBorderRadius - i + 1)) / 2,
-          (pbBorder * i) / 2,
-          pbBorder / 2,
-          pbBorder / 2
-        );
+        if (lt) { 
+          ctx.fillRect(
+            (pbBorder * (pbBorderRadius - i + 1)) / 2,
+            (pbBorder * i) / 2,
+            pbBorder / 2,
+            pbBorder / 2
+          );
+        }
 
         // RIGHT TOP RADIUS
-        ctx.fillRect(
-          size.width - (pbBorder * (pbBorderRadius - i + 2)) / 2,
-          (pbBorder * i) / 2,
-          pbBorder / 2,
-          pbBorder / 2
-        );
+        if (rt) { 
+          ctx.fillRect(
+            size.width - (pbBorder * (pbBorderRadius - i + 2)) / 2,
+            (pbBorder * i) / 2,
+            pbBorder / 2,
+            pbBorder / 2
+          );
+        }
 
         // LEFT BOTTOM RADIUS
-        ctx.fillRect(
-          (pbBorder * i) / 2,
-          size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
-          pbBorder / 2,
-          pbBorder / 2
-        );
+        if (lb) { 
+          ctx.fillRect(
+            (pbBorder * i) / 2,
+            size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
+            pbBorder / 2,
+            pbBorder / 2
+          );
+        }
 
         // RIGHT BOTTOM RADIUS
-        ctx.fillRect(
-          size.width - pbBorder / 2 - (pbBorder * i) / 2,
-          size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
-          pbBorder / 2,
-          pbBorder / 2
-        );
+        if (rb) { 
+          ctx.fillRect(
+            size.width - pbBorder / 2 - (pbBorder * i) / 2,
+            size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
+            pbBorder / 2,
+            pbBorder / 2
+          );
+        }
       }
       ctx.fill();
 
       // CLEAR
       for (var i = 0; i <= pbBorderRadius + 1; i++) {
         // LEFT TOP RADIUS
-        ctx.clearRect(
-          0,
-          0,
-          (pbBorder * (pbBorderRadius - i + 2)) / 2,
-          (pbBorder * i) / 2
-        );
+        if (lt) { 
+          ctx.clearRect(
+            0,
+            0,
+            (pbBorder * (pbBorderRadius - i + 2)) / 2,
+            (pbBorder * i) / 2
+          );
+        }
         // RIGHT TOP RADIUS
-        ctx.clearRect(
-          size.width - (pbBorder * (pbBorderRadius - i + 1)) / 2,
-          (pbBorder * i) / 2,
-          size.width,
-          pbBorder / 2
-        );
+        if (rt) { 
+          ctx.clearRect(
+            size.width - (pbBorder * (pbBorderRadius - i + 1)) / 2,
+            (pbBorder * i) / 2,
+            size.width,
+            pbBorder / 2
+          );
+        }
 
         // LEFT BOTTOM RADIUS
-        ctx.clearRect(
-          0,
-          size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
-          (pbBorder * i) / 2,
-          size.height - (pbBorder * (pbBorderRadius - i)) / 2
-        );
+        if (lb) { 
+          ctx.clearRect(
+            0,
+            size.height - (pbBorder * (pbBorderRadius - i + 2)) / 2,
+            (pbBorder * i) / 2,
+            size.height - (pbBorder * (pbBorderRadius - i)) / 2
+          );
+        }
 
         // RIGHT BOTTOM RADIUS
-        ctx.clearRect(
-          size.width - pbBorder / 2 - (pbBorder * i) / 2,
-          size.height - (pbBorder * (pbBorderRadius - i + 1)) / 2,
-          size.width,
-          size.height
-        );
+        if (rb) { 
+          ctx.clearRect(
+            size.width - pbBorder / 2 - (pbBorder * i) / 2,
+            size.height - (pbBorder * (pbBorderRadius - i + 1)) / 2,
+            size.width,
+            size.height
+          );
+        }
       }
     }
 
@@ -318,20 +354,28 @@ class pixelBox {
     ctx.lineWidth = pbBorder;
 
     /* UP LINE */
-    ctx.moveTo(pbBorder / 2 + pbRadius, 0);
-    ctx.lineTo(size.width - pbBorder / 2 - pbRadius, 0);
+    if (pbBorderT) { 
+      ctx.moveTo(pbBorder / 2 + pbRadius, 0);
+      ctx.lineTo(size.width - pbBorder / 2 - pbRadius, 0);
+    }
 
     /* LEFT LINE */
-    ctx.moveTo(0, pbBorder / 2 + pbRadius);
-    ctx.lineTo(0, size.height - pbBorder / 2 - pbRadius);
+    if (pbBorderL) { 
+      ctx.moveTo(0, pbBorder / 2 + pbRadius);
+      ctx.lineTo(0, size.height - pbBorder / 2 - pbRadius);
+    }
 
     /* Down LINE */
-    ctx.moveTo(pbBorder / 2 + pbRadius, size.height);
-    ctx.lineTo(size.width - pbBorder / 2 - pbRadius, size.height);
+    if (pbBorderB) {
+      ctx.moveTo(pbBorder / 2 + pbRadius, size.height);
+      ctx.lineTo(size.width - pbBorder / 2 - pbRadius, size.height);
+    }
 
-    /* Right LINE */
-    ctx.moveTo(size.width, pbBorder / 2 + pbRadius);
-    ctx.lineTo(size.width, size.height - pbBorder / 2 - pbRadius);
+    // /* Right LINE */
+    if (pbBorderR) { 
+      ctx.moveTo(size.width, pbBorder / 2 + pbRadius);
+      ctx.lineTo(size.width, size.height - pbBorder / 2 - pbRadius);
+    }
 
     ctx.stroke();
     ctx.closePath();

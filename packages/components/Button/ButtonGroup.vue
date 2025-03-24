@@ -7,7 +7,9 @@ defineOptions({
   name: 'PxButtonGroup',
 })
 
-const props = defineProps<ButtonGroupProps>()
+const props = withDefaults(defineProps<ButtonGroupProps>(), {
+  type: 'base'
+})
 
 provide(BUTTON_GROUP_CTX_KEY, reactive({
   size: toRef(props, 'size'),
@@ -17,7 +19,10 @@ provide(BUTTON_GROUP_CTX_KEY, reactive({
 </script>
 
 <template>
-  <div class="px-button-group">
+  <div 
+    class="px-button-group"
+    :class="{[`px-button-group--${type}`]: type}"
+  >
     <slot></slot>
   </div>
 </template>
