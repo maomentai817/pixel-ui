@@ -65,15 +65,15 @@
     <px-button>Button2</px-button>
     <px-button>Button3</px-button>
   </px-button-group>
-  <px-button-group type="success">
-    <px-button round>Button1</px-button>
-    <px-button round>Button3</px-button>
+  <px-button-group type="success" circle>
+    <px-button>Button1</px-button>
+    <px-button>Button3</px-button>
   </px-button-group>
   <px-button-group type="warning">
-    <px-button round>Button1</px-button>
-    <px-button round>Button2</px-button>
-    <px-button round>Button3</px-button>
-    <px-button round>Button4</px-button>
+    <px-button>Button1</px-button>
+    <px-button>Button2</px-button>
+    <px-button>Button3</px-button>
+    <px-button>Button4</px-button>
   </px-button-group>
 </template>
 

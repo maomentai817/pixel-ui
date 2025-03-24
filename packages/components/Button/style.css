@@ -207,20 +207,23 @@
     --px-border-radius-rb: 0;
     --px-border-color: var(--px-button-group-border-color);
     --px-border-r: 0;
-    margin-right: -9px;
+    --px-button-group-first: 1;
+    margin-right: 0;
   }
   &:last-child{
     --px-border-radius-lt: 0;
     --px-border-radius-lb: 0;
     --px-border-l: 0;
-    margin-left: -12px;
+    --px-button-group-last: 1;
+    margin-left: -3px;
   }
   &:not(:first-child):not(:last-child) {
     --px-border-radius: 0;
     --px-border-l: 0;
     --px-border-r: 0;
     --px-border-color: var(--px-button-group-border-color);
+    --px-button-group-flag: 1;
     margin: 0;
-    margin-left: -9px;
+    margin-left: -3px;
   }
 }

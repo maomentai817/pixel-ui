@@ -17,6 +17,9 @@ class pixelBox {
       `--px-bg-shadow-border`,
       `--px-bg-shadow-color`,
       `--px-bg-shadow-position`,
+      `--px-button-group-flag`,
+      `--px-button-group-first`,
+      `--px-button-group-last`,
     ];
   }
 
@@ -56,13 +59,31 @@ class pixelBox {
     const pbBorderB = parseInt(props.get(`--px-border-b`)) || 0;
     const pbBorderL = parseInt(props.get(`--px-border-l`)) || 0;
 
+    const buttonGroupFlag = parseInt(props.get(`--px-button-group-flag`));
+    const buttonGroupFirst = parseInt(props.get(`--px-button-group-first`));
+    const buttonGroupLast = parseInt(props.get(`--px-button-group-last`));
+
     ctx.fillStyle = pbBackgroundColor;
 
+    const startY = pbBorder / 2;
+    const contentHeight = size.height - pbBorder;
+
+    // const startX = pbBorder / 2;
+    // const contentWidth = size.width - pbBorder;
+    let startX;
+    let contentWidth;
+    if (buttonGroupFlag || buttonGroupLast) {
+      startX = 0;
+      contentWidth = size.width - pbBorder / 2;
+    } else {
+      startX = pbBorder / 2;
+      contentWidth = size.width - pbBorder;
+    }
     ctx.fillRect(
-      pbBorder / 2,
-      pbBorder / 2,
-      size.width - pbBorder,
-      size.height - pbBorder
+      startX,
+      startY,
+      contentWidth,
+      contentHeight
     );
     ctx.fill();
 
@@ -75,7 +96,7 @@ class pixelBox {
         case "bottom-right":
           /* Bottom Line  */
           ctx.moveTo(
-            pbBorder / 2,
+            0,
             size.height -
             pbBorder / 2 -
             pbBackgroundShadowBorder / 2 +
@@ -125,13 +146,13 @@ class pixelBox {
 
           /* Left Line */
           ctx.moveTo(
-            pbBorder / 2 +
+            (buttonGroupFirst ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             pbBorder / 2
           );
           ctx.lineTo(
-            pbBorder / 2 +
+            (buttonGroupFirst ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
@@ -141,7 +162,7 @@ class pixelBox {
         case "top-right":
           /* top Line  */
           ctx.moveTo(
-            pbBorder / 2,
+            0,
             pbBorder / 2 +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4
@@ -171,7 +192,7 @@ class pixelBox {
         case "top-left":
           /* top Line  */
           ctx.moveTo(
-            pbBorder / 2,
+            0,
             pbBorder / 2 +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4
@@ -184,13 +205,13 @@ class pixelBox {
           );
           /* Left Line */
           ctx.moveTo(
-            pbBorder / 2 +
+            (buttonGroupFirst ? pbBorder / 2 : 0)+
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             pbBorder / 2
           );
           ctx.lineTo(
-            pbBorder / 2 +
+            (buttonGroupFirst ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
@@ -217,7 +238,7 @@ class pixelBox {
                 (pbBorder * (i - 1)) / 2 -
                 pbBackgroundShadowBorder / 2,
                 size.height -
-                (pbBorder * (pbBorderRadius - i + 2)) / 2 -
+                (pbBorder * (rb - i + 2)) / 2 -
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2
@@ -227,7 +248,7 @@ class pixelBox {
               ctx.fillRect(
                 (pbBorder * i) / 2,
                 size.height -
-                (pbBorder * (pbBorderRadius - i + 2)) / 2 -
+                (pbBorder * (lb - i + 2)) / 2 -
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2
@@ -236,7 +257,7 @@ class pixelBox {
             case "top-right":
               ctx.fillRect(
                 size.width -
-                (pbBorder * (pbBorderRadius - i + 2)) / 2 -
+                (pbBorder * (rt - i + 2)) / 2 -
                 pbBackgroundShadowBorder / 2,
                 (pbBorder * i) / 2,
                 pbBackgroundShadowBorder / 2,
@@ -245,7 +266,7 @@ class pixelBox {
               break;
             case "top-left":
               ctx.fillRect(
-                (pbBorder * (pbBorderRadius - i + 2)) / 2,
+                (pbBorder * (lt - i + 2)) / 2,
                 (pbBorder * i) / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2
@@ -352,11 +373,21 @@ class pixelBox {
     /* UP Left */
     ctx.strokeStyle = pbBorderColor;
     ctx.lineWidth = pbBorder;
-
     /* UP LINE */
     if (pbBorderT) { 
-      ctx.moveTo(pbBorder / 2 + pbRadius, 0);
-      ctx.lineTo(size.width - pbBorder / 2 - pbRadius, 0);
+      if (buttonGroupFlag) {
+        ctx.moveTo(pbBorderL, 0);
+        ctx.lineTo(size.width - pbBorderR, 0);
+      } else if (buttonGroupFirst) {
+        ctx.moveTo(pbBorder / 2 + pbRadius, 0);
+        ctx.lineTo(size.width - pbBorderR , 0);
+      } else if (buttonGroupLast) {
+        ctx.moveTo(pbBorderL, 0);
+        ctx.lineTo(size.width - pbBorder / 2 - pbRadius, 0);
+      } else { 
+        ctx.moveTo(pbBorder / 2 + pbRadius, 0);
+        ctx.lineTo(size.width - pbBorder / 2 - pbRadius, 0);
+      }
     }
 
     /* LEFT LINE */
@@ -369,6 +400,19 @@ class pixelBox {
     if (pbBorderB) {
       ctx.moveTo(pbBorder / 2 + pbRadius, size.height);
       ctx.lineTo(size.width - pbBorder / 2 - pbRadius, size.height);
+      if (buttonGroupFlag) {
+        ctx.moveTo(pbBorderL, size.height);
+        ctx.lineTo(size.width - pbBorderR, size.height);
+      } else if (buttonGroupFirst) {
+        ctx.moveTo(pbBorder / 2 + pbRadius, size.height);
+        ctx.lineTo(size.width - pbBorderR, size.height);
+      } else if (buttonGroupLast) {
+        ctx.moveTo(pbBorderL, size.height);
+        ctx.lineTo(size.width - pbBorder / 2 - pbRadius, size.height);
+      } else { 
+        ctx.moveTo(pbBorder / 2 + pbRadius, size.height);
+        ctx.lineTo(size.width - pbBorder / 2 - pbRadius, size.height);
+      }
     }
 
     // /* Right LINE */
