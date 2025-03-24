@@ -97,6 +97,19 @@ export interface ButtonProps {
   throttleDuration?: number
 }
 
+export interface ButtonGroupProps { 
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
+
+// 上下文依赖注入
+export interface ButtonGroupContext { 
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
+
 export interface ButtonEmits { 
   (e: 'click', val: MouseEvent): void
 }

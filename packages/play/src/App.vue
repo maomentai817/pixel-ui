@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <px-button size="small">Normal</px-button>
+  <!-- <px-button size="small">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
   <px-button type="success" size="small">Success</px-button>
   <px-button type="warning" size="small">Warning</px-button>
@@ -58,6 +58,12 @@
   <px-icon icon="face-thinking-solid" bounce></px-icon>
   <px-icon icon="face-thinking-solid" shake></px-icon>
   <px-icon icon="face-thinking-solid" beat></px-icon>
+  <br />
+  <br /> -->
+  <px-button-group type="primary">
+    <px-button round>Left</px-button>
+    <px-button round>Right</px-button>
+  </px-button-group>
 </template>
 
 <style scoped>

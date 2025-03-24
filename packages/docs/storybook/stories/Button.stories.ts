@@ -1,11 +1,12 @@
-import type { StoryFn } from '@storybook/vue3'
+import type { StoryFn, ArgTypes, StoryObj, Meta, StoryContext } from '@storybook/vue3'
+import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
-import { PxButton } from 'pixel-ui'
+import { PxButton, PxButtonGroup } from 'pixel-ui'
 
-export default {
+const meta: Meta<typeof PxButton> = {
   title: 'Atoms/Button',
-  components: PxButton,
+  component: PxButton,
   tags: ["autodocs"],
   argTypes: {
     type: {
@@ -61,7 +62,12 @@ export default {
       control: { type: "text" },
     },
   },
+  args: { onClick: fn() },
 }
+
+export default meta
+
+type Story = StoryObj<typeof PxButton> & { argTypes?: ArgTypes }
 
 const methods = {
   onClick: action("onClick"),
@@ -164,4 +170,56 @@ export const Square = AllColorsAndSizesTemplate.bind({});
 Square.args = {
   label: '817',
   square: true,
+}
+
+// ButtonGroup
+export const Group: Story & { args: { content1: string; content2: string } } = {
+  argTypes: {
+    groupType: {
+      control: { type: "select" },
+      options: ["primary", "success", "warning", "danger", "base", ""],
+    },
+    groupSize: {
+      control: { type: "select" },
+      options: ["large", "default", "small", ""],
+    },
+    groupDisabled: {
+      control: "boolean",
+    },
+    content1: {
+      control: { type: "text" },
+      defaultValue: "Button1",
+    },
+    content2: {
+      control: { type: "text" },
+      defaultValue: "Button2",
+    },
+  },
+  args: {
+    round: true,
+    content1: "Button1",
+    content2: "Button2",
+  },
+  render: (args: typeof meta.args) => ({
+    components: { PxButtonGroup, PxButton },
+    setup() {
+      return { args };
+    },
+    template: `<div>
+      <px-button-group :type="args.groupType" :size="args.groupSize" :disabled="args.groupDisabled">
+        <px-button v-bind="args">{{args.content1}}</px-button>
+        <px-button v-bind="args">{{args.content2}}</px-button>
+      </px-button-group>
+    </div>`,
+  }),
+  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButtonGroup>) => {
+    const canvas = within(canvasElement);
+    await step("click btn1", async () => {
+      await userEvent.click(canvas.getByText("Button1"));
+    });
+    await step("click btn2", async () => {
+      await userEvent.click(canvas.getByText("Button2"));
+    });
+    expect(args.onClick).toHaveBeenCalled();
+  },
 }
