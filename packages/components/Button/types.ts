@@ -101,6 +101,8 @@ export interface ButtonGroupProps {
   size?: ButtonSize
   type?: ButtonType
   disabled?: boolean
+  round?: boolean
+  circle?: boolean
 }
 
 // 上下文依赖注入
@@ -108,6 +110,8 @@ export interface ButtonGroupContext {
   size?: ButtonSize
   type?: ButtonType
   disabled?: boolean
+  round?: boolean
+  circle?: boolean
 }
 
 export interface ButtonEmits { 

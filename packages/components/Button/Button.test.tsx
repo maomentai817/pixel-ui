@@ -302,4 +302,30 @@ describe('ButtonGroup.vue', () => {
     const buttonWrapper = wrapper.findComponent(Button)
     expect(buttonWrapper.classes()).toContain(`is-disabled`)
   })
+
+  // round prop test
+  test('button group round', () => {
+    const wrapper = mount(() => (
+      <ButtonGroup round>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+    ))
+
+    const buttonWrapper = wrapper.findComponent(Button)
+    expect(buttonWrapper.classes()).toContain(`is-round`)
+  })
+
+  // circle prop test
+  test('button group circle', () => {
+    const wrapper = mount(() => (
+      <ButtonGroup circle>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+    ))
+
+    const buttonWrapper = wrapper.findComponent(Button)
+    expect(buttonWrapper.classes()).toContain(`is-circle`)
+  })
 })

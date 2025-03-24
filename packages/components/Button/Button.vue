@@ -21,6 +21,8 @@ const ctx = inject(BUTTON_GROUP_CTX_KEY, void 0)
 const size = computed(() => ctx?.size ?? props?.size ?? '')
 const type = computed(() => ctx?.type ?? props?.type ?? '')
 const disabled = computed(() => ctx?.disabled || props?.disabled || false)
+const round = computed(() => ctx?.round || props?.round || false)
+const circle = computed(() => ctx?.circle || props?.circle || false)
 
 const slots = defineSlots()
 

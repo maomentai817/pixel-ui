@@ -15,6 +15,8 @@ provide(BUTTON_GROUP_CTX_KEY, reactive({
   size: toRef(props, 'size'),
   type: toRef(props, 'type'),
   disabled: toRef(props, 'disabled'),
+  round: toRef(props, 'round'),
+  circle: toRef(props, 'circle'),
 }))
 </script>
 

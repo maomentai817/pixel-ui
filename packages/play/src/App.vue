@@ -60,10 +60,10 @@
   <px-icon icon="face-thinking-solid" beat></px-icon>
   <br />
   <br />
-  <px-button-group type="primary">
-    <px-button round>Button1</px-button>
-    <px-button round>Button2</px-button>
-    <px-button round>Button3</px-button>
+  <px-button-group type="primary" round>
+    <px-button>Button1</px-button>
+    <px-button>Button2</px-button>
+    <px-button>Button3</px-button>
   </px-button-group>
   <px-button-group type="success">
     <px-button round>Button1</px-button>
