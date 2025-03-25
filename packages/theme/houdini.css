@@ -88,6 +88,27 @@ html {
   initial-value: #faf0f0;
   inherits: false;
 }
+/* light-color-2 */
+@property --px-light-color-primary-2 {
+  syntax: "<color>";
+  initial-value: #a0cfff;
+  inherits: false;
+}
+@property --px-light-color-success-2 {
+  syntax: "<color>";
+  initial-value: #b3e19d;
+  inherits: false;
+}
+@property --px-light-color-warning-2 {
+  syntax: "<color>";
+  initial-value: #f3d19e;
+  inherits: false;
+}
+@property --px-light-color-danger-2 {
+  syntax: "<color>";
+  initial-value: #fab6b6;
+  inherits: false;
+}
 /* background-shadow-color */
 @property --px-bg-shadow-color-base {
   syntax: "<color>";

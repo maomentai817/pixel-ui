@@ -114,10 +114,10 @@
 /* disabled */
 .px-button.is-disabled {
   cursor: not-allowed;
-  --px-button-text-color: var(--px-text-color-disabled) !important;
-  --px-bg-color: var(--px-bg-color-disabled) !important;
-  --px-bg-shadow-color: var(--px-bg-shadow-color-base) !important;
-  --px-border-color: var(--px-border-color-base) !important;
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-bg-color-disabled);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-base);
+  --px-border-color: var(--px-border-color-base);
 }
 .px-button.is-disabled:hover {
   cursor: not-allowed;
@@ -125,6 +125,22 @@
 }
 .px-button.is-disabled:active {
   --px-bg-shadow-position: bottom-right;
+}
+.px-button--primary.is-disabled {
+  --px-bg-color: var(--px-light-color-primary-2);
+  --px-bg-shadow-color: transparent
+}
+.px-button--success.is-disabled {
+  --px-bg-color: var(--px-light-color-success-2);
+  --px-bg-shadow-color: transparent
+}
+.px-button--warning.is-disabled {
+  --px-bg-color: var(--px-light-color-warning-2);
+  --px-bg-shadow-color: transparent
+}
+.px-button--danger.is-disabled {
+  --px-bg-color: var(--px-light-color-danger-2);
+  --px-bg-shadow-color: transparent
 }
 /* button size */
 .px-button--small {
@@ -150,11 +166,23 @@
   --px-bg-color: var(--px-light-color-primary);
   --px-border-color: var(--px-border-color-primary);
 }
+.px-button--primary.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-primary);
+  --px-bg-color: var(--px-bg-color-primary);
+  --px-border-color: var(--px-border-color-base);
+}
 .px-button--success.is-plain {
   --px-button-text-color: var(--px-text-color-success);
   --px-bg-shadow-color: var(--px-bg-color-success);
   --px-bg-color: var(--px-light-color-success);
   --px-border-color: var(--px-border-color-success);
+}
+.px-button--success.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-success);
+  --px-bg-color: var(--px-bg-color-success);
+  --px-border-color: var(--px-border-color-base);
 }
 .px-button--warning.is-plain {
   --px-button-text-color: var(--px-text-color-warning);
@@ -162,11 +190,23 @@
   --px-bg-color: var(--px-light-color-warning);
   --px-border-color: var(--px-border-color-warning);
 }
+.px-button--warning.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-warning);
+  --px-bg-color: var(--px-bg-color-warning);
+  --px-border-color: var(--px-border-color-base);
+}
 .px-button--danger.is-plain {
   --px-button-text-color: var(--px-text-color-danger);
   --px-bg-shadow-color: var(--px-bg-color-danger);
   --px-bg-color: var(--px-light-color-danger);
   --px-border-color: var(--px-border-color-danger);
+}
+.px-button--danger.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-shadow-color: var(--px-bg-shadow-color-danger);
+  --px-bg-color: var(--px-bg-color-danger);
+  --px-border-color: var(--px-border-color-base);
 }
 /* round */
 .px-button.is-round {
