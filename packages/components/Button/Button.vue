@@ -5,6 +5,7 @@ import type { ButtonProps,ButtonEmits, ButtonInstance } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
 import PxIcon from '../Icon/Icon.vue'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
+import { updateColors } from '@pixel-ui/utils'
 
 defineOptions({
   name: 'PxButton'
@@ -23,6 +24,8 @@ const type = computed(() => ctx?.type ?? props?.type ?? '')
 const disabled = computed(() => ctx?.disabled || props?.disabled || false)
 const round = computed(() => ctx?.round || props?.round || false)
 const circle = computed(() => ctx?.circle || props?.circle || false)
+// 自定义颜色
+const color = computed(() => ctx?.color || props?.color || void 0)
 
 const slots = defineSlots()
 
@@ -34,6 +37,21 @@ const emit = defineEmits<ButtonEmits>()
 const iconStyle = computed(() => ({
   marginRight: props.label || slots.default ? "6px" : "0px",
 }))
+
+// 自定义颜色
+const colorStyle = computed(() => { 
+  const colors = color.value ? updateColors(color.value) : void 0
+  if (!colors) return {}
+  return {
+    "--px-custom-button-bg-color": colors.bgColor,
+    "--px-custom-button-light-color": colors.lightColor,
+    "--px-custom-button-light-color-2": colors.lightColor2,
+    "--px-custom-button-bg-shadow-color": colors.bgShadowColor,
+    "--px-custom-button-text-color": colors.textColor,
+    "--px-custom-button-fill-hover-color": colors.fillHoverColor,
+    "--px-custom-button-border-color": colors.borderColor,
+  }
+})
 
 // 点击节流逻辑
 const handleBtnClick = (e: MouseEvent) => emit('click', e)
@@ -79,7 +97,9 @@ onMounted(async () => {
       'is-circle': circle,
       'is-disabled': disabled,
       'is-loading': loading,
+      'is-custom': color,
     }"
+    :style="colorStyle"
     @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
     <template v-if="loading">

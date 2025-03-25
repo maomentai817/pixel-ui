@@ -75,6 +75,14 @@
     <px-button>Button3</px-button>
     <px-button>Button4</px-button>
   </px-button-group>
+  <br />
+  <br />
+  <px-button color="#626aef">Button</px-button>
+  <px-button color="#626aef" disabled>Button</px-button>
+  <px-button color="#626aef" plain>Button</px-button>
+  <px-button color="#dfee56">Button</px-button>
+  <px-button color="#dfee56" disabled>Button</px-button>
+  <px-button color="#dfee56" plain>Button</px-button>
 </template>
 
 <style scoped>

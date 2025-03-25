@@ -225,6 +225,33 @@
   --px-border-radius-rb: 3px;
 }
 
+/* custom button colors */
+.px-button.is-custom {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-color: var(--px-custom-button-bg-color);
+  --px-bg-shadow-color: var(--px-custom-button-bg-shadow-color);
+}
+.px-button.is-custom:hover {
+  --px-bg-color: var(--px-custom-button-fill-hover-color);
+  --px-bg-shadow-border: 4px;
+}
+.px-button.is-custom.is-disabled {
+  --px-bg-color: var(--px-custom-button-light-color-2);
+  --px-bg-shadow-color: transparent
+}
+.px-button.is-custom.is-plain {
+  --px-button-text-color: var(--px-custom-button-text-color);
+  --px-bg-shadow-color: var(--px-custom-button-bg-color);
+  --px-bg-color: var(--px-custom-button-light-color);
+  --px-border-color: var(--px-custom-button-border-color);
+}
+.px-button.is-custom.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-white);
+  --px-bg-shadow-color: var(--px-custom-button-bg-shadow-color);
+  --px-bg-color: var(--px-custom-button-bg-color);
+  --px-border-color: var(--px-border-color-base);
+}
+
 /* ----------- button group ----------- */
 .px-button-group {
   --px-button-group-border-color: var(--px-border-color-base);

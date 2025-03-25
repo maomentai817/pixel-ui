@@ -95,6 +95,10 @@ export interface ButtonProps {
    * @default 500
    */
   throttleDuration?: number
+  /**
+   * @description 自定义颜色
+   */
+  color?: string
 }
 
 export interface ButtonGroupProps { 
@@ -103,6 +107,7 @@ export interface ButtonGroupProps {
   disabled?: boolean
   round?: boolean
   circle?: boolean
+  color?: string
 }
 
 // 上下文依赖注入
@@ -112,6 +117,7 @@ export interface ButtonGroupContext {
   disabled?: boolean
   round?: boolean
   circle?: boolean
+  color?: string
 }
 
 export interface ButtonEmits { 
