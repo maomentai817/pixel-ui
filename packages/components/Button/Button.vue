@@ -19,6 +19,7 @@ defineOptions({
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
   nativeType: 'button',
+  loadingIcon: 'spinner',
   useThrottle: true,
   throttleDuration: 500
 })

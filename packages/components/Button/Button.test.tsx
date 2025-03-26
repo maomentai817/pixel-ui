@@ -1,6 +1,7 @@
 import { describe, it, test, expect, vi, beforeEach } from "vitest"
 import { mount } from "@vue/test-utils"
 import { h, defineComponent } from 'vue'
+import { flushPromises } from '@vue/test-utils'
 
 import Button from "./Button.vue"
 import ButtonGroup from "./ButtonGroup.vue"
@@ -110,8 +111,10 @@ describe('Button.vue', () => {
         stubs: ['PxButton']
       }
     })
-    const iconElement = wrapper.findComponent(Icon)
 
+    await flushPromises()
+
+    const iconElement = wrapper.findComponent(Icon)
     // loading-icon 存在
     expect(wrapper.find('.loading-icon').exists()).toBe(true)
     expect(iconElement.exists()).toBeTruthy()
@@ -149,7 +152,8 @@ describe('Button.vue', () => {
     // icon
     const iconElement = wrapper.findComponent(Icon)
     expect(iconElement.exists()).toBeTruthy()
-    expect(iconElement.props('icon')).toBe('spinner')
+    // expect(iconElement.props('icon')).toBe('spinner')
+    expect(iconElement.attributes('icon')).toBe('spinner')
   })
 
   // icon-btn
