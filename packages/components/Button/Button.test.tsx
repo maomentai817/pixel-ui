@@ -328,4 +328,17 @@ describe('ButtonGroup.vue', () => {
     const buttonWrapper = wrapper.findComponent(Button)
     expect(buttonWrapper.classes()).toContain(`is-circle`)
   })
+
+  // custom color prop test
+  test('button group custom color', () => {
+    const wrapper = mount(() => (
+      <ButtonGroup color="#626aef">
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+    ))
+
+    const buttonWrapper = wrapper.findComponent(Button)
+    expect(buttonWrapper.classes()).toContain(`is-custom`)
+  })
 })
