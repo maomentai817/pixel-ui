@@ -1,8 +1,10 @@
-import type { StoryFn, ArgTypes, StoryObj, Meta, StoryContext } from '@storybook/vue3'
+import type { StoryFn, ArgTypes, StoryObj, Meta } from '@storybook/vue3'
 import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
 import { PxButton, PxButtonGroup } from 'pixel-ui'
+// es 打包后单独引入样式
+import 'pixel-ui/dist/index.css'
 
 const meta: Meta<typeof PxButton> = {
   title: 'Atoms/Button',
@@ -212,7 +214,7 @@ export const Group: Story & { args: { content1: string; content2: string } } = {
       </px-button-group>
     </div>`,
   }),
-  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButtonGroup>) => {
+  play: async ({ canvasElement, args, step }) => {
     const canvas = within(canvasElement);
     await step("click btn1", async () => {
       await userEvent.click(canvas.getByText("Button1"));

@@ -1,8 +1,10 @@
-import type { Meta, StoryObj, ArgTypes, StoryContext } from '@storybook/vue3'
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn, within, userEvent, expect, clearAllMocks } from '@storybook/test'
 import { set } from 'lodash-es'
 
 import { PxButton } from 'pixel-ui'
+// es 打包后单独引入样式
+import 'pixel-ui/dist/index.css'
 
 type Story = StoryObj<typeof PxButton> & {argTypes?: ArgTypes}
 const meta: Meta<typeof PxButton> = {
@@ -76,7 +78,7 @@ export const Default: Story & { args: { content: string } } = {
     )
   }),
   // 测试
-  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButton>) => {
+  play: async ({ canvasElement, args, step }) => {
     const canvas = within(canvasElement);
     const btn = canvas.getByTestId("story-test-btn");
 
@@ -142,7 +144,7 @@ export const Circle: Story = {
       <px-button circle v-bind="args" />
     `)
   }),
-  play: async ({ canvasElement, args, step }: StoryContext<typeof PxButton>) => { 
+  play: async ({ canvasElement, args, step }) => { 
     const canvas = within(canvasElement)
     await step('click button', async () => { 
       await userEvent.click(canvas.getByRole('button'))

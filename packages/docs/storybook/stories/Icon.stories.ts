@@ -1,5 +1,7 @@
 import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { PxIcon } from 'pixel-ui'
+// es 打包后单独引入样式
+import 'pixel-ui/dist/index.css'
 
 // 定义 Story 类型
 type Story = StoryObj<typeof PxIcon> & { argTypes?: ArgTypes }
