@@ -2,9 +2,9 @@ import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn, within, userEvent, expect, clearAllMocks } from '@storybook/test'
 import { set } from 'lodash-es'
 
-import { PxButton } from 'pixel-ui'
+import { PxButton } from '@mmt817/pixel-ui'
 // es 打包后单独引入样式
-import 'pixel-ui/dist/index.css'
+import '@mmt817/pixel-ui/dist/index.css'
 
 type Story = StoryObj<typeof PxButton> & {argTypes?: ArgTypes}
 const meta: Meta<typeof PxButton> = {

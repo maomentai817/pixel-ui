@@ -2,9 +2,9 @@ import type { StoryFn, ArgTypes, StoryObj, Meta } from '@storybook/vue3'
 import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
-import { PxButton, PxButtonGroup } from 'pixel-ui'
+import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
 // es 打包后单独引入样式
-import 'pixel-ui/dist/index.css'
+import '@mmt817/pixel-ui/dist/index.css'
 
 const meta: Meta<typeof PxButton> = {
   title: 'Atoms/Button',
