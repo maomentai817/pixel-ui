@@ -10,7 +10,7 @@
     "docs:preview": "pnpm --filter @pixel-ui/vitepress preview",
     "docs:storybook": "pnpm --filter @pixel-ui/storybook storybook",
     "test": "pnpm --filter @pixel-ui/components test",
-    "build": "pnpm --filter pixel-ui build"
+    "build": "pnpm --filter @mmt817/pixel-ui build"
   },
   "keywords": [],
   "author": "",
