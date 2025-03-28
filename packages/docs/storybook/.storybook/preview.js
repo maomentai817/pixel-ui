@@ -1,3 +1,4 @@
+import '@mmt817/pixel-ui/dist/index.css'
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {
   parameters: {
