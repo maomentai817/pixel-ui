@@ -51,6 +51,8 @@
   --px-bg-shadow-border: 3px;
   --px-bg-shadow-color: var(--px-bg-shadow-color-base);
   --px-bg-shadow-position: bottom-right;
+  /* button single 区别于 button-group */
+  --px-button-single: 1;
 }
 /* button hover */
 .px-button:hover {
@@ -268,6 +270,7 @@
 .px-button-group > :deep(.px-button) {
   float: left;
   position: relative;
+  --px-button-single: 0;
 
   &:first-child{
     --px-border-radius-rt: 0;

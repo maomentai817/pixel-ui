@@ -20,6 +20,7 @@ class pixelBox {
       `--px-button-group-flag`,
       `--px-button-group-first`,
       `--px-button-group-last`,
+      `--px-button-single`,
     ];
   }
 
@@ -62,14 +63,14 @@ class pixelBox {
     const buttonGroupFlag = parseInt(props.get(`--px-button-group-flag`));
     const buttonGroupFirst = parseInt(props.get(`--px-button-group-first`));
     const buttonGroupLast = parseInt(props.get(`--px-button-group-last`));
+    const buttonSingle = parseInt(props.get(`--px-button-single`));
 
     ctx.fillStyle = pbBackgroundColor;
 
     const startY = pbBorder / 2;
     const contentHeight = size.height - pbBorder;
 
-    // const startX = pbBorder / 2;
-    // const contentWidth = size.width - pbBorder;
+    // button 整体背景区域
     let startX;
     let contentWidth;
     if (buttonGroupFlag || buttonGroupLast) {
@@ -87,6 +88,7 @@ class pixelBox {
     );
     ctx.fill();
 
+    // button 侧边阴影
     if (pbBackgroundShadowBorder != 0) {
       ctx.beginPath();
       ctx.strokeStyle = pbBackgroundShadowColor;
@@ -146,13 +148,13 @@ class pixelBox {
 
           /* Left Line */
           ctx.moveTo(
-            (buttonGroupFirst ? pbBorder / 2 : 0) +
+            (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             pbBorder / 2
           );
           ctx.lineTo(
-            (buttonGroupFirst ? pbBorder / 2 : 0) +
+            (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
@@ -205,13 +207,13 @@ class pixelBox {
           );
           /* Left Line */
           ctx.moveTo(
-            (buttonGroupFirst ? pbBorder / 2 : 0)+
+            (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             pbBorder / 2
           );
           ctx.lineTo(
-            (buttonGroupFirst ? pbBorder / 2 : 0) +
+            (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
             pbBackgroundShadowBorder / 2 -
             pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
@@ -223,6 +225,8 @@ class pixelBox {
       }
       ctx.stroke();
     }
+
+    // button 圆角侧边阴影
     if (pbBorderRadius > 0) {
       if (pbBackgroundShadowBorder != 0) {
         ctx.beginPath();
@@ -282,6 +286,7 @@ class pixelBox {
 
       ctx.fillStyle = pbBorderColor;
 
+      // button 圆角边框
       for (var i = 1; i <= pbBorderRadius; i++) {
         // LEFT TOP RADIUS
         if (lt) { 
@@ -325,7 +330,7 @@ class pixelBox {
       }
       ctx.fill();
 
-      // CLEAR
+      // button 圆角边框 - 清理多余背景区块
       for (var i = 0; i <= pbBorderRadius + 1; i++) {
         // LEFT TOP RADIUS
         if (lt) { 
@@ -368,6 +373,7 @@ class pixelBox {
       }
     }
 
+    // button border 边框
     const pbRadius = (pbBorderRadius * pbBorder) / 2;
     ctx.beginPath();
     /* UP Left */
