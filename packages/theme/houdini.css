@@ -24,12 +24,17 @@ html {
 @property --px-font-size-base {
   syntax: "<length>";
   initial-value: 14px;
-  inherits: false;
+  inherits: true;
+}
+@property --px-font-size-standard {
+  syntax: "<length>";
+  initial-value: 16px;
+  inherits: true;
 }
 @property --px-font-size-small {
   syntax: "<length>";
   initial-value: 12px;
-  inherits: false;
+  inherits: true;
 }
 @property --px-font-weight-base {
   syntax: "<number>";

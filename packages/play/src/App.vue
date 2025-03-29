@@ -83,6 +83,19 @@
   <px-button color="#dfee56">Button</px-button>
   <px-button color="#dfee56" disabled>Button</px-button>
   <px-button color="#dfee56" plain>Button</px-button>
+  <br />
+  <br />
+  <px-card style="width: 240px;" hoverable>
+    <template #prepend>
+      <px-icon icon="face-thinking-solid" size="30"></px-icon>
+    </template>
+    <template #header>1212</template>
+    xxxx
+    <template #footer>3434</template>
+    <template #append>
+      <px-button>Button1</px-button>
+    </template>
+  </px-card>
 </template>
 
 <style scoped>
