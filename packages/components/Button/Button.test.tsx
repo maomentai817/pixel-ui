@@ -1,4 +1,4 @@
-import { describe, it, test, expect, vi, beforeEach } from "vitest"
+import { describe, it, test, expect, vi } from "vitest"
 import { mount } from "@vue/test-utils"
 import { h, defineComponent } from 'vue'
 import { flushPromises } from '@vue/test-utils'
@@ -199,53 +199,29 @@ describe('Button.vue', () => {
   })
 
   //! CSS Paint Worklets API 测试
-  describe('when browser supports Paint Worklet ', () => {
-    beforeEach(() => {
-      // 模拟支持 Paint Worklet 的环境
-      (globalThis as any).CSS = {
+  describe('PxButton - CSS Houdini Paint Worklet', () => {
+    it('should register the Paint Worklet when supported', async () => {
+      global.CSS = {
         paintWorklet: {
-          addModule: vi.fn()
-        }
-      };
-    });
+          addModule: vi.fn(),
+        },
+      } as any
 
-    it('call the addModule to load Worklet', () => {
-      const workletURL = "mock-pixelbox.js";
-      if ('paintWorklet' in CSS) {
-        (CSS as any).paintWorklet.addModule(workletURL);
-      } else {
-        console.warn('CSS Houdini Paint Worklet API is not supported in this browser.');
-      }
+      mount(Button)
 
-      expect((CSS as any).paintWorklet.addModule).toHaveBeenCalledWith(workletURL);
-    });
-  });
+      expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(expect.stringContaining('pixelbox.js'))
+    })
 
-  describe('then browser not supports Paint Worklet', () => {
-    beforeEach(() => {
-      // 模拟不支持 Paint Worklet 的环境
-      (globalThis as any).CSS = {}; // 确保 CSS 对象存在，但无 paintWorklet 属性
-      if ('paintWorklet' in (globalThis as any).CSS) {
-        delete (globalThis as any).CSS.paintWorklet; // 确保 paintWorklet 被移除
-      }
-    });
+    it('should warn if CSS Houdini Paint Worklet is not supported', () => {
+      console.warn = vi.fn() // 监听 console.warn
+      global.CSS = {} as any // 移除 paintWorklet，模拟不支持的情况
 
-    it('trigger console.warn', () => {
-      const consoleWarnSpy = vi.spyOn(console, 'warn'); // 监控 console.warn
-      const workletURL = "mock-pixelbox.js";
+      mount(Button)
 
-      if ('paintWorklet' in CSS) {
-        (CSS as any).paintWorklet.addModule(workletURL);
-      } else {
-        console.warn('CSS Houdini Paint Worklet API is not supported in this browser.');
-      }
+      expect(console.warn).toHaveBeenCalledWith('CSS Houdini Paint Worklet API is not supported in this browser.')
+    })
 
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      );
-      consoleWarnSpy.mockRestore(); // 清理监控
-    });
-  });
+  })
 })
 
 // button-group test

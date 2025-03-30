@@ -114,7 +114,7 @@ onMounted(async () => {
         <px-icon 
           class="loading-icon"
           spin
-          :icon="loadingIcon ?? 'spinner'"
+          :icon="loadingIcon"
           :style="iconStyle"
         />
       </slot>
