@@ -85,7 +85,7 @@
   <px-button color="#dfee56" plain>Button</px-button>
   <br />
   <br />
-  <px-card style="width: 240px;" hoverable>
+  <px-card style="width: 240px;" hoverable round>
     <template #prepend>
       <px-icon icon="face-thinking-solid" size="30"></px-icon>
     </template>

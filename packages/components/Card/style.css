@@ -14,6 +14,10 @@
   --px-border-b: 3px;
   --px-border-l: 3px;
   --px-border-radius: 0px;
+  --px-border-radius-lt: 0px;
+  --px-border-radius-rt: 0px;
+  --px-border-radius-lb: 0px;
+  --px-border-radius-rb: 0px;
   --px-bg-color: transparent;
   --px-border-color: var(--px-border-color-base);
   --px-bg-shadow-border: 3px;
@@ -56,4 +60,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+/* card round */
+.is-round {
+  --px-border-radius: 2px;
+  --px-border-radius-lt: 2px;
+  --px-border-radius-rt: 2px;
+  --px-border-radius-lb: 2px;
+  --px-border-radius-rb: 2px;
+}
+/* card circle */
+.is-circle {
+  --px-border-radius: 3px;
+  --px-border-radius-lt: 3px;
+  --px-border-radius-rt: 3px;
+  --px-border-radius-lb: 3px;
+  --px-border-radius-rb: 3px;
 }

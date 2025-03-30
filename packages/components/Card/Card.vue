@@ -33,7 +33,11 @@ onMounted(async () => {
 <template>
   <div 
     class="px-card"
-    :class="{[`px-card--hover`]: hoverable}"
+    :class="{
+      [`px-card--hover`]: hoverable,
+      [`is-round`]: round,
+      [`is-circle`]: circle,
+    }"
   >
     <div v-if="$slots.prepend" class="px-card__icon">
       <slot name="prepend"></slot>
