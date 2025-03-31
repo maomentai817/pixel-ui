@@ -27,9 +27,33 @@ const meta: Meta<typeof PxButton> = {
       description: "禁用按钮",
       control: "boolean",
     },
+    icon: {
+      description: "图标",
+      control: { type: "text" },
+    },
     loading: {
       description: "加载中",
       control: "boolean",
+    },
+    loadingIcon: {
+      description: "加载图标",
+      control: { type: "text" },
+    },
+    plain: {
+      description: "朴素按钮",
+      control: "boolean",
+    },
+    round: {
+      description: "圆角",
+      control: "boolean",
+    },
+    circle: {
+      description: "圆形",
+      control: "boolean",
+    },
+    color: {
+      description: "自定义颜色",
+      control: { type: "color" },
     },
     useThrottle: {
       description: "节流阀",
@@ -52,14 +76,6 @@ const meta: Meta<typeof PxButton> = {
       description: "原生type属性",
       control: { type: "select" },
       options: ["button", "submit", "reset", ""],
-    },
-    icon: {
-      description: "图标",
-      control: { type: "text" },
-    },
-    loadingIcon: {
-      description: "加载图标",
-      control: { type: "text" },
     },
   },
   args: { onClick: fn() },
