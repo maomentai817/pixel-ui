@@ -1,0 +1,18 @@
+.px-text--base {
+  color: var(--px-text-color-base);
+}
+.px-text--primary {
+  color: var(--px-text-color-primary);
+}
+.px-text--success {
+  color: var(--px-text-color-success);
+}
+.px-text--warning {
+  color: var(--px-text-color-warning);
+}
+.px-text--danger {
+  color: var(--px-text-color-danger);
+}
+.is-compact {
+  line-height: 1;
+}

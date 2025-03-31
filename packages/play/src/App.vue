@@ -96,6 +96,14 @@
       <px-button>Button1</px-button>
     </template>
   </px-card>
+  <br />
+  <br />
+  <px-text>Base</px-text>
+  <px-text type="primary">Primary</px-text>
+  <px-text type="success">Success</px-text>
+  <px-text type="warning">Warning</px-text>
+  <px-text type="danger">Danger</px-text>
+  <px-text size="26" color="#626aef" align="left" bold>Text</px-text>
 </template>
 
 <style scoped>
