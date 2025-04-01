@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxCard, PxButton, PxIcon } from '@mmt817/pixel-ui'
+import { PxCard, PxButton, PxIcon, PxText } from '@mmt817/pixel-ui'
 
 const meta: Meta<typeof PxCard> = {
   title: 'Atoms/Card',
@@ -38,8 +38,17 @@ export const Hoverable: StoryFn = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {
     PxCard,
+    PxText,
+    PxIcon
   },
-  template: `<px-card v-bind="args" style="width: 80%">This is a card.</px-card>`,
+  template: `<px-card v-bind="args" style="width: 140px; text-align: center">
+    <template #header>
+      <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 10px">
+        <px-icon icon="plus-solid" size="20"></px-icon>
+      </div>
+    </template>
+    <px-text>Add</px-text>
+  </px-card>`,
 })
 
 Hoverable.args = {
@@ -53,20 +62,25 @@ export const WithSlots: StoryFn = (args, { argTypes }) => ({
     PxCard,
     PxButton,
     PxIcon,
+    PxText
   },
   template: `<px-card v-bind="args" style="width: 80%">
 		<template #prepend>
-			<px-icon icon="check" size="large" />
+			<px-icon icon="check-solid" size="20" color="#ff6f5c" />
 		</template>
 		<template #header>
 			<strong>Card header</strong>
 		</template>
+		<px-text color="#4d6bfe" size="14">
 			This is the card body.
+		</px-text>
 		<template #footer>
+			<px-text size="16">
 				Card footer
+			</px-text>
 		</template>
 		<template #append>
-			<px-button>Click me</px-button>
+			<px-button type="success">Click me</px-button>
 		</template>
 	</px-card>`,
 })
