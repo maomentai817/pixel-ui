@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <px-button size="small">Normal</px-button>
@@ -85,7 +84,7 @@
   <px-button color="#dfee56" plain>Button</px-button>
   <br />
   <br />
-  <px-card style="width: 240px;" hoverable round>
+  <px-card style="width: 240px" hoverable round>
     <template #prepend>
       <px-icon icon="face-thinking-solid" size="30"></px-icon>
     </template>
@@ -106,6 +105,4 @@
   <px-text size="26" color="#626aef" align="left" bold>Text</px-text>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
