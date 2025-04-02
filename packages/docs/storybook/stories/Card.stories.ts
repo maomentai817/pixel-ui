@@ -5,7 +5,7 @@ import { PxCard, PxButton, PxIcon, PxText } from '@mmt817/pixel-ui'
 const meta: Meta<typeof PxCard> = {
   title: 'Atoms/Card',
   component: PxCard,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     hoverable: {
       description: '悬浮状态',
@@ -19,7 +19,7 @@ const meta: Meta<typeof PxCard> = {
       description: '圆形',
       control: 'boolean'
     }
-  },
+  }
 }
 
 export default meta
@@ -28,9 +28,10 @@ export const Default: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
-    PxCard,
+    PxCard
   },
-  template: '<px-card v-bind="args" style="width: 80%">This is a card.</px-card>',
+  template:
+    '<px-card v-bind="args" style="width: 80%">This is a card.</px-card>'
 })
 
 export const Hoverable: StoryFn = (args, { argTypes }) => ({
@@ -48,11 +49,11 @@ export const Hoverable: StoryFn = (args, { argTypes }) => ({
       </div>
     </template>
     <px-text>Add</px-text>
-  </px-card>`,
+  </px-card>`
 })
 
 Hoverable.args = {
-  hoverable: true,
+  hoverable: true
 }
 
 export const WithSlots: StoryFn = (args, { argTypes }) => ({
@@ -82,31 +83,29 @@ export const WithSlots: StoryFn = (args, { argTypes }) => ({
 		<template #append>
 			<px-button type="success">Click me</px-button>
 		</template>
-	</px-card>`,
+	</px-card>`
 })
 
 export const Round: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
-    PxCard,
+    PxCard
   },
-  template: `<px-card v-bind="args" style="width: 80%">This is a card.</px-card>`,
+  template: `<px-card v-bind="args" style="width: 80%">This is a card.</px-card>`
 })
 Round.args = {
-  round: true,
+  round: true
 }
 
 export const Circle: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
-    PxCard,
+    PxCard
   },
-  template: `<px-card v-bind="args" style="width: 80%">This is a card.</px-card>`,
+  template: `<px-card v-bind="args" style="width: 80%">This is a card.</px-card>`
 })
 Circle.args = {
-  circle: true,
+  circle: true
 }
-
-
