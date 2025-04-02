@@ -5,11 +5,16 @@ module.exports = {
   root: true,
   extends: [
     'plugin:vue/vue3-essential',
+    '@vue/eslint-config-typescript/recommended',
     'eslint:recommended',
-    '@vue/eslint-config-prettier/skip-formatting'
+    '@vue/eslint-config-prettier'
   ],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
+    extraFileExtensions: ['.vue']
   },
   rules: {
     'prettier/prettier': [
@@ -29,11 +34,12 @@ module.exports = {
       }
     ],
     'vue/no-setup-props-destructure': ['off'],
-    'no-undef': 'error'
+    'no-undef': 'error',
+    'vue/script-setup-uses-vars': 'error'
   },
-  globals: {
-    ElMessage: 'readonly',
-    ElMessageBox: 'readonly',
-    ElLoading: 'readonly'
-  }
+  env: {
+    browser: true,
+    es2021: true
+  },
+  globals: {}
 }

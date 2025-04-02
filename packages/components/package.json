@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --coverage"
+    "test": "vitest --coverage",
+    "prettier": "prettier --write ."
   },
   "keywords": [],
   "author": "",
