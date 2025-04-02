@@ -4,7 +4,7 @@ export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
 export type NativeType = 'button' | 'submit' | 'reset'
 export type ButtonSize = 'large' | 'default' | 'small'
 
-export interface ButtonProps { 
+export interface ButtonProps {
   label?: string
   /**
    * @property tag
@@ -101,7 +101,7 @@ export interface ButtonProps {
   color?: string
 }
 
-export interface ButtonGroupProps { 
+export interface ButtonGroupProps {
   size?: ButtonSize
   type?: ButtonType
   disabled?: boolean
@@ -111,7 +111,7 @@ export interface ButtonGroupProps {
 }
 
 // 上下文依赖注入
-export interface ButtonGroupContext { 
+export interface ButtonGroupContext {
   size?: ButtonSize
   type?: ButtonType
   disabled?: boolean
@@ -120,10 +120,10 @@ export interface ButtonGroupContext {
   color?: string
 }
 
-export interface ButtonEmits { 
-  (e: 'click', val: MouseEvent): void
+export interface ButtonEmits {
+  (_e: 'click', _val: MouseEvent): void
 }
 
-export interface ButtonInstance { 
+export interface ButtonInstance {
   ref: Ref<HTMLButtonElement | void>
 }

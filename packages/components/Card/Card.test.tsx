@@ -9,8 +9,8 @@ describe('Card.vue', () => {
       slots: {
         header: '<div class="header-test">Header</div>',
         default: '<div class="body-test">Body</div>',
-        footer: '<div class="footer-test">Footer</div>',
-      },
+        footer: '<div class="footer-test">Footer</div>'
+      }
     })
 
     expect(wrapper.find('.header-test').text()).toBe('Header')
@@ -21,13 +21,13 @@ describe('Card.vue', () => {
   // hoverable prop test
   it('applies hoverable class when hoverable is true', async () => {
     const wrapper = mount(Card, {
-      props: { hoverable: true },
+      props: { hoverable: true }
     })
     expect(wrapper.classes()).toContain('px-card--hover')
   })
 
   // round prop test
-  test('Card is round when round is true', () => { 
+  test('Card is round when round is true', () => {
     const wrapper = mount(() => (
       <Card round>
         <div>Content</div>
@@ -39,7 +39,7 @@ describe('Card.vue', () => {
   })
 
   // circle prop test
-  test('Card is circle when circle is true', () => { 
+  test('Card is circle when circle is true', () => {
     const wrapper = mount(() => (
       <Card circle>
         <div>Content</div>
@@ -51,10 +51,10 @@ describe('Card.vue', () => {
   })
 
   // slot prepend test
-  test('renders prepend slot correctly', () => { 
+  test('renders prepend slot correctly', () => {
     const wrapper = mount(Card, {
       slots: {
-        prepend: '<div class="prepend-test">Prepend</div>',
+        prepend: '<div class="prepend-test">Prepend</div>'
       }
     })
 
@@ -62,10 +62,10 @@ describe('Card.vue', () => {
   })
 
   // slot append test
-  test('renders append slot correctly', () => { 
+  test('renders append slot correctly', () => {
     const wrapper = mount(Card, {
       slots: {
-        append: '<div class="append-test">Append</div>',
+        append: '<div class="append-test">Append</div>'
       }
     })
 
@@ -77,13 +77,15 @@ describe('PxCard - CSS Houdini Paint Worklet', () => {
   it('should register the Paint Worklet when supported', async () => {
     global.CSS = {
       paintWorklet: {
-        addModule: vi.fn(),
-      },
+        addModule: vi.fn()
+      }
     } as any
 
     mount(Card)
 
-    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(expect.stringContaining('pixelbox.js'))
+    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('pixelbox.js')
+    )
   })
 
   it('should warn if CSS Houdini Paint Worklet is not supported', () => {
@@ -92,7 +94,8 @@ describe('PxCard - CSS Houdini Paint Worklet', () => {
 
     mount(Card)
 
-    expect(console.warn).toHaveBeenCalledWith('CSS Houdini Paint Worklet API is not supported in this browser.')
+    expect(console.warn).toHaveBeenCalledWith(
+      'CSS Houdini Paint Worklet API is not supported in this browser.'
+    )
   })
-
 })

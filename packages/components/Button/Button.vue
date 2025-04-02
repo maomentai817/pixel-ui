@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, inject } from 'vue' 
+import { ref, onMounted, computed, inject } from 'vue'
 import { throttle } from 'lodash-es'
-import type { ButtonProps,ButtonEmits, ButtonInstance } from './types'
+import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
 // import PxIcon from '../Icon/Icon.vue'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
 import { updateColors } from '@pixel-ui/utils'
 
 // 异步引入解决打包依赖循环问题
-import { defineAsyncComponent } from "vue"
+import { defineAsyncComponent } from 'vue'
 
-const PxIcon = defineAsyncComponent(() => import("../Icon/Icon.vue"))
-
+const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
 
 defineOptions({
   name: 'PxButton'
@@ -42,27 +41,31 @@ const emit = defineEmits<ButtonEmits>()
 
 // 服务于单个圆形icon
 const iconStyle = computed(() => ({
-  marginRight: props.label || slots.default ? "6px" : "0px",
+  marginRight: props.label || slots.default ? '6px' : '0px'
 }))
 
 // 自定义颜色
-const colorStyle = computed(() => { 
+const colorStyle = computed(() => {
   const colors = color.value ? updateColors(color.value) : void 0
   if (!colors) return {}
   return {
-    "--px-custom-button-bg-color": colors.bgColor,
-    "--px-custom-button-light-color": colors.lightColor,
-    "--px-custom-button-light-color-2": colors.lightColor2,
-    "--px-custom-button-bg-shadow-color": colors.bgShadowColor,
-    "--px-custom-button-text-color": colors.textColor,
-    "--px-custom-button-fill-hover-color": colors.fillHoverColor,
-    "--px-custom-button-border-color": colors.borderColor,
+    '--px-custom-button-bg-color': colors.bgColor,
+    '--px-custom-button-light-color': colors.lightColor,
+    '--px-custom-button-light-color-2': colors.lightColor2,
+    '--px-custom-button-bg-shadow-color': colors.bgShadowColor,
+    '--px-custom-button-text-color': colors.textColor,
+    '--px-custom-button-fill-hover-color': colors.fillHoverColor,
+    '--px-custom-button-border-color': colors.borderColor
   }
 })
 
 // 点击节流逻辑
 const handleBtnClick = (e: MouseEvent) => emit('click', e)
-const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration, {trailing: false})
+const handleBtnClickThrottle = throttle(
+  handleBtnClick,
+  props.throttleDuration,
+  { trailing: false }
+)
 
 // 暴露方法
 defineExpose<ButtonInstance>({
@@ -73,9 +76,11 @@ defineExpose<ButtonInstance>({
 const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
-      (CSS as any).paintWorklet.addModule(workletURL)
+      ;(CSS as any).paintWorklet.addModule(workletURL)
     } else {
-      console.warn('CSS Houdini Paint Worklet API is not supported in this browser.')
+      console.warn(
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
     }
     // (CSS as any).paintWorklet.addModule(workletURL)
   } catch (error) {
@@ -83,7 +88,7 @@ const paint = () => {
   }
 }
 
-onMounted(async () => { 
+onMounted(async () => {
   paint()
 })
 </script>
@@ -104,14 +109,17 @@ onMounted(async () => {
       'is-circle': circle,
       'is-disabled': disabled,
       'is-loading': loading,
-      'is-custom': color,
+      'is-custom': color
     }"
     :style="colorStyle"
-    @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
+    @click="
+      (e: MouseEvent) =>
+        useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)
+    "
   >
     <template v-if="loading">
       <slot name="loading">
-        <px-icon 
+        <px-icon
           class="loading-icon"
           spin
           :icon="loadingIcon"
@@ -119,14 +127,10 @@ onMounted(async () => {
         />
       </slot>
     </template>
-    <px-icon 
-      v-if="icon && !loading"
-      :icon="icon"
-      :style="iconStyle"
-    />
+    <px-icon v-if="icon && !loading" :icon="icon" :style="iconStyle" />
     <span v-if="label || $slots.default">
-			<slot>{{ label }}</slot>
-		</span>
+      <slot>{{ label }}</slot>
+    </span>
   </component>
 </template>
 

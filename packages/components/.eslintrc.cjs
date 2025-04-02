@@ -33,13 +33,32 @@ module.exports = {
         ignores: ['index']
       }
     ],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_'
+      }
+    ],
     'vue/no-setup-props-destructure': ['off'],
     'no-undef': 'error',
-    'vue/script-setup-uses-vars': 'error'
+    'vue/script-setup-uses-vars': 'error',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
   env: {
     browser: true,
     es2021: true
   },
+  overrides: [
+    {
+      files: ['**/*.test.*'], // 匹配所有 .test 文件
+      rules: {
+        'vue/multi-word-component-names': 'off' // 对测试文件禁用多词组件名称规则
+      }
+    },
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      rules: {}
+    }
+  ],
   globals: {}
 }

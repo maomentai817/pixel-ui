@@ -9,15 +9,15 @@ defineOptions({
 
 defineProps<CardProps>()
 
-const slots = defineSlots()
-
 // CSS Houdini Paint Worklet
 const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
-      (CSS as any).paintWorklet.addModule(workletURL)
+      ;(CSS as any).paintWorklet.addModule(workletURL)
     } else {
-      console.warn('CSS Houdini Paint Worklet API is not supported in this browser.')
+      console.warn(
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
     }
     // (CSS as any).paintWorklet.addModule(workletURL)
   } catch (error) {
@@ -25,18 +25,18 @@ const paint = () => {
   }
 }
 
-onMounted(async () => { 
+onMounted(async () => {
   paint()
 })
 </script>
 
 <template>
-  <div 
+  <div
     class="px-card"
     :class="{
       [`px-card--hover`]: hoverable,
       [`is-round`]: round,
-      [`is-circle`]: circle,
+      [`is-circle`]: circle
     }"
   >
     <div v-if="$slots.prepend" class="px-card__icon">

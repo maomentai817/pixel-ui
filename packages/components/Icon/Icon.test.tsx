@@ -6,7 +6,7 @@ describe('Icon.vue', () => {
   // 渲染 icon 组件
   it('renders icon with correct class', () => {
     const wrapper = mount(Icon, {
-      props: { icon: 'star' },
+      props: { icon: 'star' }
     })
 
     expect(wrapper.classes()).toContain('px-icon')

@@ -1,4 +1,4 @@
-export interface CardProps { 
+export interface CardProps {
   /**
    * @property hoverable
    * @type boolean

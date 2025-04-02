@@ -16,7 +16,9 @@
   align-items: center;
   line-height: 1;
   white-space: nowrap;
-  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+  cursor:
+    var(--px-cursor-pointer-src) 14 0,
+    pointer;
   color: var(--px-button-text-color);
   text-align: center;
   box-sizing: border-box;
@@ -130,19 +132,19 @@
 }
 .px-button--primary.is-disabled {
   --px-bg-color: var(--px-light-color-primary-2);
-  --px-bg-shadow-color: transparent
+  --px-bg-shadow-color: transparent;
 }
 .px-button--success.is-disabled {
   --px-bg-color: var(--px-light-color-success-2);
-  --px-bg-shadow-color: transparent
+  --px-bg-shadow-color: transparent;
 }
 .px-button--warning.is-disabled {
   --px-bg-color: var(--px-light-color-warning-2);
-  --px-bg-shadow-color: transparent
+  --px-bg-shadow-color: transparent;
 }
 .px-button--danger.is-disabled {
   --px-bg-color: var(--px-light-color-danger-2);
-  --px-bg-shadow-color: transparent
+  --px-bg-shadow-color: transparent;
 }
 /* button size */
 .px-button--small {
@@ -239,7 +241,7 @@
 }
 .px-button.is-custom.is-disabled {
   --px-bg-color: var(--px-custom-button-light-color-2);
-  --px-bg-shadow-color: transparent
+  --px-bg-shadow-color: transparent;
 }
 .px-button.is-custom.is-plain {
   --px-button-text-color: var(--px-custom-button-text-color);
@@ -272,7 +274,7 @@
   position: relative;
   --px-button-single: 0;
 
-  &:first-child{
+  &:first-child {
     --px-border-radius-rt: 0;
     --px-border-radius-rb: 0;
     --px-border-color: var(--px-button-group-border-color);
@@ -280,7 +282,7 @@
     --px-button-group-first: 1;
     margin-right: 0;
   }
-  &:last-child{
+  &:last-child {
     --px-border-radius-lt: 0;
     --px-border-radius-lb: 0;
     --px-border-l: 0;

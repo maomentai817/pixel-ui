@@ -31,48 +31,56 @@
   animation: spin var(--px-icon-animation-duration) linear infinite;
 }
 @keyframes bounce {
-  0%, 100% { 
-    transform: translateY(0); 
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  30% { 
-    transform: translateY(-3px); 
+  30% {
+    transform: translateY(-3px);
   }
-  50% { 
-    transform: translateY(2px); 
+  50% {
+    transform: translateY(2px);
   }
-  70% { 
-    transform: translateY(-1px); 
+  70% {
+    transform: translateY(-1px);
   }
 }
 .px-icon.is-bounce {
   animation: bounce var(--px-icon-animation-duration) linear infinite;
 }
 @keyframes shake {
-  0%, 100% { 
-    transform: translateX(0); 
+  0%,
+  100% {
+    transform: translateX(0);
   }
-  10%, 90% { 
-    transform: translateX(-2px); 
+  10%,
+  90% {
+    transform: translateX(-2px);
   }
-  20%, 80% {
-    transform: translateX(2px); 
+  20%,
+  80% {
+    transform: translateX(2px);
   }
-  30%, 50%, 70% { 
-    transform: translateX(-3px); 
+  30%,
+  50%,
+  70% {
+    transform: translateX(-3px);
   }
-  40%, 60% { 
-    transform: translateX(3px); 
+  40%,
+  60% {
+    transform: translateX(3px);
   }
 }
 .px-icon.is-shake {
   animation: shake var(--px-icon-animation-duration) linear infinite;
 }
 @keyframes beat {
-  0%, 100% { 
-    transform: scale(1); 
+  0%,
+  100% {
+    transform: scale(1);
   }
-  50% { 
-    transform: scale(1.1); 
+  50% {
+    transform: scale(1.1);
   }
 }
 .px-icon.is-beat {
