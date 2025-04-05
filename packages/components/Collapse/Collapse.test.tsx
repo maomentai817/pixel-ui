@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { beforeAll, describe, expect, test, vi, it } from 'vitest'
 import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
 
 import Collapse from './Collapse.vue'
@@ -182,5 +182,32 @@ describe('Collapse.vue', () => {
     //     ]
     //   `
     // )
+  })
+})
+
+describe('PxCollapse - CSS Houdini Paint Worklet', () => {
+  it('should register the Paint Worklet when supported', async () => {
+    global.CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    } as any
+
+    mount(CollapseItem)
+
+    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('pixelcorner.js')
+    )
+  })
+
+  it('should warn if CSS Houdini Paint Worklet is not supported', () => {
+    console.warn = vi.fn() // 监听 console.warn
+    global.CSS = {} as any // 移除 paintWorklet，模拟不支持的情况
+
+    mount(CollapseItem)
+
+    expect(console.warn).toHaveBeenCalledWith(
+      'CSS Houdini Paint Worklet API is not supported in this browser.'
+    )
   })
 })
