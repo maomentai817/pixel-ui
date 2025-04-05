@@ -26,11 +26,13 @@
   outline: none;
 
   /* css houdini */
-  background-image: paint(pixelcorner);
+  background-image: paint(pixelpanel);
   --px-border: 4;
   --px-border-color: #000;
   --px-bg-color: transparent;
-  --px-corner-size: 10;
+  --px-corner-size: 6;
+  --px-bg-shadow-color: #adafbc;
+  --px-border-shadow: 4;
   padding: calc((var(--px-border) /2 + var(--px-corner-size)) * 1px) calc((var(--px-border) + var(--px-corner-size)) * 1px);
   margin-bottom: calc(var(--px-border) * -1px);
 
@@ -44,6 +46,10 @@
       transform: rotate(90deg);
     }
   }
+  &:hover:not(.is-disabled) {
+    --px-bg-color: #e7e7e7;
+    --px-border-shadow: 5;
+  }
   .header-angle {
     /* transition: transform var(--er-transition-duration); */
   }
@@ -52,7 +58,7 @@
   min-height: var(--px-collapse-content-height);
   line-height: 1;
   /* css houdini */
-  background-image: paint(pixelcorner);
+  background-image: paint(pixelpanel);
   --px-border: 4;
   --px-border-color: #000;
   --px-bg-color: transparent;

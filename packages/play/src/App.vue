@@ -2,7 +2,7 @@
 import { type CollapseItemName } from '@mmt817/pixel-ui'
 import { ref } from 'vue'
 
-const activeNames = ref(['1'])
+const activeNames = ref([])
 
 const handleChange = (val: CollapseItemName[]) => {
   console.log(val)

@@ -1,10 +1,12 @@
-class PixelCorner {
+class PixelPanel {
   static get inputProperties() {
     return [
       '--px-border',
       '--px-border-color',
       '--px-bg-color',
-      '--px-corner-size'
+      '--px-corner-size',
+      '--px-bg-shadow-color',
+      '--px-border-shadow'
     ]
   }
 
@@ -13,6 +15,8 @@ class PixelCorner {
     const borderColor = props.get('--px-border-color').toString().trim()
     const bgColor = props.get('--px-bg-color').toString().trim()
     const cornerSize = parseInt(props.get('--px-corner-size')) || border
+    const bgShadowColor = props.get('--px-bg-shadow-color').toString().trim()
+    const borderShadow = parseInt(props.get('--px-border-shadow')) || border
 
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, size.width, size.height)
@@ -72,7 +76,44 @@ class PixelCorner {
 
     ctx.stroke()
     ctx.closePath()
+
+    // 绘制阴影
+    ctx.beginPath()
+    ctx.strokeStyle = bgShadowColor
+    ctx.lineWidth = borderShadow
+    // right
+    ctx.moveTo(size.width - cornerSize, cornerSize + halfBorder)
+    ctx.lineTo(size.width - cornerSize, size.height - cornerSize - halfBorder)
+    // bottom
+    ctx.moveTo(size.width - cornerSize - border, size.height - cornerSize)
+    ctx.lineTo(cornerSize + border, size.height - cornerSize)
+    ctx.stroke()
+
+    // 清理边角块
+    // top-left
+    ctx.clearRect(0, 0, cornerSize, cornerSize - halfBorder)
+    // top-right
+    ctx.clearRect(
+      size.width - cornerSize,
+      0,
+      cornerSize,
+      cornerSize - halfBorder
+    )
+    // bottom-left
+    ctx.clearRect(
+      0,
+      size.height - cornerSize + halfBorder,
+      cornerSize,
+      cornerSize - halfBorder
+    )
+    // bottom-right
+    ctx.clearRect(
+      size.width - cornerSize,
+      size.height - cornerSize + halfBorder,
+      cornerSize,
+      cornerSize - halfBorder
+    )
   }
 }
 
-registerPaint('pixelcorner', PixelCorner)
+registerPaint('pixelpanel', PixelPanel)

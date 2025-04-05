@@ -3,7 +3,7 @@ import { inject, computed, defineAsyncComponent, onMounted } from 'vue'
 
 import type { CollapseItemProps } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
-import workletURL from '../worklets/pixelcorner.js?url'
+import workletURL from '../worklets/pixelpanel.js?url'
 
 // 异步引入, 避免打包后报错
 const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
@@ -60,7 +60,16 @@ onMounted(async () => {
       <span class="px-collapse-item__title">
         <slot name="title">{{ title }}</slot>
       </span>
-      <px-icon icon="angle-right" class="header-angle" size="20"></px-icon>
+      <px-icon
+        icon="angle-right"
+        class="header-angle"
+        size="20"
+        :color="
+          disabled
+            ? 'var(--px-text-color-disabled)'
+            : 'var(--px-text-color-base)'
+        "
+      ></px-icon>
     </div>
     <div class="px-collapse-item__wrapper" v-show="isActive">
       <div class="px-collapse-item__content" :id="`item-content-${name}`">
