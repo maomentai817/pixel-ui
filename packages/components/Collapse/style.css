@@ -10,6 +10,9 @@
   --px-collapse-content-font-size: var(--px-font-size-base);
   --px-collapse-content-text-color: var(--px-text-color-base);
   --px-collapse-disabled-text-color: var(--px-text-color-disabled);
+
+  --px-collapse-shadow-color-light: #d4d4d4;
+  --px-collapse-shadow-color: #bbb;
 }
 .px-collapse-item__header {
   display: flex;
@@ -22,17 +25,16 @@
   cursor: var(--px-cursor-pointer-src) 14 0, pointer;
   font-size: var(--px-collapse-header-font-size);
   font-weight: 500;
-  /* transition: border-bottom-color var(--er-transition-duration); */
   outline: none;
 
   /* css houdini */
   background-image: paint(pixelpanel);
   --px-border: 4;
-  --px-border-color: #000;
+  --px-border-color: var(--px-collapse-border-color);
   --px-bg-color: transparent;
   --px-corner-size: 6;
-  --px-bg-shadow-color: #adafbc;
-  --px-border-shadow: 4;
+  --px-bg-shadow-color: var(--px-collapse-shadow-color-light);
+  --px-border-shadow: -4;
   padding: calc((var(--px-border) /2 + var(--px-corner-size)) * 1px) calc((var(--px-border) + var(--px-corner-size)) * 1px);
   margin-bottom: calc(var(--px-border) * -1px);
 
@@ -47,8 +49,7 @@
     }
   }
   &:hover:not(.is-disabled) {
-    --px-bg-color: #e7e7e7;
-    --px-border-shadow: 5;
+    --px-bg-color: var(--px-fill-hover-color-base);
   }
   .header-angle {
     /* transition: transform var(--er-transition-duration); */
@@ -58,17 +59,19 @@
   min-height: var(--px-collapse-content-height);
   line-height: 1;
   /* css houdini */
-  background-image: paint(pixelpanel);
+  background-image: paint(pixelcontent);
   --px-border: 4;
-  --px-border-color: #000;
+  --px-border-color: var(--px-collapse-border-color);
   --px-bg-color: transparent;
-  --px-corner-size: 10;
-  padding: calc((var(--px-border) /2 + var(--px-corner-size)) * 1px) calc((var(--px-border) + var(--px-corner-size)) * 1px);
+  --px-corner-size: 6;
+  --px-bg-shadow-color: var(--px-collapse-shadow-color);
+  --px-border-shadow: 3;
+  padding: calc((var(--px-border) / 2 + var(--px-corner-size)) * 2px) calc((var(--px-border) + var(--px-corner-size)) * 2px);
   margin-bottom: calc(var(--px-border) * -1px);
 }
 .px-collapse-item__content {
   will-change: height;
-  background-color: var(--px-collapse-content-bg-color);
+  background-color: transparent;
   overflow: hidden;
   box-sizing: border-box;
   font-size: var(--px-collapse-content-font-size);

@@ -78,16 +78,21 @@ class PixelPanel {
     ctx.closePath()
 
     // 绘制阴影
-    ctx.beginPath()
-    ctx.strokeStyle = bgShadowColor
-    ctx.lineWidth = borderShadow
+    ctx.fillStyle = bgShadowColor
     // right
-    ctx.moveTo(size.width - cornerSize, cornerSize + halfBorder)
-    ctx.lineTo(size.width - cornerSize, size.height - cornerSize - halfBorder)
+    ctx.fillRect(
+      size.width - border,
+      cornerSize + halfBorder,
+      borderShadow,
+      size.height - cornerSize * 2 - border
+    )
     // bottom
-    ctx.moveTo(size.width - cornerSize - border, size.height - cornerSize)
-    ctx.lineTo(cornerSize + border, size.height - cornerSize)
-    ctx.stroke()
+    ctx.fillRect(
+      cornerSize + border,
+      size.height - cornerSize - borderShadow / 2,
+      size.width - cornerSize * 2 - border * 2,
+      borderShadow / 2
+    )
 
     // 清理边角块
     // top-left

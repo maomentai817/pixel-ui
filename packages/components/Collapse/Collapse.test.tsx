@@ -186,7 +186,7 @@ describe('Collapse.vue', () => {
 })
 
 describe('PxCollapse - CSS Houdini Paint Worklet', () => {
-  it('should register the Paint Worklet when supported', async () => {
+  it('should register the Paint Worklet pixelpanel when supported', async () => {
     global.CSS = {
       paintWorklet: {
         addModule: vi.fn()
@@ -196,7 +196,21 @@ describe('PxCollapse - CSS Houdini Paint Worklet', () => {
     mount(CollapseItem)
 
     expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('pixelcorner.js')
+      expect.stringContaining('pixelpanel.js')
+    )
+  })
+
+  it('should register the Paint Worklet pixelcontent when supported', async () => {
+    global.CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    } as any
+
+    mount(CollapseItem)
+
+    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('pixelcontent.js')
     )
   })
 

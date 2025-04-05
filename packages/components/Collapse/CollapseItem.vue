@@ -3,7 +3,8 @@ import { inject, computed, defineAsyncComponent, onMounted } from 'vue'
 
 import type { CollapseItemProps } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
-import workletURL from '../worklets/pixelpanel.js?url'
+import workletPanelURL from '../worklets/pixelpanel.js?url'
+import workletContentURL from '../worklets/pixelcontent.js?url'
 
 // 异步引入, 避免打包后报错
 const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
@@ -29,7 +30,8 @@ const handleClick = () => {
 const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
+      ;(CSS as any).paintWorklet.addModule(workletPanelURL)
+      ;(CSS as any).paintWorklet.addModule(workletContentURL)
     } else {
       console.warn(
         'CSS Houdini Paint Worklet API is not supported in this browser.'
