@@ -173,7 +173,7 @@ html {
 }
 @property --px-text-color-disabled {
   syntax: "<color>";
-  initial-value: #4d4d4d;
+  initial-value: #a8abb2;
   inherits: false;
 }
 /* fill-hover-color */

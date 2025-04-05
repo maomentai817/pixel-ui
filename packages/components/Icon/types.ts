@@ -24,7 +24,7 @@ export interface IconProps {
    * @description 图标大小
    * @default "14"
    */
-  size?: number
+  size?: number | string
   /**
    * @property spin
    * @description 旋转动画

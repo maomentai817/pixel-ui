@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { inject, computed, defineAsyncComponent } from 'vue'
+import { inject, computed, defineAsyncComponent, onMounted } from 'vue'
 
 import type { CollapseItemProps } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
+import workletURL from '../worklets/pixelcorner.js?url'
 
 // 异步引入, 避免打包后报错
 const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
@@ -23,6 +24,26 @@ const handleClick = () => {
 
   ctx?.handleItemClick(props.name)
 }
+
+// CSS Houdini Paint Worklet
+const paint = () => {
+  try {
+    if ('paintWorklet' in CSS) {
+      ;(CSS as any).paintWorklet.addModule(workletURL)
+    } else {
+      console.warn(
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    }
+    // (CSS as any).paintWorklet.addModule(workletURL)
+  } catch (error) {
+    console.error('Error loading Paint Worklet:', error)
+  }
+}
+
+onMounted(async () => {
+  paint()
+})
 </script>
 
 <template>
@@ -39,7 +60,7 @@ const handleClick = () => {
       <span class="px-collapse-item__title">
         <slot name="title">{{ title }}</slot>
       </span>
-      <px-icon icon="angle-right" class="header-angle"></px-icon>
+      <px-icon icon="angle-right" class="header-angle" size="20"></px-icon>
     </div>
     <div class="px-collapse-item__wrapper" v-show="isActive">
       <div class="px-collapse-item__content" :id="`item-content-${name}`">

@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { type CollapseItemName } from '@mmt817/pixel-ui'
+import { ref } from 'vue'
+
+const activeNames = ref(['1'])
+
+const handleChange = (val: CollapseItemName[]) => {
+  console.log(val)
+}
+</script>
 
 <template>
   <px-button size="small">Normal</px-button>
@@ -103,6 +112,30 @@
   <px-text type="warning">Warning</px-text>
   <px-text type="danger">Danger</px-text>
   <px-text size="26" color="#626aef" align="left" bold>Text</px-text>
+  <br />
+  <br />
+  <px-collapse
+    v-model="activeNames"
+    @change="handleChange"
+    style="width: 240px"
+  >
+    <px-collapse-item name="1" title="标题1">
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+        obcaecati, commodi dolorem repudiandae deleniti qui, quae reiciendis vel
+        ipsum sapiente molestiae nam asperiores at quos omnis laboriosam
+        accusantium nesciunt! Tempora.
+      </div>
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+        obcaecati, commodi dolorem repudiandae deleniti qui, quae reiciendis vel
+        ipsum sapiente molestiae nam asperiores at quos omnis laboriosam
+        accusantium nesciunt! Tempora.
+      </div>
+    </px-collapse-item>
+    <px-collapse-item name="2" title="标题2" disabled> 内容2 </px-collapse-item>
+    <px-collapse-item name="3" title="标题3"> 内容3 </px-collapse-item>
+  </px-collapse>
 </template>
 
 <style scoped></style>
