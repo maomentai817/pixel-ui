@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, test, vi } from 'vitest'
+import { describe, it, expect, test, vi, afterEach } from 'vitest'
 import Card from './Card.vue'
 
 describe('Card.vue', () => {
@@ -73,29 +73,59 @@ describe('Card.vue', () => {
   })
 })
 
+// css houdini paint worklet test
 describe('PxCard - CSS Houdini Paint Worklet', () => {
-  it('should register the Paint Worklet when supported', async () => {
-    global.CSS = {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
+  it('should register the Paint Worklet pixelpanel when supported', async () => {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
-    } as any
+    }
 
     mount(Card)
 
-    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
       expect.stringContaining('pixelbox.js')
     )
   })
 
   it('should warn if CSS Houdini Paint Worklet is not supported', () => {
-    console.warn = vi.fn() // 监听 console.warn
-    global.CSS = {} as any // 移除 paintWorklet，模拟不支持的情况
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
 
     mount(Card)
 
     expect(console.warn).toHaveBeenCalledWith(
-      'CSS Houdini Paint Worklet API is not supported in this browser.'
+      expect.stringContaining(
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    )
+  })
+
+  it('should log an error if loading the Paint Worklet fails', () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+
+    mount(Card)
+
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading Paint Worklet:',
+      error
     )
   })
 })

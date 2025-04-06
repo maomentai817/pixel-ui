@@ -60,5 +60,8 @@ module.exports = {
       rules: {}
     }
   ],
-  globals: {}
+  globals: {
+    registerPaint: 'readonly',
+    globalThis: 'readonly'
+  }
 }

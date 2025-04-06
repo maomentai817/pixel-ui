@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test, vi, it } from 'vitest'
+import { beforeAll, describe, expect, test, vi, it, afterEach } from 'vitest'
 import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
 
 import Collapse from './Collapse.vue'
@@ -184,44 +184,78 @@ describe('Collapse.vue', () => {
     // )
   })
 })
+;(globalThis as any).CSS = {
+  paintWorklet: {
+    addModule: vi.fn()
+  }
+}
 
 describe('PxCollapse - CSS Houdini Paint Worklet', () => {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
   it('should register the Paint Worklet pixelpanel when supported', async () => {
-    global.CSS = {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
-    } as any
+    }
 
     mount(CollapseItem)
 
-    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
       expect.stringContaining('pixelpanel.js')
     )
   })
 
   it('should register the Paint Worklet pixelcontent when supported', async () => {
-    global.CSS = {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
-    } as any
+    }
 
     mount(CollapseItem)
 
-    expect(global.CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
       expect.stringContaining('pixelcontent.js')
     )
   })
 
   it('should warn if CSS Houdini Paint Worklet is not supported', () => {
-    console.warn = vi.fn() // 监听 console.warn
-    global.CSS = {} as any // 移除 paintWorklet，模拟不支持的情况
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
 
     mount(CollapseItem)
 
     expect(console.warn).toHaveBeenCalledWith(
-      'CSS Houdini Paint Worklet API is not supported in this browser.'
+      expect.stringContaining(
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    )
+  })
+
+  it('should log an error if loading the Paint Worklet fails', () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+
+    mount(CollapseItem)
+
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading Paint Worklet:',
+      error
     )
   })
 })
