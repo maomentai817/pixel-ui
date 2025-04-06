@@ -1,4 +1,4 @@
-import type { Component, Ref } from 'vue'
+import type { Ref } from 'vue'
 
 export type CollapseItemName = string | number
 
@@ -35,7 +35,7 @@ export interface CollapseItemProps {
    * @type string
    * @description 图标
    */
-  icon?: string | Component
+  icon?: string
   /**
    * @property disabled
    * @type boolean

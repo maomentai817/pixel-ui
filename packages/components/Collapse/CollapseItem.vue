@@ -64,7 +64,7 @@ onMounted(async () => {
         <slot name="title">{{ title }}</slot>
       </span>
       <px-icon
-        icon="angle-right"
+        :icon="icon || 'angle-right'"
         class="header-angle"
         size="20"
         :color="
