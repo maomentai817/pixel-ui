@@ -2,24 +2,7 @@
   "name": "@mmt817/pixel-ui",
   "version": "1.0.0",
   "description": "Pixel-UI Components library by Vue3 + TS",
-  "type": "module",
-  "main": "./dist/umd/index.umd.cjs",
-  "module": "./dist/es/index.js",
-  "types": "./dist/types/core/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/es/index.js",
-      "require": "./dist/umd/index.umd.cjs",
-      "types": "./dist/types/core/index.d.ts"
-    },
-    "./dist/index.css": "./dist/index.css"
-  },
-  "sideEffects": [
-    "./dist/index.css"
-  ],
+  "main": "index.js",
   "scripts": {
     "build": "run-s clean build-only move-style",
     "build-only": "run-p build:es build:umd",

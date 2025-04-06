@@ -251,6 +251,11 @@ html {
   initial-value: 0.2s;
   inherits: false;
 }
+@property --px-transition-duration-400 {
+  syntax: "<time>";
+  initial-value: 0.4s;
+  inherits: false;
+}
 /* animation */
 @property --px-animation-duration {
   syntax: "<time>";

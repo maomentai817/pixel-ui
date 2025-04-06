@@ -52,12 +52,10 @@
     --px-bg-color: var(--px-fill-hover-color-base);
   }
   .header-angle {
-    /* transition: transform var(--er-transition-duration); */
+    transition: transform var(--px-transition-duration-400);
   }
 }
 .px-collapse-item__wrapper {
-  min-height: var(--px-collapse-content-height);
-  line-height: 1;
   /* css houdini */
   background-image: paint(pixelcontent);
   --px-border: 4;
@@ -66,20 +64,22 @@
   --px-corner-size: 6;
   --px-bg-shadow-color: var(--px-collapse-shadow-color);
   --px-border-shadow: 3;
-  padding: calc((var(--px-border) / 2 + var(--px-corner-size)) * 2px) calc((var(--px-border) + var(--px-corner-size)) * 2px);
   margin-bottom: calc(var(--px-border) * -1px);
 }
 .px-collapse-item__content {
+  min-height: var(--px-collapse-content-height);
+  line-height: 1;
   will-change: height;
   background-color: transparent;
   overflow: hidden;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   font-size: var(--px-collapse-content-font-size);
   color: var(--px-collapse-content-text-color);
   display: flex;
   flex-direction: column;
+  padding: calc((var(--px-border) / 2 + var(--px-corner-size)) * 2px) calc((var(--px-border) + var(--px-corner-size)) * 2px);
 }
 .slide-enter-active,
 .slide-leave-active {
-  /* transition: height var(--er-transition-duration) ease-in-out; */
+  transition: height var(--px-transition-duration-400) ease-in-out;
 }

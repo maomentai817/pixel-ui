@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, ref, watch } from 'vue'
+import { provide, ref, watch, watchEffect } from 'vue'
 
 import type { CollapseProps, CollapseEmits, CollapseItemName } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
@@ -13,10 +13,12 @@ const emit = defineEmits<CollapseEmits>()
 
 const activeNames = ref(props.modelValue)
 
-// accordion mode throw error
-if (props.accordion && activeNames.value.length > 1) {
-  console.warn('accordion mode should only have one active item')
-}
+watchEffect(() => {
+  // accordion mode throw error
+  if (props.accordion && activeNames.value.length > 1) {
+    console.warn('accordion mode should only have one active item')
+  }
+})
 
 const handleItemClick = (name: CollapseItemName) => {
   let _activeNames = [...activeNames.value]

@@ -5,6 +5,7 @@ import type { CollapseItemProps } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
 import workletPanelURL from '../worklets/pixelpanel.js?url'
 import workletContentURL from '../worklets/pixelcontent.js?url'
+import transitionEvents from './transitionEvents'
 
 // 异步引入, 避免打包后报错
 const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
@@ -73,11 +74,13 @@ onMounted(async () => {
         "
       ></px-icon>
     </div>
-    <div class="px-collapse-item__wrapper" v-show="isActive">
-      <div class="px-collapse-item__content" :id="`item-content-${name}`">
-        <slot></slot>
+    <transition name="slide" v-on="transitionEvents">
+      <div class="px-collapse-item__wrapper" v-show="isActive">
+        <div class="px-collapse-item__content" :id="`item-content-${name}`">
+          <slot></slot>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
