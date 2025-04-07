@@ -1,14 +1,18 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import { compression } from 'vite-plugin-compression2'
 import { readFileSync } from 'fs'
-import shell from 'shelljs'
+import { resolve } from 'path'
 import { delay } from 'lodash-es'
+import { compression } from 'vite-plugin-compression2'
 
+import vue from '@vitejs/plugin-vue'
+import shell from 'shelljs'
+import terser from '@rollup/plugin-terser'
 import hooks from './hooksPlugin'
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
+const isProd = process.env.NODE_ENV === "production"
+const isDev = process.env.NODE_ENV === "development"
+const isTest = process.env.NODE_ENV === "test"
 const moveStyles = () => { 
   try {
     readFileSync('./dist/umd/index.css.gz')
@@ -27,7 +31,19 @@ export default defineConfig({
     hooks({
       rmFiles: ['./dist/umd', './dist/index.css'],
       afterBuild: moveStyles
-    })
+    }),
+    terser({
+      compress: {
+        drop_console: ["log"],
+        drop_debugger: true,
+        passes: 3,
+        global_defs: {
+          "@DEV": JSON.stringify(isDev),
+          "@PROD": JSON.stringify(isProd),
+          "@TEST": JSON.stringify(isTest),
+        },
+      },
+    }),
   ],
   build: {
     outDir: 'dist/umd',

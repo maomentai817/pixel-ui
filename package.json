@@ -10,8 +10,9 @@
     "docs:build": "pnpm --filter @pixel-ui/vitepress build",
     "docs:preview": "pnpm --filter @pixel-ui/vitepress preview",
     "docs:storybook": "pnpm --filter @pixel-ui/storybook storybook",
-    "test": "pnpm --filter @pixel-ui/components test",
-    "build": "pnpm --filter @mmt817/pixel-ui build"
+    "test": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/components test",
+    "build": "cross-env NODE_ENV=production pnpm --filter @mmt817/pixel-ui build",
+    "build:dev": "cross-env NODE_ENV=development pnpm --filter @mmt817/pixel-ui build:watch"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "0.5.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^9.33.0",
     "jsdom": "^24.1.0",
