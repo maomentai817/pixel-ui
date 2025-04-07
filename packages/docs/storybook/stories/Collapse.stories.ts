@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
 import { PxCollapse, PxCollapseItem, PxIcon } from '@mmt817/pixel-ui'
+import '@mmt817/pixel-ui/dist/theme/Collapse.css'
 
 const meta: Meta<typeof PxCollapse> = {
   title: 'Data/Collapse',

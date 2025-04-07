@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/vue3'
 
 import { PxText } from '@mmt817/pixel-ui'
 import type { TextProps } from '@mmt817/pixel-ui'
+import '@mmt817/pixel-ui/dist/theme/Text.css'
 
 const meta: Meta<typeof PxText> = {
   title: 'Atoms/Text',

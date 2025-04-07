@@ -3,6 +3,7 @@ import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
 import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
+import '@mmt817/pixel-ui/dist/theme/Button.css'
 
 const meta: Meta<typeof PxButton> = {
   title: 'Atoms/Button',
