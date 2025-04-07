@@ -5,6 +5,6 @@ import '@pixel-ui/theme/index.css'
 
 const installer = makeInstaller(components)
 
-// export * from '@pixel-ui/components'
-export * from '../components'
+export * from '@pixel-ui/components'
+// export * from '../components'
 export default installer

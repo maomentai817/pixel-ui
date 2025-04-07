@@ -21,12 +21,10 @@
     "./dist/index.css"
   ],
   "scripts": {
-    "build": "run-s clean build-only move-style",
+    "build": "run-s build-only",
     "build-only": "run-p build:es build:umd",
     "build:umd": "vite build --config vite.umd.config.ts",
     "build:es": "vite build --config vite.es.config.ts",
-    "move-style": "move-file dist/es/index.css dist/index.css",
-    "clean": "rimraf dist",
     "release": "release-it"
   },
   "keywords": [],
@@ -34,13 +32,14 @@
   "license": "ISC",
   "packageManager": "pnpm@10.4.1",
   "dependencies": {
+    "@hackernoon/pixel-icon-library": "^1.0.5",
     "@popperjs/core": "^2.11.8",
-    "async-validator": "^4.2.5",
-    "@hackernoon/pixel-icon-library": "^1.0.5"
+    "async-validator": "^4.2.5"
   },
   "devDependencies": {
-    "vite-plugin-dts": "^3.9.1",
-    "@pixel-ui/components": "workspace:*"
+    "@pixel-ui/components": "workspace:*",
+    "vite-plugin-compression2": "^1.3.3",
+    "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
     "vue": "^3.4.19"
