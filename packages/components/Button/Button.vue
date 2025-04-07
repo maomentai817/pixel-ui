@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, inject } from 'vue'
 import { throttle } from 'lodash-es'
-import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
-import workletURL from '../worklets/pixelbox.js?url'
-import PxIcon from '../Icon/Icon.vue'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
+import { ref, onMounted, computed, inject } from 'vue'
 import { updateColors, debugWarn } from '@pixel-ui/utils'
+import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
+
+import PxIcon from '../Icon/Icon.vue'
+import workletURL from '../worklets/pixelbox.js?url'
 
 // 异步引入解决打包依赖循环问题
 // import { defineAsyncComponent } from 'vue'

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { CardProps } from './types'
-import workletURL from '../worklets/pixelbox.js?url'
 import { onMounted } from 'vue'
 import { debugWarn } from '@pixel-ui/utils'
+
+import workletURL from '../worklets/pixelbox.js?url'
 
 const COMP_NAME = 'PxCard' as const
 defineOptions({
