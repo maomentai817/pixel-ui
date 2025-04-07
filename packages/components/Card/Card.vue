@@ -2,9 +2,11 @@
 import type { CardProps } from './types'
 import workletURL from '../worklets/pixelbox.js?url'
 import { onMounted } from 'vue'
+import { debugWarn } from '@pixel-ui/utils'
 
+const COMP_NAME = 'PxCard' as const
 defineOptions({
-  name: 'PxCard'
+  name: COMP_NAME
 })
 
 defineProps<CardProps>()
@@ -15,7 +17,8 @@ const paint = () => {
     if ('paintWorklet' in CSS) {
       ;(CSS as any).paintWorklet.addModule(workletURL)
     } else {
-      console.warn(
+      debugWarn(
+        COMP_NAME,
         'CSS Houdini Paint Worklet API is not supported in this browser.'
       )
     }

@@ -104,9 +104,11 @@ describe('PxCard - CSS Houdini Paint Worklet', () => {
     mount(Card)
 
     expect(console.warn).toHaveBeenCalledWith(
-      expect.stringContaining(
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
+      expect.objectContaining({
+        message: expect.stringContaining(
+          'CSS Houdini Paint Worklet API is not supported in this browser.'
+        )
+      })
     )
   })
 

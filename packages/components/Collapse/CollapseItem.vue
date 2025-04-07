@@ -6,12 +6,15 @@ import { COLLAPSE_CTX_KEY } from './contants'
 import workletPanelURL from '../worklets/pixelpanel.js?url'
 import workletContentURL from '../worklets/pixelcontent.js?url'
 import transitionEvents from './transitionEvents'
+import { debugWarn } from '@pixel-ui/utils'
 
 // 异步引入, 避免打包后报错
 const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
 
+const COMP_NAME = 'PxCollapseItem' as const
+
 defineOptions({
-  name: 'PxCollapseItem'
+  name: COMP_NAME
 })
 
 const props = defineProps<CollapseItemProps>()
@@ -34,7 +37,8 @@ const paint = () => {
       ;(CSS as any).paintWorklet.addModule(workletPanelURL)
       ;(CSS as any).paintWorklet.addModule(workletContentURL)
     } else {
-      console.warn(
+      debugWarn(
+        COMP_NAME,
         'CSS Houdini Paint Worklet API is not supported in this browser.'
       )
     }

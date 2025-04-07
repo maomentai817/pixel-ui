@@ -3,9 +3,12 @@ import { provide, ref, watch, watchEffect } from 'vue'
 
 import type { CollapseProps, CollapseEmits, CollapseItemName } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
+import { debugWarn } from '@pixel-ui/utils'
+
+const COMP_NAME = 'PxCollapse' as const
 
 defineOptions({
-  name: 'PxCollapse'
+  name: COMP_NAME
 })
 
 const props = defineProps<CollapseProps>()
@@ -16,7 +19,7 @@ const activeNames = ref(props.modelValue)
 watchEffect(() => {
   // accordion mode throw error
   if (props.accordion && activeNames.value.length > 1) {
-    console.warn('accordion mode should only have one active item')
+    debugWarn(COMP_NAME, 'accordion mode only support one active item')
   }
 })
 
