@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
-import { readdirSync } from 'fs'
+import { readdirSync, readdir } from 'fs'
 import { resolve } from 'path'
-import { map, filter, delay } from 'lodash-es'
+import { map, filter, delay, defer } from 'lodash-es'
 
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
@@ -23,13 +23,11 @@ function getDirectoriesSync(basePath: string) {
 }
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
-const moveStyles = () => {
-  try {
-    readdirSync('./dist/es/theme')
-    shell.mv('./dist/es/theme', './dist')
-  } catch (_) {
-    delay(moveStyles, TRY_MOVE_STYLES_DELAY)
-  }
+function moveStyles() {
+  readdir("./dist/es/theme", (err) => {
+    if (err) return delay(moveStyles, TRY_MOVE_STYLES_DELAY);
+    defer(() => shell.mv("./dist/es/theme", "./dist"));
+  });
 }
 
 export default defineConfig({
