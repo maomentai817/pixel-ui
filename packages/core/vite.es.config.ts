@@ -78,7 +78,10 @@ export default defineConfig({
           if (id.includes('/packages/hooks')) { 
             return 'hooks'
           }
-          if (id.includes('/packages/utils')) { 
+          if (
+            id.includes('/packages/utils') ||
+            id.includes("plugin-vue:export-helper")
+          ) { 
             return 'utils'
           }
           for (const dirName of getDirectoriesSync("../components")) {

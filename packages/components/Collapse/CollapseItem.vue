@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { inject, computed, defineAsyncComponent, onMounted } from 'vue'
-
+import { inject, computed, onMounted } from 'vue'
+import PxIcon from '../Icon/Icon.vue'
 import type { CollapseItemProps } from './types'
 import { COLLAPSE_CTX_KEY } from './contants'
 import workletPanelURL from '../worklets/pixelpanel.js?url'
@@ -9,7 +9,7 @@ import transitionEvents from './transitionEvents'
 import { debugWarn } from '@pixel-ui/utils'
 
 // 异步引入, 避免打包后报错
-const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
+// const PxIcon = defineAsyncComponent(() => import('../Icon/Icon.vue'))
 
 const COMP_NAME = 'PxCollapseItem' as const
 
