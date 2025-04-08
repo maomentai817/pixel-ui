@@ -71,7 +71,10 @@ const handleBtnClickThrottle = throttle(
 
 // 暴露方法
 defineExpose<ButtonInstance>({
-  ref: _ref
+  ref: _ref,
+  disabled,
+  size,
+  type
 })
 
 // CSS Houdini Paint Worklet
