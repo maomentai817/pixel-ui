@@ -3,6 +3,7 @@ import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
 
 import Collapse from './Collapse.vue'
 import CollapseItem from './CollapseItem.vue'
+import PxIcon from '../Icon/Icon.vue'
 import transitionEvents from './transitionEvents'
 
 const onChange = vi.fn()
@@ -183,6 +184,20 @@ describe('Collapse.vue', () => {
     //     ]
     //   `
     // )
+  })
+
+  // icon 覆盖
+  it('should apply rotation style when rotation is provided', () => {
+    const wrapper = mount(PxIcon, {
+      props: {
+        icon: 'test-icon',
+        rotation: 90,
+        size: 24
+      }
+    })
+
+    const style = (wrapper.element as HTMLElement).style
+    expect(style.transform || style.rotate || '').toContain('90deg')
   })
 })
 ;(globalThis as any).CSS = {

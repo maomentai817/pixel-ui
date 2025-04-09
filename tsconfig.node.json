@@ -23,7 +23,8 @@
   },
   "include": [
     "packages/**/*",
-    "env.d.ts"
+    "env.d.ts",
+    "packages/**/types/*.d.ts"
   ],
   "exclude": [
     "node_modules"

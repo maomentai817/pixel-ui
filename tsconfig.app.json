@@ -13,6 +13,7 @@
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
-    "env.d.ts"
+    "env.d.ts",
+    "packages/**/types/*.d.ts"
   ]
 }
