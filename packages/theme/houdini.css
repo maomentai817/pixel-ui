@@ -93,6 +93,11 @@ html {
   initial-value: #faf0f0;
   inherits: false;
 }
+@property --px-light-color-info {
+  syntax: "<color>";
+  initial-value: #f4f4f5;
+  inherits: false;
+}
 /* light-color-2 */
 @property --px-light-color-primary-2 {
   syntax: "<color>";
@@ -112,6 +117,11 @@ html {
 @property --px-light-color-danger-2 {
   syntax: "<color>";
   initial-value: #fab6b6;
+  inherits: false;
+}
+@property --px-light-color-info-2 {
+  syntax: "<color>";
+  initial-value: #909399;
   inherits: false;
 }
 /* background-shadow-color */

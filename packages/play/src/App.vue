@@ -171,6 +171,54 @@ const handleChange = (val: CollapseItemName[]) => {
     <px-alert type="warning" title="Warning alert" />
     <px-alert type="danger" title="Error alert" />
   </div>
+  <div style="max-width: 600px">
+    <px-alert title="Success Alert" type="success" effect="dark" />
+    <px-alert title="Info Alert" type="info" effect="dark" />
+    <px-alert title="Warning Alert" type="warning" effect="dark" />
+    <px-alert title="Error Alert" type="danger" effect="dark" />
+  </div>
+  <div class="basic block" style="max-width: 600px">
+    <px-alert title="Unclosable alert" type="success" :closable="false" />
+    <px-alert title="Alert with callback" type="warning" />
+  </div>
+  <div style="max-width: 600px">
+    <px-alert title="Success alert" type="success" show-icon />
+    <px-alert title="Info alert" type="info" show-icon />
+    <px-alert title="Warning alert" type="warning" show-icon />
+    <px-alert title="Error alert" type="danger" show-icon />
+  </div>
+  <div style="max-width: 600px">
+    <px-alert title="Success alert" type="success" center show-icon />
+    <px-alert title="Info alert" type="info" center show-icon />
+    <px-alert title="Warning alert" type="warning" center show-icon />
+    <px-alert title="Error alert" type="danger" center show-icon />
+  </div>
+  <div style="max-width: 600px">
+    <px-alert
+      title="Success alert"
+      type="success"
+      description="More text description"
+      show-icon
+    />
+    <px-alert
+      title="Info alert"
+      type="info"
+      description="More text description"
+      show-icon
+    />
+    <px-alert
+      title="Warning alert"
+      type="warning"
+      description="More text description"
+      show-icon
+    />
+    <px-alert
+      title="Error alert"
+      type="danger"
+      description="More text description"
+      show-icon
+    />
+  </div>
 </template>
 
 <style scoped></style>
