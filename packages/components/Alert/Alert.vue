@@ -23,7 +23,9 @@ const slots = defineSlots()
 // alert 可见性
 const visible = ref(true)
 
-const iconName = computed(() => typeIconMap.get(props.type) ?? 'info-circle')
+const iconName = computed(
+  () => typeIconMap.get(props.type) ?? 'info-circle-solid'
+)
 const withDescription = computed(() => props.description || slots.default)
 
 const close = () => {

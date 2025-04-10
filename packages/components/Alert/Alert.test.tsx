@@ -29,7 +29,7 @@ describe('Alert.vue', () => {
     // close icon
     const iconElement = wrapper.findComponent(PxIcon)
     expect(iconElement.exists()).toBeTruthy()
-    expect(iconElement.attributes('icon')).toBe('info-circle')
+    expect(iconElement.attributes('icon')).toBe('info-circle-solid')
 
     const wrapper2 = mount(() => (
       <Alert title={title} description={desc}></Alert>
@@ -40,12 +40,12 @@ describe('Alert.vue', () => {
   })
 
   it.each([
-    ['info', 'info-circle'],
-    ['success', 'check-circle'],
-    ['warning', 'exclamation-triangle'],
-    ['danger', 'times-circle'],
-    ['error', 'times-circle'],
-    ['non-compliance', 'info-circle'] // 不符合 type 定义的
+    ['info', 'info-circle-solid'],
+    ['success', 'check-circle-solid'],
+    ['warning', 'exclamation-triangle-solid'],
+    ['danger', 'times-circle-solid'],
+    ['error', 'times-circle-solid'],
+    ['non-compliance', 'info-circle-solid'] // 不符合 type 定义的
   ])('should has the correct icon when props type is %s', (type, iconName) => {
     const wrapper = mount(Alert, {
       props: {

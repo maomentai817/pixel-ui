@@ -157,68 +157,59 @@ const handleChange = (val: CollapseItemName[]) => {
   </px-collapse>
   <br />
   <br />
-  <h2>通过 slot 传入内容</h2>
-  <div style="max-width: 600px">
-    <px-alert type="success">Success alert</px-alert>
-    <px-alert type="info">Info alert</px-alert>
-    <px-alert type="warning">Warning alert</px-alert>
-    <px-alert type="danger">Error alert</px-alert>
-  </div>
-  <h2>通过 prop 传入内容</h2>
-  <div style="max-width: 600px">
-    <px-alert type="success" title="Success alert" />
-    <px-alert type="info" title="Info alert" />
-    <px-alert type="warning" title="Warning alert" />
-    <px-alert type="danger" title="Error alert" />
-  </div>
-  <div style="max-width: 600px">
-    <px-alert title="Success Alert" type="success" effect="dark" />
-    <px-alert title="Info Alert" type="info" effect="dark" />
-    <px-alert title="Warning Alert" type="warning" effect="dark" />
-    <px-alert title="Error Alert" type="danger" effect="dark" />
+  <div class="f-b">
+    <div style="width: 600px">
+      <px-alert type="success">Success alert</px-alert>
+      <px-alert type="info">Info alert</px-alert>
+      <px-alert type="warning">Warning alert</px-alert>
+      <px-alert type="danger">Error alert</px-alert>
+    </div>
+    <div style="width: 600px">
+      <px-alert title="Success Alert" type="success" effect="dark" />
+      <px-alert title="Info Alert" type="info" effect="dark" />
+      <px-alert title="Warning Alert" type="warning" effect="dark" />
+      <px-alert title="Error Alert" type="danger" effect="dark" />
+    </div>
   </div>
   <div class="basic block" style="max-width: 600px">
     <px-alert title="Unclosable alert" type="success" :closable="false" />
     <px-alert title="Alert with callback" type="warning" />
   </div>
-  <div style="max-width: 600px">
-    <px-alert title="Success alert" type="success" show-icon />
-    <px-alert title="Info alert" type="info" show-icon />
-    <px-alert title="Warning alert" type="warning" show-icon />
-    <px-alert title="Error alert" type="danger" show-icon />
+  <div class="f-b">
+    <div style="width: 600px">
+      <px-alert title="Success alert" type="success" center show-icon />
+      <px-alert title="Info alert" type="info" center show-icon />
+      <px-alert title="Warning alert" type="warning" center show-icon />
+      <px-alert title="Error alert" type="danger" center show-icon />
+    </div>
+    <div style="width: 600px">
+      <px-alert
+        title="Success alert"
+        type="success"
+        description="More text description"
+        show-icon
+      />
+      <px-alert
+        title="Info alert"
+        type="info"
+        description="More text description"
+        show-icon
+      />
+      <px-alert
+        title="Warning alert"
+        type="warning"
+        description="More text description"
+        show-icon
+      />
+      <px-alert
+        title="Error alert"
+        type="danger"
+        description="More text description"
+        show-icon
+      />
+    </div>
   </div>
-  <div style="max-width: 600px">
-    <px-alert title="Success alert" type="success" center show-icon />
-    <px-alert title="Info alert" type="info" center show-icon />
-    <px-alert title="Warning alert" type="warning" center show-icon />
-    <px-alert title="Error alert" type="danger" center show-icon />
-  </div>
-  <div style="max-width: 600px">
-    <px-alert
-      title="Success alert"
-      type="success"
-      description="More text description"
-      show-icon
-    />
-    <px-alert
-      title="Info alert"
-      type="info"
-      description="More text description"
-      show-icon
-    />
-    <px-alert
-      title="Warning alert"
-      type="warning"
-      description="More text description"
-      show-icon
-    />
-    <px-alert
-      title="Error alert"
-      type="danger"
-      description="More text description"
-      show-icon
-    />
-  </div>
+  <div class="h-100"></div>
 </template>
 
 <style scoped></style>

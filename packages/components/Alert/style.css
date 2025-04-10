@@ -7,7 +7,7 @@
   --px-alert-text-color: var(--px-text-color-base);
   --px-alert-close-icon-color: var(--px-alert-text-color);
   --px-alert-top-margin: 20px;
-  --px-alert-icon-size: 16px;
+  --px-alert-icon-size: 18px;
   --px-alert-icon-margin: 8px;
   --px-alert-big-icon-size: 28px;
   --px-alert-big-icon-margin: 12px;
@@ -41,8 +41,8 @@
 
   .px-alert__icon {
     color: var(--px-alert-text-color);
-    font-size: var(--px-alert-icon-size);
-    width: var(--px-alert-icon-size);
+    font-size: var(--px-alert-icon-size) !important;
+    width: var(--px-alert-icon-size) !important;
     margin-right: var(--px-alert-icon-margin);
     &.big-icon{
       font-size: var(--px-alert-big-icon-size) !important;

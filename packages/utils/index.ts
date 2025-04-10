@@ -1,9 +1,9 @@
 export const typeIconMap = new Map([
-  ['info', 'info-circle'],
-  ['success', 'check-circle'],
-  ['warning', 'exclamation-triangle'],
-  ['danger', 'times-circle'],
-  ['error', 'times-circle']
+  ['info', 'info-circle-solid'],
+  ['success', 'check-circle-solid'],
+  ['warning', 'exclamation-triangle-solid'],
+  ['danger', 'times-circle-solid'],
+  ['error', 'times-circle-solid']
 ])
 
 export * from './install'
