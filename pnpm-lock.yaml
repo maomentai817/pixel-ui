@@ -84,6 +84,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      emoji-regex:
+        specifier: ^10.4.0
+        version: 10.4.0
       eslint:
         specifier: ^8.57.1
         version: 8.57.1

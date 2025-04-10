@@ -34,6 +34,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "0.5.1",
     "cross-env": "^7.0.3",
+    "emoji-regex": "^10.4.0",
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^9.33.0",
     "jsdom": "^24.1.0",

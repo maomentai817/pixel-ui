@@ -13,6 +13,7 @@ export default defineConfig({
   appearance: false,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: "./public/images/favicon.png",
     nav: [
       { text: "开始使用", link: "/get-started" },
       { text: "组件", link: "/components/button" },
