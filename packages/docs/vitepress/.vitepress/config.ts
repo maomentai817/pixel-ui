@@ -11,9 +11,11 @@ export default defineConfig({
   description: "基于CSS_Houdini的像素风组件库🐱",
   base: "/pixel-ui/",
   appearance: false,
+  head: [
+    ['link', { rel: 'icon', href: 'images/favicon.ico' }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "./public/images/favicon.png",
     nav: [
       { text: "开始使用", link: "/get-started" },
       { text: "组件", link: "/components/button" },

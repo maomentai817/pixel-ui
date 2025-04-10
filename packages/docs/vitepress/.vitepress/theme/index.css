@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Zpix';
-  src: url('../public/fonts/Zpix.ttf') format('truetype');
+  src: url('/fonts/Zpix.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: 'PS2P';
-  src: url('../public/fonts/PS2P.ttf') format('truetype');
+  src: url('/fonts/PS2P.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
