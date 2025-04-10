@@ -1,0 +1,101 @@
+@import '../../styles/various.scss';
+
+$componentPrefix: 'element-plus';
+$containerPrefix: #{$defaultPrefix}__#{$componentPrefix};
+
+.#{$containerPrefix}__container > * {
+  font-size: 14px;
+}
+
+.#{$containerPrefix}__container {
+  div[class*='language-'] {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: var(--component-preview-bg);
+  }
+}
+
+.#{$containerPrefix}__container {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--component-preview-border);
+  box-shadow: 0px 0px 10px var(--component-preview-border);
+  margin: 10px 0;
+  overflow: hidden;
+
+  .#{$defaultPrefix}-preview,
+  .#{$defaultPrefix}-description,
+  .#{$defaultPrefix}-source {
+    width: 100%;
+  }
+}
+
+.#{$containerPrefix}__container > .#{$defaultPrefix}-preview {
+  padding: 20px 20px 30px 20px;
+  & > p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.#{$containerPrefix}__container > .#{$defaultPrefix}-description {
+  .#{$defaultPrefix}-description__title {
+    width: 100%;
+    position: relative;
+    padding-left: 25px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 3%;
+      border-top: 1px solid var(--component-preview-border);
+      top: 12px;
+      left: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      border-top: 1px solid var(--component-preview-border);
+      top: 12px;
+      margin-left: 5px;
+    }
+  }
+
+  .#{$defaultPrefix}-description__content {
+    padding: 20px;
+  }
+
+  .#{$defaultPrefix}-description__split-line {
+    border-bottom: 1px dashed var(--component-preview-border);
+  }
+
+  .#{$defaultPrefix}-description__handle-btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      color: var(--component-preview-text-1);
+      cursor: pointer;
+    }
+
+    svg:not(:last-of-type) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.#{$containerPrefix}__container > .#{$defaultPrefix}-source {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}

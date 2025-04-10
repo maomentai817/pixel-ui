@@ -1,0 +1,14 @@
+/* 修改副标题 */
+.VPHomeHero .text {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+.VPFeature .box .details {
+  font-size: 14px;
+}
+
+pre, code {
+  font-family: "PS2P", "Zpix";
+  font-size: 0.75rem;
+}

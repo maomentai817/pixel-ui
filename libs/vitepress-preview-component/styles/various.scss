@@ -1,0 +1,27 @@
+:root {
+  --component-preview-bg: var(--vp-c-bg);
+  --component-preview-soft: var(--vp-c-bg-soft);
+  --component-preview-mute: var(--vp-c-bg-mute);
+  --component-preview-border: rgb(240, 240, 240);
+  --component-preview-text-1: var(--vp-c-text-1);
+  --component-preview-text-2: var(--vp-c-text-2);
+  --component-preview-text-3: var(--vp-c-text-3);
+  --component-preview-text-4: var(--vp-c-text-4);
+  --component-preview-code-block-bg: #343030;
+  --component-preview-primary-color: var(--vp-c-brand);
+}
+
+.dark:root {
+  --component-preview-bg: var(--vp-c-bg);
+  --component-preview-soft: var(--vp-c-bg-soft);
+  --component-preview-mute: var(--vp-c-bg-mute);
+  --component-preview-border: rgb(240, 240, 240, 0.1);
+  --component-preview-text-1: var(--vp-c-text-1);
+  --component-preview-text-2: var(--vp-c-text-2);
+  --component-preview-text-3: var(--vp-c-text-3);
+  --component-preview-text-4: var(--vp-c-text-4);
+  --component-preview-code-block-bg: #282626;
+  --component-preview-primary-color: var(--vp-c-brand);
+}
+
+$defaultPrefix: 'vitepress-demo-preview';
