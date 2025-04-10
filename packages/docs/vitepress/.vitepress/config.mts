@@ -44,4 +44,19 @@ export default defineConfig({
       // md.use(apiTable)
     },
   },
+  transformHead({ assets }) { 
+    // 字体匹配
+    const fontFiles = assets.filter(file => /(PS2P|Zpix)\.\w+\.ttf$/.test(file))
+
+    return fontFiles.map(file => [
+      'link',
+      {
+        rel: 'preload',
+        href: file,
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: ''
+      }
+    ])
+  }
 });
