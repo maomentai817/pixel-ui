@@ -42,7 +42,7 @@
   .px-alert__icon {
     color: var(--px-alert-text-color);
     font-size: var(--px-alert-icon-size) !important;
-    width: var(--px-alert-icon-size) !important;
+    width: var(--px-alert-icon-size);
     margin-right: var(--px-alert-icon-margin);
     &.big-icon{
       font-size: var(--px-alert-big-icon-size) !important;
