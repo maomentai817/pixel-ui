@@ -1,0 +1,11 @@
+<template>
+  <px-icon icon="face-thinking" flip="horizontal" color="orange" size="35" />
+  <px-icon icon="face-thinking" flip="vertical" color="orange" size="35" />
+  <px-icon icon="face-thinking" flip="both" color="orange" size="35" />
+  <px-icon icon="face-thinking" rotation="270" color="orange" size="35" />
+</template>
+<style>
+.px-icon {
+  margin-right: 10px;
+}
+</style>
