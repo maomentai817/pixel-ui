@@ -8,6 +8,7 @@
     "dev": "pnpm --filter @pixel-ui/play dev",
     "docs:dev": "pnpm --filter @pixel-ui/vitepress dev",
     "docs:build": "pnpm --filter @pixel-ui/vitepress build",
+    "docs:preview": "pnpm --filter @pixel-ui/vitepress preview",
     "docs:storybook": "pnpm --filter @pixel-ui/storybook storybook",
     "test": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/components test",
     "build": "cross-env NODE_ENV=production pnpm --filter @mmt817/pixel-ui build",

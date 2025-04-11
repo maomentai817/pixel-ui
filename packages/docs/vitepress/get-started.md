@@ -5,11 +5,11 @@ next:
   text: PxButton 按钮
 ---
 
-# 🐱PixelUI-像素风Vue3组件库
+# 🐱 PixelUI 像素风Vue3组件库
 
-一个基于Vue3+TypeScript+CSS Houdini的像素风格组件库，支持复古像素样式渲染、自定义像素字体和像素边框，致力于打造独特的Web UI体验。
+一个基于 Vue3 + TypeScript + CSS Houdini 的像素风格组件库，支持复古像素样式渲染、自定义像素字体和像素边框，致力于打造独特的 Web UI 体验。
 
-## 📦安装
+## 📦 安装
 
 ```bash
 npm i @mmt817/pixel-ui --save
@@ -17,7 +17,7 @@ npm i @mmt817/pixel-ui --save
 pnpm add @mmt817/pixel-ui
 ```
 
-## 🚀快速开始
+## 🚀 快速开始
 
 ### 全局注册组件
 
@@ -42,7 +42,7 @@ createApp(App).use(PixelUI).mount('#app')
 
 ### 按需引入组件
 
-Pixel-UI提供了ESModule构建，支持TreeShaking，推荐按需引入以减少打包体积。
+Pixel-UI 提供了 ESModule 构建，支持 TreeShaking，推荐按需引入以减少打包体积。
 
 ```vue
 <script setup lang="ts">
@@ -54,7 +54,7 @@ import { PxButton } from '@mmt817/pixel-ui'
 </template>
 ```
 
-## 🧰使用示例
+## 🧰 使用示例
 
 ```vue
 <template>
@@ -67,7 +67,7 @@ import { PxButton } from '@mmt817/pixel-ui'
 ::: api-table src=components/Button/types.ts
 :::
 
-## ✨组件亮点
+## ✨ 组件亮点
 
 ::: details
 

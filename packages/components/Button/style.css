@@ -81,6 +81,9 @@
   --px-bg-color: var(--px-bg-color-primary);
   --px-bg-shadow-color: var(--px-bg-shadow-color-primary);
 }
+.px-button--primary .px-icon {
+  color: var(--px-text-color-white);
+}
 .px-button--primary:hover {
   --px-bg-color: var(--px-fill-hover-color-primary);
   --px-bg-shadow-border: 4px;
@@ -90,6 +93,9 @@
   --px-button-text-color: var(--px-text-color-white);
   --px-bg-color: var(--px-bg-color-success);
   --px-bg-shadow-color: var(--px-bg-shadow-color-success);
+}
+.px-button--success .px-icon {
+  color: var(--px-text-color-white);
 }
 .px-button--success:hover {
   --px-bg-color: var(--px-fill-hover-color-success);
@@ -101,6 +107,9 @@
   --px-bg-color: var(--px-bg-color-warning);
   --px-bg-shadow-color: var(--px-bg-shadow-color-warning);
 }
+.px-button--warning .px-icon {
+  color: var(--px-text-color-white);
+}
 .px-button--warning:hover {
   --px-bg-color: var(--px-fill-hover-color-warning);
   --px-bg-shadow-border: 4px;
@@ -110,6 +119,9 @@
   --px-button-text-color: var(--px-text-color-white);
   --px-bg-color: var(--px-bg-color-danger);
   --px-bg-shadow-color: var(--px-bg-shadow-color-danger);
+}
+.px-button--danger .px-icon {
+  color: var(--px-text-color-white);
 }
 .px-button--danger:hover {
   --px-bg-color: var(--px-fill-hover-color-danger);

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev ./",
-    "build": "vitepress build ./"
+    "build": "vitepress build ./",
+    "preview": "vitepress preview ./"
   },
   "keywords": [],
   "author": "",

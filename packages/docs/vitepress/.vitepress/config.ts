@@ -30,7 +30,7 @@ export default defineConfig({
         items: [{ text: "快速开始", link: "/get-started" }],
       },
       {
-        text: "基础组件",
+        text: "Basic 基础组件",
         collapsed: false,
         items: [{ text: "Button 按钮", link: "components/button" }],
       },
