@@ -20,7 +20,7 @@ prev:
 使用 `type`、`plain`、 `round`和 `circle` 来定义按钮的样式。
 
 ::: preview
-demo-preview=../demo/button/Basic.vue
+demo-preview=../demo/Button/Basic.vue
 :::
 
 ## 禁用状态
@@ -28,7 +28,7 @@ demo-preview=../demo/button/Basic.vue
 你可以使用 `disabled` 属性来定义按钮是否被禁用。
 
 ::: preview
-demo-preview=../demo/button/Disabled.vue
+demo-preview=../demo/Button/Disabled.vue
 :::
 
 ## 图标按钮
@@ -36,7 +36,7 @@ demo-preview=../demo/button/Disabled.vue
 使用 `icon` 属性来定义按钮的图标。
 
 ::: preview
-demo-preview=../demo/button/Icon.vue
+demo-preview=../demo/Button/Icon.vue
 :::
 
 ## 按钮组
@@ -44,7 +44,7 @@ demo-preview=../demo/button/Icon.vue
 使用 `<px-button-group>` 对多个按钮分组。
 
 ::: preview
-demo-preview=../demo/button/Group.vue
+demo-preview=../demo/Button/Group.vue
 :::
 
 ## 加载状态
@@ -58,7 +58,7 @@ ps: `loading` 插槽优先级高于 `loadingIcon` 属性
 :::
 
 ::: preview
-demo-preview=../demo/button/Loading.vue
+demo-preview=../demo/Button/Loading.vue
 :::
 
 ## 按钮尺寸
@@ -66,7 +66,7 @@ demo-preview=../demo/button/Loading.vue
 使用 `size` 属性来定义按钮的尺寸。
 
 ::: preview
-demo-preview=../demo/button/Size.vue
+demo-preview=../demo/Button/Size.vue
 :::
 
 ## Tag
@@ -74,7 +74,7 @@ demo-preview=../demo/button/Size.vue
 可以自定义元素标签。例如，按钮，div，路由链接，nuxt 链接。
 
 ::: preview
-demo-preview=../demo/button/Tag.vue
+demo-preview=../demo/Button/Tag.vue
 :::
 
 ## 节流模式
@@ -82,7 +82,7 @@ demo-preview=../demo/button/Tag.vue
 可以通过 `useThrottle` 属性来定义按钮是否使用节流模式 默认为 true。
 
 ::: preview
-demo-preview=../demo/button/Throttle.vue
+demo-preview=../demo/Button/Throttle.vue
 :::
 
 ## Button API
