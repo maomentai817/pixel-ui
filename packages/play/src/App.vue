@@ -169,7 +169,6 @@ const stages = [
     :stages="stages"
     :width="320"
     :height="320"
-    loop
   />
   <br />
   <br />
