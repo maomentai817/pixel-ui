@@ -164,7 +164,13 @@ const stages = [
   </px-collapse>
   <br />
   <br />
-  <px-animation-frame src="/images/pet.gif" :stages="stages" />
+  <px-animation-frame
+    src="/images/pet.gif"
+    :stages="stages"
+    :width="320"
+    :height="320"
+    loop
+  />
   <br />
   <br />
   <div class="f-b">

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import libgif from '@zaqmjuop/libgif'
 import { SuperGif } from '@mmt817/super-gif'
 import { onMounted, ref, nextTick } from 'vue'
 import type { AnimationFrameProps } from './types'
@@ -8,23 +7,75 @@ defineOptions({
   name: 'PxAnimationFrame'
 })
 
-const props = defineProps<AnimationFrameProps>()
+const props = withDefaults(defineProps<AnimationFrameProps>(), {
+  stages: () => [{ type: 'loop', start: 0, end: 0 }],
+  loop: false
+})
 const canvasRef = ref<HTMLCanvasElement | null>(null)
+//todo 拖拽相关状态
+const position = ref({ x: 0, y: 0 })
+const isDragging = ref(false)
+const dragStartPos = ref({ x: 0, y: 0 })
+const elementStartPos = ref({ x: 0, y: 0 })
+const hasMoved = ref(false)
 
-let player: any | null = null
+// 拖拽 API
+// 拖拽逻辑
+const startDrag = (e: MouseEvent) => {
+  isDragging.value = true
+  hasMoved.value = false
+  dragStartPos.value = { x: e.clientX, y: e.clientY }
+  elementStartPos.value = { ...position.value }
+
+  document.addEventListener('mousemove', onDrag)
+  document.addEventListener('mouseup', onDragEnd)
+  document.addEventListener('touchmove', onDrag)
+  document.addEventListener('touchend', onDragEnd)
+}
+
+const onDrag = (e: MouseEvent | TouchEvent) => {
+  if (!isDragging.value) return
+
+  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY
+
+  const deltaX = clientX - dragStartPos.value.x
+  const deltaY = clientY - dragStartPos.value.y
+
+  // 检测是否移动超过阈值
+  if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+    hasMoved.value = true
+  }
+
+  position.value = {
+    x: elementStartPos.value.x + deltaX,
+    y: elementStartPos.value.y + deltaY
+  }
+}
+
+const onDragEnd = () => {
+  isDragging.value = false
+  document.removeEventListener('mousemove', onDrag)
+  document.removeEventListener('mouseup', onDragEnd)
+  document.removeEventListener('touchmove', onDrag)
+  document.removeEventListener('touchend', onDragEnd)
+}
+
+//todo 动画控制相关
+let player: SuperGif | null = null
 let interval: number | null = null
-let stageIndex = 0
-let currentFrame = 0
+let stageIndex = 0 // 当前播放的阶段索引
+let currentFrame = 0 // 当前帧
 let playing = false
 
-function clear() {
+const clear = () => {
   if (interval !== null) {
     clearInterval(interval)
     interval = null
   }
 }
 
-function playLoop(start: number, end: number) {
+const playLoop = (start: number, end: number) => {
   clear()
   currentFrame = start
   interval = window.setInterval(() => {
@@ -36,7 +87,7 @@ function playLoop(start: number, end: number) {
   }, 100)
 }
 
-function playOnce(start: number, end: number, onComplete?: () => void) {
+const playOnce = (start: number, end: number, onComplete?: () => void) => {
   clear()
   currentFrame = start
   interval = window.setInterval(() => {
@@ -49,7 +100,7 @@ function playOnce(start: number, end: number, onComplete?: () => void) {
   }, 100)
 }
 
-function playCurrentStage() {
+const playCurrentStage = () => {
   const stage = props.stages[stageIndex]
 
   if (!stage) return
@@ -62,20 +113,14 @@ function playCurrentStage() {
     playOnce(stage.start, stage.end, () => {
       playing = false
 
-      if (stageIndex === 1) {
-        // 播放完阶段 2，进入 2.5
-        stageIndex = 2
-        playCurrentStage()
-      } else if (stageIndex === 3) {
-        // 播放完阶段 3，回到阶段 1
-        stageIndex = 0
-        playCurrentStage()
-      }
+      stageIndex++
+      stageIndex %= props.stages.length
+      playCurrentStage()
     })
   }
 }
 
-function handleClick() {
+const handleClick = () => {
   if (playing) return
   stageIndex++
   stageIndex %= props.stages.length
@@ -93,31 +138,35 @@ onMounted(async () => {
 
   img.onload = () => {
     player = new SuperGif(img, { autoPlay: false }, canvasRef.value!)
-    console.log(player)
     player.load(() => {
-      playCurrentStage()
+      if (props.loop) {
+        playLoop(0, player!.getLength() - 1)
+      } else {
+        playCurrentStage()
+      }
     })
   }
 })
 </script>
 
 <template>
-  <div class="px-animation-frame">
-    <canvas class="super-gif" ref="canvasRef" @click="handleClick"></canvas>
+  <div
+    class="px-animation-frame"
+    @mousedown="startDrag"
+    :style="{
+      transform: `translate(${position.x}px, ${position.y}px)`,
+      cursor: isDragging ? 'grabbing' : 'grab'
+    }"
+  >
+    <canvas
+      class="super-gif"
+      ref="canvasRef"
+      @click="handleClick"
+      :style="{ width: `${props.width}px`, height: `${props.height}px` }"
+    ></canvas>
   </div>
 </template>
 
 <style scoped>
-.px-animation-frame {
-  width: 320px;
-  height: 320px;
-}
-.super-gif {
-  width: 320px;
-  height: 320px;
-  image-rendering: pixelated;
-  cursor: pointer;
-  position: absolute;
-  z-index: 99;
-}
+@import './styl.css';
 </style>

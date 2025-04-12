@@ -29,4 +29,10 @@ export interface AnimationFrameProps {
    * @description height
    */
   height?: number
+  /**
+   * @property loop
+   * @description loop
+   * @default false
+   */
+  loop?: boolean
 }

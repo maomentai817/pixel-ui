@@ -1,0 +1,12 @@
+.px-animation-frame {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  contain: layout;
+  z-index: 99;
+}
+.super-gif {
+  image-rendering: pixelated;
+  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+}
