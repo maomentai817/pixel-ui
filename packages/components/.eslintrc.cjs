@@ -42,7 +42,8 @@ module.exports = {
     'vue/no-setup-props-destructure': ['off'],
     'no-undef': 'error',
     'vue/script-setup-uses-vars': 'error',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   env: {
     browser: true,

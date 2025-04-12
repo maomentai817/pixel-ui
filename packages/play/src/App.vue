@@ -7,6 +7,13 @@ const activeNames = ref([])
 const handleChange = (val: CollapseItemName[]) => {
   console.log(val)
 }
+
+const stages = [
+  { type: 'loop', start: 0, end: 11 },
+  { type: 'once', start: 12, end: 41 },
+  { type: 'loop', start: 31, end: 41 },
+  { type: 'once', start: 42, end: 52 }
+]
 </script>
 
 <template>
@@ -155,6 +162,9 @@ const handleChange = (val: CollapseItemName[]) => {
     <px-collapse-item name="2" title="标题2" disabled> 内容2 </px-collapse-item>
     <px-collapse-item name="3" title="标题3"> 内容3 </px-collapse-item>
   </px-collapse>
+  <br />
+  <br />
+  <px-animation-frame src="/images/pet.gif" :stages="stages" />
   <br />
   <br />
   <div class="f-b">

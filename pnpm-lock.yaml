@@ -36,6 +36,9 @@ importers:
         specifier: ^3.4.19
         version: 3.5.13(typescript@5.8.2)
     devDependencies:
+      '@mmt817/super-gif':
+        specifier: ^0.0.1
+        version: 0.0.1
       '@rushstack/eslint-patch':
         specifier: ^1.10.3
         version: 1.11.0
@@ -1080,6 +1083,9 @@ packages:
 
   '@microsoft/tsdoc@0.14.2':
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
+
+  '@mmt817/super-gif@0.0.1':
+    resolution: {integrity: sha512-cJkr1UXRR5h+tCnh1fiLBDXzC//MZYouUHG8R+GYhsH14JlvDtphkH62NZIUYxnbOZVDbcQMCtxyrhmRU3FydA==}
 
   '@mswjs/interceptors@0.37.6':
     resolution: {integrity: sha512-wK+5pLK5XFmgtH3aQ2YVvA3HohS3xqV/OxuVOdNx9Wpnz7VE/fnC+e1A7ln6LFYeck7gOJ/dsZV6OLplOtAJ2w==}
@@ -6386,6 +6392,8 @@ snapshots:
       resolve: 1.19.0
 
   '@microsoft/tsdoc@0.14.2': {}
+
+  '@mmt817/super-gif@0.0.1': {}
 
   '@mswjs/interceptors@0.37.6':
     dependencies:
