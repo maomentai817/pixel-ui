@@ -1,9 +1,6 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
+import type { Meta, StoryFn } from '@storybook/vue3'
 import { PxIcon } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Icon.css'
-
-// 定义 Story 类型
-type Story = StoryObj<typeof PxIcon> & { argTypes?: ArgTypes }
 
 const meta: Meta<typeof PxIcon> = {
   title: 'Atoms/Icon',
@@ -60,65 +57,65 @@ const meta: Meta<typeof PxIcon> = {
   }
 }
 
-// 辅助函数 - 容器样式
-const container = (val: string) => `
-<div style="margin:5px; display: inline-block">
-  ${val}
-</div>
-`
+export default meta
+
+const Template: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxIcon
+  },
+  template: `<px-icon v-bind="args" />`
+})
 
 // 默认示例
-export const Default: Story = {
-  args: {
-    icon: 'face-thinking-solid'
-  },
-
-  render: (args) => ({
-    components: { PxIcon },
-    setup() {
-      return { args }
-    },
-    template: container(`<px-icon v-bind="args"></px-icon>`)
-  })
+export const Default = Template.bind({})
+Default.args = {
+  icon: 'face-thinking-solid',
+  size: 38
 }
 
 // 颜色示例
-export const Colors: Story = {
-  render: () => ({
-    components: { PxIcon },
-    template: `
-      ${container('<px-icon icon="face-thinking-solid" type="primary"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" type="success"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" type="warning"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" type="danger"></px-icon>')}
-    `
-  })
-}
+export const Colors: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxIcon
+  },
+  template: `
+    <px-icon v-bind="args" color="#ff4785" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" color="rgb(0,212,255)"icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" color="hsl(265, 100%, 50%)" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" color="hwb(38 0% 0%)" icon="face-thinking-solid" size="38" />
+  `
+})
 
 // 动画示例
-export const Animations: Story = {
-  render: () => ({
-    components: { PxIcon },
-    template: `
-      ${container('<px-icon icon="face-thinking-solid" spin></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" bounce></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" shake></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" beat></px-icon>')}
-    `
-  })
-}
+export const Animations: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxIcon
+  },
+  template: `
+    <px-icon v-bind="args" spin type="primary" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" bounce type="success" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" shake type="warning" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" beat type="danger" icon="face-thinking-solid" size="38" />
+  `
+})
 
 // 翻转和旋转示例
-export const Transformations: Story = {
-  render: () => ({
-    components: { PxIcon },
-    template: `
-      ${container('<px-icon icon="face-thinking-solid" flip="horizontal"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" flip="vertical"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" flip="both"></px-icon>')}
-      ${container('<px-icon icon="face-thinking-solid" rotation="180"></px-icon>')}
-    `
-  })
-}
-
-export default meta
+export const Transformations: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxIcon
+  },
+  template: `
+    <px-icon v-bind="args" flip="horizontal" type="primary" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" flip="vertical" type="success" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" flip="both" type="warning" icon="face-thinking-solid" size="38" />
+    <px-icon v-bind="args" rotation="270" type="danger" icon="face-thinking-solid" size="38" />
+  `
+})
