@@ -68,7 +68,7 @@
 }
 .px-collapse-item__content {
   min-height: var(--px-collapse-content-height);
-  line-height: 1;
+  line-height: 1.5;
   will-change: height;
   background-color: transparent;
   overflow: hidden;

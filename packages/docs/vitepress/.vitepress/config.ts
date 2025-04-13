@@ -43,7 +43,8 @@ export default defineConfig({
         text: "Data 数据展示",
         collapsed: false,
         items: [
-          { text: "Card 卡片", link: "components/card" }
+          { text: "Card 卡片", link: "components/card" },
+          { text: "Collapse 折叠面板", link: "components/collapse" },
         ]
       }
     ],
