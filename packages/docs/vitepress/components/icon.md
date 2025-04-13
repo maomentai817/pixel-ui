@@ -21,6 +21,10 @@ PixelUI 组件库的图标集合来自 [pixel-icon-library](https://pixeliconlib
 
 ## 安装
 
+:::tip
+方便使用, 已将 pixel-icon-library 集成到 PixelUI 组件库里, 你可以不用引入第三方图标库及其样式。
+:::
+
 ### 使用包管理器
 
 选择一个你喜欢的包管理器

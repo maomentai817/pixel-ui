@@ -31,6 +31,8 @@
 
 body {
   font-family: var(--vp-font-family-base);
+  font-synthesis: weight;
+  -webkit-font-smoothing: antialiased;
 }
 
 .VPHomeHero {

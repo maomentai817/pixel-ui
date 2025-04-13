@@ -17,7 +17,7 @@ prev:
 
 ## 基础用法
 
-用 `type` 属性设置 Text 类型, `bold` 属性设置粗体
+用 `type` 属性设置 Text 类型, `bold` 属性设置**粗体**
 
 ::: preview
 demo-preview=../demo/Text/Basic.vue

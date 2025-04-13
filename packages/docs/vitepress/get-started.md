@@ -28,7 +28,6 @@ import App from './App.vue'
 
 // 引入 Pixel UI
 import PixelUI from '@mmt817/pixel-ui'
-import '@hackernoon/pixel-icon-library/fonts/iconfont.css'
 import '@mmt817/pixel-ui/dist/index.css'
 
 createApp(App).use(PixelUI).mount('#app')
