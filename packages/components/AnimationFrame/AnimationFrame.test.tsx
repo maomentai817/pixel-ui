@@ -3,19 +3,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import PxAnimationFrame from './AnimationFrame.vue'
 import type { AnimationFrameStage } from './types'
 
-// mock SuperGif
-vi.mock('@mmt817/super-gif', () => {
-  return {
-    SuperGif: vi.fn().mockImplementation(() => {
-      return {
-        load: (cb: () => void) => cb(),
-        moveTo: vi.fn(),
-        getLength: () => 20
-      }
-    })
-  }
-})
-
 const fakeGifSrc = 'https://fake.gif'
 const stages: AnimationFrameStage[] = [
   { type: 'loop', start: 0, end: 5 },
@@ -92,4 +79,57 @@ describe('PxAnimationFrame', () => {
     const style = (root.element as HTMLElement).style.transform
     expect(style).toContain('translate')
   })
+
+  it('should update position on mouse drag and set hasMoved', async () => {
+    const wrapper = mount(PxAnimationFrame, {
+      props: {
+        src: fakeGifSrc,
+        stages,
+        width: 320,
+        height: 320
+      },
+      attachTo: document.body // 保证事件冒泡正常工作
+    })
+
+    const root = wrapper.find('.px-animation-frame')
+
+    // 触发拖拽开始
+    await root.trigger('mousedown', { clientX: 100, clientY: 100 })
+
+    // 模拟鼠标移动到新位置
+    document.dispatchEvent(
+      new MouseEvent('mousemove', { clientX: 120, clientY: 120 })
+    )
+
+    const vm = wrapper.vm as any
+    expect(vm.hasMoved).toBe(true)
+    expect(vm.position).toEqual({ x: 20, y: 20 })
+
+    // 结束拖拽，清除监听器
+    document.dispatchEvent(new MouseEvent('mouseup'))
+  })
+
+  it('should stop dragging on mouseup', async () => {
+    const wrapper = mount(PxAnimationFrame, {
+      props: {
+        src: fakeGifSrc,
+        stages,
+        width: 320,
+        height: 320
+      },
+      attachTo: document.body
+    })
+
+    const root = wrapper.find('.px-animation-frame')
+
+    await root.trigger('mousedown', { clientX: 100, clientY: 100 })
+    expect((wrapper.vm as any).isDragging).toBe(true)
+
+    // 触发 document 的 mouseup，模拟释放
+    document.dispatchEvent(new MouseEvent('mouseup'))
+
+    expect((wrapper.vm as any).isDragging).toBe(false)
+  })
+
+  // super-gif load test
 })

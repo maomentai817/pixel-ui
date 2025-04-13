@@ -29,8 +29,6 @@ const startDrag = (e: MouseEvent) => {
 
   document.addEventListener('mousemove', onDrag)
   document.addEventListener('mouseup', onDragEnd)
-  document.addEventListener('touchmove', onDrag)
-  document.addEventListener('touchend', onDragEnd)
 }
 
 const onDrag = (e: MouseEvent | TouchEvent) => {
@@ -57,8 +55,6 @@ const onDragEnd = () => {
   isDragging.value = false
   document.removeEventListener('mousemove', onDrag)
   document.removeEventListener('mouseup', onDragEnd)
-  document.removeEventListener('touchmove', onDrag)
-  document.removeEventListener('touchend', onDragEnd)
 }
 
 //todo 动画控制相关
@@ -122,6 +118,7 @@ const playCurrentStage = () => {
 
 const handleClick = () => {
   if (playing) return
+  if (props.loop) return
   stageIndex++
   stageIndex %= props.stages.length
   playCurrentStage()
