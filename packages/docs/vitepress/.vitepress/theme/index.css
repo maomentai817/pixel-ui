@@ -55,3 +55,7 @@ table code {
   font-size: 0.75rem;
   font-family: 'Zpixall';
 }
+
+.vitepress-demo-preview-preview {
+  font-family: var(--vp-font-family-mono);
+}

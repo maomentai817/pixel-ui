@@ -1,9 +1,10 @@
-import { defineConfig } from "vitepress";
+import { defineConfig } from "vitepress"
 import {
   containerPreview,
   componentPreview,
-} from "@vitepress-demo-preview/plugin";
-// import apiTable from "vitepress-api-table";
+} from "@vitepress-demo-preview/plugin"
+import UnoCSS from 'unocss/vite'
+// import apiTable from "vitepress-api-table"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -35,6 +36,7 @@ export default defineConfig({
         items: [
           { text: "Button 按钮", link: "components/button" },
           { text: "Icon 图标", link: "components/icon" },
+          { text: "Text 文本", link: "components/text" },
         ],
       },
     ],
@@ -64,5 +66,10 @@ export default defineConfig({
         crossorigin: ''
       }
     ])
+  },
+  vite: {
+    plugins: [
+      UnoCSS(),
+    ]
   }
 });
