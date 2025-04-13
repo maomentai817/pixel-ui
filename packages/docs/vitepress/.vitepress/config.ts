@@ -39,6 +39,13 @@ export default defineConfig({
           { text: "Text 文本", link: "components/text" },
         ],
       },
+      {
+        text: "Data 数据展示",
+        collapsed: false,
+        items: [
+          { text: "Card 卡片", link: "components/card" }
+        ]
+      }
     ],
 
     socialLinks: [
