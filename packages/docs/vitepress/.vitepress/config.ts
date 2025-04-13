@@ -46,7 +46,14 @@ export default defineConfig({
           { text: "Card 卡片", link: "components/card" },
           { text: "Collapse 折叠面板", link: "components/collapse" },
         ]
-      }
+      },
+      {
+        text: "Feedback 反馈组件",
+        collapsed: false,
+        items: [
+          { text: "Alert 提示", link: "components/alert" },
+        ]
+      },
     ],
 
     socialLinks: [
