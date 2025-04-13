@@ -110,7 +110,7 @@ demo-preview=../demo/Button/Throttle.vue
 
 | Name  | Description  | Type                         |
 | ----- | ------------ | ---------------------------- |
-| click | 按钮点击事件 | `(event: MouseEvent)=> void`   |
+| click | 按钮点击事件 | `(event: MouseEvent) => void`   |
 
 ### Slots
 

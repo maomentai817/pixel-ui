@@ -54,6 +54,13 @@ export default defineConfig({
           { text: "Alert 提示", link: "components/alert" },
         ]
       },
+      {
+        text: "Fantastic 奇思妙想",
+        collapsed: false,
+        items: [
+          { text: "AnimationFrame", link: "components/animationFrame" },
+        ]
+      },
     ],
 
     socialLinks: [
