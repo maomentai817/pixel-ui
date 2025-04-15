@@ -1,7 +1,8 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import PxAnimationFrame from './AnimationFrame.vue'
 import type { AnimationFrameStage } from './types'
+
+import PxAnimationFrame from './AnimationFrame.vue'
 
 const fakeGifSrc = 'https://fake.gif'
 const stages: AnimationFrameStage[] = [
