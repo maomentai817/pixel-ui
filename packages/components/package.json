@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "run-s clean vitest",
-    "vitest": "vitest --coverage",
-    "prettier": "prettier --write .",
-    "clean": "rimraf coverage"
+    "test": "vitest --coverage",
+    "prettier": "prettier --write ."
   },
   "keywords": [],
   "author": "",

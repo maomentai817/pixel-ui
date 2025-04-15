@@ -10,7 +10,7 @@ import {
   PxCollapseItem,
   PxAlert,
   PxAnimationFrame
-} from './index'
+} from '..'
 import { map, get } from 'lodash-es'
 
 const components = [
