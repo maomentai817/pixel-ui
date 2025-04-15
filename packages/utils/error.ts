@@ -1,6 +1,6 @@
 import { isString } from 'lodash-es'
 
-class PxUIError extends Error {
+export class PxUIError extends Error {
   constructor(message: string | Error) {
     super(isString(message) ? message : message.message)
     this.name = 'PxUIError'

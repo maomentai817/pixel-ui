@@ -20,7 +20,7 @@ interface HSLColor {
  * @param hex HEX 颜色值
  * @returns HSL 颜色对象
  */
-function hexToHSL(hex: string): HSLColor {
+export function hexToHSL(hex: string): HSLColor {
   let r = parseInt(hex.slice(1, 3), 16) / 255
   let g = parseInt(hex.slice(3, 5), 16) / 255
   let b = parseInt(hex.slice(5, 7), 16) / 255
@@ -49,7 +49,7 @@ function hexToHSL(hex: string): HSLColor {
  * @param hsl HSL 颜色对象
  * @returns HEX 颜色值
  */
-function HSLToHex(hsl: HSLColor): string {
+export function HSLToHex(hsl: HSLColor): string {
   const { h, s, l } = hsl
   const sRatio = s / 100
   const lRatio = l / 100
@@ -76,7 +76,7 @@ function HSLToHex(hsl: HSLColor): string {
  * @param options 调整参数
  * @returns 调整后的 HEX 颜色
  */
-function adjustColor(color: string, options: ColorAdjustOptions): string {
+export function adjustColor(color: string, options: ColorAdjustOptions): string {
   let hsl = hexToHSL(color)
   // 确保调整后的值在 0-100 范围内
   hsl.l = Math.max(0, Math.min(100, hsl.l + (options.lightness ?? 0)))
