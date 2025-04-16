@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       
+      - name: tsc paint worklet
+        run: npm run worklet
+
       - name: Run tests
         run: npm run test
 

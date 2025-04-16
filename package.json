@@ -15,7 +15,8 @@
     "test-utils": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/utils test",
     "test-hooks": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/hooks test",
     "build": "cross-env NODE_ENV=production pnpm --filter @mmt817/pixel-ui build",
-    "build:dev": "cross-env NODE_ENV=development pnpm --filter @mmt817/pixel-ui build:watch"
+    "build:dev": "cross-env NODE_ENV=development pnpm --filter @mmt817/pixel-ui build:watch",
+    "worklet": "pnpm --filter @pixel-ui/components worklet"
   },
   "keywords": [],
   "author": "",
