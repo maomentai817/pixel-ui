@@ -2,10 +2,62 @@ import { describe, it, test, expect, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, defineComponent } from 'vue'
 import { flushPromises } from '@vue/test-utils'
+import { withInstall } from '@pixel-ui/utils'
+import { PxButton, PxButtonGroup } from '.'
 
 import Button from './Button.vue'
 import ButtonGroup from './ButtonGroup.vue'
 import Icon from '../Icon/Icon.vue'
+
+describe('Button/index', () => {
+  // 测试 withInstall 函数是否被正确应用
+  it('should be exported with withInstall()', () => {
+    expect(PxButton.install).toBeDefined()
+  })
+
+  // 测试组件是否被正确导出
+  it('component should be exported', () => {
+    expect(PxButton).toBe(Button)
+  })
+
+  // 可选: 测试 withInstall 是否增强了组件功能
+  it('should enhance Button component', () => {
+    const enhancedButton = withInstall(Button)
+    expect(enhancedButton).toBe(PxButton)
+  })
+
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedButton = withInstall(Button)
+    // eg: withInstall 增加了一个特定的方法或属性
+    expect(enhancedButton).toHaveProperty('install')
+  })
+})
+
+describe('ButtonGroup/index', () => {
+  // 测试 withInstall 函数是否被正确应用
+  it('should be exported with withInstall()', () => {
+    expect(PxButtonGroup.install).toBeDefined()
+  })
+
+  // 测试组件是否被正确导出
+  it('component should be exported', () => {
+    expect(PxButtonGroup).toBe(ButtonGroup)
+  })
+
+  // 可选: 测试 withInstall 是否增强了组件功能
+  it('should enhance ButtonGroup component', () => {
+    const enhancedButtonGroup = withInstall(ButtonGroup)
+    expect(enhancedButtonGroup).toBe(PxButtonGroup)
+  })
+
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedButtonGroup = withInstall(ButtonGroup)
+    // eg: withInstall 增加了一个特定的方法或属性
+    expect(enhancedButtonGroup).toHaveProperty('install')
+  })
+})
 
 describe('Button.vue', () => {
   // Props: type

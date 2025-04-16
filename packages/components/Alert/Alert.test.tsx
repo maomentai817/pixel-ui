@@ -3,10 +3,10 @@ import type { AlertType } from './types'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
-import { PxAlert } from './index'
+import { PxAlert } from '.'
 
 import Alert from './Alert.vue'
-import PxIcon from '../Icon/Icon.vue'
+import Icon from '../Icon/Icon.vue'
 
 describe('Alert.vue', () => {
   const title = 'Test Alert' as const
@@ -27,7 +27,7 @@ describe('Alert.vue', () => {
     expect(wrapper.text()).toContain(desc)
 
     // close icon
-    const iconElement = wrapper.findComponent(PxIcon)
+    const iconElement = wrapper.findComponent(Icon)
     expect(iconElement.exists()).toBeTruthy()
     expect(iconElement.attributes('icon')).toBe('info-circle-solid')
 
@@ -62,7 +62,7 @@ describe('Alert.vue', () => {
       }
     })
 
-    const iconElement = wrapper.findComponent(PxIcon)
+    const iconElement = wrapper.findComponent(Icon)
     expect(iconElement.exists()).toBeTruthy()
     expect(iconElement.attributes('icon')).toBe(iconName)
   })
@@ -135,7 +135,7 @@ describe('Alert.vue', () => {
 
   // icon 覆盖
   it('should apply rotation style when rotation is provided', () => {
-    const wrapper = mount(PxIcon, {
+    const wrapper = mount(Icon, {
       props: {
         icon: 'test-icon',
         rotation: 90,
@@ -149,22 +149,26 @@ describe('Alert.vue', () => {
 })
 
 describe('Alert/index', () => {
+  // 测试 withInstall 函数是否被正确应用
   it('should be exported with withInstall()', () => {
     expect(PxAlert.install).toBeDefined()
   })
+
+  // 测试组件是否被正确导出
   it('component should be exported', () => {
     expect(PxAlert).toBe(Alert)
   })
 
-  // 可选
+  // 可选: 测试 withInstall 是否增强了组件功能
   it('should enhance Alert component', () => {
     const enhancedAlert = withInstall(Alert)
     expect(enhancedAlert).toBe(PxAlert)
   })
 
-  // 可选
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
   it('should apply specific enhance', () => {
     const enhancedAlert = withInstall(Alert)
+    // eg: withInstall 增加了一个特定的方法或属性
     expect(enhancedAlert).toHaveProperty('install')
   })
 })

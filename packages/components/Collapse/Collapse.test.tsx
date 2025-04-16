@@ -1,9 +1,11 @@
 import { beforeAll, describe, expect, test, vi, it, afterEach } from 'vitest'
 import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
+import { withInstall } from '@pixel-ui/utils'
+import { PxCollapse, PxCollapseItem } from '.'
 
 import Collapse from './Collapse.vue'
 import CollapseItem from './CollapseItem.vue'
-import PxIcon from '../Icon/Icon.vue'
+import Icon from '../Icon/Icon.vue'
 import transitionEvents from './transitionEvents'
 
 const onChange = vi.fn()
@@ -18,6 +20,56 @@ let firstHeader: DOMWrapper<Element>,
   firstContent: DOMWrapper<Element>,
   secondContent: DOMWrapper<Element>,
   disabledContent: DOMWrapper<Element>
+
+describe('Collapse/index', () => {
+  // 测试 withInstall 函数是否被正确应用
+  it('should be exported with withInstall()', () => {
+    expect(PxCollapse.install).toBeDefined()
+  })
+
+  // 测试组件是否被正确导出
+  it('component should be exported', () => {
+    expect(PxCollapse).toBe(Collapse)
+  })
+
+  // 可选: 测试 withInstall 是否增强了组件功能
+  it('should enhance Collapse component', () => {
+    const enhancedCollapse = withInstall(Collapse)
+    expect(enhancedCollapse).toBe(PxCollapse)
+  })
+
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedCollapse = withInstall(Collapse)
+    // eg: withInstall 增加了一个特定的方法或属性
+    expect(enhancedCollapse).toHaveProperty('install')
+  })
+})
+
+describe('CollapseItem/index', () => {
+  // 测试 withInstall 函数是否被正确应用
+  it('should be exported with withInstall()', () => {
+    expect(PxCollapseItem.install).toBeDefined()
+  })
+
+  // 测试组件是否被正确导出
+  it('component should be exported', () => {
+    expect(PxCollapseItem).toBe(CollapseItem)
+  })
+
+  // 可选: 测试 withInstall 是否增强了组件功能
+  it('should enhance CollapseItem component', () => {
+    const enhancedCollapseItem = withInstall(CollapseItem)
+    expect(enhancedCollapseItem).toBe(PxCollapseItem)
+  })
+
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedCollapseItem = withInstall(CollapseItem)
+    // eg: withInstall 增加了一个特定的方法或属性
+    expect(enhancedCollapseItem).toHaveProperty('install')
+  })
+})
 
 describe('Collapse.vue', () => {
   beforeAll(() => {
@@ -188,7 +240,7 @@ describe('Collapse.vue', () => {
 
   // icon 覆盖
   it('should apply rotation style when rotation is provided', () => {
-    const wrapper = mount(PxIcon, {
+    const wrapper = mount(Icon, {
       props: {
         icon: 'test-icon',
         rotation: 90,

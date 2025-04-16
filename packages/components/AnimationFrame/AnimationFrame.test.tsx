@@ -1,8 +1,11 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import type { AnimationFrameStage } from './types'
 
-import PxAnimationFrame from './AnimationFrame.vue'
+import { mount } from '@vue/test-utils'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { withInstall } from '@pixel-ui/utils'
+import { PxAnimationFrame } from '.'
+
+import AnimationFrame from './AnimationFrame.vue'
 
 const fakeGifSrc = 'https://fake.gif'
 const stages: AnimationFrameStage[] = [
@@ -10,7 +13,32 @@ const stages: AnimationFrameStage[] = [
   { type: 'once', start: 6, end: 10 }
 ]
 
-describe('PxAnimationFrame', () => {
+describe('AnimationFrame/index', () => {
+  // 测试 withInstall 函数是否被正确应用
+  it('should be exported with withInstall()', () => {
+    expect(PxAnimationFrame.install).toBeDefined()
+  })
+
+  // 测试组件是否被正确导出
+  it('component should be exported', () => {
+    expect(PxAnimationFrame).toBe(AnimationFrame)
+  })
+
+  // 可选: 测试 withInstall 是否增强了组件功能
+  it('should enhance AnimationFrame component', () => {
+    const enhancedAnimationFrame = withInstall(AnimationFrame)
+    expect(enhancedAnimationFrame).toBe(PxAnimationFrame)
+  })
+
+  // 可选: 如果 withInstall 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedAnimationFrame = withInstall(AnimationFrame)
+    // eg: withInstall 增加了一个特定的方法或属性
+    expect(enhancedAnimationFrame).toHaveProperty('install')
+  })
+})
+
+describe('AnimationFrame.vue', () => {
   beforeEach(() => {
     vi.useFakeTimers()
   })
@@ -22,7 +50,7 @@ describe('PxAnimationFrame', () => {
   })
 
   it('should render canvas and mount properly', async () => {
-    const wrapper = mount(PxAnimationFrame, {
+    const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
@@ -39,7 +67,7 @@ describe('PxAnimationFrame', () => {
   })
 
   it('should play next stage on click', async () => {
-    const wrapper = mount(PxAnimationFrame, {
+    const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
@@ -59,7 +87,7 @@ describe('PxAnimationFrame', () => {
   })
 
   it('should drag the component', async () => {
-    const wrapper = mount(PxAnimationFrame, {
+    const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
@@ -82,7 +110,7 @@ describe('PxAnimationFrame', () => {
   })
 
   it('should update position on mouse drag and set hasMoved', async () => {
-    const wrapper = mount(PxAnimationFrame, {
+    const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
@@ -111,7 +139,7 @@ describe('PxAnimationFrame', () => {
   })
 
   it('should stop dragging on mouseup', async () => {
-    const wrapper = mount(PxAnimationFrame, {
+    const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
