@@ -63,6 +63,10 @@ module.exports = {
   ],
   globals: {
     registerPaint: 'readonly',
-    globalThis: 'readonly'
+    globalThis: 'readonly',
+    CSSStyleValue: 'readonly',
+    StylePropertyMap: 'readonly',
+    PaintRenderingContext2D: 'readonly',
+    PaintWorklet: 'readonly'
   }
 }
