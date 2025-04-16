@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "strict": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "allowJs": false,
+  },
+  "include": [
+    "./*.worklet.ts",
+    "../types/*.d.ts"
+  ]
+}

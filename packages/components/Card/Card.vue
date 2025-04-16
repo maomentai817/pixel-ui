@@ -3,7 +3,7 @@ import type { CardProps } from './types'
 import { onMounted } from 'vue'
 import { debugWarn } from '@pixel-ui/utils'
 
-import workletURL from '../worklets/pixelbox.js?url'
+import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxCard' as const
 defineOptions({

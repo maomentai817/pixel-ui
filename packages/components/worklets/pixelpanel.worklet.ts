@@ -1,5 +1,7 @@
-class PixelPanel {
-  static get inputProperties() {
+// pixelpanel.worklet.ts
+
+class PixelPanel implements PaintWorklet {
+  static get inputProperties(): string[] {
     return [
       '--px-border',
       '--px-border-color',
@@ -10,20 +12,27 @@ class PixelPanel {
     ]
   }
 
-  paint(ctx, size, props) {
-    const border = parseInt(props.get('--px-border')) || 0
-    const borderColor = props.get('--px-border-color').toString().trim()
-    const bgColor = props.get('--px-bg-color').toString().trim()
-    const cornerSize = parseInt(props.get('--px-corner-size')) || border
-    const bgShadowColor = props.get('--px-bg-shadow-color').toString().trim()
-    const borderShadow = parseInt(props.get('--px-border-shadow')) || border
+  paint(
+    ctx: PaintRenderingContext2D,
+    size: { width: number; height: number },
+    props: StylePropertyMap
+  ): void {
+    const border = parseInt(props.get('--px-border')?.toString() ?? '0') || 0
+    const borderColor =
+      props.get('--px-border-color')?.toString().trim() ?? '#000'
+    const bgColor = props.get('--px-bg-color')?.toString().trim() ?? '#fff'
+    const cornerSize =
+      parseInt(props.get('--px-corner-size')?.toString() ?? '') || border
+    const bgShadowColor =
+      props.get('--px-bg-shadow-color')?.toString().trim() ?? 'transparent'
+    const borderShadow =
+      parseInt(props.get('--px-border-shadow')?.toString() ?? '') || border
 
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, size.width, size.height)
 
     if (border <= 0) return
 
-    // 绘制边框
     ctx.beginPath()
     ctx.strokeStyle = borderColor
     ctx.lineWidth = border
@@ -31,62 +40,52 @@ class PixelPanel {
 
     const halfBorder = border / 2
 
-    // top line
+    // Top
     ctx.moveTo(cornerSize + halfBorder, cornerSize + halfBorder)
     ctx.lineTo(cornerSize + halfBorder, halfBorder)
-
     ctx.moveTo(cornerSize, halfBorder)
     ctx.lineTo(size.width - cornerSize, halfBorder)
-
     ctx.moveTo(size.width - cornerSize - halfBorder, halfBorder)
     ctx.lineTo(size.width - cornerSize - halfBorder, cornerSize + halfBorder)
 
-    // bottom line
+    // Bottom
     ctx.moveTo(cornerSize + halfBorder, size.height - cornerSize - halfBorder)
     ctx.lineTo(cornerSize + halfBorder, size.height - halfBorder)
-
     ctx.moveTo(cornerSize, size.height - halfBorder)
     ctx.lineTo(size.width - cornerSize, size.height - halfBorder)
-
     ctx.moveTo(size.width - cornerSize - halfBorder, size.height - halfBorder)
     ctx.lineTo(
       size.width - cornerSize - halfBorder,
       size.height - cornerSize - halfBorder
     )
 
-    // left line
+    // Left
     ctx.moveTo(cornerSize + halfBorder, cornerSize)
     ctx.lineTo(0, cornerSize)
-
     ctx.moveTo(halfBorder, cornerSize)
     ctx.lineTo(halfBorder, size.height - cornerSize)
-
     ctx.moveTo(0, size.height - cornerSize)
     ctx.lineTo(cornerSize + halfBorder, size.height - cornerSize)
 
-    // right line
+    // Right
     ctx.moveTo(size.width - cornerSize - halfBorder, cornerSize)
     ctx.lineTo(size.width, cornerSize)
-
     ctx.moveTo(size.width - halfBorder, cornerSize)
     ctx.lineTo(size.width - halfBorder, size.height - cornerSize)
-
     ctx.moveTo(size.width, size.height - cornerSize)
     ctx.lineTo(size.width - cornerSize, size.height - cornerSize)
 
     ctx.stroke()
     ctx.closePath()
 
-    // 绘制阴影
+    // Shadow
     ctx.fillStyle = bgShadowColor
-    // right
     ctx.fillRect(
       size.width - border,
       cornerSize + halfBorder,
       borderShadow,
       size.height - cornerSize * 2 - border
     )
-    // bottom
     ctx.fillRect(
       cornerSize + border,
       size.height - cornerSize - borderShadow / 2,
@@ -94,24 +93,20 @@ class PixelPanel {
       borderShadow / 2
     )
 
-    // 清理边角块
-    // top-left
+    // Clear corners
     ctx.clearRect(0, 0, cornerSize, cornerSize - halfBorder)
-    // top-right
     ctx.clearRect(
       size.width - cornerSize,
       0,
       cornerSize,
       cornerSize - halfBorder
     )
-    // bottom-left
     ctx.clearRect(
       0,
       size.height - cornerSize + halfBorder,
       cornerSize,
       cornerSize - halfBorder
     )
-    // bottom-right
     ctx.clearRect(
       size.width - cornerSize,
       size.height - cornerSize + halfBorder,
@@ -121,4 +116,6 @@ class PixelPanel {
   }
 }
 
-registerPaint('pixelpanel', PixelPanel)
+if (typeof registerPaint !== 'undefined') {
+  registerPaint('pixelpanel', PixelPanel)
+}

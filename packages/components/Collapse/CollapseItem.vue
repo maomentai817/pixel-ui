@@ -5,9 +5,8 @@ import { debugWarn } from '@pixel-ui/utils'
 import type { CollapseItemProps } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-// import workletPanelURL from '../testworklet/pixelpanel.ts?url'
-import workletPanelURL from '../worklets/pixelpanel.js?url'
-import workletContentURL from '../worklets/pixelcontent.js?url'
+import workletPanelURL from '../worklets/dist/pixelpanel.worklet.js?url'
+import workletContentURL from '../worklets/dist/pixelcontent.worklet.js?url'
 import transitionEvents from './transitionEvents'
 
 // 异步引入, 避免打包后报错

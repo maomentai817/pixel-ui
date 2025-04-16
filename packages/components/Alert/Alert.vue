@@ -4,7 +4,7 @@ import { typeIconMap, debugWarn } from '@pixel-ui/utils'
 import type { AlertProps, AlertEmits, AlertInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/pixelbox.js?url'
+import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxAlert' as const
 defineOptions({

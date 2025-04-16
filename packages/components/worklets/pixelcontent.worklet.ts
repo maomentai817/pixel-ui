@@ -1,5 +1,5 @@
-class PixelContent {
-  static get inputProperties() {
+class PixelContent implements PaintWorklet {
+  static get inputProperties(): string[] {
     return [
       '--px-border',
       '--px-border-color',
@@ -10,14 +10,21 @@ class PixelContent {
     ]
   }
 
-  paint(ctx, size, props) {
-    const border = parseInt(props.get('--px-border')) || 0
-    const borderColor = props.get('--px-border-color').toString().trim()
+  paint(
+    ctx: PaintRenderingContext2D,
+    size: { width: number; height: number },
+    props: StylePropertyMap
+  ): void {
+    const border = parseInt(props.get('--px-border')?.toString() || '0') || 0
+    const borderColor = props.get('--px-border-color')?.toString().trim() || ''
     const bgColor =
-      props.get('--px-bg-color').toString().trim() || 'transparent'
-    const cornerSize = parseInt(props.get('--px-corner-size')) || border
-    const bgShadowColor = props.get('--px-bg-shadow-color').toString().trim()
-    const borderShadow = parseInt(props.get('--px-border-shadow')) || border
+      props.get('--px-bg-color')?.toString().trim() || 'transparent'
+    const cornerSize =
+      parseInt(props.get('--px-corner-size')?.toString() || '0') || border
+    const bgShadowColor =
+      props.get('--px-bg-shadow-color')?.toString().trim() || ''
+    const borderShadow =
+      parseInt(props.get('--px-border-shadow')?.toString() || '0') || border
 
     ctx.fillStyle = 'transparent'
     ctx.fillRect(0, 0, size.width, size.height)

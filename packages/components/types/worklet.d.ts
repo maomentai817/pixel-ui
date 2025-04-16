@@ -1,12 +1,23 @@
 // types/worklets.d.ts
-declare module '*.js?url' {
-  const src: string
-  export default src
+declare module '*.worklet.ts' {
+  const content: string
+  export default content
 }
 
-declare module '*.ts?url' {
-  const src: string
-  export default src
+declare module '*.worklet.ts?worklet' {
+  const workletUrl: string
+  export default workletUrl
+}
+
+// Add support for JavaScript worklets
+declare module '*.worklet.js?url' {
+  const content: string
+  export default content
+}
+
+declare module '*.worklet.js?worklet' {
+  const workletUrl: string
+  export default workletUrl
 }
 
 // todo: worklet/ 类型声明
@@ -15,7 +26,7 @@ interface CSSStyleValue {
 }
 
 interface StylePropertyMap {
-  get(_property: string): CSSStyleValue | null
+  get(_property: string): CSSStyleValue | undefined
   getAll(_property: string): CSSStyleValue[]
   has(_property: string): boolean
 }

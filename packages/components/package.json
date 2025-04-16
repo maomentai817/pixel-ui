@@ -6,7 +6,8 @@
   "scripts": {
     "test": "vitest --run --coverage",
     "test:watch": "vitest --coverage",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "worklet": "tsc -p ./worklets/tsconfig.worklet.json"
   },
   "keywords": [],
   "author": "",

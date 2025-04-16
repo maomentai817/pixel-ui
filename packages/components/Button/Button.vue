@@ -6,7 +6,7 @@ import { updateColors, debugWarn } from '@pixel-ui/utils'
 import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/pixelbox.js?url'
+import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 // 异步引入解决打包依赖循环问题
 // import { defineAsyncComponent } from 'vue'
