@@ -276,7 +276,7 @@ describe('PxCollapse - CSS Houdini Paint Worklet', () => {
     mount(CollapseItem)
 
     expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('pixelpanel.ts')
+      expect.stringContaining('/worklets/dist/pixelpanel.worklet.js')
     )
   })
 
@@ -290,7 +290,7 @@ describe('PxCollapse - CSS Houdini Paint Worklet', () => {
     mount(CollapseItem)
 
     expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('pixelcontent.js')
+      expect.stringContaining('/worklets/dist/pixelcontent.worklet.js')
     )
   })
 

@@ -261,7 +261,7 @@ describe('Button.vue', () => {
 
       expect(
         (globalThis as any).CSS.paintWorklet.addModule
-      ).toHaveBeenCalledWith(expect.stringContaining('pixelbox.js'))
+      ).toHaveBeenCalledWith(expect.stringContaining('/worklets/dist/pixelbox.worklet.js'))
     })
 
     it('should warn if CSS Houdini Paint Worklet is not supported', () => {

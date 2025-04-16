@@ -120,7 +120,7 @@ describe('PxCard - CSS Houdini Paint Worklet', () => {
     mount(Card)
 
     expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('pixelbox.js')
+      expect.stringContaining('/worklets/dist/pixelbox.worklet.js')
     )
   })
 
