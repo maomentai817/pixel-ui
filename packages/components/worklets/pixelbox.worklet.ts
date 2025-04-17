@@ -1,4 +1,4 @@
-class PixelBox {
+export class PixelBox {
   static get inputProperties(): string[] {
     return [
       `--px-border`,
@@ -412,4 +412,11 @@ class PixelBox {
   }
 }
 
-registerPaint('pixelbox', PixelBox)
+// registerPaint('pixelbox', PixelBox)
+export function registerPixelBox() {
+  if (typeof registerPaint !== 'undefined') {
+    registerPaint('pixelbox', PixelBox)
+  }
+}
+
+registerPixelBox()

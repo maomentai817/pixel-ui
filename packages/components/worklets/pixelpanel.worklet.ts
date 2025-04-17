@@ -1,6 +1,6 @@
 // pixelpanel.worklet.ts
 
-class PixelPanel implements PaintWorklet {
+export class PixelPanel implements PaintWorklet {
   static get inputProperties(): string[] {
     return [
       '--px-border',
@@ -116,6 +116,13 @@ class PixelPanel implements PaintWorklet {
   }
 }
 
-if (typeof registerPaint !== 'undefined') {
-  registerPaint('pixelpanel', PixelPanel)
+// if (typeof registerPaint !== 'undefined') {
+//   registerPaint('pixelpanel', PixelPanel)
+// }
+export function registerPixelPanel() {
+  if (typeof registerPaint !== 'undefined') {
+    registerPaint('pixelpanel', PixelPanel)
+  }
 }
+
+registerPixelPanel()

@@ -1,4 +1,4 @@
-class PixelContent implements PaintWorklet {
+export class PixelContent implements PaintWorklet {
   static get inputProperties(): string[] {
     return [
       '--px-border',
@@ -137,4 +137,11 @@ class PixelContent implements PaintWorklet {
   }
 }
 
-registerPaint('pixelcontent', PixelContent)
+// registerPaint('pixelcontent', PixelContent)
+export function registerPixelContent() {
+  if (typeof registerPaint !== 'undefined') {
+    registerPaint('pixelcontent', PixelContent)
+  }
+}
+
+registerPixelContent()
