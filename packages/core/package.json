@@ -3,6 +3,14 @@
   "version": "1.1.0",
   "description": "Pixel-UI Components library by Vue3 + TS",
   "type": "module",
+  "keywords": ["pixel", "pixel-ui", "components", "vue3", "library"],
+  "author": "mmt817",
+  "license": "MIT",
+  "homepage": "https://maomentai817.github.io/pixel-ui/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maomentai817/pixel-ui"
+  },
   "main": "./dist/umd/index.umd.cjs",
   "module": "./dist/es/index.js",
   "types": "./dist/types/core/index.d.ts",
@@ -33,9 +41,6 @@
     "release": "release-it",
     "worklet": "pnpm --filter @pixel-ui/components worklet"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "packageManager": "pnpm@10.4.1",
   "dependencies": {
     "@hackernoon/pixel-icon-library": "^1.0.5",
