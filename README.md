@@ -63,3 +63,12 @@ yarn add @mmt817/pixel-ui
 - [paintWorklet 学习](https://jerosoler.github.io/css-houdini-pixel-box/)
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS/paintWorklet_static)
 - [副产物: super-gif](https://github.com/maomentai817/super-gif)
+
+## 🖋️ 字体 Fonts
+
+Pixel UI 采用以下字体 (经 fontforge 修改)
+
+| Language  | Font                                                               |
+| --------- | ------------------------------------------------------------------ |
+| English   | [Kongtext](https://www.dafont.com/kongtext.font)                   |
+| Chinese   | [Zpix (最像素)](https://github.com/SolidZORO/zpix-pixel-font)      |
