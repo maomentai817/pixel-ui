@@ -1,9 +1,15 @@
 {
   "name": "@mmt817/pixel-ui",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Pixel-UI Components library by Vue3 + TS",
   "type": "module",
-  "keywords": ["pixel", "pixel-ui", "components", "vue3", "library"],
+  "keywords": [
+    "pixel",
+    "pixel-ui",
+    "components",
+    "vue3",
+    "library"
+  ],
   "author": "mmt817",
   "license": "MIT",
   "homepage": "https://maomentai817.github.io/pixel-ui/",
