@@ -17,7 +17,7 @@ describe('PixelBox Paint Worklet', () => {
       clearRect: vi.fn(),
       moveTo: vi.fn(),
       lineTo: vi.fn(),
-      stroke: vi.fn(),
+      stroke: vi.fn()
       // set fillStyle(_val) { },
       // set strokeStyle(_val) { },
       // set lineWidth(_val) { }
@@ -82,7 +82,7 @@ describe('PixelBox Paint Worklet', () => {
       'invalid-position'
     ]
 
-    positions.forEach(position => {
+    positions.forEach((position) => {
       props.set('--px-bg-shadow-position', position)
       const paint = new PixelBox()
       paint.paint(ctx, size, {
@@ -126,7 +126,7 @@ describe('PixelBox Paint Worklet', () => {
   it('should fallback to default values for shadow, color, radius, border and button-group props', () => {
     // 删除或设置无效的属性值，确保使用默认值路径
     props.delete('--px-bg-shadow-position') // 空字符串 ''
-    props.set('--px-border-color', '')      // 空字符串 ''
+    props.set('--px-border-color', '') // 空字符串 ''
     props.set('--px-bg-color', null as any) // null -> .toString() 报错 → 用 ?.toString()
     props.set('--px-bg-shadow-color', undefined as any) // undefined
 
@@ -145,7 +145,7 @@ describe('PixelBox Paint Worklet', () => {
     // button-group flag 相关
     props.delete('--px-button-group-flag')
     props.delete('--px-button-group-first')
-    props.set('--px-button-group-last', null as any)  // null
+    props.set('--px-button-group-last', null as any) // null
     props.delete('--px-button-single')
 
     const paint = new PixelBox()
@@ -157,7 +157,6 @@ describe('PixelBox Paint Worklet', () => {
       } as any)
     ).not.toThrow()
   })
-
 
   it('should parse all button group related flags', () => {
     props.set('--px-button-group-flag', '1')
@@ -317,14 +316,14 @@ describe('PixelBox Paint Worklet', () => {
     } as any)
 
     const calls = ctx.moveTo.mock.calls
-    const shadowRelatedCalls = calls.filter(([x, y]: [number, number]) =>
-      // 你可以根据 shadow 绘制的特定位置过滤
-      (x === 0 && y === 3) || (x === 3 && y === 50) || (x === 100 && y === 3)
+    const shadowRelatedCalls = calls.filter(
+      ([x, y]: [number, number]) =>
+        // 你可以根据 shadow 绘制的特定位置过滤
+        (x === 0 && y === 3) || (x === 3 && y === 50) || (x === 100 && y === 3)
     )
 
     expect(shadowRelatedCalls.length).toBe(4)
   })
-
 
   it('should draw top line with left margin when buttonGroupFirst is active', () => {
     props.set('--px-button-group-first', '1')
@@ -352,7 +351,7 @@ describe('PixelBox Paint Worklet', () => {
 
   it('should register pixelbox when registerPaint is available', () => {
     const mockRegisterPaint = vi.fn()
-      ; (globalThis as any).registerPaint = mockRegisterPaint
+    ;(globalThis as any).registerPaint = mockRegisterPaint
 
     registerPixelBox()
 

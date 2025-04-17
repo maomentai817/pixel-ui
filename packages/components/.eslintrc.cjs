@@ -3,12 +3,12 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
+  ignores: ['**/dist', 'coverage'],
   extends: [
     'plugin:vue/vue3-essential',
     '@vue/eslint-config-typescript/recommended',
     'eslint:recommended',
-    '@vue/eslint-config-prettier',
-    './worklets/dist'
+    '@vue/eslint-config-prettier'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {

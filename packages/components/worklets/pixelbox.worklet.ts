@@ -23,15 +23,26 @@ export class PixelBox {
     ]
   }
 
-  paint(ctx: PaintRenderingContext2D, size: { width: number; height: number }, props: StylePropertyMap): void {
+  paint(
+    ctx: PaintRenderingContext2D,
+    size: { width: number; height: number },
+    props: StylePropertyMap
+  ): void {
     const pbBorder = parseInt(props.get(`--px-border`)?.toString() ?? '0') * 2
-    const pbBorderRadius = parseInt(props.get(`--px-border-radius`)?.toString() ?? '0')
-    const pbBackgroundShadowBorder = parseInt(props.get(`--px-bg-shadow-border`)?.toString() ?? '0') * 2
+    const pbBorderRadius = parseInt(
+      props.get(`--px-border-radius`)?.toString() ?? '0'
+    )
+    const pbBackgroundShadowBorder =
+      parseInt(props.get(`--px-bg-shadow-border`)?.toString() ?? '0') * 2
 
-    const pbBackgroundShadowPosition = props.get(`--px-bg-shadow-position`)?.toString().trim() || ''
-    const pbBorderColor = props.get(`--px-border-color`)?.toString().trim() || ''
-    const pbBackgroundColor = props.get(`--px-bg-color`)?.toString().trim() || ''
-    const pbBackgroundShadowColor = props.get(`--px-bg-shadow-color`)?.toString().trim() || ''
+    const pbBackgroundShadowPosition =
+      props.get(`--px-bg-shadow-position`)?.toString().trim() || ''
+    const pbBorderColor =
+      props.get(`--px-border-color`)?.toString().trim() || ''
+    const pbBackgroundColor =
+      props.get(`--px-bg-color`)?.toString().trim() || ''
+    const pbBackgroundShadowColor =
+      props.get(`--px-bg-shadow-color`)?.toString().trim() || ''
 
     // button-group border-radius control
     const lt = parseInt(props.get(`--px-border-radius-lt`)?.toString() ?? '0')
@@ -45,16 +56,24 @@ export class PixelBox {
     const pbBorderB = parseInt(props.get(`--px-border-b`)?.toString() ?? '0')
     const pbBorderL = parseInt(props.get(`--px-border-l`)?.toString() ?? '0')
 
-    const buttonGroupFlag = parseInt(props.get(`--px-button-group-flag`)?.toString() ?? '0')
-    const buttonGroupFirst = parseInt(props.get(`--px-button-group-first`)?.toString() ?? '0')
-    const buttonGroupLast = parseInt(props.get(`--px-button-group-last`)?.toString() ?? '0')
-    const buttonSingle = parseInt(props.get(`--px-button-single`)?.toString() ?? '0')
+    const buttonGroupFlag = parseInt(
+      props.get(`--px-button-group-flag`)?.toString() ?? '0'
+    )
+    const buttonGroupFirst = parseInt(
+      props.get(`--px-button-group-first`)?.toString() ?? '0'
+    )
+    const buttonGroupLast = parseInt(
+      props.get(`--px-button-group-last`)?.toString() ?? '0'
+    )
+    const buttonSingle = parseInt(
+      props.get(`--px-button-single`)?.toString() ?? '0'
+    )
 
     ctx.fillStyle = pbBackgroundColor
 
     const startY = pbBorder / 2
     const contentHeight = size.height - pbBorder
-    
+
     // button 整体背景区域
     let startX
     let contentWidth
@@ -80,31 +99,31 @@ export class PixelBox {
           ctx.moveTo(
             0,
             size.height -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4
           )
           ctx.lineTo(
             size.width - pbBorder / 2,
             size.height -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4
           )
 
           /* Right Line */
           ctx.moveTo(
             size.width -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4,
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4,
             pbBorder / 2
           )
           ctx.lineTo(
             size.width -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4,
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
           )
 
@@ -114,29 +133,29 @@ export class PixelBox {
           ctx.moveTo(
             pbBorder / 2,
             size.height -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4
           )
           ctx.lineTo(
             size.width - pbBorder / 2,
             size.height -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4
           )
 
           /* Left Line */
           ctx.moveTo(
             (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4,
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4,
             pbBorder / 2
           )
           ctx.lineTo(
             (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4,
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
           )
 
@@ -146,28 +165,28 @@ export class PixelBox {
           ctx.moveTo(
             0,
             pbBorder / 2 +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4
           )
           ctx.lineTo(
             size.width - pbBorder / 2,
             pbBorder / 2 +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4
           )
           /* Right Line */
           ctx.moveTo(
             size.width -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4,
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4,
             pbBorder / 2
           )
           ctx.lineTo(
             size.width -
-            pbBorder / 2 -
-            pbBackgroundShadowBorder / 2 +
-            pbBackgroundShadowBorder / 4,
+              pbBorder / 2 -
+              pbBackgroundShadowBorder / 2 +
+              pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
           )
           break
@@ -176,26 +195,26 @@ export class PixelBox {
           ctx.moveTo(
             0,
             pbBorder / 2 +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4
           )
           ctx.lineTo(
             size.width - pbBorder / 2,
             pbBorder / 2 +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4
           )
           /* Left Line */
           ctx.moveTo(
             (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4,
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4,
             pbBorder / 2
           )
           ctx.lineTo(
             (buttonGroupFirst || buttonSingle ? pbBorder / 2 : 0) +
-            pbBackgroundShadowBorder / 2 -
-            pbBackgroundShadowBorder / 4,
+              pbBackgroundShadowBorder / 2 -
+              pbBackgroundShadowBorder / 4,
             size.height - pbBorder / 2
           )
           break
@@ -218,12 +237,12 @@ export class PixelBox {
             case 'bottom-right':
               ctx.fillRect(
                 size.width -
-                pbBorder / 2 -
-                (pbBorder * (i - 1)) / 2 -
-                pbBackgroundShadowBorder / 2,
+                  pbBorder / 2 -
+                  (pbBorder * (i - 1)) / 2 -
+                  pbBackgroundShadowBorder / 2,
                 size.height -
-                (pbBorder * (rb - i + 2)) / 2 -
-                pbBackgroundShadowBorder / 2,
+                  (pbBorder * (rb - i + 2)) / 2 -
+                  pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2
               )
@@ -232,8 +251,8 @@ export class PixelBox {
               ctx.fillRect(
                 (pbBorder * i) / 2,
                 size.height -
-                (pbBorder * (lb - i + 2)) / 2 -
-                pbBackgroundShadowBorder / 2,
+                  (pbBorder * (lb - i + 2)) / 2 -
+                  pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2
               )
@@ -241,8 +260,8 @@ export class PixelBox {
             case 'top-right':
               ctx.fillRect(
                 size.width -
-                (pbBorder * (rt - i + 2)) / 2 -
-                pbBackgroundShadowBorder / 2,
+                  (pbBorder * (rt - i + 2)) / 2 -
+                  pbBackgroundShadowBorder / 2,
                 (pbBorder * i) / 2,
                 pbBackgroundShadowBorder / 2,
                 pbBackgroundShadowBorder / 2

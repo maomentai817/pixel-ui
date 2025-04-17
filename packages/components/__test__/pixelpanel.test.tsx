@@ -4,14 +4,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 // pixelpanel 类声明
 import { PixelPanel, registerPixelPanel } from '../worklets/pixelpanel.worklet'
 
-function createMockProps(values: Record<string, string | number>): StylePropertyMap {
+function createMockProps(
+  values: Record<string, string | number>
+): StylePropertyMap {
   return {
     get: (key: string) => {
       const val = values[key]
-      return val !== undefined
-        ? { toString: () => val.toString() }
-        : null
-    },
+      return val !== undefined ? { toString: () => val.toString() } : null
+    }
   } as unknown as StylePropertyMap
 }
 
@@ -31,7 +31,7 @@ describe('PixelPanel PaintWorklet', () => {
       closePath: vi.fn(),
       moveTo: vi.fn(),
       lineTo: vi.fn(),
-      clearRect: vi.fn(),
+      clearRect: vi.fn()
     }
   })
 
@@ -53,7 +53,7 @@ describe('PixelPanel PaintWorklet', () => {
       '--px-bg-color': '#abcdef',
       '--px-corner-size': 6,
       '--px-bg-shadow-color': 'rgba(0,0,0,0.5)',
-      '--px-border-shadow': 8,
+      '--px-border-shadow': 8
     })
 
     const panel = new PixelPanel()
@@ -68,7 +68,7 @@ describe('PixelPanel PaintWorklet', () => {
   it('should skip drawing border if border is 0', () => {
     const props = createMockProps({
       '--px-border': 0,
-      '--px-bg-color': '#fff',
+      '--px-bg-color': '#fff'
     })
 
     const panel = new PixelPanel()
@@ -95,7 +95,7 @@ describe('PixelPanel PaintWorklet', () => {
       '--px-border-shadow': 6,
       '--px-corner-size': 4,
       '--px-bg-color': '#000',
-      '--px-bg-shadow-color': 'rgba(0,0,0,0.3)',
+      '--px-bg-shadow-color': 'rgba(0,0,0,0.3)'
     })
 
     const panel = new PixelPanel()
@@ -107,11 +107,10 @@ describe('PixelPanel PaintWorklet', () => {
 
   it('should register pixelpanel when registerPaint is available', () => {
     const mockRegisterPaint = vi.fn()
-      ; (globalThis as any).registerPaint = mockRegisterPaint
+    ;(globalThis as any).registerPaint = mockRegisterPaint
 
     registerPixelPanel()
 
     expect(mockRegisterPaint).toHaveBeenCalledWith('pixelpanel', PixelPanel)
   })
 })
-

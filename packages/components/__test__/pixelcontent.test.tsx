@@ -1,15 +1,18 @@
 // __test__/pixelcontent.test.tsx
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { PixelContent, registerPixelContent } from '../worklets/pixelcontent.worklet'
+import {
+  PixelContent,
+  registerPixelContent
+} from '../worklets/pixelcontent.worklet'
 
-function createMockProps(values: Record<string, string | number>): StylePropertyMap {
+function createMockProps(
+  values: Record<string, string | number>
+): StylePropertyMap {
   return {
     get: (key: string) => {
       const val = values[key]
-      return val !== undefined
-        ? { toString: () => val.toString() }
-        : null
-    },
+      return val !== undefined ? { toString: () => val.toString() } : null
+    }
   } as unknown as StylePropertyMap
 }
 
@@ -29,7 +32,7 @@ describe('PixelContent PaintWorklet', () => {
       closePath: vi.fn(),
       moveTo: vi.fn(),
       lineTo: vi.fn(),
-      clearRect: vi.fn(),
+      clearRect: vi.fn()
     }
   })
 
@@ -47,7 +50,7 @@ describe('PixelContent PaintWorklet', () => {
   it('should fill background and skip drawing if border is 0', () => {
     const props = createMockProps({
       '--px-border': 0,
-      '--px-bg-color': '#fff',
+      '--px-bg-color': '#fff'
     })
 
     const content = new PixelContent()
@@ -66,7 +69,7 @@ describe('PixelContent PaintWorklet', () => {
       '--px-bg-color': '#abcdef',
       '--px-corner-size': 6,
       '--px-bg-shadow-color': 'rgba(0,0,0,0.5)',
-      '--px-border-shadow': 4,
+      '--px-border-shadow': 4
     })
 
     const content = new PixelContent()
@@ -93,7 +96,7 @@ describe('PixelContent PaintWorklet', () => {
 
   it('should register pixelcontent when registerPaint is available', () => {
     const mockRegisterPaint = vi.fn()
-      ; (globalThis as any).registerPaint = mockRegisterPaint
+    ;(globalThis as any).registerPaint = mockRegisterPaint
 
     registerPixelContent()
 
