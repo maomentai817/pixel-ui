@@ -3,8 +3,8 @@ title: Text
 description: Text 组件文档
 
 next:
-  link: /components/card
-  text: Card 卡片
+  link: /components/badge
+  text: Badge 徽章
 
 prev:
   link: /components/icon

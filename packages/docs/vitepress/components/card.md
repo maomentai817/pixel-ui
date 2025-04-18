@@ -7,8 +7,8 @@ next:
   text: Collapse 折叠面板
 
 prev:
-  link: /components/text
-  text: Text 文本
+  link: /components/badge
+  text: Badge 徽章
 ---
 
 # Card 卡片

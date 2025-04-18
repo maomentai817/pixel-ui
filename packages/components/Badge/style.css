@@ -33,6 +33,7 @@
   padding: var(--px-badge-padding);
   line-height: 1;
   white-space: nowrap;
+  z-index: 99;
 
   /* css houdini paint */
   background-image: paint(pixelbox);
