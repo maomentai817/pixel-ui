@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 
 const content = computed<string>(() => { 
   if (props.isDot) return ''
+  if (isNumber(props.value) && props.value === 0 && !props.showZero) return ''
   if (isNumber(props.value) && isNumber(props.max)) { 
     return props.value > props.max ? `${props.max}+` : `${props.value}`
   }
