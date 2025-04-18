@@ -61,7 +61,7 @@ demo-preview=../demo/Badge/Dot.vue
 demo-preview=../demo/Badge/Offset.vue
 :::
 
-## Card API
+## Badge API
 
 ### Props
 

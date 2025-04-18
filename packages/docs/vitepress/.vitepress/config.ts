@@ -63,7 +63,10 @@ export default defineConfig({
         ]
       },
     ],
-
+    outline: {
+      level: [2, 3],
+      label: "CONTENTS",
+    },
     socialLinks: [
       { icon: "github", link: "https://github.com/maomentai817/pixel-ui" },
     ],
