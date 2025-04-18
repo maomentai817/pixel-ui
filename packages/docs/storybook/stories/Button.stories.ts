@@ -6,7 +6,7 @@ import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 
 const meta: Meta<typeof PxButton> = {
-  title: 'Atoms/Button',
+  title: 'Basic/Button',
   component: PxButton,
   tags: ['autodocs'],
   argTypes: {

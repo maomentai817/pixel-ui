@@ -4,7 +4,7 @@ import { PxCard, PxButton, PxIcon, PxText } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Card.css'
 
 const meta: Meta<typeof PxCard> = {
-  title: 'Atoms/Card',
+  title: 'Data/Card',
   component: PxCard,
   tags: ['autodocs'],
   argTypes: {

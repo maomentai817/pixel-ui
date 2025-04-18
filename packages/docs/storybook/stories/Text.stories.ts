@@ -5,7 +5,7 @@ import type { TextProps } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Text.css'
 
 const meta: Meta<typeof PxText> = {
-  title: 'Atoms/Text',
+  title: 'Basic/Text',
   component: PxText,
   tags: ['autodocs'],
   argTypes: {

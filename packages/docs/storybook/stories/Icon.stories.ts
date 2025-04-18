@@ -3,7 +3,7 @@ import { PxIcon } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Icon.css'
 
 const meta: Meta<typeof PxIcon> = {
-  title: 'Atoms/Icon',
+  title: 'Basic/Icon',
   component: PxIcon,
   tags: ['autodocs'],
   argTypes: {
