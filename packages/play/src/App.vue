@@ -224,6 +224,43 @@ const stages = [
       />
     </div>
   </div>
+  <div class="flex mt-20 gap-10">
+    <px-badge :value="102" class="item" :max="999">
+      <px-button>comments</px-button>
+    </px-badge>
+    <px-badge :value="3" class="item">
+      <px-button>replies</px-button>
+    </px-badge>
+    <px-badge :value="0" class="item" type="primary">
+      <px-button>comments</px-button>
+    </px-badge>
+    <px-badge :value="2" class="item" type="warning">
+      <px-button>replies</px-button>
+    </px-badge>
+    <px-badge :value="2" class="item" type="info">
+      <px-button>replies</px-button>
+    </px-badge>
+  </div>
+  <div class="flex mt-20 gap-10">
+    <px-badge value="new" class="item" color="#626aef">
+      <px-button>custom background</px-button>
+    </px-badge>
+    <px-badge value="99" class="item" color="#626aef">
+      <px-button>custom background</px-button>
+      <template #content="{ value }">
+        <div class="custom-content">
+          <px-icon icon="cog"></px-icon>
+          <span>{{ value }}</span>
+        </div>
+      </template>
+    </px-badge>
+    <px-badge :value="1" class="item" is-dot>
+      <px-button>custom background</px-button>
+    </px-badge>
+    <px-badge :value="1" class="item" is-dot :offset="[10, 5]">
+      <px-button>custom background</px-button>
+    </px-badge>
+  </div>
   <div class="h-100"></div>
 </template>
 

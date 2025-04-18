@@ -1,4 +1,15 @@
-import { PxButton, PxButtonGroup, PxIcon, PxCard, PxText, PxCollapse, PxCollapseItem, PxAlert, PxAnimationFrame } from '@pixel-ui/components'
+import {
+  PxButton,
+  PxButtonGroup,
+  PxIcon,
+  PxCard,
+  PxText,
+  PxCollapse,
+  PxCollapseItem,
+  PxAlert,
+  PxAnimationFrame,
+  PxBadge
+} from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
 // export an array of components with install method
@@ -11,5 +22,6 @@ export default [
   PxCollapse,
   PxCollapseItem,
   PxAlert,
-  PxAnimationFrame
+  PxAnimationFrame,
+  PxBadge
 ] as Plugin[]
