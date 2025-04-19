@@ -126,7 +126,7 @@ describe('Badge/index', () => {
 })
 
 // css houdini paint worklet test
-describe('PxCard - CSS Houdini Paint Worklet', () => {
+describe('PxBadge - CSS Houdini Paint Worklet', () => {
   const originalCSS = (globalThis as any).CSS
 
   afterEach(() => {

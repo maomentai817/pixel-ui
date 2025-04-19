@@ -174,7 +174,7 @@ describe('Alert/index', () => {
 })
 
 // css houdini paint worklet test
-describe('PxCard - CSS Houdini Paint Worklet', () => {
+describe('PxAlert - CSS Houdini Paint Worklet', () => {
   const originalCSS = (globalThis as any).CSS
 
   afterEach(() => {

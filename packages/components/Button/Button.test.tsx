@@ -242,7 +242,7 @@ describe('Button.vue', () => {
   })
 
   //! CSS Paint Worklets API 测试
-  describe('PxCard - CSS Houdini Paint Worklet', () => {
+  describe('PxButton - CSS Houdini Paint Worklet', () => {
     const originalCSS = (globalThis as any).CSS
 
     afterEach(() => {
