@@ -14,6 +14,10 @@ const stages = [
   { type: 'loop', start: 31, end: 41 },
   { type: 'once', start: 42, end: 52 }
 ]
+
+const format = (percentage: number) => {
+  return percentage === 100 ? 'Full' : `${percentage}%`
+}
 </script>
 
 <template>
@@ -262,7 +266,44 @@ const stages = [
     </px-badge>
   </div>
   <div class="w-600 mt-20">
-    <px-progress :percentage="50" />
+    <px-progress class="mb-15" :percentage="50" />
+    <px-progress class="mb-15" :percentage="100" :format="format" />
+    <px-progress class="mb-15" :percentage="100" status="success" />
+    <px-progress class="mb-15" :percentage="100" status="warning" />
+    <px-progress class="mb-15" :percentage="50" status="danger" />
+  </div>
+  <div class="w-600 mt-20">
+    <px-progress
+      class="mb-15"
+      :text-inside="true"
+      :stroke-width="26"
+      :percentage="70"
+    />
+    <px-progress
+      class="mb-15"
+      :text-inside="true"
+      :stroke-width="24"
+      :percentage="100"
+      status="success"
+    />
+    <px-progress
+      class="mb-15"
+      :text-inside="true"
+      :stroke-width="22"
+      :percentage="80"
+      status="warning"
+    />
+    <px-progress
+      class="mb-15"
+      :text-inside="true"
+      :stroke-width="20"
+      :percentage="50"
+      status="danger"
+    />
+    <px-progress color="#626aef" :percentage="75" />
+    <px-progress color="#626aef" :percentage="75" :text-inside="true"
+      >content</px-progress
+    >
   </div>
   <div class="h-100"></div>
 </template>

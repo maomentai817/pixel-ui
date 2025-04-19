@@ -1,8 +1,10 @@
 .px-progress {
-  --px-progress-text-size: var(--px-font-size-base);
+  --px-progress-text-size: 10px;
   --px-progress-text-color: var(--px-text-color-base);
-  --px-progress-bar-height: 6px;
+  --px-progress-bar-height: 12px;
   --px-progress-bar-container-color: #ebeef5;
+  --px-progress-bar-gap: 2px;
+  --px-progress-bar-bg-color: var(--px-bg-color-primary);
 }
 
 .px-progress {
@@ -15,6 +17,7 @@
 .px-progress-bar {
   flex-grow: 1;
   box-sizing: border-box;
+  font-size: var(--px-progress-text-size);
 }
 
 .px-progress-bar__outer {
@@ -22,6 +25,7 @@
   overflow: hidden;
   position: relative;
   vertical-align: middle;
+  box-sizing: border-box;
   background: var(--px-progress-bar-container-color);
 }
 
@@ -29,14 +33,23 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  text-align: right;
+  height: calc(100% - 2 * var(--px-progress-bar-gap));
   line-height: 1;
+  inset: var(--px-progress-bar-gap);
   white-space: nowrap;
   transition: width 0.6s ease;
 
   /* css houdini paint */
   background-color: var(--px-progress-bar-bg-color);
+}
+
+.px-progress-bar__inner-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 5px;
+  color: var(--px-text-color-white);
 }
 
 .px-progress__text {
@@ -45,4 +58,16 @@
   margin-left: 5px;
   min-width: 50px;
   line-height: 1;
+}
+
+.is-success {
+  --px-progress-bar-bg-color: var(--px-bg-color-success);
+}
+
+.is-warning {
+  --px-progress-bar-bg-color: var(--px-bg-color-warning);
+}
+
+.is-danger {
+  --px-progress-bar-bg-color: var(--px-bg-color-danger);
 }

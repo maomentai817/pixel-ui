@@ -9,7 +9,7 @@ export interface ProgressProps {
   percentage: number
   /**
    * @property {number} strokeWidth
-   * @default 6
+   * @default 12
    * @description 进度条宽度
    */
   strokeWidth?: number
