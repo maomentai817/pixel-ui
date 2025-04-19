@@ -1,0 +1,48 @@
+.px-progress {
+  --px-progress-text-size: var(--px-font-size-base);
+  --px-progress-text-color: var(--px-text-color-base);
+  --px-progress-bar-height: 6px;
+  --px-progress-bar-container-color: #ebeef5;
+}
+
+.px-progress {
+  position: relative;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.px-progress-bar {
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.px-progress-bar__outer {
+  height: var(--px-progress-bar-height);
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  background: var(--px-progress-bar-container-color);
+}
+
+.px-progress-bar__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  text-align: right;
+  line-height: 1;
+  white-space: nowrap;
+  transition: width 0.6s ease;
+
+  /* css houdini paint */
+  background-color: var(--px-progress-bar-bg-color);
+}
+
+.px-progress__text {
+  font-size: var(--px-progress-text-size);
+  color: var(--px-progress-text-color);
+  margin-left: 5px;
+  min-width: 50px;
+  line-height: 1;
+}

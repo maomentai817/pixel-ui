@@ -261,6 +261,9 @@ const stages = [
       <px-button>custom background</px-button>
     </px-badge>
   </div>
+  <div class="w-600 mt-20">
+    <px-progress :percentage="50" />
+  </div>
   <div class="h-100"></div>
 </template>
 

@@ -8,7 +8,8 @@ import {
   PxCollapseItem,
   PxAlert,
   PxAnimationFrame,
-  PxBadge
+  PxBadge,
+  PxProgress
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -23,5 +24,6 @@ export default [
   PxCollapseItem,
   PxAlert,
   PxAnimationFrame,
-  PxBadge
+  PxBadge,
+  PxProgress
 ] as Plugin[]
