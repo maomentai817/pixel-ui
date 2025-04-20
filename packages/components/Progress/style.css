@@ -1,9 +1,9 @@
 .px-progress {
   --px-progress-text-size: 10px;
   --px-progress-text-color: var(--px-text-color-base);
-  --px-progress-bar-height: 12px;
+  --px-progress-bar-height: 16px;
   --px-progress-bar-container-color: #ebeef5;
-  --px-progress-bar-gap: 2px;
+  --px-progress-bar-gap: 4px;
   --px-progress-bar-bg-color: var(--px-bg-color-primary);
 }
 
@@ -26,7 +26,21 @@
   position: relative;
   vertical-align: middle;
   box-sizing: border-box;
-  background: var(--px-progress-bar-container-color);
+
+  /* css houdini paint */
+  background-image: paint(pixelbox);
+  --px-border: 2px;
+  --px-border-t: 2px;
+  --px-border-r: 2px;
+  --px-border-b: 2px;
+  --px-border-l: 2px;
+  --px-border-radius: 0px;
+  --px-border-radius-lt: 0px;
+  --px-border-radius-rt: 0px;
+  --px-border-radius-lb: 0px;
+  --px-border-radius-rb: 0px;
+  --px-bg-color: var(--px-progress-bar-container-color);
+  --px-border-color: var(--px-border-color-base);
 }
 
 .px-progress-bar__inner {
@@ -40,7 +54,19 @@
   transition: width 0.6s ease;
 
   /* css houdini paint */
-  background-color: var(--px-progress-bar-bg-color);
+  background-image: paint(pixelbox);
+  --px-border: 0px;
+  --px-border-t: 0px;
+  --px-border-r: 0px;
+  --px-border-b: 0px;
+  --px-border-l: 0px;
+  --px-border-radius: 0px;
+  --px-border-radius-lt: 0px;
+  --px-border-radius-rt: 0px;
+  --px-border-radius-lb: 0px;
+  --px-border-radius-rb: 0px;
+  --px-bg-color: var(--px-progress-bar-bg-color);
+  --px-border-color: var(--px-progress-bar-bg-color);
 }
 
 .px-progress-bar__inner-text {

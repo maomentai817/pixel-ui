@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { debugWarn } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
+
+import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxProgress' as const
 defineOptions({
@@ -9,7 +12,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   percentage: 0,
-  strokeWidth: 12,
+  strokeWidth: 16,
   textInside: false,
   status: 'primary',
   indeterminate: false,
@@ -24,7 +27,7 @@ const content = computed(() => {
 })
 
 // 限制 storkeWidth
-const strokeWidth = computed(() => Math.max(props.strokeWidth, 12))
+const strokeWidth = computed(() => Math.max(props.strokeWidth, 16))
 
 const statusColorMap: Record<string, string> = {
   primary: 'var(--px-bg-color-primary, #209cee)',
@@ -34,7 +37,7 @@ const statusColorMap: Record<string, string> = {
 }
 
 const progressBarOuterStyle = computed(() => { 
-  const gapValue = strokeWidth.value / 6
+  const gapValue = Math.max(strokeWidth.value / 6, 4)
   return { 
     '--px-progress-bar-height': `${strokeWidth.value}px`,
     '--px-progress-bar-gap': `${gapValue}px`
@@ -62,6 +65,27 @@ const progressBarInnerStyle = computed(() => {
   }
 
   return style
+})
+
+// CSS Houdini Paint Worklet
+const paint = () => {
+  try {
+    if ('paintWorklet' in CSS) {
+      ;(CSS as any).paintWorklet.addModule(workletURL)
+    } else {
+      debugWarn(
+        COMP_NAME,
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    }
+    // (CSS as any).paintWorklet.addModule(workletURL)
+  } catch (error) {
+    console.error('Error loading Paint Worklet:', error)
+  }
+}
+
+onMounted(async () => {
+  paint()
 })
 </script>
 
