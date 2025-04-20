@@ -309,9 +309,17 @@ const format = (percentage: number) => {
     <px-progress class="mb-15" :percentage="50" :stroke-width="24" striped />
     <px-progress
       class="mb-15"
+      :percentage="50"
+      :stroke-width="24"
+      striped
+      color="#626aef"
+    />
+    <px-progress
+      class="mb-15"
       :percentage="75"
       :stroke-width="24"
       striped
+      striped-flow
       status="success"
     />
     <px-progress
@@ -327,6 +335,13 @@ const format = (percentage: number) => {
       :stroke-width="24"
       striped
       striped-flow
+      status="danger"
+    />
+    <px-progress
+      class="mb-15"
+      :percentage="30"
+      :stroke-width="24"
+      checker
       status="danger"
     />
   </div>

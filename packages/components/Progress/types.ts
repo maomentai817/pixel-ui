@@ -25,15 +25,9 @@ export interface ProgressProps {
    */
   status?: ProgressType
   /**
-   * @property {boolean} indeterminate
-   * @default false
-   * @description 是否展示动画
-   */
-  indeterminate?: boolean
-  /**
    * @property {number} duration
-   * @default 3
-   * @description 动画持续时间/条纹进度条流速
+   * @default 4
+   * @description 条纹进度条流速
    */
   duration?: number
   /**
@@ -64,4 +58,10 @@ export interface ProgressProps {
    * @description 是否展示条纹流速
    */
   stripedFlow?: boolean
+  /**
+   * @property {boolean} checker
+   * @default false
+   * @description 是否展示棋盘
+   */
+  checker?: boolean
 }

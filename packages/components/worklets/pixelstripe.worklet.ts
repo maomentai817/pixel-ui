@@ -41,7 +41,8 @@ export class PixelStripe implements PaintWorklet {
         } else if (mode === 'stripe') {
           const stripePeriod = unitSize * 4
           const stripeWidth = stripePeriod * ratio
-          const diag = (px + py + offset) % stripePeriod
+          // const diag = (px - py + offset) % stripePeriod
+          const diag = ((px - py + offset) % stripePeriod + stripePeriod) % stripePeriod
           isStripe = diag < stripeWidth
         }
 

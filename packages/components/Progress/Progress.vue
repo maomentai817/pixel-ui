@@ -16,11 +16,11 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   strokeWidth: 16,
   textInside: false,
   status: 'primary',
-  indeterminate: false,
-  duration: 3,
+  duration: 4,
   showText: true,
   striped: false,
-  stripedFlow: false
+  stripedFlow: false,
+  checker: false
 })
 
 const content = computed(() => { 
@@ -87,7 +87,12 @@ let rafId = 0
 const stripePeriod = 16
 
 const updateStripeFlow = () => {
-  stripeOffset = (stripeOffset + 1) % stripePeriod
+  const duration = props.duration
+  const speed = stripePeriod / duration / 8
+
+  // stripeOffset = (stripeOffset + speed) % stripePeriod
+  stripeOffset = (stripeOffset - speed + stripePeriod) % stripePeriod
+
   progressBarInnerRef.value?.style.setProperty('--px-stripe-offset', `${stripeOffset}px`)
   rafId = requestAnimationFrame(updateStripeFlow)
 }
@@ -120,9 +125,9 @@ onBeforeUnmount(() => {
         <div
           class="px-progress-bar__inner"
           :class="{
-            'is-indeterminate': indeterminate,
             'is-striped': striped,
             'is-striped-flow': stripedFlow,
+            'is-checker': checker,
             [`is-${status}`]: status
           }"
           :style="progressBarInnerStyle"
