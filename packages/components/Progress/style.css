@@ -5,6 +5,7 @@
   --px-progress-bar-container-color: #ebeef5;
   --px-progress-bar-gap: 4px;
   --px-progress-bar-bg-color: var(--px-bg-color-primary);
+  --px-progress-bar-bg-shadow-color: var(--px-bg-shadow-color-primary);
 }
 
 .px-progress {
@@ -69,6 +70,14 @@
   --px-border-color: var(--px-progress-bar-bg-color);
 }
 
+.px-progress-bar__inner.is-striped {
+  /* css houdini paint */
+  background-image: paint(pixelstripe);
+  --px-stripe-color-1: var(--px-progress-bar-bg-color);
+  --px-stripe-color-2: var(--px-progress-bar-bg-shadow-color);
+  --pixel-stripe-offset: 0;
+}
+
 .px-progress-bar__inner-text {
   height: 100%;
   display: flex;
@@ -88,12 +97,28 @@
 
 .is-success {
   --px-progress-bar-bg-color: var(--px-bg-color-success);
+  --px-progress-bar-bg-shadow-color: var(--px-bg-shadow-color-success);
 }
 
 .is-warning {
   --px-progress-bar-bg-color: var(--px-bg-color-warning);
+  --px-progress-bar-bg-shadow-color: var(--px-bg-shadow-color-warning);
 }
 
 .is-danger {
   --px-progress-bar-bg-color: var(--px-bg-color-danger);
+  --px-progress-bar-bg-shadow-color: var(--px-bg-shadow-color-danger);
+}
+
+.is-striped-flow {
+  animation: stripe-flow 30s linear infinite;
+}
+
+@keyframes stripe-flow {
+  from {
+    --px-stripe-offset: 0;
+  }
+  to {
+    --px-stripe-offset: 1000;
+  }
 }

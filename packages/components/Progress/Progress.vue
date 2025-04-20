@@ -3,7 +3,8 @@ import { computed, onMounted } from 'vue'
 import { debugWarn } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
 
-import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
+import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
+import workletStripeURL from '../worklets/dist/pixelstripe.worklet.js?url'
 
 const COMP_NAME = 'PxProgress' as const
 defineOptions({
@@ -59,11 +60,6 @@ const progressBarInnerStyle = computed(() => {
 
   style['--px-progress-bar-bg-color'] = color
 
-  // ! flow animation
-  if (props.stripedFlow) {
-    style.animation = `px-progress-stripe-flow ${props.duration}s linear infinite`
-  }
-
   return style
 })
 
@@ -71,7 +67,8 @@ const progressBarInnerStyle = computed(() => {
 const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
+      ;(CSS as any).paintWorklet.addModule(workletBoxURL)
+      ;(CSS as any).paintWorklet.addModule(workletStripeURL)
     } else {
       debugWarn(
         COMP_NAME,

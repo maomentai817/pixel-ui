@@ -305,6 +305,31 @@ const format = (percentage: number) => {
       >content</px-progress
     >
   </div>
+  <div class="w-600 mt-20">
+    <px-progress class="mb-15" :percentage="50" :stroke-width="24" striped />
+    <px-progress
+      class="mb-15"
+      :percentage="75"
+      :stroke-width="24"
+      striped
+      status="success"
+    />
+    <px-progress
+      class="mb-15"
+      :percentage="100"
+      :stroke-width="24"
+      striped
+      status="warning"
+    />
+    <px-progress
+      class="mb-15"
+      :percentage="30"
+      :stroke-width="24"
+      striped
+      striped-flow
+      status="danger"
+    />
+  </div>
   <div class="h-100"></div>
 </template>
 
