@@ -76,6 +76,7 @@
   --px-stripe-color-1: var(--px-progress-bar-bg-color);
   --px-stripe-color-2: var(--px-progress-bar-bg-shadow-color);
   --pixel-stripe-offset: 0;
+  --px-stripe-ratio: 0.5;
 }
 
 .px-progress-bar__inner-text {
@@ -108,17 +109,4 @@
 .is-danger {
   --px-progress-bar-bg-color: var(--px-bg-color-danger);
   --px-progress-bar-bg-shadow-color: var(--px-bg-shadow-color-danger);
-}
-
-.is-striped-flow {
-  animation: stripe-flow 30s linear infinite;
-}
-
-@keyframes stripe-flow {
-  from {
-    --px-stripe-offset: 0;
-  }
-  to {
-    --px-stripe-offset: 1000;
-  }
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { debugWarn } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
 
@@ -81,8 +81,29 @@ const paint = () => {
   }
 }
 
+const progressBarInnerRef = ref()
+let stripeOffset = 0
+let rafId = 0
+const stripePeriod = 16
+
+const updateStripeFlow = () => {
+  stripeOffset = (stripeOffset + 1) % stripePeriod
+  progressBarInnerRef.value?.style.setProperty('--px-stripe-offset', `${stripeOffset}px`)
+  rafId = requestAnimationFrame(updateStripeFlow)
+}
+
+const stopStripeFlow = () => {
+  cancelAnimationFrame(rafId)
+}
+
 onMounted(async () => {
   paint()
+
+  props.stripedFlow && updateStripeFlow()
+})
+
+onBeforeUnmount(() => {
+  stopStripeFlow()
 })
 </script>
 
@@ -105,6 +126,7 @@ onMounted(async () => {
             [`is-${status}`]: status
           }"
           :style="progressBarInnerStyle"
+          ref="progressBarInnerRef"
         >
           <div
             v-if="showText && textInside"
