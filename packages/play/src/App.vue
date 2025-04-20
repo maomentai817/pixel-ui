@@ -300,7 +300,7 @@ const format = (percentage: number) => {
       :percentage="50"
       status="danger"
     />
-    <px-progress color="#626aef" :percentage="75" />
+    <px-progress class="mb-15" color="#626aef" :percentage="75" />
     <px-progress color="#626aef" :percentage="75" :text-inside="true"
       >content</px-progress
     >

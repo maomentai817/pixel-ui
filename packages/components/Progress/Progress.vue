@@ -23,6 +23,9 @@ const content = computed(() => {
   return props.format ? props.format(props.percentage) : `${props.percentage}%`
 })
 
+// 限制 storkeWidth
+const strokeWidth = computed(() => Math.max(props.strokeWidth, 12))
+
 const statusColorMap: Record<string, string> = {
   primary: 'var(--px-bg-color-primary, #209cee)',
   success: 'var(--px-bg-color-success, #92cc41)',
@@ -31,9 +34,9 @@ const statusColorMap: Record<string, string> = {
 }
 
 const progressBarOuterStyle = computed(() => { 
-  const gapValue = props.strokeWidth / 6
+  const gapValue = strokeWidth.value / 6
   return { 
-    '--px-progress-bar-height': `${props.strokeWidth}px`,
+    '--px-progress-bar-height': `${strokeWidth.value}px`,
     '--px-progress-bar-gap': `${gapValue}px`
   }
 })
