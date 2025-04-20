@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { debugWarn } from '@pixel-ui/utils'
+import { debugWarn, updateColors } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
 
 import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
@@ -52,15 +52,30 @@ const progressBarInnerStyle = computed(() => {
     transition: 'width .4s ease'
   }
 
-  const color = props.color || statusColorMap[props.status]
+  // const color = props.color || statusColorMap[props.status]
+  // style['--px-progress-bar-bg-color'] = color
+  if (props.color) { 
+    style['--px-progress-bar-bg-color'] = colorStyle.value.bgColor!
+    style['--px-progress-bar-bg-shadow-color'] = colorStyle.value.fillHoverColor!
+  } else { 
+    style['--px-progress-bar-bg-color'] = statusColorMap[props.status]
+  }
 
   if (props.striped || props.stripedFlow) { 
     style['--px-progress-bar-striped'] = '1'
   }
 
-  style['--px-progress-bar-bg-color'] = color
-
   return style
+})
+
+// 自定义颜色 - stripe
+const colorStyle = computed(() => {
+  const colors = props.color ? updateColors(props.color) : void 0
+  if (!colors) return {}
+  return {
+    bgColor: colors.bgColor,
+    fillHoverColor: colors.fillHoverColor,
+  }
 })
 
 // CSS Houdini Paint Worklet
@@ -86,6 +101,7 @@ let stripeOffset = 0
 let rafId = 0
 const stripePeriod = 16
 
+// stripe flow 动画处理
 const updateStripeFlow = () => {
   const duration = props.duration
   const speed = stripePeriod / duration / 8
