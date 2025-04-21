@@ -54,8 +54,9 @@ const progressBarInnerStyle = computed(() => {
   }
 
   if (props.color) { 
-    style['--px-progress-bar-bg-color'] = colorStyle.value.bgColor!
-    style['--px-progress-bar-bg-shadow-color'] = colorStyle.value.fillHoverColor!
+    const colorStyle = getColorStyle(props.color)
+    style['--px-progress-bar-bg-color'] = colorStyle.bgColor!
+    style['--px-progress-bar-bg-shadow-color'] = colorStyle.fillHoverColor!
   } else { 
     style['--px-progress-bar-bg-color'] = statusColorMap[props.status]
   }
@@ -68,14 +69,13 @@ const progressBarInnerStyle = computed(() => {
 })
 
 // 自定义颜色 - stripe
-const colorStyle = computed(() => {
-  const colors = props.color ? updateColors(props.color) : void 0
-  if (!colors) return {}
+const getColorStyle = (color: any) => {
+  const colors = updateColors(color)
   return {
     bgColor: colors.bgColor,
     fillHoverColor: colors.fillHoverColor,
   }
-})
+}
 
 // CSS Houdini Paint Worklet
 const paint = () => {
