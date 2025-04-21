@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   strokeWidth: 16,
   textInside: false,
   status: 'primary',
+  indeterminate: false,
   duration: 4,
   showText: true,
   striped: false,
@@ -47,13 +48,11 @@ const progressBarOuterStyle = computed(() => {
 
 const progressBarInnerStyle = computed(() => {
   const style: Record<string, string> = { 
-    width: `calc(${props.percentage}% - 2 * var(--px-progress-bar-gap))`,
-    animationDuration: `${props.duration}s`,
+    width: `${props.percentage}%`,
+    '--px-progress-bar-duration': `${props.duration}s`,
     transition: 'width .4s ease'
   }
 
-  // const color = props.color || statusColorMap[props.status]
-  // style['--px-progress-bar-bg-color'] = color
   if (props.color) { 
     style['--px-progress-bar-bg-color'] = colorStyle.value.bgColor!
     style['--px-progress-bar-bg-shadow-color'] = colorStyle.value.fillHoverColor!
@@ -138,24 +137,27 @@ onBeforeUnmount(() => {
   >
     <div class="px-progress-bar">
       <div class="px-progress-bar__outer" :style="progressBarOuterStyle">
-        <div
-          class="px-progress-bar__inner"
-          :class="{
-            'is-striped': striped,
-            'is-striped-flow': stripedFlow,
-            'is-checker': checker,
-            [`is-${status}`]: status
-          }"
-          :style="progressBarInnerStyle"
-          ref="progressBarInnerRef"
-        >
+        <div class="px-progress-bar-gap">
           <div
-            v-if="showText && textInside"
-            class="px-progress-bar__inner-text"
+            class="px-progress-bar__inner"
+            :class="{
+              'is-striped': striped,
+              'is-striped-flow': stripedFlow,
+              'is-indeterminate': indeterminate,
+              'is-checker': checker,
+              [`is-${status}`]: status
+            }"
+            :style="progressBarInnerStyle"
+            ref="progressBarInnerRef"
           >
-            <slot :percentage="percentage">
-              <span>{{ content }}</span>
-            </slot>
+            <div
+              v-if="showText && textInside"
+              class="px-progress-bar__inner-text"
+            >
+              <slot :percentage="percentage">
+                <span>{{ content }}</span>
+              </slot>
+            </div>
           </div>
         </div>
       </div>

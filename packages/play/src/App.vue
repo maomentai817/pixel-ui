@@ -344,6 +344,7 @@ const format = (percentage: number) => {
       checker
       status="danger"
     />
+    <px-progress :percentage="50" :indeterminate="true" />
   </div>
   <div class="h-100"></div>
 </template>

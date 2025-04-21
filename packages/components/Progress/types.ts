@@ -25,9 +25,15 @@ export interface ProgressProps {
    */
   status?: ProgressType
   /**
+   * @property {boolean} indeterminate
+   * @default false
+   * @description 进度条动画
+   */
+  indeterminate?: boolean
+  /**
    * @property {number} duration
    * @default 4
-   * @description 条纹进度条流速
+   * @description 动画/条纹进度条流速
    */
   duration?: number
   /**
