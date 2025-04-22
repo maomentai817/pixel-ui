@@ -7,8 +7,8 @@ next:
   text: AnimationFrame 动画帧
 
 prev:
-  link: /components/collapse
-  text: Collapse 折叠面板
+  link: /components/progress
+  text: Progress 进度条
 ---
 
 # Alert 提示

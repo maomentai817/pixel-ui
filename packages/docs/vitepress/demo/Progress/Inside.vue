@@ -1,0 +1,31 @@
+<template>
+  <div class="max-w-600">
+    <px-progress
+      :percentage="70"
+      :text-inside="true"
+      :stroke-width="24"
+      class="mb-15"
+    />
+    <px-progress
+      :percentage="100"
+      status="success"
+      :text-inside="true"
+      :stroke-width="24"
+      class="mb-15"
+    />
+    <px-progress
+      :percentage="80"
+      status="warning"
+      :text-inside="true"
+      :stroke-width="24"
+      class="mb-15"
+    />
+    <px-progress
+      :percentage="50"
+      status="danger"
+      :text-inside="true"
+      :stroke-width="24"
+      class="mb-15"
+    />
+  </div>
+</template>

@@ -1,0 +1,26 @@
+<template>
+  <div class="max-w-600">
+    <px-progress :percentage="50" checker :stroke-width="28" class="mb-15" />
+    <px-progress
+      :percentage="100"
+      status="success"
+      checker
+      :stroke-width="28"
+      class="mb-15"
+    />
+    <px-progress
+      :percentage="100"
+      status="warning"
+      checker
+      :stroke-width="28"
+      class="mb-15"
+    />
+    <px-progress
+      :percentage="50"
+      status="danger"
+      checker
+      :stroke-width="28"
+      class="mb-15"
+    />
+  </div>
+</template>
