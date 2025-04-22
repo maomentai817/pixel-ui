@@ -410,7 +410,7 @@
 :root {
     --rainbow-prev: #009ff7;
     --rainbow-next: #c76dd1;
-    animation: rainbow 8s linear infinite;
+    /* animation: rainbow 8s linear infinite; */
 }
 
 :root {

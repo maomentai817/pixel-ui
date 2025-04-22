@@ -85,5 +85,6 @@ table code {
 
 .VPNavBarTitle .title span {
   height: var(--vp-nav-logo-height);
+  line-height: 1.4;
 }
 
