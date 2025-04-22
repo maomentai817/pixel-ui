@@ -1,4 +1,4 @@
-import type { App } from "vue"
+import { type App } from "vue"
 import { ElementPlusContainer } from "vitepress-preview-component"
 import DefaultTheme from "vitepress/theme"
 import PixelUI from "@mmt817/pixel-ui"

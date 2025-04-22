@@ -21,6 +21,7 @@ export default defineConfig({
       { text: "开始使用", link: "/get-started" },
       { text: "组件", link: "/components/button" },
     ],
+    logo: '/images/homelogo.png',
     search: {
       provider: "local",
     },

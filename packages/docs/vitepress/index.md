@@ -5,6 +5,8 @@ layout: home
 hero:
   name: "Pixel-UI"
   text: "基于CSS_Houdini的像素风组件库🐱"
+  image:
+    src: /images/homelogo.png
   actions:
     - theme: brand
       text: 开始使用

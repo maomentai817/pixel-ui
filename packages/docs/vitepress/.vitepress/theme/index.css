@@ -1,3 +1,7 @@
+@import './style/rainbow.css';
+@import './style/custom-block.css';
+@import './style/hidden.css';
+
 @font-face {
   font-family: 'Zpix';
   src: url('/fonts/Zpix.ttf') format('truetype');
@@ -61,3 +65,25 @@ table code {
 .vitepress-demo-preview-preview {
   font-family: var(--vp-font-family-mono);
 }
+
+/* nav backdrop-filter 效果 */
+.VPNav .VPNavBar.has-sidebar .content-body {
+  background-image: radial-gradient(transparent 1px, #fff 1px);
+  background-size: 4px 4px;
+  background-color: transparent;
+  backdrop-filter: saturate(50%)  blur(4px);
+}
+
+/* sidebar scrollbar */
+.VPSidebar {
+  scrollbar-width: none;
+}
+
+.DocSearch-Button {
+  background-color: transparent;
+}
+
+.VPNavBarTitle .title span {
+  height: var(--vp-nav-logo-height);
+}
+
