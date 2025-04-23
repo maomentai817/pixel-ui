@@ -11,11 +11,27 @@ next:
 
 ## 📦 安装
 
-```bash
-npm i @mmt817/pixel-ui --save
-# 或者使用 pnpm / yarn
-pnpm add @mmt817/pixel-ui
+:::code-group
+```shell [npm]
+$ npm i @mmt817/pixel-ui --save
 ```
+
+```shell [yarn]
+$ yarn add @mmt817/pixel-ui
+```
+
+```shell [pnpm]
+$ pnpm add -D @mmt817/pixel-ui
+```
+
+```shell [bun]
+$ bun add @mmt817/pixel-ui
+```
+
+```shell [deno]
+$ 别用 deno, 会变得不幸
+```
+:::
 
 ## 🚀 快速开始
 

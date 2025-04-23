@@ -35,12 +35,12 @@ describe('PxProgress - CSS Houdini Paint Worklet', () => {
   const originalCSS = (globalThis as any).CSS
 
   afterEach(() => {
-    ; (globalThis as any).CSS = originalCSS
+    ;(globalThis as any).CSS = originalCSS
     vi.restoreAllMocks()
   })
 
   it('should register the Paint Worklet pixelbox when supported', async () => {
-    ; (globalThis as any).CSS = {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
@@ -54,7 +54,7 @@ describe('PxProgress - CSS Houdini Paint Worklet', () => {
   })
 
   it('should register the Paint Worklet pixelstripe when supported', async () => {
-    ; (globalThis as any).CSS = {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
@@ -86,13 +86,13 @@ describe('PxProgress - CSS Houdini Paint Worklet', () => {
   it('should log an error if loading the Paint Worklet fails', () => {
     const error = new Error('Mock addModule error')
     console.error = vi.fn()
-      ; (globalThis as any).CSS = {
-        paintWorklet: {
-          addModule: vi.fn(() => {
-            throw error
-          })
-        }
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
       }
+    }
 
     mount(Progress)
 
@@ -119,7 +119,9 @@ describe('Progress.vue', () => {
     const outer = wrapper.find('.px-progress-bar__outer')
     const inner = wrapper.find('.px-progress-bar__inner')
 
-    expect(outer.attributes('style')).toContain('--px-progress-bar-height: 24px')
+    expect(outer.attributes('style')).toContain(
+      '--px-progress-bar-height: 24px'
+    )
     expect(inner.attributes('style')).toContain('width: 42%')
   })
 
@@ -180,11 +182,13 @@ describe('Progress.vue', () => {
       }
     })
 
-    expect(wrapper.find('.px-progress-bar__inner').classes()).toContain('is-success')
+    expect(wrapper.find('.px-progress-bar__inner').classes()).toContain(
+      'is-success'
+    )
   })
 
   it('should format content with custom format function', () => {
-    const formatMock = vi.fn(p => `Progress: ${p}`)
+    const formatMock = vi.fn((p) => `Progress: ${p}`)
     const wrapper = mount(Progress, {
       props: {
         percentage: 75,
@@ -219,7 +223,9 @@ describe('Progress.vue', () => {
 
     const inner = wrapper.find('.px-progress-bar__inner')
     expect(inner.attributes('style')).toContain('--px-progress-bar-bg-color')
-    expect(inner.attributes('style')).toContain('--px-progress-bar-bg-shadow-color')
+    expect(inner.attributes('style')).toContain(
+      '--px-progress-bar-bg-shadow-color'
+    )
   })
 
   it('should cancel animation frame on unmount', () => {

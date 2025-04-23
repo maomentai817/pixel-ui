@@ -6,7 +6,7 @@ export class PixelStripe implements PaintWorklet {
       '--px-stripe-color-1',
       '--px-stripe-color-2',
       '--px-stripe-ratio',
-      '--px-stripe-mode', // 新增：模式选择 checker | stripe
+      '--px-stripe-mode' // 新增：模式选择 checker | stripe
     ]
   }
 
@@ -15,12 +15,18 @@ export class PixelStripe implements PaintWorklet {
     size: { width: number; height: number },
     props: StylePropertyMap
   ): void {
-    const color1 = props.get('--px-stripe-color-1')?.toString().trim() || '#ffffff'
-    const color2 = props.get('--px-stripe-color-2')?.toString().trim() || '#000000'
+    const color1 =
+      props.get('--px-stripe-color-1')?.toString().trim() || '#ffffff'
+    const color2 =
+      props.get('--px-stripe-color-2')?.toString().trim() || '#000000'
     const unitSizeRaw = props.get('--px-stripe-size')?.toString().trim() || '4'
     const unitSize = parseInt(unitSizeRaw, 10) || 4
-    const offset = parseFloat(props.get('--px-stripe-offset')?.toString() || '0')
-    const ratio = parseFloat(props.get('--px-stripe-ratio')?.toString() || '0.5')
+    const offset = parseFloat(
+      props.get('--px-stripe-offset')?.toString() || '0'
+    )
+    const ratio = parseFloat(
+      props.get('--px-stripe-ratio')?.toString() || '0.5'
+    )
     const mode = props.get('--px-stripe-mode')?.toString().trim() || 'stripe'
 
     ctx.imageSmoothingEnabled = false
@@ -42,7 +48,8 @@ export class PixelStripe implements PaintWorklet {
           const stripePeriod = unitSize * 4
           const stripeWidth = stripePeriod * ratio
           // const diag = (px - py + offset) % stripePeriod
-          const diag = ((px - py + offset) % stripePeriod + stripePeriod) % stripePeriod
+          const diag =
+            (((px - py + offset) % stripePeriod) + stripePeriod) % stripePeriod
           isStripe = diag < stripeWidth
         }
 

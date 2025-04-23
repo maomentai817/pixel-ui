@@ -16,7 +16,7 @@
   "devDependencies": {
     "@vitepress-demo-preview/plugin": "^1.2.3",
     "nprogress-v2": "^1.1.10",
-    "vitepress": "1.0.0-rc.44",
+    "vitepress": "^1.6.3",
     "vitepress-plugin-group-icons": "^1.5.2",
     "vitepress-preview-component": "workspace:*",
     "vitepress-sidebar": "^1.31.1"

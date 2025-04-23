@@ -9,15 +9,15 @@ describe('Badge', () => {
   it('renders default slot content', () => {
     const wrapper = mount(Badge, {
       slots: {
-        default: '<button>Button</button>',
-      },
+        default: '<button>Button</button>'
+      }
     })
     expect(wrapper.find('button').exists()).toBe(true)
   })
 
   it('renders value properly', () => {
     const wrapper = mount(Badge, {
-      props: { value: 8 },
+      props: { value: 8 }
     })
     expect(wrapper.find('.px-badge__content').text()).toBe('8')
   })
@@ -26,8 +26,8 @@ describe('Badge', () => {
     const wrapper = mount(Badge, {
       props: {
         value: 120,
-        max: 99,
-      },
+        max: 99
+      }
     })
     expect(wrapper.find('.px-badge__content').text()).toBe('99+')
   })
@@ -35,8 +35,8 @@ describe('Badge', () => {
   it('supports isDot mode', () => {
     const wrapper = mount(Badge, {
       props: {
-        isDot: true,
-      },
+        isDot: true
+      }
     })
     const badge = wrapper.find('.px-badge__content')
     expect(badge.classes()).toContain('is-dot')
@@ -47,8 +47,8 @@ describe('Badge', () => {
     const wrapper = mount(Badge, {
       props: {
         hidden: true,
-        value: 5,
-      },
+        value: 5
+      }
     })
     expect(wrapper.find('.px-badge__content').isVisible()).toBe(false)
   })
@@ -57,8 +57,8 @@ describe('Badge', () => {
     const wrapper = mount(Badge, {
       props: {
         value: 0,
-        showZero: false,
-      },
+        showZero: false
+      }
     })
     expect(wrapper.find('.px-badge__content').exists()).toBe(true)
   })
@@ -67,8 +67,8 @@ describe('Badge', () => {
     const wrapper = mount(Badge, {
       props: {
         color: '#f00',
-        value: 5,
-      },
+        value: 5
+      }
     })
     const badge = wrapper.find('.px-badge__content')
     expect(badge.attributes('style')).toContain('--px-custom-badge-bg-color')
@@ -78,8 +78,8 @@ describe('Badge', () => {
     const wrapper = mount(Badge, {
       props: {
         offset: [10, 5],
-        value: 1,
-      },
+        value: 1
+      }
     })
     const badge = wrapper.find('.px-badge__content')
     expect(badge.attributes('style')).toMatch(/margin-right: -10px/)
@@ -89,15 +89,14 @@ describe('Badge', () => {
   it('supports content slot', () => {
     const wrapper = mount(Badge, {
       props: {
-        value: 999,
+        value: 999
       },
       slots: {
-        content: '<span>custom</span>',
-      },
+        content: '<span>custom</span>'
+      }
     })
     expect(wrapper.find('.px-badge__content').text()).toBe('custom')
   })
-
 })
 
 describe('Badge/index', () => {
@@ -130,12 +129,12 @@ describe('PxBadge - CSS Houdini Paint Worklet', () => {
   const originalCSS = (globalThis as any).CSS
 
   afterEach(() => {
-    ; (globalThis as any).CSS = originalCSS
+    ;(globalThis as any).CSS = originalCSS
     vi.restoreAllMocks()
   })
 
   it('should register the Paint Worklet pixelpanel when supported', async () => {
-    ; (globalThis as any).CSS = {
+    ;(globalThis as any).CSS = {
       paintWorklet: {
         addModule: vi.fn()
       }
@@ -167,13 +166,13 @@ describe('PxBadge - CSS Houdini Paint Worklet', () => {
   it('should log an error if loading the Paint Worklet fails', () => {
     const error = new Error('Mock addModule error')
     console.error = vi.fn()
-      ; (globalThis as any).CSS = {
-        paintWorklet: {
-          addModule: vi.fn(() => {
-            throw error
-          })
-        }
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
       }
+    }
 
     mount(Badge)
 

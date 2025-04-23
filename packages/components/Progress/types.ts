@@ -51,7 +51,7 @@ export interface ProgressProps {
    * @property {(percentage: number) => string} format
    * @description 指定进度条文字内容
    */
-  format?: (percentage: number) => string
+  format?: (_percentage: number) => string
   /**
    * @property {boolean} striped
    * @default false

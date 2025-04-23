@@ -1,6 +1,6 @@
 export type BadgeType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
-export interface BadgeProps { 
+export interface BadgeProps {
   /**
    * @property {string | number} value
    * @default ''

@@ -7,6 +7,7 @@ import PixelUI from "@mmt817/pixel-ui"
 import "vitepress-preview-component/style.css"
 import '@hackernoon/pixel-icon-library/fonts/iconfont.css'
 import '@mmt817/pixel-ui/dist/index.css'
+import 'virtual:group-icons.css'
 import 'virtual:uno.css'
 import './index.css'
 

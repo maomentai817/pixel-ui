@@ -16,13 +16,13 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   isDot: false,
   hidden: false,
   type: 'danger',
-  showZero: true,
+  showZero: true
 })
 
-const content = computed<string>(() => { 
+const content = computed<string>(() => {
   if (props.isDot) return ''
   if (isNumber(props.value) && props.value === 0 && !props.showZero) return ''
-  if (isNumber(props.value) && isNumber(props.max)) { 
+  if (isNumber(props.value) && isNumber(props.max)) {
     return props.value > props.max ? `${props.max}+` : `${props.value}`
   }
   return `${props.value}`
@@ -76,22 +76,22 @@ onMounted(async () => {
 </script>
 
 <template>
-<div class="px-badge">
-  <slot></slot>
-  <sup
-    class="px-badge__content"
-    :class="{
-      [`px-badge--${type}`]: type,
-      [`is-dot`]: isDot,
-      [`is-fixed`]: !!$slots.default,
-      [`is-custom`]: color
-    }"
-    :style="{...colorStyle, ...offsetStyle}"
-    v-show="!hidden && (content || isDot || $slots.content)"
-  >
-    <slot name="content" :value="content">{{ content }}</slot>
-  </sup>
-</div>
+  <div class="px-badge">
+    <slot></slot>
+    <sup
+      class="px-badge__content"
+      :class="{
+        [`px-badge--${type}`]: type,
+        [`is-dot`]: isDot,
+        [`is-fixed`]: !!$slots.default,
+        [`is-custom`]: color
+      }"
+      :style="{ ...colorStyle, ...offsetStyle }"
+      v-show="!hidden && (content || isDot || $slots.content)"
+    >
+      <slot name="content" :value="content">{{ content }}</slot>
+    </sup>
+  </div>
 </template>
 
 <style scoped>

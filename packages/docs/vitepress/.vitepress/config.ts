@@ -1,8 +1,6 @@
 import { defineConfig } from "vitepress"
-import {
-  containerPreview,
-  componentPreview,
-} from "@vitepress-demo-preview/plugin"
+import { containerPreview, componentPreview } from "@vitepress-demo-preview/plugin"
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import UnoCSS from 'unocss/vite'
 // import apiTable from "vitepress-api-table"
 
@@ -75,9 +73,10 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      md.use(containerPreview);
-      md.use(componentPreview);
+      md.use(containerPreview)
+      md.use(componentPreview)
       // md.use(apiTable)
+      md.use(groupIconMdPlugin)
     },
   },
   transformHead({ assets }) { 
@@ -98,6 +97,7 @@ export default defineConfig({
   vite: {
     plugins: [
       UnoCSS(),
+      groupIconVitePlugin()
     ]
   }
 });

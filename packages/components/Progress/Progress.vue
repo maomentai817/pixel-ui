@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   checker: false
 })
 
-const content = computed(() => { 
+const content = computed(() => {
   return props.format ? props.format(props.percentage) : `${props.percentage}%`
 })
 
@@ -38,30 +38,30 @@ const statusColorMap: Record<string, string> = {
   danger: 'var(--px-bg-color-danger, #e76e55)'
 }
 
-const progressBarOuterStyle = computed(() => { 
+const progressBarOuterStyle = computed(() => {
   const gapValue = Math.max(strokeWidth.value / 6, 4)
-  return { 
+  return {
     '--px-progress-bar-height': `${strokeWidth.value}px`,
     '--px-progress-bar-gap': `${gapValue}px`
   }
 })
 
 const progressBarInnerStyle = computed(() => {
-  const style: Record<string, string> = { 
+  const style: Record<string, string> = {
     width: `${props.percentage}%`,
     '--px-progress-bar-duration': `${props.duration}s`,
     transition: 'width .4s ease'
   }
 
-  if (props.color) { 
+  if (props.color) {
     const colorStyle = getColorStyle(props.color)
     style['--px-progress-bar-bg-color'] = colorStyle.bgColor!
     style['--px-progress-bar-bg-shadow-color'] = colorStyle.fillHoverColor!
-  } else { 
+  } else {
     style['--px-progress-bar-bg-color'] = statusColorMap[props.status]
   }
 
-  if (props.striped || props.stripedFlow) { 
+  if (props.striped || props.stripedFlow) {
     style['--px-progress-bar-striped'] = '1'
   }
 
@@ -73,7 +73,7 @@ const getColorStyle = (color: any) => {
   const colors = updateColors(color)
   return {
     bgColor: colors.bgColor,
-    fillHoverColor: colors.fillHoverColor,
+    fillHoverColor: colors.fillHoverColor
   }
 }
 
@@ -108,7 +108,10 @@ const updateStripeFlow = () => {
   // stripeOffset = (stripeOffset + speed) % stripePeriod
   stripeOffset = (stripeOffset - speed + stripePeriod) % stripePeriod
 
-  progressBarInnerRef.value?.style.setProperty('--px-stripe-offset', `${stripeOffset}px`)
+  progressBarInnerRef.value?.style.setProperty(
+    '--px-stripe-offset',
+    `${stripeOffset}px`
+  )
   rafId = requestAnimationFrame(updateStripeFlow)
 }
 
