@@ -226,6 +226,9 @@ importers:
       '@vitepress-demo-preview/plugin':
         specifier: ^1.2.3
         version: 1.4.0(markdown-it-container@3.0.0)(vitepress@1.6.3(@algolia/client-search@5.23.0)(@types/node@20.17.28)(async-validator@4.2.5)(postcss@8.5.3)(sass@1.86.3)(search-insights@2.17.3)(terser@5.39.0)(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
+      busuanzi.pure.js:
+        specifier: ^1.0.3
+        version: 1.0.3
       nprogress-v2:
         specifier: ^1.1.10
         version: 1.1.10
@@ -2370,6 +2373,9 @@ packages:
   bundle-name@4.1.0:
     resolution: {integrity: sha512-tjwM5exMg6BGRI+kNmTntNsvdZS1X8BFYS6tnJ2hdH0kVxM6/eVZ2xy+FqStSWvYmtfFMDLIxurorHwDKfDz5Q==}
     engines: {node: '>=18'}
+
+  busuanzi.pure.js@1.0.3:
+    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
 
   cac@6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
@@ -7799,6 +7805,8 @@ snapshots:
   bundle-name@4.1.0:
     dependencies:
       run-applescript: 7.0.0
+
+  busuanzi.pure.js@1.0.3: {}
 
   cac@6.7.14: {}
 
