@@ -57,17 +57,8 @@ module.exports = {
       }
     },
     {
-      files: ['**/*.ts', '**/*.tsx'],
+      files: ['*.ts', '**/*.tsx'],
       rules: {}
     }
-  ],
-  globals: {
-    registerPaint: 'readonly',
-    globalThis: 'readonly',
-    CSSStyleValue: 'readonly',
-    StylePropertyMap: 'readonly',
-    PaintRenderingContext2D: 'readonly',
-    PaintWorklet: 'readonly',
-    EventListener: 'readonly'
-  }
+  ]
 }
