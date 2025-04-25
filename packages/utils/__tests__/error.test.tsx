@@ -9,7 +9,7 @@ describe('error', () => {
     }).toThrowError('[scope]: msg')
   })
   it('debugWarn should be worked', () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => { })
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
     debugWarn('scope', 'msg')
     debugWarn(new SyntaxError('custom error'))
     expect(warn.mock.calls).toMatchInlineSnapshot(`
@@ -29,5 +29,4 @@ describe('error', () => {
     expect(pxError.message).toBe('original message')
     expect(pxError.name).toBe('PxUIError')
   })
-
 })

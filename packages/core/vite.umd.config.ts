@@ -10,10 +10,10 @@ import terser from '@rollup/plugin-terser'
 import hooks from './hooksPlugin'
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
-const isProd = process.env.NODE_ENV === "production"
-const isDev = process.env.NODE_ENV === "development"
-const isTest = process.env.NODE_ENV === "test"
-const moveStyles = () => { 
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
+const isTest = process.env.NODE_ENV === 'test'
+const moveStyles = () => {
   try {
     readFileSync('./dist/umd/index.css.gz')
     shell.cp('./dist/umd/index.css', './dist/index.css')
@@ -26,7 +26,7 @@ export default defineConfig({
   plugins: [
     vue(),
     compression({
-      include: /.(cjs|css)$/i,
+      include: /.(cjs|css)$/i
     }),
     hooks({
       rmFiles: ['./dist/umd', './dist/index.css'],
@@ -34,16 +34,16 @@ export default defineConfig({
     }),
     terser({
       compress: {
-        drop_console: ["log"],
+        drop_console: ['log'],
         drop_debugger: true,
         passes: 3,
         global_defs: {
-          "@DEV": JSON.stringify(isDev),
-          "@PROD": JSON.stringify(isProd),
-          "@TEST": JSON.stringify(isTest),
-        },
-      },
-    }),
+          '@DEV': JSON.stringify(isDev),
+          '@PROD': JSON.stringify(isProd),
+          '@TEST': JSON.stringify(isTest)
+        }
+      }
+    })
   ],
   build: {
     outDir: 'dist/umd',
@@ -51,20 +51,20 @@ export default defineConfig({
       entry: resolve(__dirname, './index.ts'),
       name: 'PixelUI',
       fileName: 'index',
-      formats: ['umd'],
+      formats: ['umd']
     },
     rollupOptions: {
       external: ['vue'],
       output: {
         exports: 'named',
         globals: {
-          vue: 'Vue',
+          vue: 'Vue'
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'index.css'
           return assetInfo.name as string
-        },
-      },
+        }
+      }
     }
   }
 })

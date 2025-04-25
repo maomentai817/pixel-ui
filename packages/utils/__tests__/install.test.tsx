@@ -1,28 +1,32 @@
-import { describe, expect, it } from "vitest"
-import { mount } from "@vue/test-utils"
-import { defineComponent, createApp } from "vue"
+import { describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { defineComponent, createApp } from 'vue'
 
-import { withInstall, makeInstaller } from "../install"
+import { withInstall, makeInstaller } from '../install'
 
 const AppComp = defineComponent({
   setup() {
     return () => <div>App</div>
-  },
+  }
 })
 
-const compA = withInstall(defineComponent({
-  name: 'CompA',
-  setup() {
-    return () => <div>CompA</div>
-  },
-}))
+const compA = withInstall(
+  defineComponent({
+    name: 'CompA',
+    setup() {
+      return () => <div>CompA</div>
+    }
+  })
+)
 
-const compB = withInstall(defineComponent({
-  name: 'CompB',
-  setup() {
-    return () => <div>CompB</div>
-  },
-}))
+const compB = withInstall(
+  defineComponent({
+    name: 'CompB',
+    setup() {
+      return () => <div>CompB</div>
+    }
+  })
+)
 
 describe('install', () => {
   it('withInstall should be worked', () => {

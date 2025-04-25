@@ -6,17 +6,17 @@ export default function hooksPlugin({
   beforeBuild,
   afterBuild
 }: {
-  rmFiles?: string[],
-  beforeBuild?: Function,
+  rmFiles?: string[]
+  beforeBuild?: Function
   afterBuild?: Function
-}) { 
+}) {
   return {
     name: 'hooks-plugin',
-    buildStart() { 
+    buildStart() {
       each(rmFiles, (fileName) => shell.rm('-rf', fileName))
       isFunction(beforeBuild) && beforeBuild()
     },
-    buildEnd(err?: Error) { 
+    buildEnd(err?: Error) {
       !err && isFunction(afterBuild) && afterBuild()
     }
   }

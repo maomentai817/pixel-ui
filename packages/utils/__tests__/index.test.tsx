@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from 'vitest'
 import {
   debugWarn,
   throwError,
@@ -8,23 +8,23 @@ import {
   hexToHSL,
   HSLToHex,
   adjustColor
-} from "..";
-import { each } from "lodash-es"
+} from '..'
+import { each } from 'lodash-es'
 
-describe("utils/index", () => {
-  it("debugWarn should be exported", () => {
+describe('utils/index', () => {
+  it('debugWarn should be exported', () => {
     expect(debugWarn).toBeDefined()
   })
 
-  it("throwError should be exported", () => {
+  it('throwError should be exported', () => {
     expect(throwError).toBeDefined()
   })
-  
-  it("withInstall should be exported", () => {
+
+  it('withInstall should be exported', () => {
     expect(withInstall).toBeDefined()
   })
 
-  it("typeIconMap should be worked", () => {
+  it('typeIconMap should be worked', () => {
     expect(typeIconMap).toBeDefined()
     each(
       [
@@ -35,26 +35,26 @@ describe("utils/index", () => {
         ['error', 'times-circle-solid']
       ],
       ([type, icon]) => {
-        expect(typeIconMap.get(type)).toBe(icon);
+        expect(typeIconMap.get(type)).toBe(icon)
       }
     )
   })
 })
 
 describe('Color Utilities', () => {
-  it("updateColors should be exported", () => {
+  it('updateColors should be exported', () => {
     expect(updateColors).toBeDefined()
   })
 
-  it("updateColors should be worked", () => {
+  it('updateColors should be worked', () => {
     expect(updateColors('#000000')).toEqual({
-      'bgColor': '#000000',
-      'bgShadowColor': '#000000',
-      'borderColor': '#000000',
-      'fillHoverColor': '#000000',
-      'lightColor': '#999999',
-      'lightColor2': '#4d4d4d',
-      'textColor': '#000000',
+      bgColor: '#000000',
+      bgShadowColor: '#000000',
+      borderColor: '#000000',
+      fillHoverColor: '#000000',
+      lightColor: '#999999',
+      lightColor2: '#4d4d4d',
+      textColor: '#000000'
     })
   })
 
@@ -79,7 +79,7 @@ describe('Color Utilities', () => {
     { h: 150, s: 100, l: 50 },
     { h: 210, s: 100, l: 50 },
     { h: 270, s: 100, l: 50 },
-    { h: 330, s: 100, l: 50 },
+    { h: 330, s: 100, l: 50 }
   ])('should cover HSLToHex h=%p', (hsl) => {
     const hex = HSLToHex(hsl)
     expect(hex).toMatch(/^#[0-9a-f]{6}$/i)

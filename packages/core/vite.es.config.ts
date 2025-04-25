@@ -10,10 +10,10 @@ import terser from '@rollup/plugin-terser'
 
 import hooks from './hooksPlugin'
 
-const isProd = process.env.NODE_ENV === "production"
-const isDev = process.env.NODE_ENV === "development"
-const isTest = process.env.NODE_ENV === "test"
-function getDirectoriesSync(basePath: string) { 
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
+const isTest = process.env.NODE_ENV === 'test'
+function getDirectoriesSync(basePath: string) {
   const entries = readdirSync(basePath, { withFileTypes: true })
 
   return map(
@@ -24,10 +24,10 @@ function getDirectoriesSync(basePath: string) {
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
 function moveStyles() {
-  readdir("./dist/es/theme", (err) => {
-    if (err) return delay(moveStyles, TRY_MOVE_STYLES_DELAY);
-    defer(() => shell.mv("./dist/es/theme", "./dist"));
-  });
+  readdir('./dist/es/theme', (err) => {
+    if (err) return delay(moveStyles, TRY_MOVE_STYLES_DELAY)
+    defer(() => shell.mv('./dist/es/theme', './dist'))
+  })
 }
 
 export default defineConfig({
@@ -35,7 +35,7 @@ export default defineConfig({
     vue(),
     dts({
       tsconfigPath: '../../tsconfig.build.json',
-      outDir: 'dist/types',
+      outDir: 'dist/types'
     }),
     hooks({
       rmFiles: ['./dist/es', './dist/theme', './dist/types'],
@@ -46,29 +46,29 @@ export default defineConfig({
       compress: {
         sequences: isProd,
         arguments: isProd,
-        drop_console: isProd && ["log"],
+        drop_console: isProd && ['log'],
         drop_debugger: isProd,
         passes: isProd ? 4 : 1,
         global_defs: {
-          "@DEV": JSON.stringify(isDev),
-          "@PROD": JSON.stringify(isProd),
-          "@TEST": JSON.stringify(isTest),
-        },
+          '@DEV': JSON.stringify(isDev),
+          '@PROD': JSON.stringify(isProd),
+          '@TEST': JSON.stringify(isTest)
+        }
       },
       format: {
         semicolons: false,
         shorthand: isProd,
         braces: !isProd,
         beautify: !isProd,
-        comments: !isProd,
+        comments: !isProd
       },
       mangle: {
         toplevel: isProd,
         eval: isProd,
         keep_classnames: isDev,
-        keep_fnames: isDev,
-      },
-    }),
+        keep_fnames: isDev
+      }
+    })
   ],
   build: {
     outDir: 'dist/es',
@@ -78,14 +78,14 @@ export default defineConfig({
       entry: resolve(__dirname, './index.ts'),
       name: 'PixelUI',
       fileName: 'index',
-      formats: ['es'],
+      formats: ['es']
     },
     rollupOptions: {
       external: [
         'vue',
-        "@hackernoon/pixel-icon-library",
-        "@popperjs/core",
-        "async-validator",
+        '@hackernoon/pixel-icon-library',
+        '@popperjs/core',
+        'async-validator'
       ],
       treeshake: {
         propertyReadSideEffects: false
@@ -94,10 +94,10 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'index.css'
           if (
-            assetInfo.type === "asset" &&
+            assetInfo.type === 'asset' &&
             /\.(css)$/i.test(assetInfo.name as string)
           ) {
-            return "theme/[name].[ext]";
+            return 'theme/[name].[ext]'
           }
           return assetInfo.name as string
         },
@@ -105,22 +105,22 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             return 'vendor'
           }
-          if (id.includes('/packages/hooks')) { 
+          if (id.includes('/packages/hooks')) {
             return 'hooks'
           }
           if (
             id.includes('/packages/utils') ||
-            id.includes("plugin-vue:export-helper")
-          ) { 
+            id.includes('plugin-vue:export-helper')
+          ) {
             return 'utils'
           }
-          for (const dirName of getDirectoriesSync("../components")) {
+          for (const dirName of getDirectoriesSync('../components')) {
             if (id.includes(`/packages/components/${dirName}`)) {
-              return dirName;
+              return dirName
             }
           }
         }
-      },
+      }
     }
   }
 })
