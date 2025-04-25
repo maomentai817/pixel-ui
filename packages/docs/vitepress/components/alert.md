@@ -3,8 +3,8 @@ title: Alert
 description: Alert 组件文档
 
 next:
-  link: /components/animationFrame
-  text: AnimationFrame 动画帧
+  link: /components/tooltip
+  text: Tooltip 文字提示
 
 prev:
   link: /components/progress

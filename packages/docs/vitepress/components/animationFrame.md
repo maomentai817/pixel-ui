@@ -7,8 +7,8 @@ next:
   text: 不知道喵
 
 prev:
-  link: /components/alert
-  text: Alert 提示
+  link: /components/tooltip
+  text: Tooltip 文字提示
 ---
 
 # AnimationFrame 动画帧
