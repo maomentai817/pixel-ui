@@ -346,6 +346,103 @@ const format = (percentage: number) => {
     />
     <px-progress :percentage="50" :indeterminate="true" />
   </div>
+  <div class="tooltip-base-box w-1000">
+    <div class="flex items-center justify-around">
+      <px-tooltip
+        class="mt-10"
+        content="Top Left prompts info"
+        placement="top-start"
+      >
+        <px-button size="small">top-start</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="mt-10"
+        content="Top Center prompts info"
+        placement="top"
+      >
+        <px-button size="small">top</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="mt-10"
+        content="Top Right prompts info"
+        trigger="click"
+        placement="top-end"
+      >
+        <px-button size="small">top-end</px-button>
+      </px-tooltip>
+    </div>
+    <div class="f-b">
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Left Top prompts info"
+        placement="left-start"
+      >
+        <px-button size="small">left-start</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Right Top prompts info"
+        placement="right-start"
+      >
+        <px-button size="small">right-start</px-button>
+      </px-tooltip>
+    </div>
+    <div class="f-b">
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Left Center prompts info"
+        placement="left"
+      >
+        <px-button size="small" class="mt-3 mb-3">left</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Right Center prompts info"
+        placement="right"
+      >
+        <px-button size="small">right</px-button>
+      </px-tooltip>
+    </div>
+    <div class="f-b">
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Left Bottom prompts info"
+        placement="left-end"
+      >
+        <px-button size="small">left-end</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="w-100 mt-10"
+        content="Right Bottom prompts info"
+        placement="right-end"
+      >
+        <px-button size="small">right-end</px-button>
+      </px-tooltip>
+    </div>
+    <div class="flex items-center justify-around">
+      <px-tooltip
+        class="mt-10"
+        content="Bottom Left prompts info"
+        placement="bottom-start"
+      >
+        <px-button size="small">bottom-start</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="mt-10"
+        content="Bottom Center prompts info"
+        placement="bottom"
+      >
+        <px-button size="small">bottom</px-button>
+      </px-tooltip>
+      <px-tooltip
+        class="mt-10"
+        content="Bottom Right prompts info"
+        placement="bottom-end"
+      >
+        <px-button size="small">bottom-end</px-button>
+      </px-tooltip>
+    </div>
+  </div>
   <div class="h-100"></div>
 </template>
 
