@@ -2,7 +2,8 @@ import type { Meta, StoryFn } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import { ref } from 'vue'
 
-import { PxButton, PxTooltip } from '@mmt817/pixel-ui'
+import { PxTooltip } from '@pixel-ui/components'
+import { PxButton } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Tooltip.css'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 

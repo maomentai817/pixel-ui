@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxAnimationFrame } from '@mmt817/pixel-ui'
+// import { PxAnimationFrame } from '@mmt817/pixel-ui'
+import { PxAnimationFrame } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/AnimationFrame.css'
 
 const meta: Meta<typeof PxAnimationFrame> = {

@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxCard, PxButton, PxIcon, PxText } from '@mmt817/pixel-ui'
+import { PxCard } from '@pixel-ui/components'
+import { PxButton, PxIcon, PxText } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Card.css'
 
 const meta: Meta<typeof PxCard> = {

@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxBadge, PxButton, PxIcon } from '@mmt817/pixel-ui'
+import { PxBadge } from '@pixel-ui/components'
+import { PxButton, PxIcon } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Badge.css'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 

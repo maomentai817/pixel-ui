@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxText } from '@mmt817/pixel-ui'
-import type { TextProps } from '@mmt817/pixel-ui'
+// import { PxText } from '@mmt817/pixel-ui'
+import { PxText } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Text.css'
 
 const meta: Meta<typeof PxText> = {
@@ -45,7 +45,7 @@ const meta: Meta<typeof PxText> = {
 
 export default meta
 
-const Template: StoryFn<TextProps> = (args, { argTypes }) => ({
+const Template: StoryFn<typeof PxText> = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {

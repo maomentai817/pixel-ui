@@ -1,5 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import { PxIcon } from '@mmt817/pixel-ui'
+
+// import { PxIcon } from '@mmt817/pixel-ui'
+import { PxIcon } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Icon.css'
 
 const meta: Meta<typeof PxIcon> = {

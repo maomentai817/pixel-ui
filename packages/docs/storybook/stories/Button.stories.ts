@@ -2,7 +2,8 @@ import type { StoryFn, ArgTypes, StoryObj, Meta } from '@storybook/vue3'
 import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
-import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
+// import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
+import { PxButton, PxButtonGroup } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 
 const meta: Meta<typeof PxButton> = {
@@ -229,7 +230,15 @@ export const Group: Story & { args: { content1: string; content2: string } } = {
       </px-button-group>
     </div>`
   }),
-  play: async ({ canvasElement, args, step }) => {
+  play: async ({
+    canvasElement,
+    args,
+    step
+  }: {
+    canvasElement: HTMLElement
+    args: any
+    step: any
+  }) => {
     const canvas = within(canvasElement)
     await step('click btn1', async () => {
       await userEvent.click(canvas.getByText('Button1'))

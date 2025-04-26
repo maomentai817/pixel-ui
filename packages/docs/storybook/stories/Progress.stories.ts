@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxProgress } from '@mmt817/pixel-ui'
+// import { PxProgress } from '@mmt817/pixel-ui'
+import { PxProgress } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Progress.css'
 
 const meta: Meta<typeof PxProgress> = {
