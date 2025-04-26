@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import { PxAlert } from '@mmt817/pixel-ui'
+// import { PxAlert } from '@mmt817/pixel-ui'
+import { PxAlert, type AlertProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Alert.css'
 
 const meta: Meta<typeof PxAlert> = {
@@ -30,7 +31,7 @@ const meta: Meta<typeof PxAlert> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxAlert> = (args) => ({
+const Template: StoryFn<typeof PxAlert> = (args: AlertProps) => ({
   components: { PxAlert },
   setup() {
     return { args }
@@ -53,7 +54,7 @@ Default.args = {
   center: false
 }
 
-export const WithDescription: StoryFn<typeof PxAlert> = (args) => ({
+export const WithDescription: StoryFn<typeof PxAlert> = (args: AlertProps) => ({
   components: { PxAlert },
   setup() {
     return { args }

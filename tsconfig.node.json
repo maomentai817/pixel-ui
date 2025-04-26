@@ -19,7 +19,13 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "jsx": "preserve",
-    "jsxImportSource": "vue"
+    "jsxImportSource": "vue",
+    "baseUrl": "./",
+    "paths": {
+      "@pixel-ui/components": [
+        "./packages/components"
+      ]
+    }
   },
   "include": [
     "packages/**/*",
