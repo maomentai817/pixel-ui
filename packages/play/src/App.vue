@@ -373,15 +373,16 @@ const format = (percentage: number) => {
     </div>
     <div class="f-b">
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Left Top prompts info"
         placement="left-start"
       >
         <px-button size="small">left-start</px-button>
       </px-tooltip>
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Right Top prompts info"
+        trigger="click"
         placement="right-start"
       >
         <px-button size="small">right-start</px-button>
@@ -389,14 +390,14 @@ const format = (percentage: number) => {
     </div>
     <div class="f-b">
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Left Center prompts info"
         placement="left"
       >
         <px-button size="small" class="mt-3 mb-3">left</px-button>
       </px-tooltip>
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Right Center prompts info"
         placement="right"
       >
@@ -405,14 +406,14 @@ const format = (percentage: number) => {
     </div>
     <div class="f-b">
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Left Bottom prompts info"
         placement="left-end"
       >
         <px-button size="small">left-end</px-button>
       </px-tooltip>
       <px-tooltip
-        class="w-100 mt-10"
+        class="mt-10"
         content="Right Bottom prompts info"
         placement="right-end"
       >
