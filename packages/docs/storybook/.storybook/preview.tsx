@@ -1,7 +1,9 @@
+import type { Preview } from '@storybook/vue3'
+
 import "@hackernoon/pixel-icon-library/fonts/iconfont.css"
 import '@mmt817/pixel-ui/dist/theme/index.css'
-/** @type { import('@storybook/vue3').Preview } */
-const preview = {
+
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
