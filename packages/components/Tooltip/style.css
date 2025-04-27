@@ -1,9 +1,13 @@
 .px-tooltip {
+  --px-popover-font-size: 12px;
   --px-popover-bg-color: var(--px-bg-color-base);
-  --px-popover-font-size: 10px;
-  --px-popover-border-color: #e4e7ed;
+  --px-popover-border-color: var(--px-border-color-base);
+  --px-popover-border-width: 2px;
+  --px-popover-border-radius: 1px;
   --px-popover-padding: 12px;
-  --px-popover-border-radius: 4px;
+  --px-popover-offset: -3px;
+  --px-popover-arrow-size: 8px;
+  --px-popover-text-color: var(--px-text-color-base);
 }
 .px-tooltip {
   display: inline-block;
@@ -19,65 +23,76 @@
   }
 
   .px-tooltip__popper {
-    background: var(--px-popover-bg-color);
-    border-radius: var(--px-popover-border-radius);
-    border: 1px solid var(--px-popover-border-color);
     padding: var(--px-popover-padding);
-    color: #606266;
-    line-height: 1.4;
+    color: var(--px-popover-text-color);
+    line-height: 1.2;
     text-align: justify;
     font-size: var(--px-popover-font-size);
-    box-shadow: var(--px-box-shadow-light);
     word-break: break-all;
     box-sizing: border-box;
     z-index: 1000;
 
+    /* css houdini paintWorklet */
+    background-image: paint(pixelbox);
+    --px-border: var(--px-popover-border-width);
+    --px-border-t: var(--px-popover-border-width);
+    --px-border-r: var(--px-popover-border-width);
+    --px-border-b: var(--px-popover-border-width);
+    --px-border-l: var(--px-popover-border-width);
+    --px-border-radius: var(--px-popover-border-radius);
+    --px-border-radius-lt: var(--px-popover-border-radius);
+    --px-border-radius-rt: var(--px-popover-border-radius);
+    --px-border-radius-lb: var(--px-popover-border-radius);
+    --px-border-radius-rb: var(--px-popover-border-radius);
+    --px-bg-color: var(--px-popover-bg-color);
+    --px-border-color: var(--px-border-color-base);
+
     #arrow,
     #arrow::before {
       position: absolute;
-      width: 8px;
-      height: 8px;
       box-sizing: border-box;
+      width: var(--px-popover-arrow-size);
+      height: var(--px-popover-arrow-size);
       background: var(--px-popover-bg-color);
     }
     #arrow {
       visibility: hidden;
     }
     #arrow::before {
-      visibility: visible;
       content: '';
+      visibility: visible;
       transform: rotate(45deg);
     }
     &[data-popper-placement^='top'] > #arrow {
-      bottom: -5px;
+      bottom: var(--px-popover-offset);
     }
 
     &[data-popper-placement^='bottom'] > #arrow {
-      top: -5px;
+      top: var(--px-popover-offset);
     }
 
     &[data-popper-placement^='left'] > #arrow {
-      right: -5px;
+      right: var(--px-popover-offset);
     }
 
     &[data-popper-placement^='right'] > #arrow {
-      left: -5px;
+      left: var(--px-popover-offset);
     }
     &[data-popper-placement^='top'] > #arrow::before {
-      border-right: 1px solid var(--px-popover-border-color);
-      border-bottom: 1px solid var(--px-popover-border-color);
+      border-right: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-bottom: var(--px-popover-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='bottom'] > #arrow::before {
-      border-left: 1px solid var(--px-popover-border-color);
-      border-top: 1px solid var(--px-popover-border-color);
+      border-left: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-top: var(--px-popover-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='left'] > #arrow::before {
-      border-right: 1px solid var(--px-popover-border-color);
-      border-top: 1px solid var(--px-popover-border-color);
+      border-right: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-top: var(--px-popover-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='right'] > #arrow::before {
-      border-left: 1px solid var(--px-popover-border-color);
-      border-bottom: 1px solid var(--px-popover-border-color);
+      border-left: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-bottom: var(--px-popover-border-width) solid var(--px-popover-border-color);
     }
   }
 }
