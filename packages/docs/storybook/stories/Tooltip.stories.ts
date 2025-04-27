@@ -135,3 +135,10 @@ ManualControl.args = {
   content: '手动控制的提示',
   placement: 'top'
 }
+
+export const Effect = Template.bind({})
+Effect.args = {
+  trigger: 'hover',
+  content: 'dark 效果',
+  effect: 'dark'
+}
