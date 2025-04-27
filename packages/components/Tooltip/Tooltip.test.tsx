@@ -1,4 +1,4 @@
-import { describe, test, it, expect, vi, beforeEach } from 'vitest'
+import { describe, test, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { withInstall } from '@pixel-ui/utils'
 import { mount } from '@vue/test-utils'
 import { PxTooltip } from '.'
@@ -157,6 +157,13 @@ describe('Tooltip.vue', () => {
     await vi.runAllTimers()
 
     expect(wrapper.find('.px-tooltip__popper').exists()).toBeFalsy()
+
+    // 禁用测试
+    wrapper.setProps({ disabled: true })
+    await vi.runAllTimers()
+    wrapper.vm.show()
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeFalsy()
   })
 
   // 禁用状态的测试
@@ -184,4 +191,161 @@ describe('Tooltip.vue', () => {
   //   await vi.runAllTimers()
   //   expect(wrapper.find('.px-tooltip__popper').exists()).toBeTruthy()
   // })
+
+  // manual / trigger 改变时, 测试触发 resetEvent
+  test('change trigger prop', async () => {
+    const wrapper = mount(Tooltip, {
+      props: { trigger: 'hover', content: 'test' }
+    })
+
+    wrapper.setProps({ trigger: 'click' })
+
+    await vi.runAllTimers()
+    wrapper.find('.px-tooltip__trigger').trigger('click')
+
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeTruthy()
+
+    wrapper.find('.px-tooltip__trigger').trigger('click')
+
+    await vi.runAllTimers()
+
+    wrapper.find('.px-tooltip__trigger').trigger('hover')
+
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeFalsy()
+  })
+
+  test('change manual prop', async () => {
+    const wrapper = mount(Tooltip, {
+      props: { trigger: 'hover', content: 'test' }
+    })
+
+    wrapper.setProps({ manual: true })
+    await vi.runAllTimers()
+
+    wrapper.find('.px-tooltip__trigger').trigger('hover')
+
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeFalsy()
+
+    wrapper.setProps({ manual: false, trigger: 'contextmenu' })
+
+    await vi.runAllTimers()
+
+    wrapper.find('.px-tooltip__trigger').trigger('contextmenu')
+
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeTruthy()
+  })
+
+  test('click-outside disabled when trigger prop is hover or manual mode', async () => {
+    const wrapper = mount(
+      () => (
+        <div>
+          <div id="outside"></div>
+          <Tooltip
+            content="hello tooltip"
+            trigger="hover"
+            {...{ onVisibleChange }}
+          >
+            <button id="trigger">trigger</button>
+          </Tooltip>
+        </div>
+      ),
+      {
+        attachTo: document.body
+      }
+    )
+    const triggerArea = wrapper.find('#trigger')
+    expect(triggerArea.exists()).toBeTruthy()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeFalsy()
+
+    // 弹出层是否出现
+    wrapper.find('.px-tooltip__trigger').trigger('mouseenter')
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeTruthy()
+
+    // trigger:hover外层点击不触发
+    wrapper.get('#outside').trigger('click')
+    await vi.runAllTimers()
+    expect(wrapper.find('.px-tooltip__popper').exists()).toBeTruthy()
+    // 注销流程
+    wrapper.unmount()
+  })
+
+  test('destroy popper instance on unmount', async () => {
+    const wrapper = mount(Tooltip, {
+      props: { trigger: 'click', content: 'destroy test' }
+    })
+
+    await wrapper.find('.px-tooltip__trigger').trigger('click')
+    await vi.runAllTimers()
+
+    const destroySpy = vi.fn()
+    ;(wrapper.vm as any).popperInstance = { destroy: destroySpy }
+
+    wrapper.unmount()
+
+    expect(destroySpy).toHaveBeenCalled()
+  })
+})
+
+// css houdini paint worklet test
+describe('PxTooltip - CSS Houdini Paint Worklet', () => {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
+  it('should register the Paint Worklet pixelbox when supported', async () => {
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    }
+
+    mount(Tooltip)
+
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('/worklets/dist/pixelbox.worklet.js')
+    )
+  })
+
+  it('should warn if CSS Houdini Paint Worklet is not supported', () => {
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
+
+    mount(Tooltip)
+
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringContaining(
+          'CSS Houdini Paint Worklet API is not supported in this browser.'
+        )
+      })
+    )
+  })
+
+  it('should log an error if loading the Paint Worklet fails', () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+
+    mount(Tooltip)
+
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading Paint Worklet:',
+      error
+    )
+  })
 })
