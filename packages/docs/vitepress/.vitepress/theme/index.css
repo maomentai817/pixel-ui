@@ -70,8 +70,8 @@ table code {
 .VPNav .VPNavBar.has-sidebar .content-body {
   background-image: radial-gradient(transparent 1px, #fff 1px);
   background-size: 4px 4px;
-  background-color: transparent;
-  backdrop-filter: saturate(50%)  blur(4px);
+  background-color: transparent !important;
+  backdrop-filter: saturate(50%) blur(4px);
 }
 
 /* sidebar scrollbar */
