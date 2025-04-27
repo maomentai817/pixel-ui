@@ -58,7 +58,9 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
-      rules: {}
+      rules: {
+        'no-undef': 'off'
+      }
     }
   ],
   globals: {

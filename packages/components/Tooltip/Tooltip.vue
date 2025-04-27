@@ -14,6 +14,7 @@ import { useClickOutside } from '@pixel-ui/hooks'
 import { debugWarn } from '@pixel-ui/utils'
 import type { TooltipProps, TooltipEmits, TooltipInstance } from './types'
 
+import useEventsToTriggerNode from './useEventsToTriggerNode'
 import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxTooltip' as const
@@ -45,7 +46,15 @@ const dropdownEvents: Ref<Record<string, EventListener>> = ref({})
 // ref 实例
 const containerNode = ref<HTMLElement>()
 const popperNode = ref<HTMLElement>()
-const triggerNode = ref<HTMLElement>()
+const _triggerNode = ref<HTMLElement>()
+
+// 虚拟节点处理
+const triggerNode = computed(() => {
+  if (props.virtualTriggering) {
+    return (props.virtualRef as HTMLElement) ?? _triggerNode.value
+  }
+  return _triggerNode.value as HTMLElement
+})
 
 // popperjs 配置封装
 const popperOptions = computed(() => ({
@@ -185,6 +194,12 @@ useClickOutside(containerNode, () => {
   visible.value && closeFinal()
 })
 
+// 虚拟节点绑定
+useEventsToTriggerNode(props, triggerNode, events, () => {
+  openDebounce?.cancel()
+  setVisible(false)
+})
+
 // 显示隐藏
 const show: TooltipInstance['show'] = openFinal
 const hide: TooltipInstance['hide'] = () => {
@@ -228,7 +243,7 @@ onMounted(() => {
   <div class="px-tooltip" ref="containerNode" v-on="outerEvents">
     <div
       class="px-tooltip__trigger"
-      ref="triggerNode"
+      ref="_triggerNode"
       v-on="events"
       v-if="!virtualTriggering"
     >
