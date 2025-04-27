@@ -2,6 +2,8 @@ import type { Placement, Options } from '@popperjs/core'
 
 export type TriggerType = 'hover' | 'click' | 'contextmenu'
 
+export type EffectType = 'dark' | 'light' | 'customized'
+
 export interface TooltipProps {
   /**
    * @property {string} content
@@ -57,6 +59,12 @@ export interface TooltipProps {
    * @description 隐藏延时
    */
   hideTimeout?: number
+  /**
+   * @property {EffectType} effect
+   * @default 'light'
+   * @description 提示样式
+   */
+  effect?: EffectType
 }
 
 export interface TooltipEmits {

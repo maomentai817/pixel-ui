@@ -33,7 +33,8 @@ const props = withDefaults(defineProps<_TooltipProps>(), {
   placement: 'bottom',
   transition: 'fade',
   showTimeout: 0,
-  hideTimeout: 200
+  hideTimeout: 200,
+  effect: 'light'
 })
 
 const emits = defineEmits<TooltipEmits>()
@@ -195,10 +196,7 @@ useClickOutside(containerNode, () => {
 })
 
 // 虚拟节点绑定
-useEventsToTriggerNode(props, triggerNode, events, () => {
-  openDebounce?.cancel()
-  setVisible(false)
-})
+useEventsToTriggerNode(props, triggerNode, events, closeFinal)
 
 // 显示隐藏
 const show: TooltipInstance['show'] = openFinal
@@ -254,6 +252,7 @@ onMounted(() => {
     <transition :name="transition" @after-leave="destroyPopperInstance">
       <div
         class="px-tooltip__popper"
+        :class="`is-${effect}`"
         ref="popperNode"
         v-on="dropdownEvents"
         v-if="visible"

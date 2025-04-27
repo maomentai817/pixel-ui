@@ -94,5 +94,17 @@
       border-left: var(--px-popover-border-width) solid var(--px-popover-border-color);
       border-bottom: var(--px-popover-border-width) solid var(--px-popover-border-color);
     }
+
+    &.is-light {
+      --px-popover-text-color: var(--px-text-color-base);
+      --px-popover-bg-color: var(--px-bg-color-base);
+      --px-popover-border-color: var(--px-border-color-base);
+    }
+
+    &.is-dark {
+      --px-popover-text-color: var(--px-text-color-white);
+      --px-popover-bg-color: var(--px-border-color-base);
+      --px-popover-border-color: var(--px-border-color-base);
+    }
   }
 }

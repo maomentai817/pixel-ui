@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type CollapseItemName } from '@mmt817/pixel-ui'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const activeNames = ref([])
 
@@ -18,6 +18,13 @@ const stages = [
 const format = (percentage: number) => {
   return percentage === 100 ? 'Full' : `${percentage}%`
 }
+
+const tooltiptest = ref()
+
+const testRef = computed(() => {
+  const el = tooltiptest.value
+  return el?.$el ?? el
+})
 </script>
 
 <template>
@@ -439,10 +446,23 @@ const format = (percentage: number) => {
         class="mt-10"
         content="Bottom Right prompts info"
         placement="bottom-end"
+        effect="dark"
       >
         <px-button size="small">bottom-end</px-button>
       </px-tooltip>
     </div>
+  </div>
+
+  <!-- tooltip virtual trigger -->
+  <div class="w-600 mt-20">
+    <px-tooltip
+      content="Bottom center"
+      placement="bottom"
+      trigger="hover"
+      virtual-triggering
+      :virtual-ref="testRef"
+    ></px-tooltip>
+    <px-button ref="tooltiptest">virtual trigger</px-button>
   </div>
   <div class="h-100"></div>
 </template>
