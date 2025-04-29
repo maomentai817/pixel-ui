@@ -10,7 +10,7 @@
     "docs:build": "pnpm --filter @pixel-ui/vitepress build",
     "docs:preview": "pnpm --filter @pixel-ui/vitepress preview",
     "docs:storybook": "pnpm --filter @pixel-ui/storybook storybook",
-    "test": "run-s test-utils test-comp",
+    "test": "run-s test-utils test-hooks test-comp",
     "test-comp": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/components test",
     "test-utils": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/utils test",
     "test-hooks": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/hooks test",

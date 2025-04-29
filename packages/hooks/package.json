@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest --run --coverage",
+    "test:watch": "vitest --coverage",
     "build": "vite build"
   },
   "keywords": [],
