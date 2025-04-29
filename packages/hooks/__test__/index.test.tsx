@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { useClickOutside, useEventListener } from '..'
+import { useClickOutside, useEventListener } from '../index'
 
 describe('utils/index', () => {
   it('useClickOutside should be exported', () => {

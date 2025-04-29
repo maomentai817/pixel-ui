@@ -18,10 +18,6 @@
     "build": "vite build"
   },
   "license": "ISC",
-  "devDependencies": {
-    "vue": "^3.4.19",
-    "lodash-es": "^4.17.21"
-  },
   "peerDependencies": {
     "vue": "^3.4.19",
     "lodash-es": "^4.17.21"
