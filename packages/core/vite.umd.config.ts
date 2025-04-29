@@ -7,7 +7,7 @@ import { compression } from 'vite-plugin-compression2'
 import vue from '@vitejs/plugin-vue'
 import shell from 'shelljs'
 import terser from '@rollup/plugin-terser'
-import hooks from './hooksPlugin'
+import { hooksPlugin as hooks } from '@pixel-ui/vite-plugins'
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
 const isProd = process.env.NODE_ENV === 'production'

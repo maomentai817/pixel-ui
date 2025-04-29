@@ -1,15 +1,29 @@
 {
   "name": "@pixel-ui/hooks",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "test": "vitest --run --coverage",
-    "test:watch": "vitest --coverage",
     "build": "vite build"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.4.1"
+  "devDependencies": {
+    "vue": "^3.4.19",
+    "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.19",
+    "lodash-es": "^4.17.21"
+  }
 }

@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts'
 import shell from 'shelljs'
 import terser from '@rollup/plugin-terser'
 
-import hooks from './hooksPlugin'
+import { hooksPlugin as hooks } from '@pixel-ui/vite-plugins'
 
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
