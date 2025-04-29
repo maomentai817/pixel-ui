@@ -70,5 +70,5 @@ Pixel UI 采用以下字体 (经 fontforge 修改)
 
 | Language  | Font                                                               |
 | --------- | ------------------------------------------------------------------ |
-| English   | [Kongtext](https://www.dafont.com/kongtext.font)                   |
+| English   | [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) |
 | Chinese   | [Zpix (最像素)](https://github.com/SolidZORO/zpix-pixel-font)      |
