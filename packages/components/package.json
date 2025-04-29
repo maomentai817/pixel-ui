@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --run --coverage",
-    "test:watch": "vitest --coverage",
+    "test": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/hooks build && vitest --run --coverage",
+    "test:watch": "cross-env NODE_ENV=test pnpm --filter @pixel-ui/hooks build && vitest --coverage",
     "prettier": "prettier --write .",
     "worklet": "tsc -p ./worklets/tsconfig.worklet.json"
   },
