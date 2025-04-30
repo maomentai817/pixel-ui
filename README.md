@@ -13,15 +13,15 @@
 <p align="center">Pixel UI - A Vue 3 UI library</p>
 
 Pixel UI 是一个基于 **Vue 3** + **TypeScript** + **CSS Houdini** 打造的像素风组件库。  
-从像素边框到复古字体，每一个细节都力求还原游戏机时代的像素艺术，  
-为现代 Web 应用注入浓浓的复古科技感 🎮✨。
+从像素边框到复古字体, 力求还原游戏机时代的像素艺术，  
+为现代 Web 应用注入复古科技感 🎮✨。
 
 ---
 ## 🌐 浏览器支持
 
 Pixel UI 基于 CSS Houdini 实现像素风格渲染, 因此要求浏览器支持 Paint Worklet (`CSS.paintWorklet`) 能力
 
-查询: [caniuse](https://caniuse.com/?search=paint)
+[![caniuse](https://img.shields.io/badge/caniuse-orange)](https://caniuse.com/?search=paint)
 
 ## 📦 安装 Installation
 
@@ -62,7 +62,11 @@ yarn add @mmt817/pixel-ui
 - [部分样式参考](https://nostalgic-css.github.io/NES.css/#)
 - [paintWorklet 学习](https://jerosoler.github.io/css-houdini-pixel-box/)
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS/paintWorklet_static)
-- [副产物: super-gif](https://github.com/maomentai817/super-gif)
+
+| 副产物 | 状态 | 描述 |
+| --- | --- | --- |
+| super-gif | [![npm](https://img.shields.io/npm/v/@mmt817/super-gif)](https://github.com/maomentai817/super-gif) | GIF 帧控制器 |
+
 
 ## 🖋️ 字体 Fonts
 
@@ -70,5 +74,5 @@ Pixel UI 采用以下字体 (经 fontforge 修改)
 
 | Language  | Font                                                               |
 | --------- | ------------------------------------------------------------------ |
-| English   | [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) |
-| Chinese   | [Zpix (最像素)](https://github.com/SolidZORO/zpix-pixel-font)      |
+| English   | [![PS2P](https://img.shields.io/badge/PS2P-n)](https://fonts.google.com/specimen/Press+Start+2P) |
+| Chinese   | [![Zpix(最像素)](https://img.shields.io/badge/Zpix(最像素)-n)](https://github.com/SolidZORO/zpix-pixel-font)      |
