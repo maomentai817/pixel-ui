@@ -1,0 +1,41 @@
+{
+  "name": "vitepress-api-table",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./.dist/index.cjs",
+  "module": "./.dist/index.mjs",
+  "types": "./.dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./.dist/index.mjs",
+      "require": "./.dist/index.cjs"
+    }
+  },
+  "files": [
+    ".dist",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "rollup --config rollup.config.ts --watch",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript"
+  },
+  "peerDependencies": {
+    "markdown-it-container": "^3.0.0",
+    "vitepress": "*",
+    "vue": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/markdown-it": "^13.0.8",
+    "@types/markdown-it-container": "^2.0.10",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "tslib": "^2.6.3"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-container": "^3.0.0"
+  }
+}
