@@ -58,11 +58,11 @@ function generateMarkdownDocumentation(content: string, interfaceName: string) {
 
   const propertiesBlock = match[1]
 
-  let markdownTable = `## ${interfaceName}\n\n| Property | Type | Default | Description |\n| --- | --- | --- | --- |\n`
+  let markdownTable = `## ${interfaceName}\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n`
 
   const properties = parsePropertyComments(propertiesBlock)
   each(properties, (propertie: PropertyInfo) => {
-    markdownTable += `| ${propertie.propertyName} | ${propertie.propertyType} | ${propertie.defaultValue} | ${propertie.description} |\n`
+    markdownTable += `| ${propertie.propertyName} | ${propertie.description} | \`${propertie.propertyType}\` | \`${propertie.defaultValue ?? '-'}\` |\n`
   })
 
   return markdownTable
@@ -70,40 +70,54 @@ function generateMarkdownDocumentation(content: string, interfaceName: string) {
 
 // 解析注释和属性
 function parsePropertyComments(propertyStr: string): PropertyInfo[] {
-  const props = propertyStr.trim().split(';')
+  const lines = propertyStr.split('\n')
   const properties: PropertyInfo[] = []
 
-  each(props, (prop: string) => {
-    const propInfo: PropertyInfo = {
-      propertyName: '',
-      propertyType: '',
-      description: ''
+  let currentComment: Partial<PropertyInfo> = {}
+  let parsingComment = false
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim()
+
+    // 开始解析注释块
+    if (line.startsWith('/**')) {
+      parsingComment = true
+      currentComment = {}
+      continue
     }
 
-    const propNameMatch = prop.match(
-      /@property\s*(.*?)\s*(?:\n\s*\*\s*@|\*\/)/s
-    )
+    if (parsingComment) {
+      const propertyMatch = line.match(/@property\s+([\w$]+)/)
+      const typeMatch = line.match(/@type\s+(.*)/)
+      const descMatch = line.match(/@description\s+(.*)/)
+      const defaultMatch = line.match(/@default\s+(.*)/)
 
-    const descMatch = prop.match(/@description\s*(.*?)\s*(?:\n\s*\*\s*@|\*\/)/s)
+      if (propertyMatch) currentComment.propertyName = propertyMatch[1]
+      if (typeMatch) currentComment.propertyType = typeMatch[1]
+      if (descMatch) currentComment.description = descMatch[1]
+      if (defaultMatch) currentComment.defaultValue = defaultMatch[1]
 
-    const defaultValueMatch = prop.match(
-      /@default\s*(.*?)\s*(?:\n\s*\*\s*@|\*\/)/s
-    )
+      // 注释块结束
+      if (line.endsWith('*/')) {
+        parsingComment = false
+      }
 
-    if (propNameMatch) {
-      propInfo.propertyName = propNameMatch[1].trim()
+      continue
     }
 
-    if (descMatch) {
-      propInfo.description = descMatch[1].trim()
+    // 匹配字段定义（确保有字段名）
+    const fieldMatch = line.match(/^(\w+)\??:\s*([^;]+)/)
+    if (fieldMatch && currentComment.propertyName === fieldMatch[1]) {
+      if (!currentComment.propertyType) {
+        currentComment.propertyType = fieldMatch[2].trim()
+      }
+      if (!currentComment.description) {
+        currentComment.description = '-'
+      }
+      properties.push(currentComment as PropertyInfo)
+      currentComment = {}
     }
-
-    if (defaultValueMatch) {
-      propInfo.defaultValue = defaultValueMatch[1].trim()
-    }
-
-    if (propInfo.propertyName) properties.push(propInfo)
-  })
+  }
 
   return properties
 }
