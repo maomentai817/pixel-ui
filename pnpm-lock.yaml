@@ -274,6 +274,9 @@ importers:
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.23.0)(@types/node@20.17.28)(async-validator@4.2.5)(postcss@8.5.3)(sass@1.86.3)(search-insights@2.17.3)(terser@5.39.0)(typescript@5.8.2)
+      vitepress-api-table:
+        specifier: workspace:*
+        version: link:../../../libs/vitepress-api-table
       vitepress-plugin-group-icons:
         specifier: ^1.5.2
         version: 1.5.2

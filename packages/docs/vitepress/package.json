@@ -19,6 +19,7 @@
     "nprogress-v2": "^1.1.10",
     "vitepress": "^1.6.3",
     "vitepress-plugin-group-icons": "^1.5.2",
-    "vitepress-preview-component": "workspace:*"
+    "vitepress-preview-component": "workspace:*",
+    "vitepress-api-table": "workspace:*"
   }
 }

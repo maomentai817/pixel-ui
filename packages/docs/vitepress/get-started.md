@@ -79,8 +79,6 @@ import { PxButton } from '@mmt817/pixel-ui'
 </template>
 ```
 
-::: api-table src=components/Button/types.ts
-:::
 
 ## ✨ 组件亮点
 

@@ -86,3 +86,12 @@ demo-preview=../demo/Card/More.vue
 | footer |   卡片底部内容     |
 | prepend |   卡片前置内容     |
 | append |   卡片后置内容     |
+
+## API_TABLE PLUGIN TEST
+
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
+
+::: api-table src=components/Card/types.ts
+:::
