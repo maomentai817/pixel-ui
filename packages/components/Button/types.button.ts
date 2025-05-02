@@ -123,7 +123,7 @@ export interface ButtonEmits {
   /**
    * @property click
    * @description 按钮点击事件
-   * @type {`(event: MouseEvent)=>void`}
+   * @type {(event: MouseEvent)=>void}
    */
   (_e: 'click', _val: MouseEvent): void
 }

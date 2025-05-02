@@ -20,7 +20,7 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
+            render: function (p) { return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
         }
     ],
     Slots: [
@@ -75,9 +75,10 @@ function generateCategoryTable(category, properties) {
 function generateComponentDocumentation(content, filePath) {
     var _a, _b, _c, _d;
     var _e;
-    var componentName = filePath.split('/').find(function (_, i, arr) { return arr[i - 1] === 'components'; }) ||
-        ((_e = filePath.split('/').pop()) === null || _e === void 0 ? void 0 : _e.replace(/\.ts$/, '')) ||
-        'UnknownComponent';
+    var matchComp = filePath.match(/components\/([^/]+)\/types\.(\w+)\.ts$/);
+    var componentName = matchComp
+        ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1) // 提取 buttonGroup → ButtonGroup
+        : ((_e = filePath.split('/').pop()) === null || _e === void 0 ? void 0 : _e.replace(/\.ts$/, '')) || 'UnknownComponent';
     // 分类收集接口（Props/Slots/Emits/Expose）
     var apiCategories = {
         Props: [],

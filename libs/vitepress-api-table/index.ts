@@ -29,7 +29,7 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `${p.propertyType.replace(/\|/g, '\\|')}\``
+      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
     }
   ],
   Slots: [
@@ -103,10 +103,11 @@ ${properties
 }
 
 function generateComponentDocumentation(content: string, filePath: string) {
-  const componentName =
-    filePath.split('/').find((_, i, arr) => arr[i - 1] === 'components') ||
-    filePath.split('/').pop()?.replace(/\.ts$/, '') ||
-    'UnknownComponent'
+  const matchComp = filePath.match(/components\/([^/]+)\/types\.(\w+)\.ts$/)
+
+  const componentName = matchComp
+    ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1) // 提取 buttonGroup → ButtonGroup
+    : filePath.split('/').pop()?.replace(/\.ts$/, '') || 'UnknownComponent'
 
   // 分类收集接口（Props/Slots/Emits/Expose）
   const apiCategories = {

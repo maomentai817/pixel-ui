@@ -85,24 +85,7 @@ demo-preview=../demo/Button/Tag.vue
 demo-preview=../demo/Button/Throttle.vue
 :::
 
-
-## ButtonGroup API
-
-### Props
-
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| size     | 尺寸                 | `enum` - `large \| default \| small`                              | —       |
-| type     | 类型                 | `enum` - `primary \| success \| warning \| danger \| base`        | base    |
-| disabled | 按钮组是否为禁用状态 | `boolean`                                                           | false   |
-
-### Slots
-
-| Name    | Description | Sub Component |
-| ------- | ----------- | ------------- |
-| default | 默认插槽    | Button         |
-
-## API_TABLE PLUGIN TEST
+## API_Table插件测试
 
 :::danger
 该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
