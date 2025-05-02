@@ -58,11 +58,11 @@ function generateMarkdownDocumentation(content: string, interfaceName: string) {
 
   const propertiesBlock = match[1]
 
-  let markdownTable = `## ${interfaceName}\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n`
+  let markdownTable = `### ${interfaceName}\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n`
 
   const properties = parsePropertyComments(propertiesBlock)
   each(properties, (propertie: PropertyInfo) => {
-    markdownTable += `| ${propertie.propertyName} | ${propertie.description} | \`${propertie.propertyType}\` | \`${propertie.defaultValue ?? '-'}\` |\n`
+    markdownTable += `| ${propertie.propertyName} | ${propertie.description} | \`${propertie.propertyType.replace(/\|/g, '\\|')}\` | ${propertie.defaultValue} |\n`
   })
 
   return markdownTable
@@ -70,52 +70,48 @@ function generateMarkdownDocumentation(content: string, interfaceName: string) {
 
 // 解析注释和属性
 function parsePropertyComments(propertyStr: string): PropertyInfo[] {
-  const lines = propertyStr.split('\n')
+  const props = propertyStr
+    .split('/**')
+    .map((p) => p.trim())
+    .filter((p) => p.includes('@property'))
+
   const properties: PropertyInfo[] = []
 
-  let currentComment: Partial<PropertyInfo> = {}
-  let parsingComment = false
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim()
-
-    // 开始解析注释块
-    if (line.startsWith('/**')) {
-      parsingComment = true
-      currentComment = {}
-      continue
+  for (const prop of props) {
+    const propInfo: PropertyInfo = {
+      propertyName: '',
+      propertyType: '',
+      description: '',
+      defaultValue: '-'
     }
 
-    if (parsingComment) {
-      const propertyMatch = line.match(/@property\s+([\w$]+)/)
-      const typeMatch = line.match(/@type\s+(.*)/)
-      const descMatch = line.match(/@description\s+(.*)/)
-      const defaultMatch = line.match(/@default\s+(.*)/)
+    const nameMatch = prop.match(/@property\s+(\w+)/)
+    const descMatch = prop.match(/@description\s+(.*)/)
+    const defaultMatch = prop.match(/@default\s+(.*)/)
 
-      if (propertyMatch) currentComment.propertyName = propertyMatch[1]
-      if (typeMatch) currentComment.propertyType = typeMatch[1]
-      if (descMatch) currentComment.description = descMatch[1]
-      if (defaultMatch) currentComment.defaultValue = defaultMatch[1]
+    // 支持 enum 类型声明
+    const typeMatch =
+      prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
+      prop.match(/@type\s+([^\n]*)/)
 
-      // 注释块结束
-      if (line.endsWith('*/')) {
-        parsingComment = false
-      }
-
-      continue
+    if (nameMatch) {
+      propInfo.propertyName = nameMatch[1].trim()
     }
 
-    // 匹配字段定义（确保有字段名）
-    const fieldMatch = line.match(/^(\w+)\??:\s*([^;]+)/)
-    if (fieldMatch && currentComment.propertyName === fieldMatch[1]) {
-      if (!currentComment.propertyType) {
-        currentComment.propertyType = fieldMatch[2].trim()
-      }
-      if (!currentComment.description) {
-        currentComment.description = '-'
-      }
-      properties.push(currentComment as PropertyInfo)
-      currentComment = {}
+    if (descMatch) {
+      propInfo.description = descMatch[1].trim()
+    }
+
+    if (defaultMatch) {
+      propInfo.defaultValue = defaultMatch[1].trim()
+    }
+
+    if (typeMatch) {
+      propInfo.propertyType = typeMatch[1].trim()
+    }
+
+    if (propInfo.propertyName) {
+      properties.push(propInfo)
     }
   }
 

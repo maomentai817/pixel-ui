@@ -143,3 +143,12 @@ demo-preview=../demo/Button/Throttle.vue
 | Name    | Description | Sub Component |
 | ------- | ----------- | ------------- |
 | default | 默认插槽    | Button         |
+
+## API_TABLE PLUGIN TEST
+
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
+
+::: api-table src=components/Button/types.ts
+:::

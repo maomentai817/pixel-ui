@@ -37,58 +37,48 @@ function generateMarkdownDocumentation(content, interfaceName) {
     if (!match)
         return 'No interface found';
     var propertiesBlock = match[1];
-    var markdownTable = "## ".concat(interfaceName, "\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n");
+    var markdownTable = "### ".concat(interfaceName, "\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n");
     var properties = parsePropertyComments(propertiesBlock);
     each(properties, function (propertie) {
-        var _a;
-        markdownTable += "| ".concat(propertie.propertyName, " | ").concat(propertie.description, " | `").concat(propertie.propertyType, "` | `").concat((_a = propertie.defaultValue) !== null && _a !== void 0 ? _a : '-', "` |\n");
+        markdownTable += "| ".concat(propertie.propertyName, " | ").concat(propertie.description, " | `").concat(propertie.propertyType.replace(/\|/g, '\\|'), "` | ").concat(propertie.defaultValue, " |\n");
     });
     return markdownTable;
 }
 // 解析注释和属性
 function parsePropertyComments(propertyStr) {
-    var lines = propertyStr.split('\n');
+    var props = propertyStr
+        .split('/**')
+        .map(function (p) { return p.trim(); })
+        .filter(function (p) { return p.includes('@property'); });
     var properties = [];
-    var currentComment = {};
-    var parsingComment = false;
-    for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].trim();
-        // 开始解析注释块
-        if (line.startsWith('/**')) {
-            parsingComment = true;
-            currentComment = {};
-            continue;
+    for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
+        var prop = props_1[_i];
+        var propInfo = {
+            propertyName: '',
+            propertyType: '',
+            description: '',
+            defaultValue: '-'
+        };
+        var nameMatch = prop.match(/@property\s+(\w+)/);
+        var descMatch = prop.match(/@description\s+(.*)/);
+        var defaultMatch = prop.match(/@default\s+(.*)/);
+        // 支持 enum 类型声明
+        var typeMatch = prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
+            prop.match(/@type\s+([^\n]*)/);
+        if (nameMatch) {
+            propInfo.propertyName = nameMatch[1].trim();
         }
-        if (parsingComment) {
-            var propertyMatch = line.match(/@property\s+([\w$]+)/);
-            var typeMatch = line.match(/@type\s+(.*)/);
-            var descMatch = line.match(/@description\s+(.*)/);
-            var defaultMatch = line.match(/@default\s+(.*)/);
-            if (propertyMatch)
-                currentComment.propertyName = propertyMatch[1];
-            if (typeMatch)
-                currentComment.propertyType = typeMatch[1];
-            if (descMatch)
-                currentComment.description = descMatch[1];
-            if (defaultMatch)
-                currentComment.defaultValue = defaultMatch[1];
-            // 注释块结束
-            if (line.endsWith('*/')) {
-                parsingComment = false;
-            }
-            continue;
+        if (descMatch) {
+            propInfo.description = descMatch[1].trim();
         }
-        // 匹配字段定义（确保有字段名）
-        var fieldMatch = line.match(/^(\w+)\??:\s*([^;]+)/);
-        if (fieldMatch && currentComment.propertyName === fieldMatch[1]) {
-            if (!currentComment.propertyType) {
-                currentComment.propertyType = fieldMatch[2].trim();
-            }
-            if (!currentComment.description) {
-                currentComment.description = '-';
-            }
-            properties.push(currentComment);
-            currentComment = {};
+        if (defaultMatch) {
+            propInfo.defaultValue = defaultMatch[1].trim();
+        }
+        if (typeMatch) {
+            propInfo.propertyType = typeMatch[1].trim();
+        }
+        if (propInfo.propertyName) {
+            properties.push(propInfo);
         }
     }
     return properties;
