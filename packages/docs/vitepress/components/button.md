@@ -85,48 +85,6 @@ demo-preview=../demo/Button/Tag.vue
 demo-preview=../demo/Button/Throttle.vue
 :::
 
-## Button API
-
-### Props
-
-| Name              | Description                       | Type                                                             | Default |
-| ----------------- | --------------------------------- | ---------------------------------------------------------------- | ------- |
-| size              | 尺寸                              | `enum` - `large \| default \| small`                              | —       |
-| type              | 类型                              | `enum` - `primary \| success \| warning \| danger \| base`        | base    |
-| plain             | 是否为朴素按钮                    | `boolean`                                                          | false   |
-| round             | 是否为圆角按钮                    | `boolean`                                                          | false   |
-| circle            | 是否为圆形按钮                    | `boolean`                                                          | false   |
-| loading           | 是否为加载中状态                  | `boolean`                                                          | false   |
-| loading-icon      | 自定义加载中状态图标组件          | `string`                                                            | spinner |
-| disabled          | 按钮是否为禁用状态                | `boolean`                                                          | false   |
-| icon              | 按钮图标                          | `string`                                                          | -       |
-| autofocus         | 是否自动聚焦(原生`autofocus`属性) | `boolean`                                                           | false   |
-| native-type       | 原生 type 属性                    | `enum` - `button \| submit \| reset`                              | button  |
-| tag               | 自定义元素标签                    | `string`\/`Component`                                              | button  |
-| use-throttle      | 是否使用节流模式                  | `boolean`                                                          | true    |
-| throttle-duration | 节流模式下，节流时间间隔(ms)      | `number`                                                            | 500     |
-
-### Events
-
-| Name  | Description  | Type                         |
-| ----- | ------------ | ---------------------------- |
-| click | 按钮点击事件 | `(event: MouseEvent) => void`   |
-
-### Slots
-
-| Name    | Description        |
-| ------- | ------------------ |
-| default | 默认插槽, 按钮内容   |
-| loading | 自定义加载图标       |
-
-### Expose
-
-| Name     | Description    | Type                                 |
-| -------- | -------------- | ------------------------------------ |
-| ref      | 按钮 html 元素 | `Ref<HTMLButtonElement>`              |
-| size     | 按钮尺寸       | `ComputedRef<default \| small \| large>` |
-| type     | 按钮类型       | `ComputedRef<''\| primary \|...>`     |
-| disabled | 按钮禁用状态   | `ComputedRef<boolean>`                |
 
 ## ButtonGroup API
 

@@ -4,9 +4,47 @@ import anchor from 'markdown-it-anchor'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { resolve, dirname } from 'path'
-import { each } from 'lodash-es'
 
 import type { RenderRule } from 'markdown-it/lib/renderer'
+
+type ApiCategory = 'Props' | 'Events' | 'Slots' | 'Expose'
+
+interface ColumnConfig {
+  header: string
+  render: (_prop: PropertyInfo) => string
+}
+
+const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
+  Props: [
+    { header: 'Name', render: (p) => p.propertyName },
+    { header: 'Description', render: (p) => p.description },
+    {
+      header: 'Type',
+      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+    },
+    { header: 'Default', render: (p) => p.defaultValue || '-' }
+  ],
+  Events: [
+    { header: 'Name', render: (p) => p.propertyName },
+    { header: 'Description', render: (p) => p.description },
+    {
+      header: 'Type',
+      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+    }
+  ],
+  Slots: [
+    { header: 'Name', render: (p) => p.propertyName },
+    { header: 'Description', render: (p) => p.description }
+  ],
+  Expose: [
+    { header: 'Name', render: (p) => p.propertyName },
+    { header: 'Description', render: (p) => p.description },
+    {
+      header: 'Type',
+      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+    }
+  ]
+}
 
 interface PropertyInfo {
   propertyName: string
@@ -38,18 +76,11 @@ const render: RenderRule = function (tokens, idx) {
   const filePath = /src=([^\s]+)/.exec(token.info)?.[1]?.trim()
   let result = ''
 
-  if (token.nesting === 1) {
-    const fileContent = _readFile(filePath ?? '')
-    // 正则表达式匹配接口名称
-    const interfaceRegex = /export\s+interface\s+(\w+)/g
-
-    // 执行匹配并存储所有接口名称
-    let match: RegExpExecArray | null = null
-    while ((match = interfaceRegex.exec(fileContent)) !== null) {
-      result += mdit.render(
-        generateMarkdownDocumentation(fileContent, match[1])
-      )
-    }
+  if (token.nesting === 1 && filePath) {
+    const fileContent = _readFile(filePath)
+    result += mdit.render(
+      generateComponentDocumentation(fileContent, filePath) // 传入文件路径
+    )
   }
   return result
 }
@@ -57,25 +88,71 @@ const apiTableMdPlugin: MarkdownIt.PluginSimple = function (md) {
   md.use(container, 'api-table', { render })
 }
 
-function generateMarkdownDocumentation(content: string, interfaceName: string) {
-  const regex = new RegExp(
-    `export interface ${interfaceName} {([\\s\\S]*?)}`,
-    'm'
-  )
-  const match = content.match(regex)
+// 生成分类表格的通用方法
+function generateCategoryTable(
+  category: ApiCategory,
+  properties: PropertyInfo[]
+) {
+  const columns = categoryColumns[category]
 
-  if (!match) return 'No interface found'
+  return `| ${columns.map((c) => c.header).join(' | ')} |
+| ${columns.map(() => '---').join(' | ')} |
+${properties
+  .map((prop) => `| ${columns.map((col) => col.render(prop)).join(' | ')} |`)
+  .join('\n')}`
+}
 
-  const propertiesBlock = match[1]
+function generateComponentDocumentation(content: string, filePath: string) {
+  const componentName =
+    filePath.split('/').find((_, i, arr) => arr[i - 1] === 'components') ||
+    filePath.split('/').pop()?.replace(/\.ts$/, '') ||
+    'UnknownComponent'
 
-  let markdownTable = `### ${interfaceName}\n\n| Name | Description | Type | Default |\n| --- | --- | --- | --- |\n`
+  // 分类收集接口（Props/Slots/Emits/Expose）
+  const apiCategories = {
+    Props: [] as PropertyInfo[],
+    Slots: [] as PropertyInfo[],
+    Events: [] as PropertyInfo[],
+    Expose: [] as PropertyInfo[]
+  }
 
-  const properties = parsePropertyComments(propertiesBlock)
-  each(properties, (propertie: PropertyInfo) => {
-    markdownTable += `| ${propertie.propertyName} | ${propertie.description} | \`${propertie.propertyType.replace(/\|/g, '\\|')}\` | ${propertie.defaultValue} |\n`
-  })
+  // 匹配所有接口并分类
+  const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
+  let match: RegExpExecArray | null
+  while ((match = interfaceRegex.exec(content)) !== null) {
+    const [, interfaceName, interfaceBody] = match
+    const properties = parsePropertyComments(interfaceBody)
 
-  return markdownTable
+    // 根据接口后缀分类（支持 ButtonProps/ButtonEmits/ButtonSlots 等格式）
+    if (interfaceName.endsWith('Props')) {
+      apiCategories.Props.push(...properties)
+    } else if (interfaceName.endsWith('Emits')) {
+      apiCategories.Events.push(...properties)
+    } else if (interfaceName.endsWith('Slots')) {
+      apiCategories.Slots.push(...properties)
+    } else if (interfaceName.endsWith('Instance')) {
+      apiCategories.Expose.push(...properties)
+    }
+  }
+
+  // 生成结构化文档
+  let markdown = `## ${componentName} API\n\n`
+
+  // 按类别渲染表格（只在有内容时显示）
+  if (apiCategories.Props.length > 0) {
+    markdown += `### Props\n\n${generateCategoryTable('Props', apiCategories.Props)}\n\n`
+  }
+  if (apiCategories.Events.length > 0) {
+    markdown += `### Events\n\n${generateCategoryTable('Events', apiCategories.Events)}\n\n`
+  }
+  if (apiCategories.Slots.length > 0) {
+    markdown += `### Slots\n\n${generateCategoryTable('Slots', apiCategories.Slots)}\n\n`
+  }
+  if (apiCategories.Expose.length > 0) {
+    markdown += `### Expose\n\n${generateCategoryTable('Expose', apiCategories.Expose)}\n\n`
+  }
+
+  return markdown
 }
 
 // 解析注释和属性
@@ -100,9 +177,10 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     const defaultMatch = prop.match(/@default\s+(.*)/)
 
     // 支持 enum 类型声明
-    const typeMatch =
-      prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
-      prop.match(/@type\s+([^\n]*)/)
+    // const typeMatch =
+    //   prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
+    //   prop.match(/@type\s+([^\n]*)/)
+    const typeMatch = prop.match(/@type\s+(enum\s*-\s*)?([^\n]+)/)
 
     if (nameMatch) {
       propInfo.propertyName = nameMatch[1].trim()
@@ -117,7 +195,17 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     }
 
     if (typeMatch) {
-      propInfo.propertyType = typeMatch[1].trim()
+      const isEnum = !!typeMatch[1]
+      let typeValue = typeMatch[2].trim()
+
+      // 统一格式化枚举类型
+      if (isEnum) {
+        typeValue = typeValue
+          .replace(/\s*\|\s*/g, ' | ') // 统一竖线间距
+          .replace(/^enum\s*-\s*/i, '') // 移除残留enum标识
+      }
+
+      propInfo.propertyType = typeValue
     }
 
     if (propInfo.propertyName) {

@@ -9,7 +9,7 @@ export interface ButtonProps {
    * @property size
    * @type enum - large | default | small
    * @description 按钮尺寸
-   * @default -
+   * @default default
    */
   size?: ButtonSize
   /**
@@ -118,12 +118,97 @@ export interface ButtonProps {
   color?: string
 }
 
+export interface ButtonEmits {
+  /**
+   * @property click
+   * @type (event: MouseEvent)=>void
+   * @description 按钮点击事件
+   */
+  (_e: 'click', _val: MouseEvent): void
+}
+
+export interface ButtonSlots {
+  /**
+   * @property default
+   * @description 默认插槽,按钮内容
+   */
+  default: () => string
+  /**
+   * @property loading
+   * @description 自定义加载图标
+   */
+  loading: () => string
+}
+
+export interface ButtonInstance {
+  /**
+   * @property ref
+   * @type Ref<HTMLButtonElement>
+   * @description 获取原生按钮元素
+   */
+  ref: Ref<HTMLButtonElement | void>
+  /**
+   * @property size
+   * @type ComputedRef<ButtonSize>
+   * @description 获取按钮尺寸
+   */
+  size: ComputedRef<ButtonSize | ''>
+  /**
+   * @property type
+   * @type ComputedRef<ButtonType>
+   * @description 获取按钮类型
+   */
+  type: ComputedRef<ButtonType | ''>
+  /**
+   * @property disabled
+   * @type ComputedRef<boolean>
+   * @description 获取按钮是否禁用
+   */
+  disabled: ComputedRef<boolean>
+}
+
 export interface ButtonGroupProps {
+  /**
+   * @property size
+   * @type enum - large | default | small
+   * @description 按钮组尺寸
+   * @default default
+   */
   size?: ButtonSize
+  /**
+   * @property type
+   * @type enum - primary | success | warning | danger | base
+   * @description 按钮组类型
+   * @default base
+   */
   type?: ButtonType
+  /**
+   * @property disabled
+   * @type boolean
+   * @description 按钮组是否禁用
+   * @default false
+   */
   disabled?: boolean
+  /**
+   * @property round
+   * @type boolean
+   * @description 按钮组是否为圆角
+   * @default false
+   */
   round?: boolean
+  /**
+   * @property circle
+   * @type boolean
+   * @description 按钮组是否为圆形
+   * @default false
+   */
   circle?: boolean
+  /**
+   * @property color
+   * @type string
+   * @description 自定义颜色
+   * @default -
+   */
   color?: string
 }
 
@@ -135,15 +220,4 @@ export interface ButtonGroupContext {
   round?: boolean
   circle?: boolean
   color?: string
-}
-
-export interface ButtonEmits {
-  (_e: 'click', _val: MouseEvent): void
-}
-
-export interface ButtonInstance {
-  ref: Ref<HTMLButtonElement | void>
-  disabled: ComputedRef<boolean>
-  size: ComputedRef<ButtonSize | ''>
-  type: ComputedRef<ButtonType | ''>
 }
