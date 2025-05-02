@@ -6,41 +6,51 @@ export type TextAlign = 'left' | 'center' | 'right'
 export interface TextProps {
   /**
    * @property size
-   * @type px
-   * @description 字体大小
-   * @default "16"
+   * @type number
+   * @description 文本大小(px)
+   * @default 16
    */
   size?: number
   /**
    * @property type
-   * @description 字体类型
-   * @default "base"
+   * @type enum - primary | success | warning | danger | base
+   * @description 文本类型
+   * @default base
    */
   type?: TextType
   /**
    * @property color
-   * @description 字体颜色
-   * @default "#212529"
+   * @type string
+   * @description 文本颜色
+   * @default #212529
    */
   color?: string
   /**
    * @property bold
-   * @description 字体粗细
+   * @type boolean
+   * @description 是否启用粗体
+   * @default false
    */
   bold?: boolean
   /**
    * @property align
-   * @description 字体对齐方式
+   * @type enum - left | center | right
+   * @description 对齐方式
+   * @default left
    */
   align?: TextAlign
   /**
    * @property tag
+   * @type string | Component
    * @description 自定义元素标签
+   * @default span
    */
   tag?: string | Component
   /**
    * @property compact
-   * @description 是否紧凑
+   * @type boolean
+   * @description 是否启用紧凑模式
+   * @default false
    */
   compact?: boolean
 }

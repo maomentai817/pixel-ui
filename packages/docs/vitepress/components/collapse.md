@@ -57,42 +57,9 @@ demo-preview=../demo/Collapse/Disabled.vue
 demo-preview=../demo/Collapse/Icon.vue
 :::
 
-## Collapse API
 
-### Props
+::: api-table src=components/Collapse/types.collapse.ts
+:::
 
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| modelValue| 当前激活面板      | `string[]`\/`number[]`                                                        | []   |
-| accordion    | 是否启用手风琴莫模式                 | `boolean`        | false    |
-
-### Events
-
-| Name  | Description  | Type                         |
-| ----- | ------------ | ---------------------------- |
-| change | 切换当前活动面板 | `(val: CollapseItemName[]) => void`   |
-
-### Slots
-
-| Name  | Description  | Children                      |
-| ----- | ------------ | ------------------------------ |
-| default | 自定义默认内容 |  CollapseItem |
-
-
-## CollapseItem API
-
-### Props
-
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| name    | 唯一标识符                 | `string`\/`number`                              | -   |
-| title    | 标题                 | `string`        | ''    |
-| disabled    | 是否禁用                 | `boolean`        | false    |
-| icon    | 自定义展开图标                 | `string`        | ''    |
-
-### Slots
-
-| Name  | Description  |
-| ----- | ------------ |
-| default | CollapseItem 内容 |
-| title | CollapseItem 标题 |
+::: api-table src=components/Collapse/types.collapseItem.ts
+:::

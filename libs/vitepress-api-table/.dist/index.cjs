@@ -23,7 +23,7 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
+            render: function (p) { return "`".concat(p.propertyType, "`"); }
         }
     ],
     Slots: [
@@ -91,7 +91,8 @@ function generateComponentDocumentation(content, filePath) {
         Expose: []
     };
     // 匹配所有接口并分类
-    var interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm;
+    // const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
+    var interfaceRegex = /export\s+interface\s+(\w+)\s*{((?:[^{}]*|{(?:[^{}]*|{[^{}]*})*})*)}/gm;
     var match;
     while ((match = interfaceRegex.exec(content)) !== null) {
         var interfaceName = match[1], interfaceBody = match[2];
@@ -142,13 +143,10 @@ function parsePropertyComments(propertyStr) {
             description: '',
             defaultValue: '-'
         };
-        var nameMatch = prop.match(/@property\s+(\w+)/);
+        var nameMatch = prop.match(/@property\s+([\w:]+)/);
         var descMatch = prop.match(/@description\s+(.*)/);
         var defaultMatch = prop.match(/@default\s+(.*)/);
         // 支持 enum 类型声明
-        // const typeMatch =
-        //   prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
-        //   prop.match(/@type\s+([^\n]*)/)
         var typeMatch = prop.match(/@type\s+(enum\s*-\s*)?([^\n]+)/);
         if (nameMatch) {
             propInfo.propertyName = nameMatch[1].trim();

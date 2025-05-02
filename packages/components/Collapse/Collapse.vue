@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { provide, ref, watch, watchEffect } from 'vue'
 
-import type { CollapseProps, CollapseEmits, CollapseItemName } from './types'
+import type {
+  CollapseProps,
+  CollapseEmits,
+  CollapseItemName
+} from './types.collapse'
 import { COLLAPSE_CTX_KEY } from './contants'
 import { debugWarn } from '@pixel-ui/utils'
 

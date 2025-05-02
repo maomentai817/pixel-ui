@@ -2,7 +2,7 @@
 import { inject, computed, onMounted } from 'vue'
 import { COLLAPSE_CTX_KEY } from './contants'
 import { debugWarn } from '@pixel-ui/utils'
-import type { CollapseItemProps } from './types'
+import type { CollapseItemProps } from './types.collapseItem'
 
 import PxIcon from '../Icon/Icon.vue'
 import workletPanelURL from '../worklets/dist/pixelpanel.worklet.js?url'

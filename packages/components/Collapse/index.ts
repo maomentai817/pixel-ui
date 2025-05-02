@@ -4,4 +4,5 @@ import { withInstall } from '@pixel-ui/utils'
 
 export const PxCollapse = withInstall(Collapse)
 export const PxCollapseItem = withInstall(CollapseItem)
-export * from './types'
+export * from './types.collapse'
+export * from './types.collapseItem'

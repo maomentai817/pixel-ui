@@ -29,7 +29,7 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      render: (p) => `\`${p.propertyType}\``
     }
   ],
   Slots: [
@@ -122,7 +122,9 @@ function generateComponentDocumentation(content: string, filePath: string) {
   }
 
   // 匹配所有接口并分类
-  const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
+  // const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
+  const interfaceRegex =
+    /export\s+interface\s+(\w+)\s*{((?:[^{}]*|{(?:[^{}]*|{[^{}]*})*})*)}/gm
   let match: RegExpExecArray | null
   while ((match = interfaceRegex.exec(content)) !== null) {
     const [, interfaceName, interfaceBody] = match
@@ -177,14 +179,11 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
       defaultValue: '-'
     }
 
-    const nameMatch = prop.match(/@property\s+(\w+)/)
+    const nameMatch = prop.match(/@property\s+([\w:]+)/)
     const descMatch = prop.match(/@description\s+(.*)/)
     const defaultMatch = prop.match(/@default\s+(.*)/)
 
     // 支持 enum 类型声明
-    // const typeMatch =
-    //   prop.match(/@type\s+enum\s*-\s*([^\n]*)/) ||
-    //   prop.match(/@type\s+([^\n]*)/)
     const typeMatch = prop.match(/@type\s+(enum\s*-\s*)?([^\n]+)/)
 
     if (nameMatch) {

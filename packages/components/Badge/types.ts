@@ -2,49 +2,72 @@ export type BadgeType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
 export interface BadgeProps {
   /**
-   * @property {string | number} value
-   * @default ''
-   * @description 显示值
+   * @property value
+   * @type  string | number
+   * @description 徽章显示内容/值
+   * @default -
    */
   value?: string | number
   /**
-   * @property {number} max
+   * @property max
+   * @type number
+   * @description 超过最大值显示max+,仅当 value 为 number 时有效
    * @default 99
-   * @description 超过最大值显示 {max}+, 仅当 value 为 number 时有效
    */
   max?: number
   /**
-   * @property {boolean} isDot
+   * @property isDot
+   * @type boolean
+   * @description 是否启用圆点模式
    * @default false
-   * @description 是否为圆点
    */
   isDot?: boolean
   /**
-   * @property {boolean} hidden
+   * @property hidden
+   * @type boolean
+   * @description 是否启用隐藏
    * @default false
-   * @description 是否隐藏
    */
   hidden?: boolean
   /**
-   * @property {BadgeType} type
-   * @default 'danger'
-   * @description Badge 类型
+   * @property type
+   * @type enum - primary | success | warning | danger | info
+   * @description 徽章类型
+   * @default danger
    */
   type?: BadgeType
   /**
-   * @property {boolean} showZero
+   * @property showZero
+   * @type boolean
+   * @description 值为零时是否展示徽章
    * @default true
-   * @description 当数值为 0 时，是否展示 Badge
    */
   showZero?: boolean
   /**
-   * @property {string} color
+   * @property color
+   * @type string
    * @description 自定义颜色
+   * @default -
    */
   color?: string
   /**
-   * @property {[number, number]} offset
+   * @property offset
+   * @type [number, number]
    * @description 偏移量
+   * @default -
    */
   offset?: [number, number]
+}
+
+export interface BadgeSlots {
+  /**
+   * @property default
+   * @description 自定义默认内容
+   */
+  default: () => string
+  /**
+   * @property content
+   * @description 自定义显示内容
+   */
+  content: () => string
 }
