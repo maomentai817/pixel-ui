@@ -2,6 +2,7 @@
 
 var MarkdownIt = require('markdown-it');
 var container = require('markdown-it-container');
+var anchor = require('markdown-it-anchor');
 var fs = require('fs');
 var url = require('url');
 var path = require('path');
@@ -9,6 +10,14 @@ var lodashEs = require('lodash-es');
 
 var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 var mdit = new MarkdownIt();
+mdit.use(anchor, {
+    level: [1, 2, 3, 4, 5, 6],
+    permalink: anchor.permalink.ariaHidden({
+        placement: 'before',
+        class: 'header-anchor',
+        symbol: '&#x200B;'
+    })
+});
 var _readFile = function (filename) {
     var __filename = url.fileURLToPath((typeof document === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('index.cjs', document.baseURI).href)));
     var __dirname = path.dirname(__filename);

@@ -143,6 +143,9 @@ importers:
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
+      markdown-it-anchor:
+        specifier: ^9.2.0
+        version: 9.2.0(@types/markdown-it@13.0.9)(markdown-it@14.1.0)
       markdown-it-container:
         specifier: ^3.0.0
         version: 3.0.0
@@ -3822,6 +3825,12 @@ packages:
 
   mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
+
+  markdown-it-anchor@9.2.0:
+    resolution: {integrity: sha512-sa2ErMQ6kKOA4l31gLGYliFQrMKkqSO0ZJgGhDHKijPf0pNFM9vghjAh3gn26pS4JDRs7Iwa9S36gxm3vgZTzg==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
 
   markdown-it-container@3.0.0:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
@@ -9311,6 +9320,11 @@ snapshots:
   map-or-similar@1.5.0: {}
 
   mark.js@8.11.1: {}
+
+  markdown-it-anchor@9.2.0(@types/markdown-it@13.0.9)(markdown-it@14.1.0):
+    dependencies:
+      '@types/markdown-it': 13.0.9
+      markdown-it: 14.1.0
 
   markdown-it-container@3.0.0: {}
 

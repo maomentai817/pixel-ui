@@ -1,11 +1,20 @@
 import MarkdownIt from 'markdown-it';
 import container from 'markdown-it-container';
+import anchor from 'markdown-it-anchor';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import { each } from 'lodash-es';
 
 var mdit = new MarkdownIt();
+mdit.use(anchor, {
+    level: [1, 2, 3, 4, 5, 6],
+    permalink: anchor.permalink.ariaHidden({
+        placement: 'before',
+        class: 'header-anchor',
+        symbol: '&#x200B;'
+    })
+});
 var _readFile = function (filename) {
     var __filename = fileURLToPath(import.meta.url);
     var __dirname = dirname(__filename);

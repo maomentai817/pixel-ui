@@ -1,10 +1,12 @@
 import MarkdownIt from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer'
 import container from 'markdown-it-container'
+import anchor from 'markdown-it-anchor'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { resolve, dirname } from 'path'
 import { each } from 'lodash-es'
+
+import type { RenderRule } from 'markdown-it/lib/renderer'
 
 interface PropertyInfo {
   propertyName: string
@@ -14,6 +16,14 @@ interface PropertyInfo {
 }
 
 const mdit = new MarkdownIt()
+mdit.use(anchor, {
+  level: [1, 2, 3, 4, 5, 6],
+  permalink: anchor.permalink.ariaHidden({
+    placement: 'before',
+    class: 'header-anchor',
+    symbol: '&#x200B;'
+  })
+})
 
 const _readFile = (filename: string) => {
   const __filename = fileURLToPath(import.meta.url)
