@@ -20,7 +20,7 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
+            render: function (p) { return "".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
         }
     ],
     Slots: [
@@ -157,6 +157,7 @@ function parsePropertyComments(propertyStr) {
         if (typeMatch) {
             var isEnum = !!typeMatch[1];
             var typeValue = typeMatch[2].trim();
+            typeValue.startsWith('{') && (typeValue = typeValue.slice(1, -1));
             // 统一格式化枚举类型
             if (isEnum) {
                 typeValue = typeValue

@@ -3,7 +3,7 @@ import { throttle } from 'lodash-es'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
 import { ref, onMounted, computed, inject } from 'vue'
 import { updateColors, debugWarn } from '@pixel-ui/utils'
-import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
+import type { ButtonProps, ButtonEmits, ButtonInstance } from './types.button'
 
 import PxIcon from '../Icon/Icon.vue'
 import workletURL from '../worklets/dist/pixelbox.worklet.js?url'

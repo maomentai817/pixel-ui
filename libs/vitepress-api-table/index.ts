@@ -29,7 +29,7 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      render: (p) => `${p.propertyType.replace(/\|/g, '\\|')}\``
     }
   ],
   Slots: [
@@ -197,6 +197,8 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     if (typeMatch) {
       const isEnum = !!typeMatch[1]
       let typeValue = typeMatch[2].trim()
+
+      typeValue.startsWith('{') && (typeValue = typeValue.slice(1, -1))
 
       // 统一格式化枚举类型
       if (isEnum) {

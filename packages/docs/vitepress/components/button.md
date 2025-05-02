@@ -108,5 +108,8 @@ demo-preview=../demo/Button/Throttle.vue
 该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
 :::
 
-::: api-table src=components/Button/types.ts
+::: api-table src=components/Button/types.button.ts
+:::
+
+::: api-table src=components/Button/types.buttonGroup.ts
 :::

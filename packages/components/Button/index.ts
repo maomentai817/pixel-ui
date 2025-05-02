@@ -5,4 +5,5 @@ import { withInstall } from '@pixel-ui/utils'
 export const PxButton = withInstall(Button)
 export const PxButtonGroup = withInstall(ButtonGroup)
 
-export * from './types'
+export * from './types.button'
+export * from './types.buttonGroup'
