@@ -74,11 +74,12 @@ function generateCategoryTable(category, properties) {
 }
 function generateComponentDocumentation(content, filePath) {
     var _a, _b, _c, _d;
-    var _e;
-    var matchComp = filePath.match(/components\/([^/]+)\/types\.(\w+)\.ts$/);
+    var matchComp = filePath.match(/components\/([^/]+)\/types(?:\.(\w+))?\.ts$/);
     var componentName = matchComp
-        ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1) // 提取 buttonGroup → ButtonGroup
-        : ((_e = filePath.split('/').pop()) === null || _e === void 0 ? void 0 : _e.replace(/\.ts$/, '')) || 'UnknownComponent';
+        ? matchComp[2]
+            ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1)
+            : matchComp[1][0].toUpperCase() + matchComp[1].slice(1)
+        : 'UnknownComponent';
     // 分类收集接口（Props/Slots/Emits/Expose）
     var apiCategories = {
         Props: [],

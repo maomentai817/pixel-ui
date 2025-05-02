@@ -103,11 +103,15 @@ ${properties
 }
 
 function generateComponentDocumentation(content: string, filePath: string) {
-  const matchComp = filePath.match(/components\/([^/]+)\/types\.(\w+)\.ts$/)
+  const matchComp = filePath.match(
+    /components\/([^/]+)\/types(?:\.(\w+))?\.ts$/
+  )
 
   const componentName = matchComp
-    ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1) // 提取 buttonGroup → ButtonGroup
-    : filePath.split('/').pop()?.replace(/\.ts$/, '') || 'UnknownComponent'
+    ? matchComp[2]
+      ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1)
+      : matchComp[1][0].toUpperCase() + matchComp[1].slice(1)
+    : 'UnknownComponent'
 
   // 分类收集接口（Props/Slots/Emits/Expose）
   const apiCategories = {
