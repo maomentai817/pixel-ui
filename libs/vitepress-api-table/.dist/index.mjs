@@ -36,9 +36,22 @@ var categoryColumns = {
         }
     ]
 };
+// markdown-it-anchor 自定义 slug 去重规则, 仿照 vitepress 处理结果
+var usedSlugs = new Map();
+var slugifyWithDedup = function (s) {
+    var base = s
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\- ]+/g, '')
+        .replace(/\s+/g, '-');
+    var count = usedSlugs.get(base) || 0;
+    usedSlugs.set(base, count + 1);
+    return count === 0 ? base : "".concat(base, "-").concat(count);
+};
 var mdit = new MarkdownIt();
 mdit.use(anchor, {
     level: [1, 2, 3, 4, 5, 6],
+    slugify: slugifyWithDedup,
     permalink: anchor.permalink.ariaHidden({
         placement: 'before',
         class: 'header-anchor',

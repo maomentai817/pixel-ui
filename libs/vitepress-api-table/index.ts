@@ -52,10 +52,25 @@ interface PropertyInfo {
   description: string
   defaultValue?: string
 }
+// markdown-it-anchor 自定义 slug 去重规则, 仿照 vitepress 处理结果
+const usedSlugs = new Map<string, number>()
 
+const slugifyWithDedup = (s: string) => {
+  const base = s
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\- ]+/g, '')
+    .replace(/\s+/g, '-')
+
+  const count = usedSlugs.get(base) || 0
+  usedSlugs.set(base, count + 1)
+
+  return count === 0 ? base : `${base}-${count}`
+}
 const mdit = new MarkdownIt()
 mdit.use(anchor, {
   level: [1, 2, 3, 4, 5, 6],
+  slugify: slugifyWithDedup,
   permalink: anchor.permalink.ariaHidden({
     placement: 'before',
     class: 'header-anchor',
