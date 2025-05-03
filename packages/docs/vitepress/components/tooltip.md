@@ -107,40 +107,18 @@ Tooltip 可以自定义动画, 通过 `transition` 属性来设置动画名称, 
 demo-preview=../demo/Tooltip/Transition.vue
 :::
 
-## Tooltip API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name        | Description  | Type                                                 | Default |
-| ----------- | ------------ | ---------------------------------------------------- | ------- |
-| content       | 显示内容,可被`slot#content`覆盖   | `string`                                             | —       |
-| trigger        | 触发方式   | `enum` - `hover \| click \| contextmenu` | `hover`    |
-| placement | 组件出现位置   | `enum`                                             | `bottom`       |
-| manual    | 手动控制 | `boolean`                                            | false    |
-| disabled      | 是否禁用 | `boolean`                                            | false   |
-| popperOptions   | `popperjs`配置 | `Partial<Options>`                                            | {}   |
-| effect      | 主题样式     | `enum` - `light \| dark \| customized`                         | `light`   |
-| transition | 过渡效果 | `enum` | `fade` |
-| showTimeout | 显示延时 | `number` | 0 |
-| hideTimeout | 隐藏延时 | `number` | 200 |
+::: api-table src=components/Tooltip/types.ts
+:::
 
-### Events
-
-| Name  | Description             | Type                         |
-| ----- | ----------------------- | ---------------------------- |
-| visible-change | Popover 可见性改变时触发 | `(_val: boolean) => void` |
-| click-outside  | 点击区域外时触发               | `() => void`                |
-
-### Slots
-
-| Name    | Description                         |
-| ------- | ----------------------------------- |
-| default | Tooltip 触发 & 引用的元素 |
-| content   | 自定义内容                          |
-
-### Expose
-
-| Name  | Description | Type         |
-| ----- | ----------- | ------------ |
-| show  | 展示 Popover  | `() => void` |
-| hide | 关闭 Popover  | `() => void` |
+```ts
+type Placement =  'top' | 'top-start' | 'top-end' 
+                | 'bottom' | 'bottom-start' | 'bottom-end' 
+                | 'left' | 'left-start' | 'left-end' 
+                | 'right' | 'right-start' | 'right-end'
+```

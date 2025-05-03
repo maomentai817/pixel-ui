@@ -8,7 +8,7 @@ export interface TooltipProps {
   /**
    * @property content
    * @type string
-   * @description 提示内容, 可被\`slot#content\`覆盖
+   * @description 提示内容, 可被`slot#content`覆盖
    * @default -
    */
   content?: string

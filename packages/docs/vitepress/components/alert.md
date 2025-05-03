@@ -77,36 +77,11 @@ demo-preview=../demo/Alert/Description.vue
 demo-preview=../demo/Alert/IconDescription.vue
 :::
 
-## Alert API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name        | Description  | Type                                                 | Default |
-| ----------- | ------------ | ---------------------------------------------------- | ------- |
-| title       | Alert 标题   | `string`                                             | —       |
-| type        | Alert 类型   | `enum` - `success \| warning \| danger \| info` | info    |
-| description | 描述性文本   | `string`                                             | —       |
-| closable    | 是否可以关闭 | `boolean`                                            | true    |
-| center      | 文字是否居中 | `boolean`                                            | false   |
-| show-icon   | 是否展示图标 | `boolean`                                            | false   |
-| effect      | 主题样式     | `enum` - `light \| dark`                         | light   |
-
-### Events
-
-| Name  | Description             | Type                         |
-| ----- | ----------------------- | ---------------------------- |
-| close | 关闭 Alert 时触发的事件 | `(event: MouseEvent) => void` |
-
-### Slots
-
-| Name    | Description                         |
-| ------- | ----------------------------------- |
-| default | 默认插槽，用于设置 Alert 的内容描述 |
-| title   | 标题的内容                          |
-
-### Expose
-
-| Name  | Description | Type         |
-| ----- | ----------- | ------------ |
-| open  | 打开 Alert  | `() => void` |
-| close | 关闭 Alert  | `() => void` |
+::: api-table src=components/Alert/types.ts
+:::

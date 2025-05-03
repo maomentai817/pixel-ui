@@ -83,19 +83,11 @@ demo-preview=../demo/Icon/Flip.vue
 demo-preview=../demo/Icon/Animation.vue
 :::
 
-## Icon API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name              | Description                       | Type                                                             | Default |
-| ----------------- | --------------------------------- | ---------------------------------------------------------------- | ------- |
-| icon              | 图标名称                           | `string`                                                         | -       |
-| size              | 图标大小                           | `number`\/`string`                                               | 14      |
-| type              | 图标类型                           | `enum` - `primary \| success \| warning \| danger \| base`       | base    |
-| color             | 图标颜色                           | `string`                                                         | #212529 |
-| flip              | 图标翻转                           | `enum` - `horizontal \| vertical \| both`                        | -       |
-| rotation          | 图标旋转角度                       | `number`\/`string`                                               | -       |
-| spin              | 图标旋转动画                       | `boolean`                                                        | false   |
-| bounce            | 图标上下弹动动画                   | `boolean`                                                        | false   |
-| shake             | 图标左右摇晃动画                   | `boolean`                                                        | false   |
-| beat              | 图标心跳动画                       | `boolean`                                                        | false   |
+::: api-table src=components/Icon/types.ts
+:::

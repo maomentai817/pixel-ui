@@ -61,25 +61,11 @@ demo-preview=../demo/Badge/Dot.vue
 demo-preview=../demo/Badge/Offset.vue
 :::
 
-## Badge API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| value    | 显示值               | `number` \| `string`                                             | -       |
-| max      | 最大值               | `number`                                                         | 99       |
-| is-dot   | 是否显示小红点       | `boolean`                                                        | false   |
-| hidden   | 是否隐藏            | `boolean`                                                        | false   |
-| type     | 颜色类型            | `enum` - `primary \| success \| warning \| danger \| info` | danger |
-| show-zero | 值为零时是否显示 Badge          | `boolean`                                            | true   |
-| color    | 自定义颜色          | `string`                                                         | -       |
-| offset   | 偏移量              | `[number, number]`                                                | -  |
-
-
-### Slots
-
-| Name    | Description        |
-| ------- | ------------------ |
-| default | 自定义默认内容       |
-| content | 自定义显示内容       |
+::: api-table src=components/Badge/types.ts
+:::

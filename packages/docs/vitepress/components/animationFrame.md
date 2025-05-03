@@ -47,19 +47,21 @@ demo-preview=../demo/AnimationFrame/Loop.vue
 demo-preview=../demo/AnimationFrame/Stages.vue
 :::
 
-## AnimationFrame API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| src| 图片地址      | `string`                                                        |    |
-| stages    | 动画帧控制器                 | `AnimationFrameStage[]`-`{start: number; end: number; type: loop \| once }`        | []    |
-| loop    | 是否循环播放                 | `boolean`                                     | false    |
-| width    | 图片宽度                 | `number`                                     | 320    |
-| height    | 图片高度                 | `number`                                     | 320    |
+::: api-table src=components/AnimationFrame/types.ts
+:::
 
-### Events
-| Name     | Description          | Type                                                             |
-| -------- | -------------------- | ---------------------------------------------------------------- |
-| click | 点击事件 | `(event: MouseEvent) => void`                                      |
+```ts
+type AnimationFrameType = 'loop' | 'once'
+
+interface AnimationFrameStage {
+  start: number
+  end: number
+  type: AnimationFrameType
+}
+```

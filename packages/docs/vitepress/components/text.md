@@ -55,16 +55,11 @@ demo-preview=../demo/Text/Align.vue
 demo-preview=../demo/Text/Tag.vue
 :::
 
-## Text API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name              | Description                       | Type                                                             | Default |
-| ----------------- | --------------------------------- | ---------------------------------------------------------------- | ------- |
-| size              | 字体大小                           | `number`                                                         | 16      |
-| type              | 字体类型                           | `enum` - `primary \| success \| warning \| danger \| base`       | base    |
-| color             | 字体颜色                           | `string`                                                         | #212529 |
-| bold              | 是否粗体                           | `boolean`                                                        | false   |
-| align             | 对齐方式                           | `enum` - `left \| center \| right`                               | left    |
-| compact           | 是否紧凑                           | `boolean`                                                        | false   |
-| tag               | 自定义元素标签                      | `string`\/`Component`                                            | span    |
+::: api-table src=components/Text/types.ts
+:::

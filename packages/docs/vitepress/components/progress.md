@@ -73,27 +73,11 @@ demo-preview=../demo/Progress/Striped.vue
 demo-preview=../demo/Progress/Checker.vue
 :::
 
-## Progress API
+## API_Table插件测试
 
-### Props
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
-| Name        | Description  | Type                                                 | Default |
-| ----------- | ------------ | ---------------------------------------------------- | ------- |
-| percentage  | 进度条百分比   | `number`                                             | 0       |
-| status        | 进度条类型   | `enum` - `primary \| success \| warning \| danger`   | primary |
-| stroke-width | 进度条宽度   | `number`                                              | 16      |
-| text-inside    | 文字显示内置在进度条内 | `boolean`                                   | false   |
-| indeterminate      | 是否为动画进度条 | `boolean`                                    | false   |
-| duration   | 动画/流动速度 | `number`                                                | 4      |
-| color      | 自定义颜色     | `string`                                              | -       |
-| show-text  | 是否显示进度条文字     | `boolean`                                      | true    |
-| striped    | 是否为条纹进度条 | `boolean`                                            | false   |
-| striped-flow | 是否为条纹进度条流动 | `boolean`                                        | false   |
-| checker   | 是否为棋盘进度条 | `boolean`                                            | false   |
-| format    | 进度条文字显示格式 | `function`                                          | -       |
-
-### Slots
-
-| Name    | Description                         |
-| ------- | ----------------------------------- |
-| default | 默认插槽，用于设置 Progress 的内容描述 |
+::: api-table src=components/Progress/types.ts
+:::

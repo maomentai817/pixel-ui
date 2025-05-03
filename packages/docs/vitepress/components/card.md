@@ -67,26 +67,6 @@ demo-preview=../demo/Card/Hover.vue
 demo-preview=../demo/Card/More.vue
 :::
 
-## Card API
-
-### Props
-
-| Name     | Description          | Type                                                             | Default |
-| -------- | -------------------- | ---------------------------------------------------------------- | ------- |
-| hoverable| 是否启用Hover效果      | `boolean`                                                        | false   |
-| round    | 是否启用圆角效果                 | `boolean`        | false    |
-| circle | 是否启用圆形效果 | `boolean`                                                           | false   |
-
-### Slots
-
-| Name    | Description        |
-| ------- | ------------------ |
-| default | 默认插槽, 卡片内容   |
-| header |   卡片标题内容     |
-| footer |   卡片底部内容     |
-| prepend |   卡片前置内容     |
-| append |   卡片后置内容     |
-
 ## API_TABLE PLUGIN TEST
 
 :::danger

@@ -57,6 +57,11 @@ demo-preview=../demo/Collapse/Disabled.vue
 demo-preview=../demo/Collapse/Icon.vue
 :::
 
+## API_Table插件测试
+
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
 
 ::: api-table src=components/Collapse/types.collapse.ts
 :::
