@@ -2,72 +2,95 @@ export type ProgressType = 'primary' | 'success' | 'warning' | 'danger'
 
 export interface ProgressProps {
   /**
-   * @property {number} percentage
+   * @property percentage
+   * @type number
+   * @description 进度条百分比
    * @default 0
-   * @description 进度百分比
    */
   percentage: number
   /**
-   * @property {number} strokeWidth
-   * @default 16
-   * @description 进度条宽度
-   */
-  strokeWidth?: number
-  /**
-   * @property {boolean} textInside
-   * @default false
-   * @description 进度条文字在内
-   */
-  textInside?: boolean
-  /**
-   * @property {ProgressType} status
-   * @description 进度条状态
+   * @property status
+   * @type enum - primary | success | warning | danger
+   * @description 进度条类型
+   * @default primary
    */
   status?: ProgressType
   /**
-   * @property {boolean} indeterminate
+   * @property strokeWidth
+   * @type number
+   * @description 进度条宽度
+   * @default 16
+   */
+  strokeWidth?: number
+  /**
+   * @property textInside
+   * @type boolean
+   * @description 是否启用文字显示在进度条内
    * @default false
-   * @description 进度条动画
+   */
+  textInside?: boolean
+  /**
+   * @property indeterminate
+   * @type boolean
+   * @description 是否启用进度条动画
+   * @default false
    */
   indeterminate?: boolean
   /**
-   * @property {number} duration
-   * @default 4
+   * @property duration
+   * @type number
    * @description 动画/条纹进度条流速
+   * @default 4
    */
   duration?: number
   /**
-   * @property {string} color
-   * @description 进度条颜色
+   * @property color
+   * @type string
+   * @description 自定义颜色
+   * @default -
    */
   color?: string
   /**
-   * @property {boolean} showText
-   * @default true
+   * @property showText
+   * @type boolean
    * @description 是否展示进度条文字
+   * @default true
    */
   showText?: boolean
   /**
-   * @property {(percentage: number) => string} format
-   * @description 指定进度条文字内容
-   */
-  format?: (_percentage: number) => string
-  /**
-   * @property {boolean} striped
+   * @property striped
+   * @type boolean
+   * @description 是否为条纹进度条
    * @default false
-   * @description 是否展示条纹
    */
   striped?: boolean
   /**
-   * @property {boolean} stripedFlow
+   * @property stripedFlow
+   * @type boolean
+   * @description 是否为流动条纹进度条
    * @default false
-   * @description 是否展示条纹流速
    */
   stripedFlow?: boolean
   /**
-   * @property {boolean} checker
+   * @property checker
+   * @type boolean
+   * @description 是否为棋盘进度条
    * @default false
-   * @description 是否展示棋盘
    */
   checker?: boolean
+  /**
+   * @property format
+   * @type {(percentage: number) => string}
+   * @description 进度条文本回调
+   * @default ()=>{}
+   */
+  format?: (_percentage: number) => string
+}
+
+export interface ProgressSlots {
+  /**
+   * @property default
+   * @description 默认插槽，用于设置 Progress 的内容描述
+   */
+  default: () => string
 }

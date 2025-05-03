@@ -88,13 +88,12 @@ function generateComponentDocumentation(content, filePath) {
         Expose: []
     };
     // 匹配所有接口并分类
-    // const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
     var interfaceRegex = /export\s+interface\s+(\w+)\s*{((?:[^{}]*|{(?:[^{}]*|{[^{}]*})*})*)}/gm;
     var match;
     while ((match = interfaceRegex.exec(content)) !== null) {
         var interfaceName = match[1], interfaceBody = match[2];
         var properties = parsePropertyComments(interfaceBody);
-        // 根据接口后缀分类（支持 ButtonProps/ButtonEmits/ButtonSlots 等格式）
+        // 根据接口后缀分类 (支持 ButtonProps/ButtonEmits/ButtonSlots 等格式)
         if (interfaceName.endsWith('Props')) {
             (_a = apiCategories.Props).push.apply(_a, properties);
         }
@@ -110,7 +109,7 @@ function generateComponentDocumentation(content, filePath) {
     }
     // 生成结构化文档
     var markdown = "## ".concat(componentName, " API\n\n");
-    // 按类别渲染表格（只在有内容时显示）
+    // 按类别渲染表格 (只在有内容时显示)
     if (apiCategories.Props.length > 0) {
         markdown += "### Props\n\n".concat(generateCategoryTable('Props', apiCategories.Props), "\n\n");
     }
@@ -140,7 +139,7 @@ function parsePropertyComments(propertyStr) {
             description: '',
             defaultValue: '-'
         };
-        var nameMatch = prop.match(/@property\s+([\w:]+)/);
+        var nameMatch = prop.match(/@property\s+([\w:-]+)/);
         var descMatch = prop.match(/@description\s+(.*)/);
         var defaultMatch = prop.match(/@default\s+(.*)/);
         // 支持 enum 类型声明

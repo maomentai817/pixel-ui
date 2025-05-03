@@ -122,7 +122,6 @@ function generateComponentDocumentation(content: string, filePath: string) {
   }
 
   // 匹配所有接口并分类
-  // const interfaceRegex = /export\s+interface\s+(\w+)\s*{([\s\S]*?)}/gm
   const interfaceRegex =
     /export\s+interface\s+(\w+)\s*{((?:[^{}]*|{(?:[^{}]*|{[^{}]*})*})*)}/gm
   let match: RegExpExecArray | null
@@ -130,7 +129,7 @@ function generateComponentDocumentation(content: string, filePath: string) {
     const [, interfaceName, interfaceBody] = match
     const properties = parsePropertyComments(interfaceBody)
 
-    // 根据接口后缀分类（支持 ButtonProps/ButtonEmits/ButtonSlots 等格式）
+    // 根据接口后缀分类 (支持 ButtonProps/ButtonEmits/ButtonSlots 等格式)
     if (interfaceName.endsWith('Props')) {
       apiCategories.Props.push(...properties)
     } else if (interfaceName.endsWith('Emits')) {
@@ -145,7 +144,7 @@ function generateComponentDocumentation(content: string, filePath: string) {
   // 生成结构化文档
   let markdown = `## ${componentName} API\n\n`
 
-  // 按类别渲染表格（只在有内容时显示）
+  // 按类别渲染表格 (只在有内容时显示)
   if (apiCategories.Props.length > 0) {
     markdown += `### Props\n\n${generateCategoryTable('Props', apiCategories.Props)}\n\n`
   }
@@ -179,7 +178,7 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
       defaultValue: '-'
     }
 
-    const nameMatch = prop.match(/@property\s+([\w:]+)/)
+    const nameMatch = prop.match(/@property\s+([\w:-]+)/)
     const descMatch = prop.match(/@description\s+(.*)/)
     const defaultMatch = prop.match(/@default\s+(.*)/)
 
