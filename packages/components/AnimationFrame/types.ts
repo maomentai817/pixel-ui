@@ -16,7 +16,7 @@ export interface AnimationFrameProps {
   src: string
   /**
    * @property stages
-   * @type AnimationFrameStage[]
+   * @type Object - AnimationFrameStage[]
    * @description 动画帧控制器
    * @default []
    */
@@ -48,7 +48,15 @@ export interface AnimationFrameEmits {
   /**
    * @property click
    * @description 内置点击事件,跳转下一阶段
-   * @type {()=>void}
+   */
+  (_e: 'click'): void
+}
+
+export interface AnimationFrameEvents {
+  /**
+   * @property click
+   * @description 内置点击事件,跳转下一阶段
+   * @type Function - ()=>void
    */
   (_e: 'click'): void
 }

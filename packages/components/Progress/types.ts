@@ -80,7 +80,7 @@ export interface ProgressProps {
   checker?: boolean
   /**
    * @property format
-   * @type {(percentage: number) => string}
+   * @type Function - (percentage: number) => string
    * @description 进度条文本回调
    * @default ()=>{}
    */

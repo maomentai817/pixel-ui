@@ -91,7 +91,7 @@ export interface ButtonProps {
   label?: string
   /**
    * @property tag
-   * @type string | Component
+   * @type {string | Component}
    * @description 自定义元素标签
    * @default button
    */
@@ -124,6 +124,14 @@ export interface ButtonEmits {
    * @property click
    * @description 按钮点击事件
    * @type {(event: MouseEvent)=>void}
+   */
+  (_e: 'click', _val: MouseEvent): void
+}
+export interface ButtonEvents {
+  /**
+   * @property click
+   * @description 按钮点击事件
+   * @type Function - (event: MouseEvent)=>void
    */
   (_e: 'click', _val: MouseEvent): void
 }
@@ -163,6 +171,33 @@ export interface ButtonInstance {
   /**
    * @property disabled
    * @type ComputedRef<boolean>
+   * @description 获取按钮是否禁用
+   */
+  disabled: ComputedRef<boolean>
+}
+
+export interface ButtonExpose {
+  /**
+   * @property ref
+   * @type object - Ref<HTMLButtonElement>
+   * @description 获取原生按钮元素
+   */
+  ref: Ref<HTMLButtonElement | void>
+  /**
+   * @property size
+   * @type object - ComputedRef<ButtonSize>
+   * @description 获取按钮尺寸
+   */
+  size: ComputedRef<ButtonSize | ''>
+  /**
+   * @property type
+   * @type object - ComputedRef<ButtonType>
+   * @description 获取按钮类型
+   */
+  type: ComputedRef<ButtonType | ''>
+  /**
+   * @property disabled
+   * @type object - ComputedRef<boolean>
    * @description 获取按钮是否禁用
    */
   disabled: ComputedRef<boolean>

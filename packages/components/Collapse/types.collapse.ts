@@ -5,7 +5,7 @@ export type CollapseItemName = string | number
 export interface CollapseProps {
   /**
    * @property modelValue
-   * @type string[] | number[]
+   * @type {string[] | number[]}
    * @description 当前激活面板列表
    * @default []
    */
@@ -23,13 +23,25 @@ export interface CollapseEmits {
   /**
    * @property update:modelValue
    * @description 双向绑定值更新时触发
-   * @type {(val: CollapseItemName[])=>void}
    */
   (_e: 'update:modelValue', _val: CollapseItemName[]): void
   /**
    * @property change
    * @description 面板切换完成后触发的值变更事件
-   * @type {(val: CollapseItemName[])=>void}
+   */
+  (_e: 'change', _val: CollapseItemName[]): void
+}
+export interface CollapseEvents {
+  /**
+   * @property update:modelValue
+   * @description 双向绑定值更新时触发
+   * @type Function - (val: CollapseItemName[])=>void
+   */
+  (_e: 'update:modelValue', _val: CollapseItemName[]): void
+  /**
+   * @property change
+   * @description 面板切换完成后触发的值变更事件
+   * @type Function - (val: CollapseItemName[])=>void
    */
   (_e: 'change', _val: CollapseItemName[]): void
 }

@@ -41,7 +41,7 @@ export interface TextProps {
   align?: TextAlign
   /**
    * @property tag
-   * @type string | Component
+   * @type {string | Component}
    * @description 自定义元素标签
    * @default span
    */

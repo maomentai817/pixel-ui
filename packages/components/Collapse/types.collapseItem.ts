@@ -3,7 +3,7 @@ import type { CollapseItemName } from './types.collapse'
 export interface CollapseItemProps {
   /**
    * @property name
-   * @type enum - string | number
+   * @type {string | number}
    * @description 唯一标识符
    * @default -
    */

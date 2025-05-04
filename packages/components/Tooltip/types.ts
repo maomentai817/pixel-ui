@@ -21,7 +21,7 @@ export interface TooltipProps {
   trigger?: TriggerType
   /**
    * @property placement
-   * @type Placement
+   * @type enum - top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
    * @description 提示出现位置
    * @default bottom
    */
@@ -81,13 +81,26 @@ export interface TooltipEmits {
   /**
    * @property visible-change
    * @description popover 可见性改变时触发
-   * @type {(val: boolean)=>void}
    */
   (_e: 'visible-change', _value: boolean): void
   /**
    * @property click-outside
    * @description 点击区域外时触发
-   * @type {()=>void}
+   */
+  (_e: 'click-outside'): void
+}
+
+export interface TooltipEvents {
+  /**
+   * @property visible-change
+   * @description popover 可见性改变时触发
+   * @type Function - (val: boolean)=>void
+   */
+  (_e: 'visible-change', _value: boolean): void
+  /**
+   * @property click-outside
+   * @description 点击区域外时触发
+   * @type Function - ()=>void
    */
   (_e: 'click-outside'): void
 }
@@ -103,6 +116,21 @@ export interface TooltipInstance {
    * @property hide
    * @description 隐藏 popover
    * @type {()=>void}
+   */
+  hide: () => void
+}
+
+export interface TooltipExpose {
+  /**
+   * @property show
+   * @description 显示 popover
+   * @type Function - ()=>void
+   */
+  show: () => void
+  /**
+   * @property hide
+   * @description 隐藏 popover
+   * @type Function - ()=>void
    */
   hide: () => void
 }

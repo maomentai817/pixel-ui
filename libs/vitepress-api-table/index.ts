@@ -21,7 +21,7 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     {
       header: 'Type',
       render: (p) => {
-        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        const match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/)
         if (match) {
           return match[0] // 原始 HTML 保留
         }
@@ -38,12 +38,12 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     {
       header: 'Type',
       render: (p) => {
-        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        const match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/)
         if (match) {
           return match[0]
         }
 
-        return `${p.propertyType.replace(/\|/g, '\\|')}`
+        return `\`${p.propertyType.replace(/\|/g, '\\|')}\``
       }
     }
   ],
@@ -57,13 +57,13 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     {
       header: 'Type',
       render: (p) => {
-        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        const match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/)
         if (match) {
           return match[0] // 原始 HTML 保留
         }
 
         // 处理普通类型
-        return `${p.propertyType.replace(/\|/g, '\\|')}`
+        return `\`${p.propertyType.replace(/\|/g, '\\|')}\``
       }
     }
   ]

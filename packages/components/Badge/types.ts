@@ -3,7 +3,7 @@ export type BadgeType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 export interface BadgeProps {
   /**
    * @property value
-   * @type  string | number
+   * @type  {string | number}
    * @description 徽章显示内容/值
    * @default -
    */
@@ -52,7 +52,7 @@ export interface BadgeProps {
   color?: string
   /**
    * @property offset
-   * @type [number, number]
+   * @type {[number, number]}
    * @description 偏移量
    * @default -
    */

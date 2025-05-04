@@ -10,7 +10,7 @@ export interface IconProps {
   icon: string
   /**
    * @property size
-   * @type number | string
+   * @type {number | string}
    * @description 图标大小(px)
    * @default 14px
    */
@@ -38,7 +38,7 @@ export interface IconProps {
   flip?: 'horizontal' | 'vertical' | 'both'
   /**
    * @property rotation
-   * @type number | string
+   * @type {number | string}
    * @description 旋转角度
    * @default -
    */

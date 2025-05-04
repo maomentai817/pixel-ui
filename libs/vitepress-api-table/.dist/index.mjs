@@ -12,7 +12,7 @@ var categoryColumns = {
         {
             header: 'Type',
             render: function (p) {
-                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                var match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/);
                 if (match) {
                     return match[0]; // 原始 HTML 保留
                 }
@@ -28,11 +28,11 @@ var categoryColumns = {
         {
             header: 'Type',
             render: function (p) {
-                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                var match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/);
                 if (match) {
                     return match[0];
                 }
-                return "".concat(p.propertyType.replace(/\|/g, '\\|'));
+                return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
             }
         }
     ],
@@ -46,12 +46,12 @@ var categoryColumns = {
         {
             header: 'Type',
             render: function (p) {
-                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                var match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/);
                 if (match) {
                     return match[0]; // 原始 HTML 保留
                 }
                 // 处理普通类型
-                return "".concat(p.propertyType.replace(/\|/g, '\\|'));
+                return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
             }
         }
     ]
