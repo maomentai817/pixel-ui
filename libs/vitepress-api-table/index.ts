@@ -21,13 +21,9 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     {
       header: 'Type',
       render: (p) => {
-        // 处理枚举类型
-        const enumMatch = p.propertyType.match(/^\^\[enum\]`(.+?)`$/)
-        if (enumMatch) {
-          const enumValues = enumMatch[1]
-            .replace(/\|/g, '&#124;') // 将竖线转为HTML实体
-            .replace(/\\\|/g, '|') // 保留用户输入的原始竖线
-          return `<api-typing type="enum" details="${enumValues}"/>`
+        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        if (match) {
+          return match[0] // 原始 HTML 保留
         }
 
         // 处理普通类型
@@ -41,7 +37,14 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `\`${p.propertyType}\``
+      render: (p) => {
+        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        if (match) {
+          return match[0]
+        }
+
+        return `${p.propertyType.replace(/\|/g, '\\|')}`
+      }
     }
   ],
   Slots: [
@@ -53,7 +56,15 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      render: (p) => {
+        const match = p.propertyType.match(/^<api-typing[^>]+\/>/)
+        if (match) {
+          return match[0] // 原始 HTML 保留
+        }
+
+        // 处理普通类型
+        return `${p.propertyType.replace(/\|/g, '\\|')}`
+      }
     }
   ]
 }
@@ -211,8 +222,8 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     const descMatch = prop.match(/@description\s+(.*)/)
     const defaultMatch = prop.match(/@default\s+(.*)/)
 
-    // 支持 enum 类型声明
-    const typeMatch = prop.match(/@type\s+(enum\s*-\s*)?([^\n]+)/)
+    // 基本类型 / enum / Function / Object 识别
+    const typeMatch = prop.match(/@type\s+(\w+)(?:\s*-\s*([^\n]+))?/)
 
     if (nameMatch) {
       propInfo.propertyName = nameMatch[1].trim()
@@ -227,20 +238,25 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     }
 
     if (typeMatch) {
-      const isEnum = !!typeMatch[1]
-      let typeValue = typeMatch[2].trim()
+      const typeKind = typeMatch[1].toLowerCase()
+      let typeDetails = typeMatch[2]?.trim() || ''
 
-      typeValue.startsWith('{') && (typeValue = typeValue.slice(1, -1))
-
-      // 统一格式化枚举类型
-      if (isEnum) {
-        const enumCode = typeValue
-          .replace(/\s*\|\s*/g, ' | ')
-          .replace(/^enum\s*-\s*/i, '')
-        typeValue = '^[enum]`' + enumCode + '`'
+      // 去除首尾大括号
+      if (typeDetails.startsWith('{') && typeDetails.endsWith('}')) {
+        typeDetails = typeDetails.slice(1, -1).trim()
       }
 
-      propInfo.propertyType = typeValue
+      // 如果有详细内容就用组件渲染
+      if (['enum', 'function', 'object'].includes(typeKind)) {
+        const safeDetails = typeDetails
+          .replace(/\|/g, '&#124;')
+          .replace(/\\\|/g, '|')
+
+        propInfo.propertyType = `<api-typing type="${typeKind}" details="${safeDetails}" />`
+      } else {
+        // 普通类型如 string, number 等
+        propInfo.propertyType = typeKind
+      }
     }
 
     if (propInfo.propertyName) {

@@ -56,7 +56,7 @@ export interface AlertEmits {
   /**
    * @property close
    * @description 关闭事件
-   * @type {()=>void}
+   * @type Function - ()=>void
    */
   (_e: 'close'): void
 }
@@ -65,13 +65,13 @@ export interface AlertInstance {
   /**
    * @property open
    * @description 打开 Alert
-   * @type {()=>void}
+   * @type Function - ()=>void
    */
   open: () => void
   /**
    * @property close
    * @description 关闭 Alert
-   * @type {()=>void}
+   * @type Function - ()=>void
    */
   close: () => void
 }

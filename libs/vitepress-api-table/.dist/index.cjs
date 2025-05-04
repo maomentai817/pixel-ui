@@ -15,13 +15,9 @@ var categoryColumns = {
         {
             header: 'Type',
             render: function (p) {
-                // 处理枚举类型
-                var enumMatch = p.propertyType.match(/^\^\[enum\]`(.+?)`$/);
-                if (enumMatch) {
-                    var enumValues = enumMatch[1]
-                        .replace(/\|/g, '&#124;') // 将竖线转为HTML实体
-                        .replace(/\\\|/g, '|'); // 保留用户输入的原始竖线
-                    return "<api-typing type=\"enum\" details=\"".concat(enumValues, "\"/>");
+                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                if (match) {
+                    return match[0]; // 原始 HTML 保留
                 }
                 // 处理普通类型
                 return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
@@ -34,7 +30,13 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "`".concat(p.propertyType, "`"); }
+            render: function (p) {
+                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                if (match) {
+                    return match[0];
+                }
+                return "".concat(p.propertyType.replace(/\|/g, '\\|'));
+            }
         }
     ],
     Slots: [
@@ -46,7 +48,14 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
+            render: function (p) {
+                var match = p.propertyType.match(/^<api-typing[^>]+\/>/);
+                if (match) {
+                    return match[0]; // 原始 HTML 保留
+                }
+                // 处理普通类型
+                return "".concat(p.propertyType.replace(/\|/g, '\\|'));
+            }
         }
     ]
 };
@@ -155,6 +164,7 @@ function generateComponentDocumentation(content, filePath) {
 }
 // 解析注释和属性
 function parsePropertyComments(propertyStr) {
+    var _a;
     var props = propertyStr
         .split('/**')
         .map(function (p) { return p.trim(); })
@@ -171,8 +181,8 @@ function parsePropertyComments(propertyStr) {
         var nameMatch = prop.match(/@property\s+([\w:-]+)/);
         var descMatch = prop.match(/@description\s+(.*)/);
         var defaultMatch = prop.match(/@default\s+(.*)/);
-        // 支持 enum 类型声明
-        var typeMatch = prop.match(/@type\s+(enum\s*-\s*)?([^\n]+)/);
+        // 基本类型 / enum / Function / Object 识别
+        var typeMatch = prop.match(/@type\s+(\w+)(?:\s*-\s*([^\n]+))?/);
         if (nameMatch) {
             propInfo.propertyName = nameMatch[1].trim();
         }
@@ -183,17 +193,23 @@ function parsePropertyComments(propertyStr) {
             propInfo.defaultValue = defaultMatch[1].trim();
         }
         if (typeMatch) {
-            var isEnum = !!typeMatch[1];
-            var typeValue = typeMatch[2].trim();
-            typeValue.startsWith('{') && (typeValue = typeValue.slice(1, -1));
-            // 统一格式化枚举类型
-            if (isEnum) {
-                var enumCode = typeValue
-                    .replace(/\s*\|\s*/g, ' | ')
-                    .replace(/^enum\s*-\s*/i, '');
-                typeValue = '^[enum]`' + enumCode + '`';
+            var typeKind = typeMatch[1].toLowerCase();
+            var typeDetails = ((_a = typeMatch[2]) === null || _a === void 0 ? void 0 : _a.trim()) || '';
+            // 去除首尾大括号
+            if (typeDetails.startsWith('{') && typeDetails.endsWith('}')) {
+                typeDetails = typeDetails.slice(1, -1).trim();
             }
-            propInfo.propertyType = typeValue;
+            // 如果有详细内容就用组件渲染
+            if (['enum', 'function', 'object'].includes(typeKind)) {
+                var safeDetails = typeDetails
+                    .replace(/\|/g, '&#124;')
+                    .replace(/\\\|/g, '|');
+                propInfo.propertyType = "<api-typing type=\"".concat(typeKind, "\" details=\"").concat(safeDetails, "\" />");
+            }
+            else {
+                // 普通类型如 string, number 等
+                propInfo.propertyType = typeKind;
+            }
         }
         if (propInfo.propertyName) {
             properties.push(propInfo);
