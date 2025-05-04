@@ -178,8 +178,8 @@ function parsePropertyComments(propertyStr) {
         var nameMatch = prop.match(/@property\s+([\w:-]+)/);
         var descMatch = prop.match(/@description\s+(.*)/);
         var defaultMatch = prop.match(/@default\s+(.*)/);
-        // 基本类型 / enum / Function / Object 识别
-        var typeMatch = prop.match(/@type\s+(\w+)(?:\s*-\s*([^\n]+))?/);
+        // 基本类型 / enum / Function / Object 识别, 类型识别增强, {} 定义为基础类型
+        var typeMatch = prop.match(/@type\s+({[^}]+}|(\w+)(?:\s*-\s*([^\n]+))?)/);
         if (nameMatch) {
             propInfo.propertyName = nameMatch[1].trim();
         }
@@ -190,22 +190,28 @@ function parsePropertyComments(propertyStr) {
             propInfo.defaultValue = defaultMatch[1].trim();
         }
         if (typeMatch) {
-            var typeKind = typeMatch[1].toLowerCase();
-            var typeDetails = ((_a = typeMatch[2]) === null || _a === void 0 ? void 0 : _a.trim()) || '';
-            // 去除首尾大括号
-            if (typeDetails.startsWith('{') && typeDetails.endsWith('}')) {
-                typeDetails = typeDetails.slice(1, -1).trim();
+            // 处理 {type} 格式
+            if (typeMatch[1].startsWith('{')) {
+                var typeContent = typeMatch[1]
+                    .replace(/^{(.*)}$/, '$1') // 去除大括号
+                    .replace(/\s*\n\s*/g, ' ') // 处理换行
+                    .trim();
+                propInfo.propertyType = "`".concat(typeContent, "`");
             }
-            // 如果有详细内容就用组件渲染
-            if (['enum', 'function', 'object'].includes(typeKind)) {
-                var safeDetails = typeDetails
-                    .replace(/\|/g, '&#124;')
-                    .replace(/\\\|/g, '|');
-                propInfo.propertyType = "<api-typing type=\"".concat(typeKind, "\" details=\"").concat(safeDetails, "\" />");
-            }
+            // 处理 type - details 格式
             else {
-                // 普通类型如 string, number 等
-                propInfo.propertyType = typeKind;
+                var typeKind = typeMatch[2].toLowerCase();
+                var typeDetails = ((_a = typeMatch[3]) === null || _a === void 0 ? void 0 : _a.trim()) || '';
+                // 处理特殊类型
+                if (['enum', 'function', 'object'].includes(typeKind)) {
+                    var safeDetails = typeDetails
+                        .replace(/\|/g, '&#124;')
+                        .replace(/\\\|/g, '|');
+                    propInfo.propertyType = "<api-typing type=\"".concat(typeKind, "\" details=\"").concat(safeDetails, "\" />");
+                }
+                else {
+                    propInfo.propertyType = "`".concat(typeKind, "`");
+                }
             }
         }
         if (propInfo.propertyName) {

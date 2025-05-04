@@ -41,6 +41,7 @@ defineProps<{
 .vp-tooltip-content {
   code {
     font-size: 12px;
+    line-height: 1.875;
   }
 }
 </style>

@@ -222,8 +222,8 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     const descMatch = prop.match(/@description\s+(.*)/)
     const defaultMatch = prop.match(/@default\s+(.*)/)
 
-    // 基本类型 / enum / Function / Object 识别
-    const typeMatch = prop.match(/@type\s+(\w+)(?:\s*-\s*([^\n]+))?/)
+    // 基本类型 / enum / Function / Object 识别, 类型识别增强, {} 定义为基础类型
+    const typeMatch = prop.match(/@type\s+({[^}]+}|(\w+)(?:\s*-\s*([^\n]+))?)/)
 
     if (nameMatch) {
       propInfo.propertyName = nameMatch[1].trim()
@@ -238,24 +238,29 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
     }
 
     if (typeMatch) {
-      const typeKind = typeMatch[1].toLowerCase()
-      let typeDetails = typeMatch[2]?.trim() || ''
+      // 处理 {type} 格式
+      if (typeMatch[1].startsWith('{')) {
+        const typeContent = typeMatch[1]
+          .replace(/^{(.*)}$/, '$1') // 去除大括号
+          .replace(/\s*\n\s*/g, ' ') // 处理换行
+          .trim()
 
-      // 去除首尾大括号
-      if (typeDetails.startsWith('{') && typeDetails.endsWith('}')) {
-        typeDetails = typeDetails.slice(1, -1).trim()
+        propInfo.propertyType = `\`${typeContent}\``
       }
+      // 处理 type - details 格式
+      else {
+        const typeKind = typeMatch[2].toLowerCase()
+        const typeDetails = typeMatch[3]?.trim() || ''
 
-      // 如果有详细内容就用组件渲染
-      if (['enum', 'function', 'object'].includes(typeKind)) {
-        const safeDetails = typeDetails
-          .replace(/\|/g, '&#124;')
-          .replace(/\\\|/g, '|')
-
-        propInfo.propertyType = `<api-typing type="${typeKind}" details="${safeDetails}" />`
-      } else {
-        // 普通类型如 string, number 等
-        propInfo.propertyType = typeKind
+        // 处理特殊类型
+        if (['enum', 'function', 'object'].includes(typeKind)) {
+          const safeDetails = typeDetails
+            .replace(/\|/g, '&#124;')
+            .replace(/\\\|/g, '|')
+          propInfo.propertyType = `<api-typing type="${typeKind}" details="${safeDetails}" />`
+        } else {
+          propInfo.propertyType = `\`${typeKind}\``
+        }
       }
     }
 
