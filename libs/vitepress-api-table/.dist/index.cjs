@@ -14,7 +14,18 @@ var categoryColumns = {
         { header: 'Description', render: function (p) { return p.description; } },
         {
             header: 'Type',
-            render: function (p) { return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`"); }
+            render: function (p) {
+                // 处理枚举类型
+                var enumMatch = p.propertyType.match(/^\^\[enum\]`(.+?)`$/);
+                if (enumMatch) {
+                    var enumValues = enumMatch[1]
+                        .replace(/\|/g, '&#124;') // 将竖线转为HTML实体
+                        .replace(/\\\|/g, '|'); // 保留用户输入的原始竖线
+                    return "<api-typing type=\"enum\" details=\"".concat(enumValues, "\"/>");
+                }
+                // 处理普通类型
+                return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
+            }
         },
         { header: 'Default', render: function (p) { return p.defaultValue || '-'; } }
     ],
@@ -51,7 +62,9 @@ var slugifyWithDedup = function (s) {
     usedSlugs.set(base, count + 1);
     return count === 0 ? base : "".concat(base, "-").concat(count);
 };
-var mdit = new MarkdownIt();
+var mdit = new MarkdownIt({
+    html: true
+});
 mdit.use(anchor, {
     level: [1, 2, 3, 4, 5, 6],
     slugify: slugifyWithDedup,
@@ -175,9 +188,10 @@ function parsePropertyComments(propertyStr) {
             typeValue.startsWith('{') && (typeValue = typeValue.slice(1, -1));
             // 统一格式化枚举类型
             if (isEnum) {
-                typeValue = typeValue
-                    .replace(/\s*\|\s*/g, ' | ') // 统一竖线间距
-                    .replace(/^enum\s*-\s*/i, ''); // 移除残留enum标识
+                var enumCode = typeValue
+                    .replace(/\s*\|\s*/g, ' | ')
+                    .replace(/^enum\s*-\s*/i, '');
+                typeValue = '^[enum]`' + enumCode + '`';
             }
             propInfo.propertyType = typeValue;
         }

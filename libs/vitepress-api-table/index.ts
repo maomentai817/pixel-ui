@@ -20,7 +20,19 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
     { header: 'Description', render: (p) => p.description },
     {
       header: 'Type',
-      render: (p) => `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      render: (p) => {
+        // 处理枚举类型
+        const enumMatch = p.propertyType.match(/^\^\[enum\]`(.+?)`$/)
+        if (enumMatch) {
+          const enumValues = enumMatch[1]
+            .replace(/\|/g, '&#124;') // 将竖线转为HTML实体
+            .replace(/\\\|/g, '|') // 保留用户输入的原始竖线
+          return `<api-typing type="enum" details="${enumValues}"/>`
+        }
+
+        // 处理普通类型
+        return `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      }
     },
     { header: 'Default', render: (p) => p.defaultValue || '-' }
   ],
@@ -67,7 +79,9 @@ const slugifyWithDedup = (s: string) => {
 
   return count === 0 ? base : `${base}-${count}`
 }
-const mdit = new MarkdownIt()
+const mdit = new MarkdownIt({
+  html: true
+})
 mdit.use(anchor, {
   level: [1, 2, 3, 4, 5, 6],
   slugify: slugifyWithDedup,
@@ -220,9 +234,10 @@ function parsePropertyComments(propertyStr: string): PropertyInfo[] {
 
       // 统一格式化枚举类型
       if (isEnum) {
-        typeValue = typeValue
-          .replace(/\s*\|\s*/g, ' | ') // 统一竖线间距
-          .replace(/^enum\s*-\s*/i, '') // 移除残留enum标识
+        const enumCode = typeValue
+          .replace(/\s*\|\s*/g, ' | ')
+          .replace(/^enum\s*-\s*/i, '')
+        typeValue = '^[enum]`' + enumCode + '`'
       }
 
       propInfo.propertyType = typeValue
