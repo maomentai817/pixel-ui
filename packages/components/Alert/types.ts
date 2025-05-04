@@ -56,12 +56,31 @@ export interface AlertEmits {
   /**
    * @property close
    * @description 关闭事件
+   */
+  (_e: 'close'): void
+}
+export interface AlertEvents {
+  /**
+   * @property close
+   * @description 关闭事件
    * @type Function - ()=>void
    */
   (_e: 'close'): void
 }
 
 export interface AlertInstance {
+  /**
+   * @property open
+   * @description 打开 Alert
+   */
+  open: () => void
+  /**
+   * @property close
+   * @description 关闭 Alert
+   */
+  close: () => void
+}
+export interface AlertExpose {
   /**
    * @property open
    * @description 打开 Alert

@@ -169,14 +169,14 @@ function generateComponentDocumentation(content: string, filePath: string) {
     const [, interfaceName, interfaceBody] = match
     const properties = parsePropertyComments(interfaceBody)
 
-    // 根据接口后缀分类 (支持 ButtonProps/ButtonEmits/ButtonSlots 等格式)
+    // 根据接口后缀分类 (支持 ButtonProps/ButtonEvents/ButtonSlots 等格式)
     if (interfaceName.endsWith('Props')) {
       apiCategories.Props.push(...properties)
-    } else if (interfaceName.endsWith('Emits')) {
+    } else if (interfaceName.endsWith('Events')) {
       apiCategories.Events.push(...properties)
     } else if (interfaceName.endsWith('Slots')) {
       apiCategories.Slots.push(...properties)
-    } else if (interfaceName.endsWith('Instance')) {
+    } else if (interfaceName.endsWith('Expose')) {
       apiCategories.Expose.push(...properties)
     }
   }

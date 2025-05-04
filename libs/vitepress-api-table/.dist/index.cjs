@@ -131,17 +131,17 @@ function generateComponentDocumentation(content, filePath) {
     while ((match = interfaceRegex.exec(content)) !== null) {
         var interfaceName = match[1], interfaceBody = match[2];
         var properties = parsePropertyComments(interfaceBody);
-        // 根据接口后缀分类 (支持 ButtonProps/ButtonEmits/ButtonSlots 等格式)
+        // 根据接口后缀分类 (支持 ButtonProps/ButtonEvents/ButtonSlots 等格式)
         if (interfaceName.endsWith('Props')) {
             (_a = apiCategories.Props).push.apply(_a, properties);
         }
-        else if (interfaceName.endsWith('Emits')) {
+        else if (interfaceName.endsWith('Events')) {
             (_b = apiCategories.Events).push.apply(_b, properties);
         }
         else if (interfaceName.endsWith('Slots')) {
             (_c = apiCategories.Slots).push.apply(_c, properties);
         }
-        else if (interfaceName.endsWith('Instance')) {
+        else if (interfaceName.endsWith('Expose')) {
             (_d = apiCategories.Expose).push.apply(_d, properties);
         }
     }
