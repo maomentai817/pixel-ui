@@ -57,7 +57,8 @@ pre, code {
   font-size: 0.75rem;
 }
 table pre,
-table code {
+table code,
+.api-typing code {
   font-size: 0.75rem;
   font-family: 'Zpixall';
 }

@@ -3,12 +3,11 @@ import { type Router } from "vitepress"
 import { ElementPlusContainer } from "vitepress-preview-component"
 import { NProgress } from "nprogress-v2"
 import { inBrowser } from 'vitepress'
+import bsz, { globals } from "../vitepress"
 
 import busuanzi from 'busuanzi.pure.js'
 import DefaultTheme from "vitepress/theme"
 import PixelUI from "@mmt817/pixel-ui"
-
-import bsz from './components/bsz.vue'
 
 import "vitepress-preview-component/style.css"
 import '@hackernoon/pixel-icon-library/fonts/iconfont.css'
@@ -25,6 +24,11 @@ export default {
   enhanceApp({ app, router }: { app: App, router: Router }) {
     app.component("demo-preview", ElementPlusContainer)
     app.use(PixelUI)
+
+    // 注册全局组件
+    globals.forEach(([name, Comp]) => {
+      app.component(name, Comp)
+    })
 
     // 彩虹背景动画样式
     if (typeof window !== 'undefined') {
