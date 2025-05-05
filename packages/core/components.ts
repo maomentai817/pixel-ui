@@ -10,7 +10,8 @@ import {
   PxAnimationFrame,
   PxBadge,
   PxProgress,
-  PxTooltip
+  PxTooltip,
+  PxPopconfirm
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -27,5 +28,6 @@ export default [
   PxAnimationFrame,
   PxBadge,
   PxProgress,
-  PxTooltip
+  PxTooltip,
+  PxPopconfirm
 ] as Plugin[]

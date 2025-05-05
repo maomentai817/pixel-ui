@@ -12,7 +12,8 @@ import {
   PxAnimationFrame,
   PxBadge,
   PxProgress,
-  PxTooltip
+  PxTooltip,
+  PxPopconfirm
 } from '..'
 import { map, get } from 'lodash-es'
 
@@ -28,7 +29,8 @@ const components = [
   PxAnimationFrame,
   PxBadge,
   PxProgress,
-  PxTooltip
+  PxTooltip,
+  PxPopconfirm
 ] as Plugin[]
 
 describe('components/index.ts', () => {
