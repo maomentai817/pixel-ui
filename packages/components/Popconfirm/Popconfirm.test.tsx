@@ -2,9 +2,9 @@ import { describe, it, test, expect, vi, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
 import { PxPopconfirm, type PopconfirmProps } from '.'
+import { get, each } from 'lodash-es'
 
 import Popconfirm from './Popconfirm.vue'
-import { get, each } from 'lodash-es'
 
 describe('Popconfirm/index', () => {
   // 测试 withInstall 函数是否被正确应用
@@ -92,29 +92,29 @@ describe('Popconfirm.vue', () => {
 
     triggerNode.trigger('click')
     await vi.runAllTimers()
-    expect(wrapper.find('px-popconfirm').exists()).toBeTruthy()
+    expect(wrapper.find('.px-popconfirm').exists()).toBeTruthy()
 
     // confirm 测试逻辑
-    const confirmBtn = wrapper.find('px-popconfirm__confirm')
+    const confirmBtn = wrapper.find('.px-popconfirm__confirm')
     expect(confirmBtn.exists()).toBeTruthy()
 
     confirmBtn.trigger('click')
     await vi.runAllTimers()
-    expect(wrapper.find('px-popconfirm').exists()).toBeFalsy()
+    expect(wrapper.find('.px-popconfirm').exists()).toBeFalsy()
     expect(onConfirm).toBeCalled()
 
     // 重新唤出
     triggerNode.trigger('click')
     await vi.runAllTimers()
-    expect(wrapper.find('px-popconfirm').exists()).toBeTruthy()
+    expect(wrapper.find('.px-popconfirm').exists()).toBeTruthy()
 
     // cancel 测试逻辑
-    const cancelBtn = wrapper.find('px-popconfirm__cancel')
+    const cancelBtn = wrapper.find('.px-popconfirm__cancel')
     expect(cancelBtn.exists()).toBeTruthy()
 
     cancelBtn.trigger('click')
     await vi.runAllTimers()
-    expect(wrapper.find('px-popconfirm').exists()).toBeFalsy()
+    expect(wrapper.find('.px-popconfirm').exists()).toBeFalsy()
     expect(onCancel).toBeCalled()
   })
 })

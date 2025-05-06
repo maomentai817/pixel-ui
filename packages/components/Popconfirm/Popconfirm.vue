@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { PopconfirmProps, PopconfirmEmits } from './types'
 
 import PxTooltip from '../Tooltip/Tooltip.vue'
+import PxButton from '../Button/Button.vue'
+import PxIcon from '../Icon/Icon.vue'
 
 const COMP_NAME = 'PxPopconfirm' as const
 defineOptions({
@@ -17,17 +20,58 @@ withDefaults(defineProps<PopconfirmProps>(), {
 })
 
 const emits = defineEmits<PopconfirmEmits>()
+const tooltipRef = ref()
+
+const hidePoper = () => {
+  tooltipRef.value?.hide()
+}
 const confirm = (e: MouseEvent) => {
   emits('confirm', e)
+  hidePoper()
 }
 const cancel = (e: MouseEvent) => {
   emits('cancel', e)
+  hidePoper()
 }
 </script>
 
 <template>
-  12
-  <px-tooltip></px-tooltip>
+  <px-tooltip ref="tooltipRef" trigger="click" :hide-timeout="hideAfter">
+    <template #content>
+      <div class="px-popconfirm">
+        <div class="px-popconfirm__main">
+          <px-icon v-if="!hideIcon && icon" :icon="icon" :color="iconColor" />
+          {{ title }}
+        </div>
+        <div class="px-popconfirm__action">
+          <px-button
+            class="px-popconfirm__cancel"
+            size="small"
+            :type="cancelButtonType"
+            @click="cancel"
+          >
+            {{ cancelButtonText }}
+          </px-button>
+          <px-button
+            class="px-popconfirm__confirm"
+            size="small"
+            :type="confirmButtonType"
+            @click="confirm"
+          >
+            {{ confirmButtonText }}
+          </px-button>
+        </div>
+      </div>
+    </template>
+
+    <template v-if="$slots.default">
+      <slot name="default"></slot>
+    </template>
+
+    <template v-if="$slots.reference">
+      <slot name="reference"></slot>
+    </template>
+  </px-tooltip>
 </template>
 
 <style scoped>
