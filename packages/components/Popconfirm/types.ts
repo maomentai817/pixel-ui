@@ -112,4 +112,9 @@ export interface PopconfirmSlots {
    * @description 同上, default插槽别名
    */
   reference: () => string
+  /**
+   * @property actions
+   * @description 操作按钮插槽
+   */
+  actions: () => string
 }

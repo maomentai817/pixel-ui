@@ -7,7 +7,8 @@ import {
   updateColors,
   hexToHSL,
   HSLToHex,
-  adjustColor
+  adjustColor,
+  addUnit
 } from '..'
 import { each } from 'lodash-es'
 
@@ -22,6 +23,10 @@ describe('utils/index', () => {
 
   it('withInstall should be exported', () => {
     expect(withInstall).toBeDefined()
+  })
+
+  it('addUnit should be exported', () => {
+    expect(addUnit).toBeDefined()
   })
 
   it('typeIconMap should be worked', () => {

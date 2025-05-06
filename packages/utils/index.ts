@@ -9,3 +9,4 @@ export const typeIconMap = new Map([
 export * from './install'
 export * from './useColorGenerator'
 export * from './error'
+export * from './style'

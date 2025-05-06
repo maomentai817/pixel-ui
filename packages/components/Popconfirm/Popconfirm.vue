@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { PopconfirmProps, PopconfirmEmits } from './types'
+import type { TooltipInstance } from '../Tooltip'
 
 import PxTooltip from '../Tooltip/Tooltip.vue'
 import PxButton from '../Button/Button.vue'
@@ -22,7 +23,7 @@ withDefaults(defineProps<PopconfirmProps>(), {
 })
 
 const emits = defineEmits<PopconfirmEmits>()
-const tooltipRef = ref()
+const tooltipRef = ref<TooltipInstance>()
 
 const hidePoper = () => {
   tooltipRef.value?.hide()
