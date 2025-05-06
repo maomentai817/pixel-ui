@@ -16,7 +16,9 @@ withDefaults(defineProps<PopconfirmProps>(), {
   icon: 'question-solid',
   iconColor: '#f90',
   hideAfter: 200,
-  width: 150
+  width: 150,
+  confirmButtonText: 'Yes',
+  cancelButtonText: 'No'
 })
 
 const emits = defineEmits<PopconfirmEmits>()
@@ -40,26 +42,33 @@ const cancel = (e: MouseEvent) => {
     <template #content>
       <div class="px-popconfirm">
         <div class="px-popconfirm__main">
-          <px-icon v-if="!hideIcon && icon" :icon="icon" :color="iconColor" />
+          <px-icon
+            v-if="!hideIcon && icon"
+            :icon="icon"
+            :color="iconColor"
+            class="mr-8"
+          />
           {{ title }}
         </div>
         <div class="px-popconfirm__action">
-          <px-button
-            class="px-popconfirm__cancel"
-            size="small"
-            :type="cancelButtonType"
-            @click="cancel"
-          >
-            {{ cancelButtonText }}
-          </px-button>
-          <px-button
-            class="px-popconfirm__confirm"
-            size="small"
-            :type="confirmButtonType"
-            @click="confirm"
-          >
-            {{ confirmButtonText }}
-          </px-button>
+          <slot name="actions" :confirm="confirm" :cancel="cancel">
+            <px-button
+              class="px-popconfirm__cancel"
+              size="small"
+              :type="cancelButtonType"
+              @click="cancel"
+            >
+              {{ cancelButtonText }}
+            </px-button>
+            <px-button
+              class="px-popconfirm__confirm"
+              size="small"
+              :type="confirmButtonType"
+              @click="confirm"
+            >
+              {{ confirmButtonText }}
+            </px-button>
+          </slot>
         </div>
       </div>
     </template>

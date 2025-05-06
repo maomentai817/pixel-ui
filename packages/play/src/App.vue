@@ -441,8 +441,11 @@ const testRef = computed(() => {
     ></px-tooltip>
     <px-button ref="tooltiptest">virtual trigger</px-button>
   </div>
-  <px-popconfirm></px-popconfirm>
-  <div class="h-100"></div>
+  <p class="mt-50">气泡确认框</p>
+  <px-popconfirm title="Are you sure to delete this item?">
+    <px-button>popconfirm</px-button>
+  </px-popconfirm>
+  <div class="h-300"></div>
 </template>
 
 <style scoped></style>

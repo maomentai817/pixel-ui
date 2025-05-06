@@ -1,0 +1,9 @@
+.px-popconfirm .px-popconfirm__main {
+  display: flex;
+  align-items: center;
+}
+
+.px-popconfirm .px-popconfirm__action {
+  text-align: right;
+  margin-top: 8px;
+}

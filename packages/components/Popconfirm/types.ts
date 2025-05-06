@@ -12,14 +12,14 @@ export interface PopconfirmProps {
    * @property confirmButtonText
    * @type string
    * @description 确认按钮文字
-   * @default -
+   * @default Yes
    */
   confirmButtonText?: string
   /**
    * @property cancelButtonText
    * @type string
    * @description 取消按钮文字
-   * @default -
+   * @default No
    */
   cancelButtonText?: string
   /**
