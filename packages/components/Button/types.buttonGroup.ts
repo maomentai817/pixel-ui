@@ -4,7 +4,7 @@ import type { ButtonSize, ButtonType } from './types.button'
 export interface ButtonGroupProps {
   /**
    * @property size
-   * @type enum - large | default | small
+   * @type enum - large | default | small | mini
    * @description 按钮组尺寸
    * @default default
    */

@@ -8,6 +8,8 @@
   --px-button-border-color-disabled: var(--px-border-color-disabled);
   --px-button-hover-bg-color: var(--px-fill-hover-color-base);
   --px-button-font-size: var(--px-font-size-base);
+  --px-button-size: 40px;
+  --px-button-padding: calc((var(--px-button-size) - var(--px-button-font-size)) / 2);
 }
 
 .px-button {
@@ -35,8 +37,8 @@
   border-style: solid;
   border-color: var(--px-button-border-color);
   border-width: 0;
-  height: 40px;
-  padding: 15px;
+  height: var(--px-button-size);
+  padding: var(--px-button-padding);
   margin: 0 3px;
   font-size: var(--px-button-font-size);
   font-family: var(--px-font-family);
@@ -159,14 +161,16 @@
   --px-bg-shadow-color: transparent;
 }
 /* button size */
+.px-button--mini {
+  --px-button-size: 28px;
+  --px-button-font-size: 10px;
+}
 .px-button--small {
-  height: 34px;
-  padding: 12px;
-  --px-button-font-size: var(--px-font-size-small);
+  --px-button-size: 34px;
+  --px-button-font-size: 12px;
 }
 .px-button--large {
-  height: 46px;
-  padding: 15px;
+  --px-button-size: 46px;
 }
 /* plain */
 .px-button.is-plain {

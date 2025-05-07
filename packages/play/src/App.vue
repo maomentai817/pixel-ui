@@ -33,6 +33,14 @@ function onCancel() {
 </script>
 
 <template>
+  <px-button size="mini">Normal</px-button>
+  <px-button type="primary" size="mini">Primary</px-button>
+  <px-button type="success" size="mini">Success</px-button>
+  <px-button type="warning" size="mini">Warning</px-button>
+  <px-button type="danger" size="mini">Danger</px-button>
+  <px-button disabled size="mini">Disabled</px-button>
+  <br />
+  <br />
   <px-button size="small">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
   <px-button type="success" size="small">Success</px-button>
@@ -462,10 +470,10 @@ function onCancel() {
       <px-button>Delete</px-button>
     </template>
     <template #actions="{ confirm, cancel }">
-      <px-button size="small" @click="cancel">No!</px-button>
+      <px-button size="mini" @click="cancel">No!</px-button>
       <px-button
         type="danger"
-        size="small"
+        size="mini"
         :disabled="!clicked"
         @click="confirm"
       >

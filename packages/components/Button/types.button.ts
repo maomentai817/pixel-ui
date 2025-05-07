@@ -3,12 +3,12 @@ import type { Component, Ref, ComputedRef } from 'vue'
 
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
 export type NativeType = 'button' | 'submit' | 'reset'
-export type ButtonSize = 'large' | 'default' | 'small'
+export type ButtonSize = 'large' | 'default' | 'small' | 'mini'
 
 export interface ButtonProps {
   /**
    * @property size
-   * @type enum - large | default | small
+   * @type enum - large | default | small | mini
    * @description 按钮尺寸
    * @default default
    */

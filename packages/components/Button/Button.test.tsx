@@ -72,7 +72,7 @@ describe('Button.vue', () => {
   })
   // Props: size
   it('should has the correct size class when size prop is set', () => {
-    const sizes = ['large', 'default', 'small']
+    const sizes = ['large', 'default', 'small', 'mini']
     sizes.forEach((size) => {
       const wrapper = mount(Button, {
         props: { size: size as any }
