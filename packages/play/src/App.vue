@@ -25,6 +25,11 @@ const testRef = computed(() => {
   const el = tooltiptest.value
   return el?.$el ?? el
 })
+
+const clicked = ref(false)
+function onCancel() {
+  clicked.value = true
+}
 </script>
 
 <template>
@@ -442,8 +447,31 @@ const testRef = computed(() => {
     <px-button ref="tooltiptest">virtual trigger</px-button>
   </div>
   <p class="mt-50">气泡确认框</p>
-  <px-popconfirm title="Are you sure to delete this item?">
-    <px-button>popconfirm</px-button>
+  <px-popconfirm title="Are you sure to delete this?">
+    <px-button>Delete</px-button>
+  </px-popconfirm>
+  <p class="m-y-50"></p>
+  <px-popconfirm
+    width="220"
+    icon="info-circle-solid"
+    icon-color="#626AEF"
+    title="Are you sure to delete this?"
+    @cancel="onCancel"
+  >
+    <template #reference>
+      <px-button>Delete</px-button>
+    </template>
+    <template #actions="{ confirm, cancel }">
+      <px-button size="small" @click="cancel">No!</px-button>
+      <px-button
+        type="danger"
+        size="small"
+        :disabled="!clicked"
+        @click="confirm"
+      >
+        Yes?
+      </px-button>
+    </template>
   </px-popconfirm>
   <div class="h-300"></div>
 </template>

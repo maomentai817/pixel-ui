@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+.px-popconfirm .px-popconfirm__main .px-icon {
+  margin-right: 8px;
+}
+
 .px-popconfirm .px-popconfirm__action {
   text-align: right;
   margin-top: 8px;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { addUnit } from '@pixel-ui/utils'
 import type { PopconfirmProps, PopconfirmEmits } from './types'
 import type { TooltipInstance } from '../Tooltip'
 
@@ -12,18 +13,19 @@ defineOptions({
   name: COMP_NAME
 })
 
-withDefaults(defineProps<PopconfirmProps>(), {
+const props = withDefaults(defineProps<PopconfirmProps>(), {
   confirmButtonType: 'primary',
   icon: 'question-solid',
   iconColor: '#f90',
   hideAfter: 200,
-  width: 150,
+  width: 200,
   confirmButtonText: 'Yes',
   cancelButtonText: 'No'
 })
 
 const emits = defineEmits<PopconfirmEmits>()
 const tooltipRef = ref<TooltipInstance>()
+const style = computed(() => ({ width: addUnit(props.width) }))
 
 const hidePoper = () => {
   tooltipRef.value?.hide()
@@ -41,13 +43,13 @@ const cancel = (e: MouseEvent) => {
 <template>
   <px-tooltip ref="tooltipRef" trigger="click" :hide-timeout="hideAfter">
     <template #content>
-      <div class="px-popconfirm">
+      <div class="px-popconfirm" :style="style">
         <div class="px-popconfirm__main">
           <px-icon
             v-if="!hideIcon && icon"
             :icon="icon"
             :color="iconColor"
-            class="mr-8"
+            :size="20"
           />
           {{ title }}
         </div>
