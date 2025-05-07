@@ -68,7 +68,7 @@ export interface PopconfirmProps {
    * @property width
    * @type {number | string}
    * @description 弹层宽度,最小宽度150px
-   * @default 150
+   * @default 200
    */
   width?: number | string
 }
