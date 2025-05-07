@@ -13,7 +13,8 @@ import {
   PxBadge,
   PxProgress,
   PxTooltip,
-  PxPopconfirm
+  PxPopconfirm,
+  PxDropdown
 } from '..'
 import { map, get } from 'lodash-es'
 
@@ -30,7 +31,8 @@ const components = [
   PxBadge,
   PxProgress,
   PxTooltip,
-  PxPopconfirm
+  PxPopconfirm,
+  PxDropdown
 ] as Plugin[]
 
 describe('components/index.ts', () => {
