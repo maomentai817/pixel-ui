@@ -19,7 +19,7 @@ const meta: Meta<typeof PxButton> = {
     size: {
       control: { type: 'select' },
       description: '按钮尺寸',
-      options: ['large', 'default', 'small', '']
+      options: ['large', 'default', 'small', 'mini', '']
     },
     label: {
       description: '按钮内容(可被插槽覆盖)',
@@ -113,6 +113,7 @@ const AllSizesTemplate: StoryFn = (args, { argTypes }) => ({
 		<px-button v-bind="args" data-testid="story-test-btn" size="large" @click="onClick" />
 		<px-button v-bind="args" data-testid="story-test-btn" size="default" @click="onClick" />
 		<px-button v-bind="args" data-testid="story-test-btn" size="small" @click="onClick" />
+		<px-button v-bind="args" data-testid="story-test-btn" size="mini" @click="onClick" />
     <br />
     <br />
 		<px-button v-bind="args" data-testid="story-test-btn" loading @click="onClick" />
@@ -150,6 +151,12 @@ const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
 		<px-button v-bind="args" size="small" type="success" @click="onClick" />
 		<px-button v-bind="args" size="small" type="warning" @click="onClick" />
 		<px-button v-bind="args" size="small" type="danger" @click="onClick" />
+		<br/>
+		<br/>
+		<px-button v-bind="args" size="mini" type="primary" @click="onClick" />
+		<px-button v-bind="args" size="mini" type="success" @click="onClick" />
+		<px-button v-bind="args" size="mini" type="warning" @click="onClick" />
+		<px-button v-bind="args" size="mini" type="danger" @click="onClick" />
 	</div>`,
   methods
 })

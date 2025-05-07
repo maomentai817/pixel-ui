@@ -17,4 +17,10 @@
     <px-button type="warning" size="small">817</px-button>
     <px-button type="danger" size="small">817</px-button>
   </p>
+  <p>
+    <px-button type="primary" size="mini">817</px-button>
+    <px-button type="success" size="mini">817</px-button>
+    <px-button type="warning" size="mini">817</px-button>
+    <px-button type="danger" size="mini">817</px-button>
+  </p>
 </template>
