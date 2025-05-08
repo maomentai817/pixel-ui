@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const COMP_NAME = 'PxDropdown' as const
+const COMP_NAME = 'PxDropdownItem' as const
 defineOptions({
-  name: COMP_NAME,
-  inheritAttrs: false
+  name: COMP_NAME
 })
 </script>
 
