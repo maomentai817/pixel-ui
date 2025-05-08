@@ -76,3 +76,9 @@ Pixel UI 采用以下字体 (经 fontforge 修改)
 | --------- | ------------------------------------------------------------------ |
 | English   | [![PS2P](https://img.shields.io/badge/PS2P-n)](https://fonts.google.com/specimen/Press+Start+2P) |
 | Chinese   | [![Zpix(最像素)](https://img.shields.io/badge/Zpix(最像素)-n)](https://github.com/SolidZORO/zpix-pixel-font)      |
+
+> 中文字体体积过大, 经 `font-spider` 压缩为常用7000字后使用
+> 
+> `font-spider`: [![npm](https://img.shields.io/npm/v/font-spider)](https://github.com/aui/font-spider)
+>
+> `中文常用7000字`: [中文常用7000字](https://github.com/DavidSheh/CommonChineseCharacter)
