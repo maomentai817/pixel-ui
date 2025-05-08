@@ -3,8 +3,8 @@ title: Progress
 description: Progress 组件文档
 
 next:
-  link: /components/alert
-  text: Alert 提示
+  link: /components/dropdown
+  text: Dropdown 下拉菜单
 
 prev:
   link: /components/collapse

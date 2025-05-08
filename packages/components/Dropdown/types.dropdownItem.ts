@@ -33,7 +33,7 @@ export interface DropdownItemProps {
   divided?: boolean
 }
 
-export interface DropdownSlots {
+export interface DropdownItemSlots {
   /**
    * @property default
    * @description 默认插槽,优先级高于`props.label`

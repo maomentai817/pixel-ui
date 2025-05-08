@@ -7,8 +7,8 @@ next:
   text: Popconfirm 气泡确认框
 
 prev:
-  link: /components/progress
-  text: Progress 进度条
+  link: /components/dropdown
+  text: Dropdown 下拉菜单
 ---
 
 # Alert 提示

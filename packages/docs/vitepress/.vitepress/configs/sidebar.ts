@@ -27,6 +27,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     ]
   },
   {
+    text: "Navigation 导航",
+    collapsed: false,
+    items: [
+      { text: "Dropdown 下拉菜单", link: "components/dropdown" },
+    ]
+  },
+  {
     text: "Feedback 反馈组件",
     collapsed: false,
     items: [

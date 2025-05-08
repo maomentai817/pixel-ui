@@ -1,10 +1,12 @@
 import type { ComputedRef } from 'vue'
-import type { TooltipProps, TriggerType } from '../Tooltip'
 import type { ButtonType, ButtonSize } from '../Button'
 import type { DropdownCommand, DropdownItemProps } from './types.dropdownItem'
-import type { Placement } from '@popperjs/core'
+import type { Placement, Options } from '@popperjs/core'
 
-export interface DropdownProps extends TooltipProps {
+export type TriggerType = 'hover' | 'click' | 'contextmenu'
+export type EffectType = 'dark' | 'light' | 'customized'
+
+export interface DropdownProps {
   /**
    * @property type
    * @type enum - primary | success | warning | danger | base
@@ -61,6 +63,27 @@ export interface DropdownProps extends TooltipProps {
    * @default false
    */
   splitButton?: boolean
+  /**
+   * @property popperOptions
+   * @type {Partial<Options>}
+   * @description popperjs 配置
+   * @default {}
+   */
+  popperOptions?: Partial<Options>
+  /**
+   * @property effect
+   * @type enum - dark | light | customized
+   * @description 主题样式
+   * @default light
+   */
+  effect?: EffectType
+  /**
+   * @property transition
+   * @type string
+   * @description 过渡动画
+   * @default fade
+   */
+  transition?: string
   /**
    * @property showTimeout
    * @type number
