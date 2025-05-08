@@ -7,8 +7,8 @@ next:
   text: AniamtionFrame 动画帧
 
 prev:
-  link: /components/alert
-  text: Alert 提示
+  link: /components/popconfirm
+  text: Popconfirm 气泡确认框
 ---
 
 # Tooltip 文字提示

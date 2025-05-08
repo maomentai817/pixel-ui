@@ -31,6 +31,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     collapsed: false,
     items: [
       { text: "Alert 提示", link: "components/alert" },
+      { text: "Popconfirm 气泡确认框", link: "components/popconfirm" },
       { text: "Tooltip 文字提示", link: "components/tooltip" },
     ]
   },

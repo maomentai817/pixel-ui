@@ -3,8 +3,8 @@ title: Alert
 description: Alert 组件文档
 
 next:
-  link: /components/tooltip
-  text: Tooltip 文字提示
+  link: /components/popconfirm
+  text: Popconfirm 气泡确认框
 
 prev:
   link: /components/progress
