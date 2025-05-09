@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { useClickOutside, useEventListener, useId } from '../index'
+import {
+  useClickOutside,
+  useEventListener,
+  useId,
+  useDisabledStyle
+} from '../index'
 
 describe('utils/index', () => {
   it('useClickOutside should be exported', () => {
@@ -12,5 +17,9 @@ describe('utils/index', () => {
 
   it('useId should be exported', () => {
     expect(useId).toBeDefined()
+  })
+
+  it('useDisabledStyle should be exported', () => {
+    expect(useDisabledStyle).toBeDefined()
   })
 })
