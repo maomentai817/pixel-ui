@@ -84,11 +84,11 @@ describe('Dropdown.vue', () => {
 
   it('should emit command event when item is clicked', async () => {
     const items: DropdownItemProps[] = [
-      { label: 'Item 1', command: 1 },
-      { label: 'Item 2', command: 2 }
+      { label: 'Item 1', disabled: true },
+      { label: 'Item 2', command: 'item2', divided: true }
     ]
     const onCommand = vi.fn()
-    const wrapper = mount(PxDropdown, {
+    const wrapper = mount(Dropdown, {
       props: {
         trigger: 'click',
         onCommand
@@ -106,11 +106,20 @@ describe('Dropdown.vue', () => {
     await vi.runAllTimers()
     expect(wrapper.find('.px-dropdown__menu').exists()).toBeTruthy()
 
-    await wrapper.findAll('li').at(0)?.trigger('click')
-    expect(onCommand).toBeCalledTimes(0) // disabled
+    const listItems = wrapper.findAll('li')
+    expect(listItems.length).toBe(3) // 1 disabled item + 1 divider + 1 enabled item
 
-    await wrapper.findAll('li').at(2)?.trigger('click')
-    expect(onCommand).toBeCalled()
+    // disabled item
+    await listItems.at(0)?.trigger('click')
+    expect(onCommand).toBeCalledTimes(0)
+
+    // divider (non-interactive)
+    await listItems.at(1)?.trigger('click')
+    expect(onCommand).toBeCalledTimes(0)
+
+    // real interactive item
+    await listItems.at(2)?.trigger('click')
+    expect(onCommand).toBeCalledTimes(1)
     expect(onCommand).toBeCalledWith('item2')
   })
 
@@ -140,5 +149,26 @@ describe('Dropdown.vue', () => {
 
     expect(wrapper.find('.px-dropdown__menu').exists()).toBeFalsy()
     expect(onClick).toBeCalled()
+  })
+
+  it('should expose open/close methods', async () => {
+    const wrapper = mount(Dropdown, {
+      props: {
+        trigger: 'click'
+      },
+      slots: {
+        default: () => <div>Trigger</div>,
+        dropdown: () => <DropdownItem label="Test" />
+      },
+      globals: { components: { DropdownItem } }
+    })
+
+    // 调用暴露的方法
+    wrapper.vm.open?.()
+    wrapper.vm.close?.()
+
+    // 简单断言，确保不会抛错
+    expect(wrapper.vm.open).toBeDefined()
+    expect(wrapper.vm.close).toBeDefined()
   })
 })
