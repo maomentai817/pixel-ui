@@ -3,8 +3,8 @@ import type { ButtonType, ButtonSize } from '../Button'
 import type { DropdownCommand, DropdownItemProps } from './types.dropdownItem'
 import type { Placement, Options } from '@popperjs/core'
 
-export type TriggerType = 'hover' | 'click' | 'contextmenu'
-export type EffectType = 'dark' | 'light' | 'customized'
+type TriggerType = 'hover' | 'click' | 'contextmenu'
+type EffectType = 'dark' | 'light' | 'customized'
 
 export interface DropdownProps {
   /**

@@ -1,4 +1,4 @@
-import { describe, expect, vi, it, beforeEach } from 'vitest'
+import { describe, expect, vi, it, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
 import { DropdownItemProps, PxDropdown, PxDropdownItem } from '.'
@@ -170,5 +170,64 @@ describe('Dropdown.vue', () => {
     // 简单断言，确保不会抛错
     expect(wrapper.vm.open).toBeDefined()
     expect(wrapper.vm.close).toBeDefined()
+  })
+})
+
+// css houdini paint worklet test
+describe('PxDropdown - CSS Houdini Paint Worklet', () => {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
+  it('should register the Paint Worklet pixelpanel when supported', async () => {
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    }
+
+    mount(DropdownItem)
+
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('/worklets/dist/pixelbox.worklet.js')
+    )
+  })
+
+  it('should warn if CSS Houdini Paint Worklet is not supported', () => {
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
+
+    mount(DropdownItem)
+
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringContaining(
+          'CSS Houdini Paint Worklet API is not supported in this browser.'
+        )
+      })
+    )
+  })
+
+  it('should log an error if loading the Paint Worklet fails', () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+
+    mount(DropdownItem)
+
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading Paint Worklet:',
+      error
+    )
   })
 })

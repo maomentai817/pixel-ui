@@ -1,0 +1,84 @@
+.px-dropdown .px-dropdown__menu {
+  --px-dropdown-menuItem-hover-fill: var(--px-light-color-primary);
+  --px-dropdown-menuItem-hover-color: var(--px-bg-color-primary);
+  --px-dropdown-menuItem-disabled-color: var(--px-text-color-disabled);
+  --px-dropdown-menuItem-divided-color: var(--px-popover-border-color);
+}
+
+.px-dropdown {
+  display: inline-block;
+
+  .px-tooltip {
+    --px-popover-padding: 2px;
+  }
+
+  &.is-disabled>*{
+    color: var(var(--px-text-color-disabled)) !important;
+    cursor: not-allowed !important;
+  }
+}
+
+.px-dropdown__menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  .px-dropdown__item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    list-style: none;
+    line-height: 22px;
+    padding: 5px 16px;
+    margin: 0;
+    font-size: var(--px-font-size-small);
+    color: var(--px-text-color-base);
+    cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+    outline: none;
+
+    /* css houdini paint */
+    background-image: paint(pixelbox);
+    --px-border: var(--px-popover-border-width);
+    --px-border-color: transparent;
+    --px-border-t: 0px;
+    --px-border-r: 0px;
+    --px-border-b: 0px;
+    --px-border-l: 0px;
+
+    &:hover {
+      color: var(--px-dropdown-menuItem-hover-color);
+      --px-bg-color: var(--px-dropdown-menuItem-hover-fill);
+    }
+    &.is-disabled {
+      color: var(--px-dropdown-menuItem-disabled-color);
+      cursor: not-allowed;
+      --px-bg-color: transparent;
+    }
+
+    &:first-child {
+      --px-border-radius: 3px;
+      --px-border-radius-lb: 0px;
+      --px-border-radius-rb: 0px;
+    }
+
+    &:last-child {
+      --px-border-radius: 3px;
+      --px-border-radius-lt: 0px;
+      --px-border-radius-rt: 0px;
+    }
+  }
+  
+  .px-dropdown__item--large {
+    padding: 7px 20px;
+    line-height: 22px;
+    font-size: 14px;
+  }
+  .px-dropdown__item--small {
+    padding: 2px 12px;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  .divided-placeholder {
+    margin: 6px 0;
+    border-top: var(--px-popover-border-width) solid var(--px-dropdown-menuItem-divided-color);
+  }
+}

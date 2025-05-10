@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, onMounted } from 'vue'
 import { DROPDOWN_CTX_KEY } from './contants'
 import { useId } from '@pixel-ui/hooks'
+import { debugWarn } from '@pixel-ui/utils'
 
 import type { DropdownItemProps } from './types.dropdownItem'
+
+import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxDropdownItem' as const
 defineOptions({
@@ -23,6 +26,27 @@ const handleItemClick = () => {
   if (props.disabled) return
   ctx?.handleItemClick(props)
 }
+
+// CSS Houdini Paint Worklet
+const paint = () => {
+  try {
+    if ('paintWorklet' in CSS) {
+      ;(CSS as any).paintWorklet.addModule(workletBoxURL)
+    } else {
+      debugWarn(
+        COMP_NAME,
+        'CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    }
+    // (CSS as any).paintWorklet.addModule(workletURL)
+  } catch (error) {
+    console.error('Error loading Paint Worklet:', error)
+  }
+}
+
+onMounted(async () => {
+  paint()
+})
 </script>
 
 <template>
