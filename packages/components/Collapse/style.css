@@ -1,15 +1,15 @@
 .px-collapse {
-  --px-collapse-border-color: var(--px-border-color-base);
+  --px-collapse-border-color: var(--px-color-base);
   --px-collapse-header-height: 48px;
   --px-collapse-content-height: 48px;
   /* bgc: #fff / transparent */
-  --px-collapse-header-bg-color: var(--px-bg-color-base);
-  --px-collapse-header-text-color: var(--px-text-color-base);
+  --px-collapse-header-bg-color: var(--px-color-white);
+  --px-collapse-header-text-color: var(--px-color-base);
   --px-collapse-header-font-size: var(--px-font-size-base);
-  --px-collapse-content-bg-color: var(--px-bg-color-base);
+  --px-collapse-content-bg-color: var(--px-color-white);
   --px-collapse-content-font-size: var(--px-font-size-base);
-  --px-collapse-content-text-color: var(--px-text-color-base);
-  --px-collapse-disabled-text-color: var(--px-text-color-disabled);
+  --px-collapse-content-text-color: var(--px-color-base);
+  --px-collapse-disabled-text-color: var(--px-color-info);
 
   --px-collapse-shadow-color-light: #d4d4d4;
   --px-collapse-shadow-color: #bbb;
@@ -49,7 +49,7 @@
     }
   }
   &:hover:not(.is-disabled) {
-    --px-bg-color: var(--px-fill-hover-color-base);
+    --px-bg-color: var(--px-color-info-dark-1);
   }
   .header-angle {
     transition: transform var(--px-transition-duration-400);

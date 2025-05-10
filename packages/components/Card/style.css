@@ -5,7 +5,7 @@
   align-items: center;
   padding: 1rem;
   font-size: var(--px-font-size-standard);
-  background: var(--px-bg-color-base);
+  background: var(--px-color-white);
   /* css houdini paint */
   background-image: paint(pixelbox);
   --px-border: 3px;
@@ -19,9 +19,9 @@
   --px-border-radius-lb: 0px;
   --px-border-radius-rb: 0px;
   --px-bg-color: transparent;
-  --px-border-color: var(--px-border-color-base);
+  --px-border-color: var(--px-color-base);
   --px-bg-shadow-border: 3px;
-  --px-bg-shadow-color: var(--px-bg-shadow-color-base);
+  --px-bg-shadow-color: var(--px-color-info-dark-2);
   --px-bg-shadow-position: bottom-right;
 }
 /* card prepend part */
@@ -39,7 +39,7 @@
     pointer;
 }
 .px-card:hover.px-card--hover {
-  --px-bg-color: var(--px-fill-hover-color-base);
+  --px-bg-color: var(--px-color-info-dark-1);
   --px-bg-shadow-border: 4px;
 }
 /* card append part */

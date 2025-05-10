@@ -31,7 +31,7 @@ export const useDisabledStyle = () => {
       node.props = assign(node?.props, {
         style: {
           cursor: 'not-allowed',
-          color: 'var(--px-text-color-disabled)'
+          color: 'var(--px-color-info)'
         }
       })
     })

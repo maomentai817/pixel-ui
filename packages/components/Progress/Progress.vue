@@ -32,10 +32,10 @@ const content = computed(() => {
 const strokeWidth = computed(() => Math.max(props.strokeWidth, 16))
 
 const statusColorMap: Record<string, string> = {
-  primary: 'var(--px-bg-color-primary, #209cee)',
-  success: 'var(--px-bg-color-success, #92cc41)',
-  warning: 'var(--px-bg-color-warning, #f7d51d)',
-  danger: 'var(--px-bg-color-danger, #e76e55)'
+  primary: 'var(--px-color-primary, #209cee)',
+  success: 'var(--px-color-success, #92cc41)',
+  warning: 'var(--px-color-warning, #f7d51d)',
+  danger: 'var(--px-color-danger, #e76e55)'
 }
 
 const progressBarOuterStyle = computed(() => {

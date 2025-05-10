@@ -41,209 +41,6 @@ html {
   initial-value: 400;
   inherits: false;
 }
-/* background-color */
-@property --px-bg-color-base {
-  syntax: "<color>";
-  initial-value: #fff;
-  inherits: false;
-}
-@property --px-bg-color-primary {
-  syntax: "<color>";
-  initial-value: #209cee;
-  inherits: false;
-}
-@property --px-bg-color-success {
-  syntax: "<color>";
-  initial-value: #92cc41;
-  inherits: false;
-}
-@property --px-bg-color-warning {
-  syntax: "<color>";
-  initial-value: #f7d51d;
-  inherits: false;
-}
-@property --px-bg-color-danger {
-  syntax: "<color>";
-  initial-value: #e76e55;
-  inherits: false;
-}
-@property --px-bg-color-disabled {
-  syntax: "<color>";
-  initial-value: #ccc;
-  inherits: false;
-}
-/* lignt-color */
-@property --px-light-color-primary {
-  syntax: "<color>";
-  initial-value: #ecf5ff;
-  inherits: false;
-}
-@property --px-light-color-success {
-  syntax: "<color>";
-  initial-value: #f0f9eb;
-  inherits: false;
-}
-@property --px-light-color-warning {
-  syntax: "<color>";
-  initial-value: #fdf6ec;
-  inherits: false;
-}
-@property --px-light-color-danger {
-  syntax: "<color>";
-  initial-value: #faf0f0;
-  inherits: false;
-}
-@property --px-light-color-info {
-  syntax: "<color>";
-  initial-value: #f4f4f5;
-  inherits: false;
-}
-/* light-color-2 */
-@property --px-light-color-primary-2 {
-  syntax: "<color>";
-  initial-value: #a0cfff;
-  inherits: false;
-}
-@property --px-light-color-success-2 {
-  syntax: "<color>";
-  initial-value: #b3e19d;
-  inherits: false;
-}
-@property --px-light-color-warning-2 {
-  syntax: "<color>";
-  initial-value: #f3d19e;
-  inherits: false;
-}
-@property --px-light-color-danger-2 {
-  syntax: "<color>";
-  initial-value: #fab6b6;
-  inherits: false;
-}
-@property --px-light-color-info-2 {
-  syntax: "<color>";
-  initial-value: #909399;
-  inherits: false;
-}
-/* background-shadow-color */
-@property --px-bg-shadow-color-base {
-  syntax: "<color>";
-  initial-value: #adafbc;
-  inherits: false;
-}
-@property --px-bg-shadow-color-primary {
-  syntax: "<color>";
-  initial-value: #006bb3;
-  inherits: false;
-}
-@property --px-bg-shadow-color-success {
-  syntax: "<color>";
-  initial-value: #4aa52e;
-  inherits: false;
-}
-@property --px-bg-shadow-color-warning {
-  syntax: "<color>";
-  initial-value: #e59400;
-  inherits: false;
-}
-@property --px-bg-shadow-color-danger {
-  syntax: "<color>";
-  initial-value: #8c2022;
-  inherits: false;
-}
-/* text-color */
-@property --px-text-color-base {
-  syntax: "<color>";
-  initial-value: #212529;
-  inherits: false;
-}
-@property --px-text-color-white {
-  syntax: "<color>";
-  initial-value: #fff;
-  inherits: false;
-}
-@property --px-text-color-primary {
-  syntax: "<color>";
-  initial-value: #209cee;
-  inherits: false;
-}
-@property --px-text-color-success {
-  syntax: "<color>";
-  initial-value: #92cc41;
-  inherits: false;
-}
-@property --px-text-color-warning {
-  syntax: "<color>";
-  initial-value: #f7d51d;
-  inherits: false;
-}
-@property --px-text-color-danger {
-  syntax: "<color>";
-  initial-value: #e76e55;
-  inherits: false;
-}
-@property --px-text-color-disabled {
-  syntax: "<color>";
-  initial-value: #a8abb2;
-  inherits: false;
-}
-/* fill-hover-color */
-@property --px-fill-hover-color-base {
-  syntax: "<color>";
-  initial-value: #e7e7e7;
-  inherits: false;
-}
-@property --px-fill-hover-color-primary {
-  syntax: "<color>";
-  initial-value: #108de0;
-  inherits: false;
-}
-@property --px-fill-hover-color-success {
-  syntax: "<color>";
-  initial-value: #76c442;
-  inherits: false;
-}
-@property --px-fill-hover-color-warning {
-  syntax: "<color>";
-  initial-value: #f2c409;
-  inherits: false;
-}
-@property --px-fill-hover-color-danger {
-  syntax: "<color>";
-  initial-value: #ce372b;
-  inherits: false;
-}
-/* border-color */
-@property --px-border-color-base {
-  syntax: "<color>";
-  initial-value: #212529;
-  inherits: false;
-}
-@property --px-border-color-primary {
-  syntax: "<color>";
-  initial-value: #108de0;
-  inherits: false;
-}
-@property --px-border-color-success {
-  syntax: "<color>";
-  initial-value: #76c442;
-  inherits: false;
-}
-@property --px-border-color-warning {
-  syntax: "<color>";
-  initial-value: #f2c409;
-  inherits: false;
-}
-@property --px-border-color-danger {
-  syntax: "<color>";
-  initial-value: #ce372b;
-  inherits: false;
-}
-/* border */
-@property --px-border-width-base {
-  syntax: "<length>";
-  initial-value: 4px;
-  inherits: false;
-}
 /* cursor */
 @property --px-cursor-pointer-src {
   syntax: "<url>";
@@ -277,12 +74,17 @@ html {
 /* primary */
 @property --px-color-primary {
   syntax: "<color>";
-  initial-value: #409eff;
+  initial-value: #209cee;
+  inherits: false;
+}
+@property --px-color-primary-dark-1 {
+  syntax: "<color>";
+  initial-value: #108de0;
   inherits: false;
 }
 @property --px-color-primary-dark-2 {
   syntax: "<color>";
-  initial-value: #337ecc;
+  initial-value: #006bb3;
   inherits: false;
 }
 @property --px-color-primary-light-3 {
@@ -313,12 +115,17 @@ html {
 /* success */
 @property --px-color-success {
   syntax: "<color>";
-  initial-value: #67c23a;
+  initial-value: #92cc41;
+  inherits: false;
+}
+@property --px-color-success-dark-1 {
+  syntax: "<color>";
+  initial-value: #76c442;
   inherits: false;
 }
 @property --px-color-success-dark-2 {
   syntax: "<color>";
-  initial-value: #529b2e;
+  initial-value: #4aa52e;
   inherits: false;
 }
 @property --px-color-success-light-3 {
@@ -349,12 +156,17 @@ html {
 /* warning */
 @property --px-color-warning {
   syntax: "<color>";
-  initial-value: #e6a23c;
+  initial-value: #f7d51d;
+  inherits: false;
+}
+@property --px-color-warning-dark-1 {
+  syntax: "<color>";
+  initial-value: #f2c409;
   inherits: false;
 }
 @property --px-color-warning-dark-2 {
   syntax: "<color>";
-  initial-value: #b88230;
+  initial-value: #e59400;
   inherits: false;
 }
 @property --px-color-warning-light-3 {
@@ -385,12 +197,17 @@ html {
 /* danger */
 @property --px-color-danger {
   syntax: "<color>";
-  initial-value: #f56c6c;
+  initial-value: #e76e55;
+  inherits: false;
+}
+@property --px-color-danger-dark-1 {
+  syntax: "<color>";
+  initial-value: #ce372b;
   inherits: false;
 }
 @property --px-color-danger-dark-2 {
   syntax: "<color>";
-  initial-value: #c45656;
+  initial-value: #8c2022;
   inherits: false;
 }
 @property --px-color-danger-light-3 {
@@ -421,12 +238,17 @@ html {
 /* info */
 @property --px-color-info {
   syntax: "<color>";
-  initial-value: #909399;
+  initial-value: #cccccc;
+  inherits: false;
+}
+@property --px-color-info-dark-1 {
+  syntax: "<color>";
+  initial-value: #e7e7e7;
   inherits: false;
 }
 @property --px-color-info-dark-2 {
   syntax: "<color>";
-  initial-value: #73767a;
+  initial-value: #adafbc;
   inherits: false;
 }
 @property --px-color-info-light-3 {
@@ -452,5 +274,16 @@ html {
 @property --px-color-info-light-9 {
   syntax: "<color>";
   initial-value: #f4f4f5;
+  inherits: false;
+}
+/* text-color */
+@property --px-color-base {
+  syntax: "<color>";
+  initial-value: #212529;
+  inherits: false;
+}
+@property --px-color-white {
+  syntax: "<color>";
+  initial-value: #ffffff;
   inherits: false;
 }

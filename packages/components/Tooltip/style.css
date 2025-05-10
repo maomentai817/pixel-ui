@@ -1,13 +1,13 @@
 .px-tooltip {
   --px-popover-font-size: 12px;
-  --px-popover-bg-color: var(--px-bg-color-base);
-  --px-popover-border-color: var(--px-border-color-base);
+  --px-popover-bg-color: var(--px-color-white);
+  --px-popover-border-color: var(--px-color-base);
   --px-popover-border-width: 2px;
   --px-popover-border-radius: 1px;
   --px-popover-padding: 12px;
   --px-popover-offset: -3px;
   --px-popover-arrow-size: 8px;
-  --px-popover-text-color: var(--px-text-color-base);
+  --px-popover-text-color: var(--px-color-base);
 }
 .px-tooltip {
   display: inline-block;
@@ -45,7 +45,7 @@
     --px-border-radius-lb: var(--px-popover-border-radius);
     --px-border-radius-rb: var(--px-popover-border-radius);
     --px-bg-color: var(--px-popover-bg-color);
-    --px-border-color: var(--px-border-color-base);
+    --px-border-color: var(--px-color-base);
 
     #arrow,
     #arrow::before {
@@ -96,15 +96,15 @@
     }
 
     &.is-light {
-      --px-popover-text-color: var(--px-text-color-base);
-      --px-popover-bg-color: var(--px-bg-color-base);
-      --px-popover-border-color: var(--px-border-color-base);
+      --px-popover-text-color: var(--px-color-base);
+      --px-popover-bg-color: var(--px-color-white);
+      --px-popover-border-color: var(--px-color-base);
     }
 
     &.is-dark {
-      --px-popover-text-color: var(--px-text-color-white);
-      --px-popover-bg-color: var(--px-border-color-base);
-      --px-popover-border-color: var(--px-border-color-base);
+      --px-popover-text-color: var(--px-color-white);
+      --px-popover-bg-color: var(--px-color-base);
+      --px-popover-border-color: var(--px-color-base);
     }
   }
 }

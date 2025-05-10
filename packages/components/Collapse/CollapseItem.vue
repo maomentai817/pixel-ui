@@ -73,9 +73,7 @@ onMounted(async () => {
         class="header-angle"
         size="20"
         :color="
-          disabled
-            ? 'var(--px-text-color-disabled)'
-            : 'var(--px-text-color-base)'
+          disabled ? 'var(--px-color-info)' : 'var(--px-color-base)'
         "
       ></px-icon>
     </div>

@@ -1,12 +1,12 @@
 .px-progress {
   --px-progress-text-size: 10px;
-  --px-progress-text-color: var(--px-text-color-base);
+  --px-progress-text-color: var(--px-color-base);
   --px-progress-bar-height: 16px;
   --px-progress-bar-container-color: #ebeef5;
   --px-progress-bar-gap: 4px;
   --px-progress-bar-duration: 4s;
-  --px-progress-bar-bg-color: var(--px-bg-color-primary);
-  --px-progress-bar-bg-shadow-color: var(--px-fill-hover-color-primary);
+  --px-progress-bar-bg-color: var(--px-color-primary);
+  --px-progress-bar-bg-shadow-color: var(--px-color-primary-dark-1);
 }
 
 .px-progress {
@@ -42,7 +42,7 @@
   --px-border-radius-lb: 0px;
   --px-border-radius-rb: 0px;
   --px-bg-color: var(--px-progress-bar-container-color);
-  --px-border-color: var(--px-border-color-base);
+  --px-border-color: var(--px-color-base);
 }
 
 .px-progress-bar-gap {
@@ -117,7 +117,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 5px;
-  color: var(--px-text-color-white);
+  color: var(--px-color-white);
 }
 
 .px-progress__text {
@@ -129,16 +129,16 @@
 }
 
 .is-success {
-  --px-progress-bar-bg-color: var(--px-bg-color-success);
-  --px-progress-bar-bg-shadow-color: var(--px-fill-hover-color-success);
+  --px-progress-bar-bg-color: var(--px-color-success);
+  --px-progress-bar-bg-shadow-color: var(--px-color-success-dark-1);
 }
 
 .is-warning {
-  --px-progress-bar-bg-color: var(--px-bg-color-warning);
-  --px-progress-bar-bg-shadow-color: var(--px-fill-hover-color-warning);
+  --px-progress-bar-bg-color: var(--px-color-warning);
+  --px-progress-bar-bg-shadow-color: var(--px-color-warning-dark-1);
 }
 
 .is-danger {
-  --px-progress-bar-bg-color: var(--px-bg-color-danger);
-  --px-progress-bar-bg-shadow-color: var(--px-fill-hover-color-danger);
+  --px-progress-bar-bg-color: var(--px-color-danger);
+  --px-progress-bar-bg-shadow-color: var(--px-color-danger-dark-1);
 }

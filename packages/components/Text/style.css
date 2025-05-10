@@ -1,17 +1,17 @@
 .px-text--base {
-  color: var(--px-text-color-base);
+  color: var(--px-color-base);
 }
 .px-text--primary {
-  color: var(--px-text-color-primary);
+  color: var(--px-color-primary);
 }
 .px-text--success {
-  color: var(--px-text-color-success);
+  color: var(--px-color-success);
 }
 .px-text--warning {
-  color: var(--px-text-color-warning);
+  color: var(--px-color-warning);
 }
 .px-text--danger {
-  color: var(--px-text-color-danger);
+  color: var(--px-color-danger);
 }
 .is-compact {
   line-height: 1;

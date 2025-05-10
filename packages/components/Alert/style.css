@@ -1,10 +1,10 @@
 .px-alert {
-  --px-alert-bg-color: var(--px-bg-color-base);
-  --px-alert-border-color: var(--px-border-color-base);
+  --px-alert-bg-color: var(--px-color-white);
+  --px-alert-border-color: var(--px-color-base);
   --px-alert-title-font-size: var(--px-font-size-base);
   --px-alert-title-font-size-with-desc: var(--px-font-size-standard);
   --px-alert-desc-font-size: var(--px-font-size-base);
-  --px-alert-text-color: var(--px-text-color-base);
+  --px-alert-text-color: var(--px-color-base);
   --px-alert-close-icon-color: var(--px-alert-text-color);
   --px-alert-top-margin: 20px;
   --px-alert-icon-size: 18px;
@@ -96,49 +96,49 @@
 /* types */
 .px-alert--success {
   &.px-alert--light {
-    --px-alert-bg-color: var(--px-light-color-success);
-    --px-alert-border-color: var(--px-light-color-success-2);
-    --px-alert-text-color: var(--px-light-color-success-2);
+    --px-alert-bg-color: var(--px-color-success-light-9);
+    --px-alert-border-color: var(--px-color-success-light-5);
+    --px-alert-text-color: var(--px-color-success);
   }
   &.px-alert--dark {
-    --px-alert-bg-color: var(--px-bg-color-success);
-    --px-alert-border-color: var(--px-border-color-success);
-    --px-alert-text-color: var(--px-text-color-white);
+    --px-alert-bg-color: var(--px-color-success);
+    --px-alert-border-color: var(--px-color-success-dark-1);
+    --px-alert-text-color: var(--px-color-white);
   }
 }
 .px-alert--warning {
   &.px-alert--light {
-    --px-alert-bg-color: var(--px-light-color-warning);
-    --px-alert-border-color: var(--px-light-color-warning-2);
-    --px-alert-text-color: var(--px-light-color-warning-2);
+    --px-alert-bg-color: var(--px-color-warning-light-9);
+    --px-alert-border-color: var(--px-color-warning-light-5);
+    --px-alert-text-color: var(--px-color-warning);
   }
   &.px-alert--dark {
-    --px-alert-bg-color: var(--px-bg-color-warning);
-    --px-alert-border-color: var(--px-border-color-warning);
-    --px-alert-text-color: var(--px-text-color-white);
+    --px-alert-bg-color: var(--px-color-warning);
+    --px-alert-border-color: var(--px-color-warning-dark-1);
+    --px-alert-text-color: var(--px-color-white);
   }
 }
 .px-alert--danger {
   &.px-alert--light {
-    --px-alert-bg-color: var(--px-light-color-danger);
-    --px-alert-border-color: var(--px-light-color-danger-2);
-    --px-alert-text-color: var(--px-light-color-danger-2);
+    --px-alert-bg-color: var(--px-color-danger-light-9);
+    --px-alert-border-color: var(--px-color-danger-light-5);
+    --px-alert-text-color: var(--px-color-danger);
   }
   &.px-alert--dark {
-    --px-alert-bg-color: var(--px-bg-color-danger);
-    --px-alert-border-color: var(--px-border-color-danger);
-    --px-alert-text-color: var(--px-text-color-white);
+    --px-alert-bg-color: var(--px-color-danger);
+    --px-alert-border-color: var(--px-color-danger-dark-1);
+    --px-alert-text-color: var(--px-color-white);
   }
 }
 .px-alert--info {
   &.px-alert--light {
-    --px-alert-bg-color: var(--px-light-color-info);
-    --px-alert-border-color: var(--px-light-color-info-2);
-    --px-alert-text-color: var(--px-light-color-info-2);
+    --px-alert-bg-color: var(--px-color-info-light-9);
+    --px-alert-border-color: var(--px-color-info-light-5);
+    --px-alert-text-color: var(--px-color-info);
   }
   &.px-alert--dark {
-    --px-alert-bg-color: var(--px-light-color-info-2);
+    --px-alert-bg-color: var(--px-color-info);
     /* --px-alert-border-color: var(--px-border-color-info); */
-    --px-alert-text-color: var(--px-text-color-white);
+    --px-alert-text-color: var(--px-color-white);
   }
 }

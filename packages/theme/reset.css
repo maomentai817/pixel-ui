@@ -3,7 +3,7 @@ body {
   font-weight: var(--px-font-weight-base);
   font-size: var(--px-font-size-base);
   line-height: calc(var(--px-font-size-base) * 1.2);
-  color: var(--px-text-color-base);
+  color: var(--px-color-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -29,7 +29,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--px-text-color-base);
+  color: var(--px-color-base);
   font-weight: inherit;
 
   &:first-child {
@@ -85,5 +85,5 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid var(--px-border-color-base);
+  border-top: 1px solid var(--px-color-base);
 }

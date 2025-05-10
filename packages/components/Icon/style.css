@@ -1,5 +1,5 @@
 .px-icon {
-  --px-icon-color: var(--px-text-color-base);
+  --px-icon-color: var(--px-color-base);
   --px-icon-animation-duration: var(--px-animation-duration);
 }
 .px-icon {
@@ -88,14 +88,14 @@
 }
 /* 基本type */
 .px-icon.px-icon--primary {
-  --px-icon-color: var(--px-text-color-primary);
+  --px-icon-color: var(--px-color-primary);
 }
 .px-icon.px-icon--success {
-  --px-icon-color: var(--px-text-color-success);
+  --px-icon-color: var(--px-color-success);
 }
 .px-icon.px-icon--warning {
-  --px-icon-color: var(--px-text-color-warning);
+  --px-icon-color: var(--px-color-warning);
 }
 .px-icon.px-icon--danger {
-  --px-icon-color: var(--px-text-color-danger);
+  --px-icon-color: var(--px-color-danger);
 }
