@@ -272,3 +272,185 @@ html {
   initial-value: 2s;
   inherits: false;
 }
+
+/* 颜色重定义 */
+/* primary */
+@property --px-color-primary {
+  syntax: "<color>";
+  initial-value: #409eff;
+  inherits: false;
+}
+@property --px-color-primary-dark-2 {
+  syntax: "<color>";
+  initial-value: #337ecc;
+  inherits: false;
+}
+@property --px-color-primary-light-3 {
+  syntax: "<color>";
+  initial-value: #79bbff;
+  inherits: false;
+}
+@property --px-color-primary-light-5 {
+  syntax: "<color>";
+  initial-value: #a0cfff;
+  inherits: false;
+}
+@property --px-color-primary-light-7 {
+  syntax: "<color>";
+  initial-value: #c6e2ff;
+  inherits: false;
+}
+@property --px-color-primary-light-8 {
+  syntax: "<color>";
+  initial-value: #d9ecff;
+  inherits: false;
+}
+@property --px-color-primary-light-9 {
+  syntax: "<color>";
+  initial-value: #ecf5ff;
+  inherits: false;
+}
+/* success */
+@property --px-color-success {
+  syntax: "<color>";
+  initial-value: #67c23a;
+  inherits: false;
+}
+@property --px-color-success-dark-2 {
+  syntax: "<color>";
+  initial-value: #529b2e;
+  inherits: false;
+}
+@property --px-color-success-light-3 {
+  syntax: "<color>";
+  initial-value: #95d475;
+  inherits: false;
+}
+@property --px-color-success-light-5 {
+  syntax: "<color>";
+  initial-value: #b3e19d;
+  inherits: false;
+}
+@property --px-color-success-light-7 {
+  syntax: "<color>";
+  initial-value: #d1edc4;
+  inherits: false;
+}
+@property --px-color-success-light-8 {
+  syntax: "<color>";
+  initial-value: #e1f3d8;
+  inherits: false;
+}
+@property --px-color-success-light-9 {
+  syntax: "<color>";
+  initial-value: #f0f9eb;
+  inherits: false;
+}
+/* warning */
+@property --px-color-warning {
+  syntax: "<color>";
+  initial-value: #e6a23c;
+  inherits: false;
+}
+@property --px-color-warning-dark-2 {
+  syntax: "<color>";
+  initial-value: #b88230;
+  inherits: false;
+}
+@property --px-color-warning-light-3 {
+  syntax: "<color>";
+  initial-value: #eebe77;
+  inherits: false;
+}
+@property --px-color-warning-light-5 {
+  syntax: "<color>";
+  initial-value: #f3d19e;
+  inherits: false;
+}
+@property --px-color-warning-light-7 {
+  syntax: "<color>";
+  initial-value: #f8e3c5;
+  inherits: false;
+}
+@property --px-color-warning-light-8 {
+  syntax: "<color>";
+  initial-value: #faecd8;
+  inherits: false;
+}
+@property --px-color-warning-light-9 {
+  syntax: "<color>";
+  initial-value: #fdf6ec;
+  inherits: false;
+}
+/* danger */
+@property --px-color-danger {
+  syntax: "<color>";
+  initial-value: #f56c6c;
+  inherits: false;
+}
+@property --px-color-danger-dark-2 {
+  syntax: "<color>";
+  initial-value: #c45656;
+  inherits: false;
+}
+@property --px-color-danger-light-3 {
+  syntax: "<color>";
+  initial-value: #f89898;
+  inherits: false;
+}
+@property --px-color-danger-light-5 {
+  syntax: "<color>";
+  initial-value: #fab6b6;
+  inherits: false;
+}
+@property --px-color-danger-light-7 {
+  syntax: "<color>";
+  initial-value: #fcd3d3;
+  inherits: false;
+}
+@property --px-color-danger-light-8 {
+  syntax: "<color>";
+  initial-value: #fde2e2;
+  inherits: false;
+}
+@property --px-color-danger-light-9 {
+  syntax: "<color>";
+  initial-value: #fef0f0;
+  inherits: false;
+}
+/* info */
+@property --px-color-info {
+  syntax: "<color>";
+  initial-value: #909399;
+  inherits: false;
+}
+@property --px-color-info-dark-2 {
+  syntax: "<color>";
+  initial-value: #73767a;
+  inherits: false;
+}
+@property --px-color-info-light-3 {
+  syntax: "<color>";
+  initial-value: #b1b3b8;
+  inherits: false;
+}
+@property --px-color-info-light-5 {
+  syntax: "<color>";
+  initial-value: #c8c9cc;
+  inherits: false;
+}
+@property --px-color-info-light-7 {
+  syntax: "<color>";
+  initial-value: #dedfe0;
+  inherits: false;
+}
+@property --px-color-info-light-8 {
+  syntax: "<color>";
+  initial-value: #e9e9eb;
+  inherits: false;
+}
+@property --px-color-info-light-9 {
+  syntax: "<color>";
+  initial-value: #f4f4f5;
+  inherits: false;
+}
