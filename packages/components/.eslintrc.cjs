@@ -70,6 +70,7 @@ module.exports = {
     StylePropertyMap: 'readonly',
     PaintRenderingContext2D: 'readonly',
     PaintWorklet: 'readonly',
-    EventListener: 'readonly'
+    EventListener: 'readonly',
+    TEST: 'readonly'
   }
 }

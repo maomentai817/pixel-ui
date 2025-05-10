@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type CollapseItemName } from '@mmt817/pixel-ui'
+import { type CollapseItemName, type DropdownItemProps } from '@mmt817/pixel-ui'
 import { ref, computed } from 'vue'
 
 const activeNames = ref([])
@@ -30,6 +30,13 @@ const clicked = ref(false)
 function onCancel() {
   clicked.value = true
 }
+
+const items: DropdownItemProps[] = [
+  { command: '1', label: 'Action 1' },
+  { command: '2', label: 'Action 2' },
+  { command: '3', label: 'Action 3', disabled: true },
+  { command: '4', label: 'Action 4', divided: true }
+]
 </script>
 
 <template>
@@ -481,6 +488,33 @@ function onCancel() {
       </px-button>
     </template>
   </px-popconfirm>
+  <!-- dropdown -->
+  <div class="flex flex-wrap">
+    <div class="flex-1">
+      <div class="block text-14 mb-20 color-#209cee">通过 slot 传入 item</div>
+      <px-dropdown trigger="click">
+        <span class="flex items-center cursor-pointer color-#209cee">
+          Dropdown List
+          <px-icon icon="angle-down" />
+        </span>
+        <template #dropdown>
+          <px-dropdown-item command="1">Action 1</px-dropdown-item>
+          <px-dropdown-item command="2" label="Action 2" />
+          <px-dropdown-item command="3" disabled>Action 3</px-dropdown-item>
+          <px-dropdown-item command="4" divided>Action 4</px-dropdown-item>
+        </template>
+      </px-dropdown>
+    </div>
+    <div class="flex-1">
+      <div class="block text-14 mb-20 color-#209cee">通过 props 传入 item</div>
+      <px-dropdown :items="items">
+        <span class="flex items-center cursor-pointer color-#209cee">
+          Dropdown List
+          <px-icon icon="angle-down" />
+        </span>
+      </px-dropdown>
+    </div>
+  </div>
   <div class="h-300"></div>
 </template>
 

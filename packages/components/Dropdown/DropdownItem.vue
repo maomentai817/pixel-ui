@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { DROPDOWN_CTX_KEY } from './contants'
+import { useId } from '@pixel-ui/hooks'
 
 import type { DropdownItemProps } from './types.dropdownItem'
 
@@ -11,7 +12,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<DropdownItemProps>(), {
   disabled: false,
-  divided: false
+  divided: false,
+  command: useId().value
 })
 
 const ctx = inject(DROPDOWN_CTX_KEY)
@@ -26,6 +28,7 @@ const handleItemClick = () => {
 <template>
   <li v-if="divided" role="separator" class="divided-placeholder"></li>
   <li
+    :id="`dropdown-item-${command ?? useId().value}`"
     :class="{
       'px-dropdown__item': true,
       [`px-dropdown__item--${size}`]: size,

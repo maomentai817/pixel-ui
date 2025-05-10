@@ -2,6 +2,7 @@
 import { ref, computed, provide } from 'vue'
 import { isNil, omit } from 'lodash-es'
 import { DROPDOWN_CTX_KEY } from './contants'
+import { useDisabledStyle } from '@pixel-ui/hooks'
 
 import type {
   DropdownProps,
@@ -54,6 +55,7 @@ const handleItemClick = (e: DropdownItemProps) => {
 }
 
 // todo: 非测试环境下, disabled 样式特殊处理
+!TEST && useDisabledStyle()
 
 // provide ctx
 provide<DropdownContext>(DROPDOWN_CTX_KEY, {
