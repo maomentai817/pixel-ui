@@ -76,19 +76,19 @@ defineExpose<DropdownInstance>({
       ref="tooltipRef"
       v-bind="tooltipProps"
       :virtual-triggering="splitButton"
-      :virtual-ref="triggerRef?.ref.value"
+      :virtual-ref="triggerRef?.ref"
       @visible-change="handleVisibleChange"
     >
       <px-button-group
         v-if="splitButton"
         :type="type"
         :size="size"
-        :disabled="props.disabled"
+        :disabled="disabled"
       >
         <px-button @click="handleSplitButtonClick">
           <slot name="default"></slot>
         </px-button>
-        <px-button ref="triggerRef" icon="angle-down"></px-button>
+        <px-button ref="triggerRef" icon="angle-down-solid" />
       </px-button-group>
 
       <slot name="default" v-else></slot>

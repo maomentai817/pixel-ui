@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { type CollapseItemName, type DropdownItemProps } from '@mmt817/pixel-ui'
-import { ref, computed } from 'vue'
+import type {
+  ButtonInstance,
+  CollapseItemName,
+  DropdownItemProps
+} from '@mmt817/pixel-ui'
+import { ref, onMounted } from 'vue'
 
 const activeNames = ref([])
 
@@ -21,11 +25,6 @@ const format = (percentage: number) => {
 
 const tooltiptest = ref()
 
-const testRef = computed(() => {
-  const el = tooltiptest.value
-  return el?.$el ?? el
-})
-
 const clicked = ref(false)
 function onCancel() {
   clicked.value = true
@@ -37,10 +36,15 @@ const items: DropdownItemProps[] = [
   { command: '3', label: 'Action 3', disabled: true },
   { command: '4', label: 'Action 4', divided: true }
 ]
+
+const BTN = ref<ButtonInstance>()
+onMounted(() => {
+  console.log(BTN.value?.ref)
+})
 </script>
 
 <template>
-  <px-button size="mini">Normal</px-button>
+  <px-button size="mini" ref="BTN">Normal</px-button>
   <px-button type="primary" size="mini">Primary</px-button>
   <px-button type="success" size="mini">Success</px-button>
   <px-button type="warning" size="mini">Warning</px-button>
@@ -457,7 +461,7 @@ const items: DropdownItemProps[] = [
       placement="bottom"
       trigger="hover"
       virtual-triggering
-      :virtual-ref="testRef"
+      :virtual-ref="tooltiptest?.ref"
     ></px-tooltip>
     <px-button ref="tooltiptest">virtual trigger</px-button>
   </div>
@@ -489,7 +493,7 @@ const items: DropdownItemProps[] = [
     </template>
   </px-popconfirm>
   <!-- dropdown -->
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap m-y-30">
     <div class="flex-1">
       <div class="block text-14 mb-20 color-#209cee">通过 slot 传入 item</div>
       <px-dropdown trigger="click">
@@ -515,6 +519,19 @@ const items: DropdownItemProps[] = [
       </px-dropdown>
     </div>
   </div>
+
+  <px-dropdown split-button type="primary">
+    Dropdown List
+    <template #dropdown>
+      <px-dropdown-menu>
+        <px-dropdown-item>Action 1</px-dropdown-item>
+        <px-dropdown-item>Action 2</px-dropdown-item>
+        <px-dropdown-item>Action 3</px-dropdown-item>
+        <px-dropdown-item divided>Action 4</px-dropdown-item>
+        <px-dropdown-item>Action 5</px-dropdown-item>
+      </px-dropdown-menu>
+    </template>
+  </px-dropdown>
   <div class="h-300"></div>
 </template>
 

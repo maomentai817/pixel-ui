@@ -24,7 +24,7 @@ defineOptions({
 
 //todo 虚拟节点
 interface _TooltipProps extends TooltipProps {
-  virtualRef?: HTMLElement | void
+  virtualRef?: HTMLElement | void | Ref<HTMLElement | void>
   virtualTriggering?: boolean
 }
 
