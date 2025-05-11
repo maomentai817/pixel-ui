@@ -1,12 +1,8 @@
-<script setup leng="ts">
-import { ref, computed } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { ButtonInstance } from '@mmt817/pixel-ui'
 
-const virtualTrigger = ref()
-
-const virtualRef = computed(() => {
-  const el = virtualTrigger.value
-  return el?.$el ?? el
-})
+const virtualTrigger = ref<ButtonInstance>()
 </script>
 
 <template>
@@ -15,7 +11,7 @@ const virtualRef = computed(() => {
     placement="bottom"
     trigger="hover"
     virtual-triggering
-    :virtual-ref="virtualRef"
+    :virtual-ref="virtualTrigger?.ref"
   ></px-tooltip>
   <px-button ref="virtualTrigger" size="small">virtual trigger</px-button>
 </template>

@@ -71,7 +71,13 @@ defineExpose<DropdownInstance>({
 </script>
 
 <template>
-  <div class="px-dropdown" :class="{ 'is-disabled': props.disabled }">
+  <div
+    class="px-dropdown"
+    :class="{
+      'is-disabled': disabled,
+      [`px-dropdown--${type}`]: type
+    }"
+  >
     <px-tooltip
       ref="tooltipRef"
       v-bind="tooltipProps"
