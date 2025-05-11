@@ -511,7 +511,7 @@ onMounted(() => {
     </div>
     <div class="flex-1">
       <div class="block text-14 mb-20 color-#209cee">通过 props 传入 item</div>
-      <px-dropdown :items="items">
+      <px-dropdown disabled :items="items">
         <span class="flex items-center cursor-pointer color-#209cee">
           Dropdown List
           <px-icon icon="angle-down" />

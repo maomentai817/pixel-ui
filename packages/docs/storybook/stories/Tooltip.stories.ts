@@ -23,7 +23,20 @@ const meta: Meta<typeof PxTooltip> = {
     },
     placement: {
       control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
+      options: [
+        'top',
+        'top-start',
+        'top-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'right',
+        'right-start',
+        'right-end'
+      ],
       description: '提示位置'
     },
     manual: {

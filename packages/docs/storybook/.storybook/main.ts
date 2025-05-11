@@ -19,6 +19,10 @@ const config: StorybookConfig = {
         alias: {
           '@pixel-ui/components': fileURLToPath(new URL('../../../components', import.meta.url))
         }
+      },
+      define: {
+        ...(config.define || {}),
+        TEST: false // 在 Storybook 环境中显式定义 TEST
       }
     })
   }

@@ -31,7 +31,7 @@
     --px-popover-padding: 2px;
   }
 
-  &.is-disabled>*{
+  &.is-disabled{
     color: var(var(--px-color-info)) !important;
     cursor: not-allowed !important;
   }
