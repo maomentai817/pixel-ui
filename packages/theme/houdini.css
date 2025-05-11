@@ -287,3 +287,23 @@ html {
   initial-value: #ffffff;
   inherits: false;
 }
+@property --px-text-color-primary {
+  syntax: "<color>";
+  initial-value: #212529;
+  inherits: false;
+}
+@property --px-text-color-regular {
+  syntax: "<color>";
+  initial-value: #606266;
+  inherits: false;
+}
+@property --px-text-color-secondary {
+  syntax: "<color>";
+  initial-value: #909399;
+  inherits: false;
+}
+@property --px-text-color-placeholder {
+  syntax: "<color>";
+  initial-value: #a8abb2;
+  inherits: false;
+}
