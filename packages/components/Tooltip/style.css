@@ -97,14 +97,14 @@
 
     &.is-light {
       --px-popover-text-color: var(--px-color-base);
-      --px-popover-bg-color: var(--px-color-white);
+      --px-popover-bg-color: var(--px-bg-color-overlay);
       --px-popover-border-color: var(--px-color-base);
     }
 
     &.is-dark {
       --px-popover-text-color: var(--px-color-white);
-      --px-popover-bg-color: var(--px-color-base);
-      --px-popover-border-color: var(--px-color-base);
+      --px-popover-bg-color: var(--px-bg-color-overlay-dark);
+      --px-popover-border-color: var(--px-border-color-light);
     }
   }
 }

@@ -75,7 +75,8 @@ defineExpose<DropdownInstance>({
     class="px-dropdown"
     :class="{
       'is-disabled': disabled,
-      [`px-dropdown--${type}`]: type
+      [`px-dropdown--${type}`]: type,
+      [`is-${effect}`]: effect
     }"
   >
     <px-tooltip

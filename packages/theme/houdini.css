@@ -307,3 +307,60 @@ html {
   initial-value: #a8abb2;
   inherits: false;
 }
+/* bg-color */
+@property --px-bg-color-page  {
+  syntax: "<color>";
+  initial-value: #f2f3f5;
+  inherits: false;
+}
+@property --px-bg-color-overlay  {
+  syntax: "<color>";
+  initial-value: #ffffff;
+  inherits: false;
+}
+@property --px-bg-color-page-dark  {
+  syntax: "<color>";
+  initial-value: #0a0a0a;
+  inherits: false;
+}
+@property --px-bg-color-dark  {
+  syntax: "<color>";
+  initial-value: #141414;
+  inherits: false;
+}
+@property --px-bg-color-overlay-dark  {
+  syntax: "<color>";
+  initial-value: #1d1e1f;
+  inherits: false;
+}
+/* border-color */
+@property --px-border-color-darker  {
+  syntax: "<color>";
+  initial-value: #636466;
+  inherits: false;
+}
+@property --px-border-color-dark  {
+  syntax: "<color>";
+  initial-value: #58585b;
+  inherits: false;
+}
+@property --px-border-color  {
+  syntax: "<color>";
+  initial-value: #4c4d4f;
+  inherits: false;
+}
+@property --px-border-color-light  {
+  syntax: "<color>";
+  initial-value: #414243;
+  inherits: false;
+}
+@property --px-border-color-lighter  {
+  syntax: "<color>";
+  initial-value: #363637;
+  inherits: false;
+}
+@property --px-border-color-extra-light  {
+  syntax: "<color>";
+  initial-value: #2b2b2c;
+  inherits: false;
+}

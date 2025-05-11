@@ -41,10 +41,10 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-.example-showcase .px-dropdown + .px-dropdown {
+.px-dropdown + .px-dropdown {
   margin-left: 15px;
 }
-.example-showcase .px-dropdown-link {
+.px-dropdown-link {
   cursor: pointer;
   color: var(--px-color-primary);
   display: flex;

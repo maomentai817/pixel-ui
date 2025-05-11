@@ -101,6 +101,26 @@ Dropdown 组件提供除了默认值以外的三种尺寸, 可以在不同场景
 demo-preview=../demo/Dropdown/Size.vue
 :::
 
+## 主题
+
+Dropdown 组件属性大多继承自 Tooltip 组件, 同样内置了两个主题: `light` 和 `dark`。
+
+:::tip
+要使用自定义主题, 您必须知道您的工具提示在哪里渲染, 如果您的工具提示被呈现为根元素, 您将需要全局设置css规则。
+
+设置自定义主题时, 需要同时修改弹出箭头和内容样式, 具体设置见下方 demo-preview
+
+由于组件库祖宗之法基于 `css houdini paintWorklet`, 像素盒子大部分基于 `pixelbox` 渲染, 当前仅提供纯色主题, 如果希望渲染线性渐变, 等待后续升级
+
+Dropdown 组件设置 `inheritAttrs: false`, 截断 `v-bind="$attrs"`, 设置自定义属性需要使用样式穿透 `::v-deep`
+:::
+
+通过设置 `effect` 来修改主题, 默认为 `light`。
+
+::: preview
+demo-preview=../demo/Dropdown/Theme.vue
+:::
+
 ## API_Table插件测试
 
 :::danger

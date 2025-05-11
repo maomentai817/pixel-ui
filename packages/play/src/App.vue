@@ -521,7 +521,7 @@ onMounted(() => {
   </div>
 
   <div class="">
-    <px-dropdown split-button type="primary">
+    <px-dropdown split-button type="primary" effect="dark" trigger="click">
       Dropdown List
       <template #dropdown>
         <px-dropdown-menu>
