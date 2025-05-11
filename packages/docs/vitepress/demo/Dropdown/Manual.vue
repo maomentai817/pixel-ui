@@ -18,7 +18,11 @@ const dropdownRef = ref<DropdownInstance>()
   <px-dropdown ref="dropdownRef" :items="items" trigger="click">
     <span class="dropdown-link">
       Dropdown List
-      <px-icon icon="angle-down-solid" color="#209cee" class="translate-y-2" />
+      <px-icon
+        icon="angle-down-solid"
+        color="var(--px-color-primary)"
+        class="translate-y-2"
+      />
     </span>
   </px-dropdown>
 </template>

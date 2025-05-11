@@ -12,41 +12,20 @@ const items: DropdownItemProps[] = [
 <template>
   <div class="flex flex-wrap">
     <div class="flex-1">
-      <div class="desc">hover</div>
+      <div class="desc">disabled</div>
+      <px-dropdown :items="items" disabled>
+        <span class="dropdown-link">
+          Dropdown List
+          <px-icon icon="angle-down-solid" />
+        </span>
+      </px-dropdown>
+    </div>
+    <div class="flex-1">
+      <div class="desc">undisabled</div>
       <px-dropdown :items="items">
         <span class="dropdown-link">
           Dropdown List
-          <px-icon
-            icon="angle-down-solid"
-            color="var(--px-color-primary)"
-            class="translate-y-2"
-          />
-        </span>
-      </px-dropdown>
-    </div>
-    <div class="flex-1">
-      <div class="desc">click</div>
-      <px-dropdown :items="items" trigger="click">
-        <span class="dropdown-link">
-          Dropdown List
-          <px-icon
-            icon="angle-down-solid"
-            color="var(--px-color-primary)"
-            class="translate-y-2"
-          />
-        </span>
-      </px-dropdown>
-    </div>
-    <div class="flex-1">
-      <div class="desc">contextmenu</div>
-      <px-dropdown :items="items" trigger="contextmenu">
-        <span class="dropdown-link">
-          Dropdown List
-          <px-icon
-            icon="angle-down-solid"
-            color="var(--px-color-primary)"
-            class="translate-y-2"
-          />
+          <px-icon icon="angle-down-solid" color="var(--px-color-primary)" />
         </span>
       </px-dropdown>
     </div>
@@ -57,7 +36,7 @@ const items: DropdownItemProps[] = [
 .desc {
   display: block;
   color: var(--px-text-color-secondary);
-  font-size: 10px;
+  font-size: 12px;
   margin-bottom: 20px;
 }
 .dropdown-link {

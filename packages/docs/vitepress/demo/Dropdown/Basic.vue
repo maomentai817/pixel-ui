@@ -2,7 +2,11 @@
   <px-dropdown>
     <span class="flex items-center color-#209cee text-12">
       Dropdown List
-      <px-icon icon="angle-down-solid" color="#209cee" class="ml-5 mt-3" />
+      <px-icon
+        icon="angle-down-solid"
+        color="var(--px-color-primary)"
+        class="ml-5 mt-3"
+      />
     </span>
     <template #dropdown>
       <px-dropdown-menu>

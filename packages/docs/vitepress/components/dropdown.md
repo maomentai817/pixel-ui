@@ -53,6 +53,14 @@ demo-preview=../demo/Dropdown/SplitButton.vue
 demo-preview=../demo/Dropdown/Trigger.vue
 :::
 
+## 禁用状态
+
+可以通过设置 `disabled` 属性来禁用下拉菜单。
+
+:::preview
+demo-preview=../demo/Dropdown/Disabled.vue
+:::
+
 ## 菜单隐藏方式
 
 可以通过 `hide-on-click` 属性来配置。

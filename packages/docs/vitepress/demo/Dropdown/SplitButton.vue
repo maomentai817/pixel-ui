@@ -4,7 +4,7 @@
       <px-button type="primary">
         Dropdown List<px-icon
           icon="angle-down-solid"
-          color="#fff"
+          color="var(--px-color-white)"
           class="ml-5 translate-y-1"
         />
       </px-button>

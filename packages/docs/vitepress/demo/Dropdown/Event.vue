@@ -1,9 +1,10 @@
 <template>
   <px-dropdown @command="handleCommand">
     <span class="px-dropdown-link">
-      Dropdown List<px-icon
+      Dropdown List
+      <px-icon
         icon="angle-down-solid"
-        color="#209cee"
+        color="var(--px-color-primary)"
         class="ml-5 translate-y-1"
       />
     </span>
