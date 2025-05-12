@@ -56,7 +56,8 @@
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.4.0",
     "vue-eslint-parser": "^10.1.1",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^1.8.27",
+    "vue3-i18n": "^1.1.5"
   },
   "dependencies": {
     "@hackernoon/pixel-icon-library": "^1.0.5",
@@ -64,6 +65,7 @@
     "@pixel-ui/hooks": "workspace:*",
     "@pixel-ui/theme": "workspace:*",
     "@pixel-ui/utils": "workspace:*",
+    "@pixel-ui/locale": "workspace:*",
     "@pixel-ui/vite-plugins": "workspace:*",
     "async-validator": "^4.2.5",
     "jsdom": "^24.1.0",
