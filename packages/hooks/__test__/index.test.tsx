@@ -4,7 +4,8 @@ import {
   useEventListener,
   useId,
   useDisabledStyle,
-  useLocale
+  useLocale,
+  usePxButtonCustomStyle
 } from '../index'
 
 describe('utils/index', () => {
@@ -26,5 +27,9 @@ describe('utils/index', () => {
 
   it('useLocale should be exported', () => {
     expect(useLocale).toBeDefined()
+  })
+
+  it('usePxButtonCustomStyle should be exported', () => {
+    expect(usePxButtonCustomStyle).toBeDefined()
   })
 })
