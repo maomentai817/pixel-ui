@@ -3,7 +3,8 @@ import {
   useClickOutside,
   useEventListener,
   useId,
-  useDisabledStyle
+  useDisabledStyle,
+  useLocale
 } from '../index'
 
 describe('utils/index', () => {
@@ -21,5 +22,9 @@ describe('utils/index', () => {
 
   it('useDisabledStyle should be exported', () => {
     expect(useDisabledStyle).toBeDefined()
+  })
+
+  it('useLocale should be exported', () => {
+    expect(useLocale).toBeDefined()
   })
 })
