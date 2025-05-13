@@ -41,6 +41,7 @@ module.exports = {
     ],
     'vue/no-setup-props-destructure': ['off'],
     'no-undef': 'error',
+    'no-redeclare': 'off',
     'vue/script-setup-uses-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off'
