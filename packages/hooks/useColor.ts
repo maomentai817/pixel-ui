@@ -2,10 +2,6 @@ import { computed, type ComputedRef } from 'vue'
 import { TinyColor } from '@ctrl/tinycolor'
 import type { ButtonProps } from '@mmt817/pixel-ui'
 
-function darken(color: TinyColor, amount = 20) {
-  return color.mix('#141414', amount).toHexString()
-}
-
 function cssVar(name: string) {
   return `--px-${name}`
 }
@@ -33,14 +29,9 @@ export function usePxButtonCustomStyle(
     }
 
     const color = new TinyColor(baseColor)
-    const isDark = props.dark
-    const activeBg = isDark
-      ? color.clone().lighten(20).toHexString()
-      : color.clone().desaturate(12).darken(12).toHexString()
+    const activeBg = color.clone().desaturate(12).darken(12).toHexString()
 
-    const hoverBg = isDark
-      ? color.clone().lighten(20).toHexString()
-      : color.clone().desaturate(3).darken(3).toHexString()
+    const hoverBg = color.clone().desaturate(3).darken(3).toHexString()
 
     const textColor = color.isDark()
       ? 'var(--px-color-white)'
@@ -48,9 +39,11 @@ export function usePxButtonCustomStyle(
 
     if (props.plain) {
       Object.assign(styles, {
-        [cssVar('plain-bg-color')]: isDark
-          ? darken(color, 90)
-          : color.clone().lighten(40).desaturate(40).toHexString(),
+        [cssVar('plain-bg-color')]: color
+          .clone()
+          .lighten(40)
+          .desaturate(40)
+          .toHexString(),
         [cssVar('text-color')]: baseColor,
         [cssVar('plain-text-color')]: textColor,
 
@@ -62,12 +55,12 @@ export function usePxButtonCustomStyle(
       })
 
       if (props.disabled) {
-        styles[cssVar('disabled-bg-color')] = isDark
-          ? darken(color, 90)
-          : color.clone().lighten(26).desaturate(27).toHexString()
-        styles[cssVar('disabled-text-color')] = isDark
-          ? darken(color, 50)
-          : baseColor
+        styles[cssVar('disabled-bg-color')] = color
+          .clone()
+          .lighten(26)
+          .desaturate(27)
+          .toHexString()
+        styles[cssVar('disabled-text-color')] = baseColor
       }
     } else {
       Object.assign(styles, {
@@ -84,10 +77,12 @@ export function usePxButtonCustomStyle(
 
     if (props.disabled) {
       Object.assign(styles, {
-        [cssVar('disabled-bg-color')]: isDark
-          ? darken(color, 90)
-          : color.clone().lighten(26).desaturate(27).toHexString(),
-        [cssVar('disabled-text-color')]: isDark ? darken(color, 50) : baseColor
+        [cssVar('disabled-bg-color')]: color
+          .clone()
+          .lighten(26)
+          .desaturate(27)
+          .toHexString(),
+        [cssVar('disabled-text-color')]: baseColor
       })
     }
 
