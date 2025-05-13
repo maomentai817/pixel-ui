@@ -146,19 +146,19 @@
 }
 .px-button--primary.is-disabled {
   --px-bg-color: var(--px-color-primary-light-5);
-  --px-bg-shadow-color: transparent;
+  --px-bg-shadow-color: var(--px-color-primary-light-3);
 }
 .px-button--success.is-disabled {
   --px-bg-color: var(--px-color-success-light-5);
-  --px-bg-shadow-color: transparent;
+  --px-bg-shadow-color: var(--px-color-success-light-3);
 }
 .px-button--warning.is-disabled {
   --px-bg-color: var(--px-color-warning-light-5);
-  --px-bg-shadow-color: transparent;
+  --px-bg-shadow-color: var(--px-color-warning-light-3);
 }
 .px-button--danger.is-disabled {
   --px-bg-color: var(--px-color-danger-light-5);
-  --px-bg-shadow-color: transparent;
+  --px-bg-shadow-color: var(--px-color-danger-light-3);
 }
 /* button size */
 .px-button--mini {
@@ -247,29 +247,32 @@
 
 /* custom button colors */
 .px-button.is-custom {
-  --px-button-text-color: var(--px-color-white);
-  --px-bg-color: var(--px-custom-button-bg-color);
-  --px-bg-shadow-color: var(--px-custom-button-bg-shadow-color);
+  --px-button-text-color: var(--px-text-color);
+  --px-border-color: var(--px-button-border-color);
 }
 .px-button.is-custom:hover {
-  --px-bg-color: var(--px-custom-button-fill-hover-color);
+  --px-button-text-color: var(--px-hover-text-color);
+  --px-bg-color: var(--px-hover-bg-color) !important;
   --px-bg-shadow-border: 4px;
 }
 .px-button.is-custom.is-disabled {
-  --px-bg-color: var(--px-custom-button-light-color-2);
-  --px-bg-shadow-color: transparent;
+  --px-button-text-color: var(--px-text-color);
+  --px-bg-color: var(--px-disabled-bg-color) !important;
+  --px-bg-shadow-color: var(--px-disabled-text-color) !important;
+  --px-button-border-color: var(--px-color-base) !important;
+}
+.px-button.is-custom.is-disabled:hover {
+  --px-bg-shadow-border: 3px;
 }
 .px-button.is-custom.is-plain {
-  --px-button-text-color: var(--px-custom-button-text-color);
-  --px-bg-shadow-color: var(--px-custom-button-bg-color);
-  --px-bg-color: var(--px-custom-button-light-color);
-  --px-border-color: var(--px-custom-button-border-color);
+  --px-button-text-color: var(--px-text-color) !important;
+  --px-bg-color: var(--px-plain-bg-color) !important;
+  --px-button-border-color: var(--px-bg-shadow-color) !important;
 }
 .px-button.is-custom.is-plain:hover {
-  --px-button-text-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-custom-button-bg-shadow-color);
-  --px-bg-color: var(--px-custom-button-bg-color);
-  --px-border-color: var(--px-color-base);
+  --px-button-text-color: var(--px-hover-text-color) !important;
+  --px-button-border-color: var(--px-color-base) !important;
+  --px-bg-color: var(--px-hover-bg-color) !important;
 }
 
 /* ----------- button group ----------- */

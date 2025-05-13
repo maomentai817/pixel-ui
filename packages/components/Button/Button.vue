@@ -2,7 +2,8 @@
 import { throttle } from 'lodash-es'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
 import { ref, onMounted, computed, inject } from 'vue'
-import { updateColors, debugWarn } from '@pixel-ui/utils'
+import { debugWarn } from '@pixel-ui/utils'
+import { usePxButtonCustomStyle } from '@pixel-ui/hooks'
 import type { ButtonProps, ButtonEmits, ButtonInstance } from './types.button'
 
 import PxIcon from '../Icon/Icon.vue'
@@ -47,19 +48,7 @@ const iconStyle = computed(() => ({
 }))
 
 // 自定义颜色
-const colorStyle = computed(() => {
-  const colors = color.value ? updateColors(color.value) : void 0
-  if (!colors) return {}
-  return {
-    '--px-custom-button-bg-color': colors.bgColor,
-    '--px-custom-button-light-color': colors.lightColor,
-    '--px-custom-button-light-color-2': colors.lightColor2,
-    '--px-custom-button-bg-shadow-color': colors.bgShadowColor,
-    '--px-custom-button-text-color': colors.textColor,
-    '--px-custom-button-fill-hover-color': colors.fillHoverColor,
-    '--px-custom-button-border-color': colors.borderColor
-  }
-})
+const colorStyle = usePxButtonCustomStyle(props, color)
 
 // 点击节流逻辑
 const handleBtnClick = (e: MouseEvent) => emit('click', e)

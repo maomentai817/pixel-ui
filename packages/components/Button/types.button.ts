@@ -117,6 +117,13 @@ export interface ButtonProps {
    * @default -
    */
   color?: string
+  /**
+   * @property dark
+   * @type boolean
+   * @description 自动设置`color`为dark模式颜色
+   * @default false
+   */
+  dark?: boolean
 }
 
 export interface ButtonEmits {
