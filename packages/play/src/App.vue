@@ -133,6 +133,9 @@ onMounted(() => {
   <px-button color="#dfee56">Button</px-button>
   <px-button color="#dfee56" disabled>Button</px-button>
   <px-button color="#dfee56" plain>Button</px-button>
+  <px-button color="#fadbe0">Button</px-button>
+  <px-button color="#fadbe0" disabled>Button</px-button>
+  <px-button color="#fadbe0" plain>Button</px-button>
   <br />
   <br />
   <px-card style="width: 240px" hoverable round>

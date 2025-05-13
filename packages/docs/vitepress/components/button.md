@@ -77,6 +77,20 @@ demo-preview=../demo/Button/Size.vue
 demo-preview=../demo/Button/Tag.vue
 :::
 
+## 自定义颜色
+
+您可以自定义按钮的颜色。
+
+组件库将自动计算按钮各状态的颜色。
+
+:::tip
+由于技术力问题, 请勿对此功能抱有太高期望, 如果希望实现自定义主题, 更加推荐直接修改 `@property` 属性, 详情见下述
+:::
+
+:::preview
+demo-preview=../demo/Button/CustomColor.vue
+:::
+
 ## 节流模式
 
 可以通过 `useThrottle` 属性来定义按钮是否使用节流模式 默认为 true。
