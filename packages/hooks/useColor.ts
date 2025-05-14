@@ -29,7 +29,7 @@ export function usePxButtonCustomStyle(
     }
 
     const color = new TinyColor(baseColor)
-    const activeBg = color.clone().desaturate(12).darken(12).toHexString()
+    const bgShadow = color.clone().desaturate(12).darken(12).toHexString()
 
     const hoverBg = color.clone().desaturate(3).darken(3).toHexString()
 
@@ -50,8 +50,7 @@ export function usePxButtonCustomStyle(
         [cssVar('hover-bg-color')]: baseColor,
         [cssVar('hover-text-color')]: '#ffffff',
 
-        [cssVar('bg-shadow-color')]: activeBg,
-        [cssVar('active-bg-color')]: activeBg
+        [cssVar('bg-shadow-color')]: bgShadow
       })
 
       if (props.disabled) {
@@ -70,8 +69,7 @@ export function usePxButtonCustomStyle(
         [cssVar('hover-bg-color')]: hoverBg,
         [cssVar('hover-text-color')]: textColor,
 
-        [cssVar('bg-shadow-color')]: activeBg,
-        [cssVar('active-bg-color')]: activeBg
+        [cssVar('bg-shadow-color')]: bgShadow
       })
     }
 

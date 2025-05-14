@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { computed } from 'vue'
-import usePxButtonCustomStyle from '../useColor'
+import { usePxBadgeCustomStyle, usePxButtonCustomStyle } from '../useColor'
 
 describe('usePxButtonCustomStyle', () => {
   const defaultProps = {
@@ -25,7 +25,6 @@ describe('usePxButtonCustomStyle', () => {
 
     expect(styles['--px-bg-color']).toBe('#209cee')
     expect(styles['--px-hover-bg-color']).toBeDefined()
-    expect(styles['--px-active-bg-color']).toBeDefined()
     expect(styles['--px-text-color']).toBe('var(--px-color-base)')
   })
 
@@ -82,6 +81,58 @@ describe('usePxButtonCustomStyle', () => {
         color: 'var(--custom-color)'
       })
       expect(styles['--px-bg-color']).toBe('#42b983')
+    })
+  })
+})
+
+describe('usePxBadgeCustomStyle', () => {
+  const defaultProps = {
+    color: '#209cee'
+  }
+
+  const getResult = (props: any) => {
+    return usePxBadgeCustomStyle(props).value
+  }
+
+  it('returns empty object if no color', () => {
+    const emptyProps = {
+      ...defaultProps,
+      color: undefined
+    }
+    const styles = getResult({ ...emptyProps })
+    expect(styles).toEqual({})
+  })
+
+  it('generates correct styles', () => {
+    const styles = getResult(defaultProps)
+
+    expect(styles['--px-custom-bg-color']).toBe('#209cee')
+    expect(styles['--px-custom-bg-shadow-color']).toBe('#1b78b5')
+  })
+
+  describe('supports CSS var color', () => {
+    const getComputedStyleMock = vi.fn()
+
+    beforeEach(() => {
+      vi.stubGlobal('getComputedStyle', getComputedStyleMock)
+      getComputedStyleMock.mockReturnValue({
+        getPropertyValue: (prop: string) => {
+          if (prop === '--custom-color') return ' #42b983 '
+          return ''
+        }
+      })
+    })
+
+    afterEach(() => {
+      vi.unstubAllGlobals()
+    })
+
+    it('resolves CSS variable color', () => {
+      const styles = getResult({
+        ...defaultProps,
+        color: 'var(--custom-color)'
+      })
+      expect(styles['--px-custom-bg-color']).toBe('#42b983')
     })
   })
 })
