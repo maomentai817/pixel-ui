@@ -37,19 +37,19 @@
 
   /* css houdini paint */
   background-image: paint(pixelbox);
-  --px-border: 3px;
-  --px-border-t: 3px;
-  --px-border-r: 3px;
-  --px-border-b: 3px;
-  --px-border-l: 3px;
-  --px-border-radius: 3px;
-  --px-border-radius-lt: 3px;
-  --px-border-radius-rt: 3px;
-  --px-border-radius-lb: 3px;
-  --px-border-radius-rb: 3px;
+  --px-border: 6px;
+  --px-border-t: 6px;
+  --px-border-r: 6px;
+  --px-border-b: 6px;
+  --px-border-l: 6px;
+  --px-border-radius: 1px;
+  --px-border-radius-lt: 1px;
+  --px-border-radius-rt: 1px;
+  --px-border-radius-lb: 1px;
+  --px-border-radius-rb: 1px;
   --px-bg-color: var(--px-badge-bg-color);
   --px-border-color: var(--px-badge-border-color);
-  --px-bg-shadow-border: 3px;
+  --px-bg-shadow-border: 6px;
   --px-bg-shadow-color: var(--px-badge-bg-shadow-color);
   --px-bg-shadow-position: bottom-right;
   --px-button-single: 1;
@@ -82,7 +82,7 @@
 
 .px-badge--info {
   --px-badge-bg-color: var(--px-color-info);
-  --px-badge-bg-shadow-color: var(--px-bg-shadow-color-disabled);
+  --px-badge-bg-shadow-color: var(--px-color-info-dark-2);
 }
 
 .px-badge__content.is-custom {
