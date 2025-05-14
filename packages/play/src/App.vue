@@ -499,7 +499,7 @@ onMounted(() => {
   <div class="flex flex-wrap m-y-30">
     <div class="flex-1">
       <div class="block text-14 mb-20 color-#209cee">通过 slot 传入 item</div>
-      <px-dropdown trigger="click">
+      <px-dropdown trigger="click" placement="right-start">
         <span class="flex items-center cursor-pointer color-#209cee">
           Dropdown List
           <px-icon icon="angle-down" />

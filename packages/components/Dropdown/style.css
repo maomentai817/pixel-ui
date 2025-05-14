@@ -73,13 +73,13 @@
     }
 
     &:first-child {
-      --px-border-radius: 3px;
+      --px-border-radius: 2px;
       --px-border-radius-lb: 0px;
       --px-border-radius-rb: 0px;
     }
 
     &:last-child {
-      --px-border-radius: 3px;
+      --px-border-radius: 2px;
       --px-border-radius-lt: 0px;
       --px-border-radius-rt: 0px;
     }

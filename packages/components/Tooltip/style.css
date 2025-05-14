@@ -2,11 +2,12 @@
   --px-popover-font-size: 12px;
   --px-popover-bg-color: var(--px-color-white);
   --px-popover-border-color: var(--px-color-base);
-  --px-popover-border-width: 2px;
+  --px-popover-border-width: 4px;
   --px-popover-border-radius: 1px;
   --px-popover-padding: 12px;
-  --px-popover-offset: -3px;
-  --px-popover-arrow-size: 8px;
+  --px-popover-offset: -4px;
+  --px-popover-arrow-size: 12px;
+  --px-popover-arrow-border-width: calc(var(--px-popover-border-width) - 1px);
   --px-popover-text-color: var(--px-color-base);
 }
 .px-tooltip {
@@ -72,27 +73,29 @@
     }
 
     &[data-popper-placement^='left'] > #arrow {
+      top: calc(var(--px-popover-offset) / -2) !important;
       right: var(--px-popover-offset);
     }
 
     &[data-popper-placement^='right'] > #arrow {
+      top: calc(var(--px-popover-offset) / -2) !important;
       left: var(--px-popover-offset);
     }
     &[data-popper-placement^='top'] > #arrow::before {
-      border-right: var(--px-popover-border-width) solid var(--px-popover-border-color);
-      border-bottom: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-right: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
+      border-bottom: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='bottom'] > #arrow::before {
-      border-left: var(--px-popover-border-width) solid var(--px-popover-border-color);
-      border-top: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-left: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
+      border-top: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='left'] > #arrow::before {
-      border-right: var(--px-popover-border-width) solid var(--px-popover-border-color);
-      border-top: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-right: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
+      border-top: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
     }
     &[data-popper-placement^='right'] > #arrow::before {
-      border-left: var(--px-popover-border-width) solid var(--px-popover-border-color);
-      border-bottom: var(--px-popover-border-width) solid var(--px-popover-border-color);
+      border-left: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
+      border-bottom: var(--px-popover-arrow-border-width) solid var(--px-popover-border-color);
     }
 
     &.is-light {
