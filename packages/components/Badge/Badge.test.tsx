@@ -71,7 +71,7 @@ describe('Badge', () => {
       }
     })
     const badge = wrapper.find('.px-badge__content')
-    expect(badge.attributes('style')).toContain('--px-custom-badge-bg-color')
+    expect(badge.attributes('style')).toContain('--px-custom-bg-color')
   })
 
   it('applies offset style', () => {

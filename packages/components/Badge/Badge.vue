@@ -30,19 +30,6 @@ const content = computed<string>(() => {
 })
 
 // 自定义颜色
-// const colorStyle = computed(() => {
-//   const colors = props.color ? updateColors(props.color) : void 0
-//   if (!colors) return {}
-//   return {
-//     '--px-custom-badge-bg-color': colors.bgColor,
-//     '--px-custom-badge-light-color': colors.lightColor,1
-//     '--px-custom-badge-light-color-2': colors.lightColor2,
-//     '--px-custom-badge-bg-shadow-color': colors.bgShadowColor,
-//     '--px-custom-badge-text-color': colors.textColor,
-//     '--px-custom-badge-fill-hover-color': colors.fillHoverColor,
-//     '--px-custom-badge-border-color': colors.borderColor
-//   }
-// })
 const colorStyle = usePxBadgeCustomStyle(props)
 
 // 偏移量处理
@@ -66,7 +53,6 @@ const paint = () => {
         'CSS Houdini Paint Worklet API is not supported in this browser.'
       )
     }
-    // (CSS as any).paintWorklet.addModule(workletURL)
   } catch (error) {
     console.error('Error loading Paint Worklet:', error)
   }
