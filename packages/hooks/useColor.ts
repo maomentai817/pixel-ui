@@ -1,6 +1,6 @@
 import { computed, type ComputedRef } from 'vue'
 import { TinyColor } from '@ctrl/tinycolor'
-import type { ButtonProps } from '@mmt817/pixel-ui'
+import type { ButtonProps, BadgeProps } from '@mmt817/pixel-ui'
 
 function cssVar(name: string) {
   return `--px-${name}`
@@ -90,4 +90,35 @@ export function usePxButtonCustomStyle(
   })
 }
 
-export default usePxButtonCustomStyle
+export function usePxBadgeCustomStyle(props: BadgeProps) {
+  const colorRef = computed(() => props.color)
+
+  return computed(() => {
+    const styles: Record<string, string> = {}
+
+    if (!colorRef.value) return styles
+
+    let baseColor = colorRef.value
+
+    const match = baseColor.match(/var\((--[^)]+)\)/)
+    if (match) {
+      baseColor = getComputedStyle(document.documentElement)
+        .getPropertyValue(match[1])
+        .trim()
+    }
+
+    const color = new TinyColor(baseColor)
+    const bgShadow = color.clone().desaturate(12).darken(12).toHexString()
+
+    Object.assign(styles, {
+      [cssVar('custom-bg-color')]: baseColor,
+      [cssVar('custom-bg-shadow-color')]: bgShadow
+    })
+    return styles
+  })
+}
+
+export default {
+  usePxBadgeCustomStyle,
+  usePxButtonCustomStyle
+}

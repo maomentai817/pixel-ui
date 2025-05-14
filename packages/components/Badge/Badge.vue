@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { isNumber } from 'lodash-es'
-import { debugWarn, updateColors } from '@pixel-ui/utils'
+import { debugWarn } from '@pixel-ui/utils'
+import { usePxBadgeCustomStyle } from '@pixel-ui/hooks'
 import type { BadgeProps } from './types'
 
 import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
@@ -29,19 +30,20 @@ const content = computed<string>(() => {
 })
 
 // 自定义颜色
-const colorStyle = computed(() => {
-  const colors = props.color ? updateColors(props.color) : void 0
-  if (!colors) return {}
-  return {
-    '--px-custom-badge-bg-color': colors.bgColor,
-    '--px-custom-badge-light-color': colors.lightColor,
-    '--px-custom-badge-light-color-2': colors.lightColor2,
-    '--px-custom-badge-bg-shadow-color': colors.bgShadowColor,
-    '--px-custom-badge-text-color': colors.textColor,
-    '--px-custom-badge-fill-hover-color': colors.fillHoverColor,
-    '--px-custom-badge-border-color': colors.borderColor
-  }
-})
+// const colorStyle = computed(() => {
+//   const colors = props.color ? updateColors(props.color) : void 0
+//   if (!colors) return {}
+//   return {
+//     '--px-custom-badge-bg-color': colors.bgColor,
+//     '--px-custom-badge-light-color': colors.lightColor,1
+//     '--px-custom-badge-light-color-2': colors.lightColor2,
+//     '--px-custom-badge-bg-shadow-color': colors.bgShadowColor,
+//     '--px-custom-badge-text-color': colors.textColor,
+//     '--px-custom-badge-fill-hover-color': colors.fillHoverColor,
+//     '--px-custom-badge-border-color': colors.borderColor
+//   }
+// })
+const colorStyle = usePxBadgeCustomStyle(props)
 
 // 偏移量处理
 const offsetStyle = computed(() => {

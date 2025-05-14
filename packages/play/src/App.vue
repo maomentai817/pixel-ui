@@ -260,7 +260,7 @@ onMounted(() => {
     <px-badge value="new" class="item" color="#626aef">
       <px-button>custom background</px-button>
     </px-badge>
-    <px-badge value="99" class="item" color="#626aef">
+    <px-badge value="99" class="item" color="#fadbe0">
       <px-button>custom background</px-button>
       <template #content="{ value }">
         <div class="custom-content">

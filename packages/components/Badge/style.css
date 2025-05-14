@@ -86,6 +86,6 @@
 }
 
 .px-badge__content.is-custom {
-  --px-badge-bg-color: var(--px-custom-badge-bg-color);
-  --px-badge-bg-shadow-color: var(--px-custom-badge-bg-shadow-color);
+  --px-badge-bg-color: var(--px-custom-bg-color);
+  --px-badge-bg-shadow-color: var(--px-custom-bg-shadow-color);
 }

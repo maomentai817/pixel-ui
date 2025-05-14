@@ -5,7 +5,8 @@ import {
   useId,
   useDisabledStyle,
   useLocale,
-  usePxButtonCustomStyle
+  usePxButtonCustomStyle,
+  usePxBadgeCustomStyle
 } from '../index'
 
 describe('utils/index', () => {
@@ -31,5 +32,9 @@ describe('utils/index', () => {
 
   it('usePxButtonCustomStyle should be exported', () => {
     expect(usePxButtonCustomStyle).toBeDefined()
+  })
+
+  it('usePxBadgeCustomStyle should be exported', () => {
+    expect(usePxBadgeCustomStyle).toBeDefined()
   })
 })
