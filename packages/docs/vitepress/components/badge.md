@@ -61,6 +61,20 @@ demo-preview=../demo/Badge/Dot.vue
 demo-preview=../demo/Badge/Offset.vue
 :::
 
+## 自定义颜色
+
+您可以自定义徽章的颜色。
+
+组件库将自动计算徽章的颜色。
+
+:::tip
+由于技术力问题, 请勿对此功能抱有太高期望, 如果希望实现自定义主题, 更加推荐直接修改 `@property` 属性, 详情见下述
+:::
+
+:::preview
+demo-preview=../demo/Badge/CustomColor.vue
+:::
+
 ## API_Table插件测试
 
 :::danger

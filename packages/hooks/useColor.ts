@@ -107,8 +107,12 @@ export function usePxBadgeCustomStyle(props: BadgeProps) {
 
     const color = new TinyColor(baseColor)
     const bgShadow = color.clone().desaturate(12).darken(12).toHexString()
+    const textColor = color.isDark()
+      ? 'var(--px-color-white)'
+      : 'var(--px-color-base)'
 
     Object.assign(styles, {
+      [cssVar('badge-text-color')]: textColor,
       [cssVar('custom-bg-color')]: baseColor,
       [cssVar('custom-bg-shadow-color')]: bgShadow
     })

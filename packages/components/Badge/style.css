@@ -1,4 +1,5 @@
 .px-badge {
+  --px-badge-text-color: var(--px-color-white);
   --px-badge-bg-color: var(--px-color-danger);
   --px-badge-border-color: var(--px-color-base);
   --px-badge-bg-shadow-color: var(--px-color-danger-dark-2);
@@ -24,7 +25,7 @@
 
 .px-badge__content {
   display: inline-flex;
-  color: var(--px-color-white);
+  color: var(--px-badge-text-color);
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -49,7 +50,7 @@
   --px-border-radius-rb: 1px;
   --px-bg-color: var(--px-badge-bg-color);
   --px-border-color: var(--px-badge-border-color);
-  --px-bg-shadow-border: 6px;
+  --px-bg-shadow-border: 4px;
   --px-bg-shadow-color: var(--px-badge-bg-shadow-color);
   --px-bg-shadow-position: bottom-right;
   --px-button-single: 1;

@@ -107,6 +107,7 @@ describe('usePxBadgeCustomStyle', () => {
     const styles = getResult(defaultProps)
 
     expect(styles['--px-custom-bg-color']).toBe('#209cee')
+    expect(styles['--px-badge-text-color']).toBe('#ffffff')
     expect(styles['--px-custom-bg-shadow-color']).toBe('#1b78b5')
   })
 
