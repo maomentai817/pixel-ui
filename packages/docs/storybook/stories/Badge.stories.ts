@@ -54,7 +54,7 @@ const meta: Meta<typeof PxBadge> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxBadge> = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { PxBadge, PxButton },
   setup() {
     return { args }
@@ -73,7 +73,7 @@ Default.args = {
   value: '5'
 }
 
-export const Types: StoryFn<typeof PxBadge> = (args) => ({
+export const Types: StoryFn = (args) => ({
   components: { PxBadge, PxButton },
   setup() {
     return { args }
@@ -125,7 +125,7 @@ Offset.args = {
   offset: [10, 5]
 }
 
-export const withSlot: StoryFn<typeof PxBadge> = (args) => ({
+export const withSlot: StoryFn = (args) => ({
   components: { PxBadge, PxButton, PxIcon },
   setup() {
     return { args }

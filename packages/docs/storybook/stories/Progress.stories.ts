@@ -61,7 +61,7 @@ const meta: Meta<typeof PxProgress> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxProgress> = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { PxProgress },
   setup() {
     return { args }
@@ -99,7 +99,7 @@ Indeterminate.args = {
   duration: 4
 }
 
-export const CustomColor: StoryFn<typeof PxProgress> = (args) => ({
+export const CustomColor: StoryFn = (args) => ({
   components: { PxProgress },
   setup() {
     return { args }

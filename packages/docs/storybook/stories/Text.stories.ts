@@ -45,7 +45,7 @@ const meta: Meta<typeof PxText> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxText> = (args, { argTypes }) => ({
+const Template: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {

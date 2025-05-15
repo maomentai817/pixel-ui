@@ -1,38 +1,14 @@
 {
-  "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2022",
-    "lib": [
-      "ES2023",
-      "DOM"
-    ],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "baseUrl": "./",
-    "paths": {
-      "@pixel-ui/components": [
-        "./packages/components"
-      ]
-    }
-  },
+  "extends": "@tsconfig/node18/tsconfig.json",
   "include": [
-    "packages/**/*",
-    "env.d.ts",
-    "packages/**/types/*.d.ts"
+    "packages/**/**.config.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": [
+      "node"
+    ]
+  }
 }

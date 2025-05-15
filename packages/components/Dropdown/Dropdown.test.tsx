@@ -1,7 +1,7 @@
 import { describe, expect, vi, it, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
-import { DropdownItemProps, PxDropdown, PxDropdownItem } from '.'
+import { PxDropdown, PxDropdownItem, type DropdownItemProps } from '.'
 
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'

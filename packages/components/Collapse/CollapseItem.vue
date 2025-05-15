@@ -72,9 +72,7 @@ onMounted(async () => {
         :icon="icon || 'angle-right'"
         class="header-angle"
         size="20"
-        :color="
-          disabled ? 'var(--px-color-info)' : 'var(--px-color-base)'
-        "
+        :color="disabled ? 'var(--px-color-info)' : 'var(--px-color-base)'"
       ></px-icon>
     </div>
     <transition name="slide" v-on="transitionEvents">

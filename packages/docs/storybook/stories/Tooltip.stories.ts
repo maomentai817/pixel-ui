@@ -76,7 +76,7 @@ const meta: Meta<typeof PxTooltip> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxTooltip> = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { PxTooltip, PxButton },
   setup() {
     return { args }
@@ -119,7 +119,7 @@ Disabled.args = {
   disabled: true
 }
 
-export const ManualControl: StoryFn<typeof PxTooltip> = (args) => ({
+export const ManualControl: StoryFn = (args) => ({
   components: { PxTooltip, PxButton },
   setup() {
     const tooltipRef = ref()

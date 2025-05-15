@@ -29,7 +29,7 @@ const meta: Meta<typeof PxCollapse> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxCollapse> = (args, { argTypes }) => ({
+const Template: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -66,7 +66,7 @@ Accordion.args = {
   accordion: true
 }
 
-export const CustomIcon: StoryFn<typeof PxCollapse> = (args, { argTypes }) => ({
+export const CustomIcon: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {

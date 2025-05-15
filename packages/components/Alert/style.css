@@ -68,8 +68,9 @@
     .px-alert__close {
       opacity: 1;
       position: absolute;
-      top: 9px;
-      right: 15px;
+      top: 12px;
+      right: 16px;
+      line-height: 1.5;
       cursor: var(--px-cursor-pointer-src) 14 0, pointer;
       .px-alert__close-icon {
         color: var(--px-alert-close-icon-color);

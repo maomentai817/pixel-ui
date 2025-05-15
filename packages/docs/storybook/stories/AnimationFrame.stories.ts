@@ -38,7 +38,7 @@ const Naloong = '../assets/images/pet.gif'
 const twoking = '../assets/images/twoking.gif'
 const taffy = '../assets/images/taffy.gif'
 
-const Template: StoryFn<typeof PxAnimationFrame> = (args, { argTypes }) => ({
+const Template: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: { PxAnimationFrame },

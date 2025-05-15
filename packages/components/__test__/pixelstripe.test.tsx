@@ -1,6 +1,9 @@
 // __tests__/pixelstripe.test.tsx
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { PixelStripe, registerPixelStripe } from '../worklets/pixelstripe.worklet'
+import {
+  PixelStripe,
+  registerPixelStripe
+} from '../worklets/pixelstripe.worklet'
 
 function createMockProps(
   values: Record<string, string | number>
@@ -96,10 +99,9 @@ describe('PixelStripe PaintWorklet', () => {
     expect(ctx.fillRect.mock.calls.length).toBeGreaterThanOrEqual(expectedCols)
   })
 
-
   it('should register pixelstripe when registerPaint is available', () => {
     const mockRegisterPaint = vi.fn()
-      ; (globalThis as any).registerPaint = mockRegisterPaint
+    ;(globalThis as any).registerPaint = mockRegisterPaint
 
     registerPixelStripe()
 

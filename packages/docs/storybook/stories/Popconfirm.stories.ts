@@ -73,7 +73,7 @@ const meta: Meta<typeof PxPopconfirm> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxPopconfirm> = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { PxPopconfirm, PxButton },
   setup() {
     return { args }

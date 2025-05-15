@@ -112,7 +112,7 @@ const meta: Meta<typeof PxDropdown> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
+const Template: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -130,7 +130,7 @@ const Template: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
   `
 })
 
-const TemplateBtn: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
+const TemplateBtn: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -166,7 +166,7 @@ Default.args = {
   ]
 }
 
-export const Placement: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
+export const Placement: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -399,7 +399,7 @@ HideOnClick.args = {
   hideOnClick: false
 }
 
-export const Manual: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
+export const Manual: StoryFn = (args, { argTypes }) => ({
   setup() {
     const dropdownRef = ref()
     return { args, dropdownRef }
@@ -440,7 +440,7 @@ Manual.args = {
   trigger: 'click'
 }
 
-export const Size: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
+export const Size: StoryFn = (args, { argTypes }) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
