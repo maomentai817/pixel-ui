@@ -294,27 +294,27 @@ html {
 }
 @property --px-color-sakura-light-3 {
   syntax: "<color>";
-  initial-value: #b1b3b8;
+  initial-value: #fce6e9;
   inherits: false;
 }
 @property --px-color-sakura-light-5 {
   syntax: "<color>";
-  initial-value: #c8c9cc;
+  initial-value: #fdedf0;
   inherits: false;
 }
 @property --px-color-sakura-light-7 {
   syntax: "<color>";
-  initial-value: #dedfe0;
+  initial-value: #fef4f6;
   inherits: false;
 }
 @property --px-color-sakura-light-8 {
   syntax: "<color>";
-  initial-value: #e9e9eb;
+  initial-value: #fef8f9;
   inherits: false;
 }
 @property --px-color-sakura-light-9 {
   syntax: "<color>";
-  initial-value: #f4f4f5;
+  initial-value: #fffbfc;
   inherits: false;
 }
 /* text-color */
