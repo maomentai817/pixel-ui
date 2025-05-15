@@ -27,12 +27,12 @@ const handleCopy = (name: string) => {
 const filteredCategories = computed(() =>
   categories.value
     .map((category) => {
-      const icons = category.items.filter((icon) =>
+      const items = category.items.filter((icon) =>
         icon.toLowerCase().includes(query.value.toLowerCase())
       )
-      return { ...category, icons }
+      return { ...category, items }
     })
-    .filter((category) => category.icons.length > 0)
+    .filter((category) => category.items.length > 0)
 )
 </script>
 
@@ -47,7 +47,7 @@ const filteredCategories = computed(() =>
     <h3 class="icon-title mb-20!">{{ category.name }}</h3>
     <ul class="icon-grid grid gap-12 p-0! m-0 list-none!">
       <li
-        v-for="icon in category.icons"
+        v-for="icon in category.items"
         :key="icon"
         class="icon-item text-center h-110 p-10 hover:bgc-#ecf5ff"
         @click="handleCopy(icon)"
