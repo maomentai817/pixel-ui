@@ -2,6 +2,7 @@
   --px-button-font-weight: var(--px-font-weight-base);
   --px-button-border-color: var(--px-color-base);
   --px-button-bg-color: var(--px-color-white);
+  --px-button-bg-shadow-color: var(--px-color-info-dark-2);
   --px-button-text-color: var(--px-color-base);
   --px-button-text-color-disabled: var(--px-color-info);
   --px-button-bg-color-disabled: var(--px-color-info);
@@ -53,7 +54,7 @@
   --px-border-color: var(--px-color-base);
   --px-bg-color: transparent;
   --px-bg-shadow-border: 3px;
-  --px-bg-shadow-color: var(--px-color-info-dark-2);
+  --px-bg-shadow-color: var(--px-button-bg-shadow-color);
   --px-bg-shadow-position: bottom-right;
   /* button single 区别于 button-group */
   --px-button-single: 1;
@@ -72,7 +73,7 @@
 .px-button--base {
   --px-button-text-color: var(--px-color-base);
   --px-bg-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-color-info-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-info-dark-2);
 }
 .px-button--base:hover {
   --px-bg-color: var(--px-color-info-dark-1);
@@ -81,7 +82,7 @@
 .px-button--primary {
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-primary);
-  --px-bg-shadow-color: var(--px-color-primary-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-primary-dark-2);
 }
 .px-button--primary .px-icon {
   color: var(--px-color-white);
@@ -94,7 +95,7 @@
 .px-button--success {
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-success);
-  --px-bg-shadow-color: var(--px-color-success-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-success-dark-2);
 }
 .px-button--success .px-icon {
   color: var(--px-color-white);
@@ -107,7 +108,7 @@
 .px-button--warning {
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-warning);
-  --px-bg-shadow-color: var(--px-color-warning-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-warning-dark-2);
 }
 .px-button--warning .px-icon {
   color: var(--px-color-white);
@@ -120,7 +121,7 @@
 .px-button--danger {
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-danger);
-  --px-bg-shadow-color: var(--px-color-danger-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-danger-dark-2);
 }
 .px-button--danger .px-icon {
   color: var(--px-color-white);
@@ -134,7 +135,7 @@
   cursor: not-allowed;
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-info);
-  --px-bg-shadow-color: var(--px-color-info-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-info-dark-2);
   --px-border-color: var(--px-color-base);
 }
 .px-button.is-disabled:hover {
@@ -146,19 +147,19 @@
 }
 .px-button--primary.is-disabled {
   --px-bg-color: var(--px-color-primary-light-5);
-  --px-bg-shadow-color: var(--px-color-primary-light-3);
+  --px-button-bg-shadow-color: var(--px-color-primary-light-3);
 }
 .px-button--success.is-disabled {
   --px-bg-color: var(--px-color-success-light-5);
-  --px-bg-shadow-color: var(--px-color-success-light-3);
+  --px-button-bg-shadow-color: var(--px-color-success-light-3);
 }
 .px-button--warning.is-disabled {
   --px-bg-color: var(--px-color-warning-light-5);
-  --px-bg-shadow-color: var(--px-color-warning-light-3);
+  --px-button-bg-shadow-color: var(--px-color-warning-light-3);
 }
 .px-button--danger.is-disabled {
   --px-bg-color: var(--px-color-danger-light-5);
-  --px-bg-shadow-color: var(--px-color-danger-light-3);
+  --px-button-bg-shadow-color: var(--px-color-danger-light-3);
 }
 /* button size */
 .px-button--mini {
@@ -175,56 +176,56 @@
 /* plain */
 .px-button.is-plain {
   --px-button-text-color: var(--px-color-base);
-  --px-bg-shadow-color: var(--px-color-white);
+  --px-button-bg-shadow-color: var(--px-color-white);
   /* --px-bg-shadow-border: 0; */
   --px-bg-color: transparent;
   --px-border-color: var(--px-color-base);
 }
 .px-button--primary.is-plain {
   --px-button-text-color: var(--px-color-primary);
-  --px-bg-shadow-color: var(--px-color-primary);
+  --px-button-bg-shadow-color: var(--px-color-primary);
   --px-bg-color: var(--px-color-primary-light-9);
   --px-border-color: var(--px-color-primary-dark-1);
 }
 .px-button--primary.is-plain:hover {
   --px-button-text-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-color-primary-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-primary-dark-2);
   --px-bg-color: var(--px-color-primary);
   --px-border-color: var(--px-color-base);
 }
 .px-button--success.is-plain {
   --px-button-text-color: var(--px-color-success);
-  --px-bg-shadow-color: var(--px-color-success);
+  --px-button-bg-shadow-color: var(--px-color-success);
   --px-bg-color: var(--px-color-success-light-9);
   --px-border-color: var(--px-color-success-dark-1);
 }
 .px-button--success.is-plain:hover {
   --px-button-text-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-color-success-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-success-dark-2);
   --px-bg-color: var(--px-color-success);
   --px-border-color: var(--px-color-base);
 }
 .px-button--warning.is-plain {
   --px-button-text-color: var(--px-color-warning);
-  --px-bg-shadow-color: var(--px-color-warning);
+  --px-button-bg-shadow-color: var(--px-color-warning);
   --px-bg-color: var(--px-color-warning-light-9);
   --px-border-color: var(--px-color-warning-dark-1);
 }
 .px-button--warning.is-plain:hover {
   --px-button-text-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-color-warning-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-warning-dark-2);
   --px-bg-color: var(--px-color-warning);
   --px-border-color: var(--px-color-base);
 }
 .px-button--danger.is-plain {
   --px-button-text-color: var(--px-color-danger);
-  --px-bg-shadow-color: var(--px-color-danger);
+  --px-button-bg-shadow-color: var(--px-color-danger);
   --px-bg-color: var(--px-color-danger-light-9);
   --px-border-color: var(--px-color-danger-dark-1);
 }
 .px-button--danger.is-plain:hover {
   --px-button-text-color: var(--px-color-white);
-  --px-bg-shadow-color: var(--px-color-danger-dark-2);
+  --px-button-bg-shadow-color: var(--px-color-danger-dark-2);
   --px-bg-color: var(--px-color-danger);
   --px-border-color: var(--px-color-base);
 }
@@ -258,7 +259,7 @@
 .px-button.is-custom.is-disabled {
   --px-button-text-color: var(--px-text-color);
   --px-bg-color: var(--px-disabled-bg-color) !important;
-  --px-bg-shadow-color: var(--px-disabled-text-color) !important;
+  --px-button-bg-shadow-color: var(--px-hover-bg-color) !important;
   --px-button-border-color: var(--px-color-base) !important;
 }
 .px-button.is-custom.is-disabled:hover {
@@ -267,12 +268,14 @@
 .px-button.is-custom.is-plain {
   --px-button-text-color: var(--px-text-color) !important;
   --px-bg-color: var(--px-plain-bg-color) !important;
-  --px-button-border-color: var(--px-bg-shadow-color) !important;
+  --px-button-border-color: var(--px-plain-border-color) !important;
+  --px-button-bg-shadow-color: var(--px-plain-border-color);
 }
 .px-button.is-custom.is-plain:hover {
   --px-button-text-color: var(--px-hover-text-color) !important;
   --px-button-border-color: var(--px-color-base) !important;
   --px-bg-color: var(--px-hover-bg-color) !important;
+  --px-button-bg-shadow-color: var(--px-plain-bg-shadow-color);
 }
 
 /* ----------- button group ----------- */

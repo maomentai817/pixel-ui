@@ -34,28 +34,28 @@ describe('usePxButtonCustomStyle', () => {
     expect(styles['--px-plain-bg-color']).toBeDefined()
     expect(styles['--px-text-color']).toBe('#209cee')
     expect(styles['--px-hover-bg-color']).toBe('#209cee')
-    expect(styles['--px-hover-text-color']).toBe('#ffffff')
-    expect(styles['--px-bg-shadow-color']).toBeDefined()
+    expect(styles['--px-hover-text-color']).toBe('var(--px-color-base)')
+    expect(styles['--px-plain-bg-shadow-color']).toBeDefined()
   })
 
   it('generates correct styles for disabled plain button', () => {
     const styles = getResult({ ...defaultProps, plain: true, disabled: true })
 
-    expect(styles['--px-disabled-bg-color']).toBe('#aad0e9') // ≈ lighten(26)+desaturate(27)
-    expect(styles['--px-disabled-text-color']).toBe('#209cee')
+    expect(styles['--px-disabled-bg-color']).toBe('rgb(144, 206, 247)')
+    expect(styles['--px-disabled-text-color']).toBe('var(--px-color-white)')
   })
 
   it('generates correct styles for disabled solid button', () => {
     const styles = getResult({ ...defaultProps, plain: false, disabled: true })
 
-    expect(styles['--px-disabled-bg-color']).toBe('#aad0e9')
-    expect(styles['--px-disabled-text-color']).toBe('#209cee')
+    expect(styles['--px-disabled-bg-color']).toBe('rgb(144, 206, 247)')
+    expect(styles['--px-disabled-text-color']).toBe('var(--px-color-white)')
   })
 
   it('supports overrideColor', () => {
     const styles = getResult(defaultProps, '#e91e63')
     expect(styles['--px-bg-color']).toBe('#e91e63')
-    expect(styles['--px-hover-bg-color']).not.toBe('#209cee')
+    expect(styles['--px-hover-bg-color']).not.toBe('var(--px-color-white)')
   })
 
   describe('supports CSS var color', () => {

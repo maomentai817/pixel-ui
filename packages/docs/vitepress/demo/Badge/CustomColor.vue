@@ -24,6 +24,8 @@
 .paint-badge.px-badge {
   --px-badge-text-color: #554562;
   --px-badge-border-color: #554562;
+}
+:deep(.px-badge__content) {
   --px-badge-bg-color: #fadbe0;
   --px-badge-bg-shadow-color: #eaadbd;
 }

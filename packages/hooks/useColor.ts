@@ -18,7 +18,6 @@ export function usePxButtonCustomStyle(
 
     if (!colorRef.value) return styles
 
-    // 👇 后面逻辑全部改为使用 colorRef.value 而不是 props.color
     let baseColor = colorRef.value
 
     const match = baseColor.match(/var\((--[^)]+)\)/)
@@ -31,37 +30,29 @@ export function usePxButtonCustomStyle(
     const color = new TinyColor(baseColor)
     const bgShadow = color.clone().desaturate(12).darken(12).toHexString()
 
-    const hoverBg = color.clone().desaturate(3).darken(3).toHexString()
-
     const textColor = color.isDark()
       ? 'var(--px-color-white)'
       : 'var(--px-color-base)'
 
     if (props.plain) {
       Object.assign(styles, {
-        [cssVar('plain-bg-color')]: color
-          .clone()
-          .lighten(40)
-          .desaturate(40)
-          .toHexString(),
+        [cssVar('plain-bg-color')]: color.tint(90).toString(),
         [cssVar('text-color')]: baseColor,
-        [cssVar('plain-text-color')]: textColor,
+        [cssVar('plain-border-color')]: color.tint(50).toString(),
 
         [cssVar('hover-bg-color')]: baseColor,
-        [cssVar('hover-text-color')]: '#ffffff',
+        [cssVar('hover-text-color')]: textColor,
 
-        [cssVar('bg-shadow-color')]: bgShadow
+        [cssVar('plain-bg-shadow-color')]: bgShadow
       })
 
       if (props.disabled) {
-        styles[cssVar('disabled-bg-color')] = color
-          .clone()
-          .lighten(26)
-          .desaturate(27)
-          .toHexString()
-        styles[cssVar('disabled-text-color')] = baseColor
+        styles[cssVar('disabled-bg-color')] = color.tint(90).toString()
+        styles[cssVar('disabled-text-color')] = color.tint(50).toString()
       }
     } else {
+      const hoverBg = color.clone().desaturate(3).darken(3).toHexString()
+
       Object.assign(styles, {
         [cssVar('bg-color')]: baseColor,
         [cssVar('text-color')]: textColor,
@@ -75,12 +66,8 @@ export function usePxButtonCustomStyle(
 
     if (props.disabled) {
       Object.assign(styles, {
-        [cssVar('disabled-bg-color')]: color
-          .clone()
-          .lighten(26)
-          .desaturate(27)
-          .toHexString(),
-        [cssVar('disabled-text-color')]: baseColor
+        [cssVar('disabled-bg-color')]: color.tint(50).toString(),
+        [cssVar('disabled-text-color')]: 'var(--px-color-white)'
       })
     }
 

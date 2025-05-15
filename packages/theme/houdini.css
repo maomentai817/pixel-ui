@@ -276,6 +276,47 @@ html {
   initial-value: #f4f4f5;
   inherits: false;
 }
+/* sakura */
+@property --px-color-sakura {
+  syntax: "<color>";
+  initial-value: #fadbe0;
+  inherits: false;
+}
+@property --px-color-sakura-dark-1 {
+  syntax: "<color>";
+  initial-value: #f7ced5;
+  inherits: false;
+}
+@property --px-color-sakura-dark-2 {
+  syntax: "<color>";
+  initial-value: #eaadbd;
+  inherits: false;
+}
+@property --px-color-sakura-light-3 {
+  syntax: "<color>";
+  initial-value: #b1b3b8;
+  inherits: false;
+}
+@property --px-color-sakura-light-5 {
+  syntax: "<color>";
+  initial-value: #c8c9cc;
+  inherits: false;
+}
+@property --px-color-sakura-light-7 {
+  syntax: "<color>";
+  initial-value: #dedfe0;
+  inherits: false;
+}
+@property --px-color-sakura-light-8 {
+  syntax: "<color>";
+  initial-value: #e9e9eb;
+  inherits: false;
+}
+@property --px-color-sakura-light-9 {
+  syntax: "<color>";
+  initial-value: #f4f4f5;
+  inherits: false;
+}
 /* text-color */
 @property --px-color-base {
   syntax: "<color>";
@@ -285,6 +326,11 @@ html {
 @property --px-color-white {
   syntax: "<color>";
   initial-value: #ffffff;
+  inherits: false;
+}
+@property --px-text-color-sakura {
+  syntax: "<color>";
+  initial-value: #554562;
   inherits: false;
 }
 @property --px-text-color-primary {
