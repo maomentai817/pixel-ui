@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<IconProps>(), {
 
 // icon 部分简单属性样式处理
 const customStyle = computed(() => ({
-  color: props.color ?? void 0,
+  '--px-icon-color': props.color ?? void 0,
   fontSize: `${props.size}px`,
   rotate: props.rotation ? `${props.rotation}deg` : void 0
 }))

@@ -13,7 +13,7 @@
     <px-button type="primary" plain>Primary</px-button>
     <px-button type="success" plain>Success</px-button>
     <px-button type="warning" plain>Warning</px-button>
-    <px-button type="danger" plain>Sakura</px-button>
+    <px-button type="danger" plain>Danger</px-button>
     <px-button type="sakura" plain>Sakura</px-button>
   </p>
 
@@ -22,7 +22,7 @@
     <px-button type="primary" round>Primary</px-button>
     <px-button type="success" round>Success</px-button>
     <px-button type="warning" round>Warning</px-button>
-    <px-button type="danger" round>Sakura</px-button>
+    <px-button type="danger" round>Danger</px-button>
     <px-button type="sakura" round>Sakura</px-button>
   </p>
 

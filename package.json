@@ -43,6 +43,7 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "0.5.1",
+    "clipboard-copy": "^4.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^9.33.0",

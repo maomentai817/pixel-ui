@@ -83,6 +83,10 @@ demo-preview=../demo/Icon/Flip.vue
 demo-preview=../demo/Icon/Animation.vue
 :::
 
+## 图标集合
+
+<IconList />
+
 ## API_Table插件测试
 
 :::danger

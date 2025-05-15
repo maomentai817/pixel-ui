@@ -1,5 +1,6 @@
 .px-icon {
   --px-icon-animation-duration: var(--px-animation-duration);
+  --px-icon-color: var(--px-color-base);
 }
 .px-icon {
   display: inline-flex;

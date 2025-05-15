@@ -53,7 +53,9 @@ describe('Icon.vue', () => {
   test('applies correct color style', () => {
     const wrapper = mount(() => <Icon icon="star" color="#ff0000" />)
 
-    expect(wrapper.element.style.color).toBe('rgb(255, 0, 0)')
+    expect(wrapper.find('i').attributes('style')).toContain(
+      '--px-icon-color: #ff0000; font-size: 14px;'
+    )
   })
 
   // rotation prop 测试
