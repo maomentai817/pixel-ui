@@ -24,5 +24,11 @@
       description="More text description"
       show-icon
     />
+    <px-alert
+      title="Sakura alert"
+      type="sakura"
+      description="More text description"
+      show-icon
+    />
   </div>
 </template>

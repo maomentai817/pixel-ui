@@ -1,4 +1,9 @@
-export type ProgressType = 'primary' | 'success' | 'warning' | 'danger'
+export type ProgressType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'sakura'
 
 export interface ProgressProps {
   /**
@@ -10,7 +15,7 @@ export interface ProgressProps {
   percentage: number
   /**
    * @property status
-   * @type enum - primary | success | warning | danger
+   * @type enum - primary | success | warning | danger | sakura
    * @description 进度条类型
    * @default primary
    */

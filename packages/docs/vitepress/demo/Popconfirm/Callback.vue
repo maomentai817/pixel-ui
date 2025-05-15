@@ -10,7 +10,7 @@ const cancelEvent = () => {
   <px-popconfirm
     confirm-button-text="嘻嘻"
     cancel-button-text="No喵"
-    confirm-button-type="success"
+    confirm-button-type="sakura"
     cancel-button-type="warning"
     icon="info-circle-solid"
     icon-color="#626AEF"

@@ -7,7 +7,7 @@
         placement="top-start"
       >
         <template #reference>
-          <px-button size="small">top-start</px-button>
+          <px-button>top-start</px-button>
         </template>
       </px-popconfirm>
       <px-popconfirm
@@ -16,7 +16,7 @@
         placement="top"
       >
         <template #reference>
-          <px-button size="small">top</px-button>
+          <px-button>top</px-button>
         </template>
       </px-popconfirm>
       <px-popconfirm
@@ -25,7 +25,7 @@
         placement="top-end"
       >
         <template #reference>
-          <px-button size="small">top-end</px-button>
+          <px-button>top-end</px-button>
         </template>
       </px-popconfirm>
     </div>
@@ -36,7 +36,7 @@
         placement="left-start"
       >
         <template #reference>
-          <px-button size="small">left-start</px-button>
+          <px-button>left-start</px-button>
         </template>
       </px-popconfirm>
       <px-popconfirm
@@ -45,7 +45,7 @@
         placement="right-start"
       >
         <template #reference>
-          <px-button size="small">right-start</px-button>
+          <px-button>right-start</px-button>
         </template>
       </px-popconfirm>
     </div>
@@ -56,7 +56,7 @@
         placement="left"
       >
         <template #reference>
-          <px-button size="small" class="mt-3 mb-3">left</px-button>
+          <px-button class="mt-3 mb-3">left</px-button>
         </template>
       </px-popconfirm>
       <px-popconfirm
@@ -65,7 +65,7 @@
         placement="right"
       >
         <template #reference>
-          <px-button size="small">right</px-button>
+          <px-button>right</px-button>
         </template>
       </px-popconfirm>
     </div>
@@ -76,7 +76,7 @@
         placement="left-end"
       >
         <template #reference>
-          <px-button size="small">left-end</px-button>
+          <px-button>left-end</px-button>
         </template>
       </px-popconfirm>
       <px-popconfirm
@@ -85,7 +85,7 @@
         placement="right-end"
       >
         <template #reference>
-          <px-button size="small">right-end</px-button>
+          <px-button>right-end</px-button>
         </template>
       </px-popconfirm>
     </div>
@@ -95,18 +95,14 @@
         title="Bottom Left prompts info"
         placement="bottom-start"
       >
-        <template #reference>
-          <px-button size="small">bottom-start</px-button></template
-        >
+        <template #reference> <px-button>bottom-start</px-button></template>
       </px-popconfirm>
       <px-popconfirm
         class="box-item"
         title="Bottom Center prompts info"
         placement="bottom"
       >
-        <template #reference>
-          <px-button size="small">bottom</px-button></template
-        >
+        <template #reference> <px-button>bottom</px-button></template>
       </px-popconfirm>
       <px-popconfirm
         class="box-item"
@@ -114,7 +110,7 @@
         placement="bottom-end"
       >
         <template #reference>
-          <px-button size="small">bottom-end</px-button>
+          <px-button>bottom-end</px-button>
         </template>
       </px-popconfirm>
     </div>

@@ -12,8 +12,8 @@ const dropdownRef = ref<DropdownInstance>()
 </script>
 
 <template>
-  <px-button @click="() => dropdownRef?.open()" size="small">open</px-button>
-  <px-button @click="() => dropdownRef?.close()" size="small">close</px-button>
+  <px-button @click="() => dropdownRef?.open()">open</px-button>
+  <px-button @click="() => dropdownRef?.close()">close</px-button>
   <br />
   <px-dropdown ref="dropdownRef" :items="items" trigger="click">
     <span class="dropdown-link">

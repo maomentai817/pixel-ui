@@ -13,5 +13,5 @@ const virtualTrigger = ref<ButtonInstance>()
     virtual-triggering
     :virtual-ref="virtualTrigger?.ref"
   ></px-tooltip>
-  <px-button ref="virtualTrigger" size="small">virtual trigger</px-button>
+  <px-button ref="virtualTrigger">virtual trigger</px-button>
 </template>

@@ -8,8 +8,8 @@
   --px-button-bg-color-disabled: var(--px-color-info);
   --px-button-border-color-disabled: var(--px-border-color-disabled);
   --px-button-hover-bg-color: var(--px-color-info-dark-1);
-  --px-button-font-size: var(--px-font-size-base);
-  --px-button-size: 40px;
+  --px-button-font-size: var(--px-font-size-small);
+  --px-button-size: 34px;
   --px-button-padding: calc((var(--px-button-size) - var(--px-button-font-size)) / 2);
 }
 
@@ -130,6 +130,19 @@
   --px-bg-color: var(--px-color-danger-dark-1);
   --px-bg-shadow-border: 4px;
 }
+/* sakura */
+.px-button--sakura {
+  --px-button-text-color: var(--px-text-color-sakura);
+  --px-bg-color: var(--px-color-sakura);
+  --px-button-bg-shadow-color: var(--px-color-sakura-dark-2);
+}
+.px-button--sakura .px-icon {
+  color: var(--px-text-color-sakura);
+}
+.px-button--sakura:hover {
+  --px-bg-color: var(--px-color-sakura-dark-1);
+  --px-bg-shadow-border: 4px;
+}
 /* disabled */
 .px-button.is-disabled {
   cursor: not-allowed;
@@ -161,17 +174,18 @@
   --px-bg-color: var(--px-color-danger-light-5);
   --px-button-bg-shadow-color: var(--px-color-danger-light-3);
 }
+.px-button--sakura.is-disabled {
+  --px-bg-color: var(--px-color-sakura-light-5);
+  --px-button-bg-shadow-color: var(--px-color-sakura-light-3);
+}
 /* button size */
-.px-button--mini {
+.px-button--small {
   --px-button-size: 28px;
   --px-button-font-size: 10px;
 }
-.px-button--small {
-  --px-button-size: 34px;
-  --px-button-font-size: 12px;
-}
 .px-button--large {
-  --px-button-size: 46px;
+  --px-button-size: 40px;
+  --px-button-font-size: 14px;
 }
 /* plain */
 .px-button.is-plain {
@@ -229,21 +243,33 @@
   --px-bg-color: var(--px-color-danger);
   --px-border-color: var(--px-color-base);
 }
+.px-button--sakura.is-plain {
+  --px-button-text-color: var(--px-text-color-sakura);
+  --px-button-bg-shadow-color: var(--px-color-sakura);
+  --px-bg-color: var(--px-color-sakura-light-9);
+  --px-border-color: var(--px-color-sakura-dark-1);
+}
+.px-button--sakura.is-plain:hover {
+  --px-button-text-color: var(--px-text-color-sakura);
+  --px-button-bg-shadow-color: var(--px-color-sakura-dark-2);
+  --px-bg-color: var(--px-color-sakura);
+  --px-border-color: var(--px-color-base);
+}
 /* round */
 .px-button.is-round {
+  --px-border-radius: 1px;
+  --px-border-radius-lt: 1px;
+  --px-border-radius-rt: 1px;
+  --px-border-radius-lb: 1px;
+  --px-border-radius-rb: 1px;
+}
+/* circle */
+.px-button.is-circle {
   --px-border-radius: 2px;
   --px-border-radius-lt: 2px;
   --px-border-radius-rt: 2px;
   --px-border-radius-lb: 2px;
   --px-border-radius-rb: 2px;
-}
-/* circle */
-.px-button.is-circle {
-  --px-border-radius: 3px;
-  --px-border-radius-lt: 3px;
-  --px-border-radius-rt: 3px;
-  --px-border-radius-lb: 3px;
-  --px-border-radius-rb: 3px;
 }
 
 /* custom button colors */

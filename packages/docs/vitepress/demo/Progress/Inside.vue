@@ -27,5 +27,12 @@
       :stroke-width="24"
       class="mb-15"
     />
+    <px-progress
+      :percentage="60"
+      status="sakura"
+      :text-inside="true"
+      :stroke-width="24"
+      class="mb-15"
+    />
   </div>
 </template>

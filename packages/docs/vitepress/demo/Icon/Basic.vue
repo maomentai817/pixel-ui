@@ -5,6 +5,7 @@
     <px-icon icon="management" type="success" class="mr-10" />
     <px-icon icon="plane" type="warning" class="mr-10" />
     <px-icon icon="translate" type="danger" class="mr-10" />
+    <px-icon icon="tag-solid" type="sakura" class="mr-10" />
   </p>
   <p>
     <px-icon icon="gaming" size="35" class="mr-10" />
@@ -12,6 +13,7 @@
     <px-icon icon="management" type="success" size="35" class="mr-10" />
     <px-icon icon="plane" type="warning" size="35" class="mr-10" />
     <px-icon icon="translate" type="danger" size="35" class="mr-10" />
+    <px-icon icon="tag-solid" type="sakura" size="35" class="mr-10" />
   </p>
   <p>
     <px-icon icon="gaming" size="20" color="red" class="mr-10" />

@@ -27,4 +27,11 @@
       <px-button type="primary" icon="trash" round />
     </px-button-group>
   </p>
+  <p>
+    <px-button-group type="sakura">
+      <px-button type="primary" icon="edit" round />
+      <px-button type="primary" icon="share" />
+      <px-button type="primary" icon="trash" round />
+    </px-button-group>
+  </p>
 </template>

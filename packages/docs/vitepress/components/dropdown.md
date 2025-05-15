@@ -95,7 +95,7 @@ demo-preview=../demo/Dropdown/Manual.vue
 
 Dropdown 组件提供除了默认值以外的三种尺寸, 可以在不同场景下选择合适的尺寸。
 
-使用 `size` 属性配置尺寸, 可选的尺寸大小有: `large`, `default`, `small`, `mini`
+使用 `size` 属性配置尺寸, 可选的尺寸大小有: `large`, `default`, `small`
 
 :::preview
 demo-preview=../demo/Dropdown/Size.vue

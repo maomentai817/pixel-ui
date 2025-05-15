@@ -1,4 +1,10 @@
-export type IconType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
+export type IconType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'base'
+  | 'sakura'
 
 export interface IconProps {
   /**
@@ -17,7 +23,7 @@ export interface IconProps {
   size?: number | string
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 图标类型
    * @default base
    */

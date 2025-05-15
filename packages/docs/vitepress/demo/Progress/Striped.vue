@@ -34,5 +34,14 @@
       :duration="6"
       status="danger"
     />
+    <px-progress
+      class="mb-15"
+      :percentage="60"
+      :stroke-width="24"
+      striped
+      striped-flow
+      :duration="5"
+      status="sakura"
+    />
   </div>
 </template>

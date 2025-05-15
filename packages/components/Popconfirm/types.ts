@@ -24,14 +24,14 @@ export interface PopconfirmProps {
   cancelButtonText?: string
   /**
    * @property confirmButtonType
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 确认按钮类型
    * @default primary
    */
   confirmButtonType?: ButtonType
   /**
    * @property cancelButtonType
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 取消按钮类型
    * @default -
    */

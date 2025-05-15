@@ -5,6 +5,7 @@
     <px-button type="success">Success</px-button>
     <px-button type="warning">Warning</px-button>
     <px-button type="danger">Danger</px-button>
+    <px-button type="sakura">Sakura</px-button>
   </p>
   <p>
     <px-button disabled>Button</px-button>
@@ -12,5 +13,6 @@
     <px-button type="success" disabled>Success</px-button>
     <px-button type="warning" disabled>Warning</px-button>
     <px-button type="danger" disabled>Danger</px-button>
+    <px-button type="sakura" disabled>Sakura</px-button>
   </p>
 </template>

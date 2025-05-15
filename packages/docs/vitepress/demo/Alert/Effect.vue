@@ -9,5 +9,6 @@
       class="mt-20"
     />
     <px-alert title="Error alert" effect="dark" type="danger" class="mt-20" />
+    <px-alert title="Sakura alert" effect="dark" type="sakura" class="mt-20" />
   </div>
 </template>

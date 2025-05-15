@@ -26,6 +26,13 @@
       :duration="6"
       class="mb-15"
     />
+    <px-progress
+      :percentage="60"
+      status="sakura"
+      indeterminate
+      :duration="3"
+      class="mb-15"
+    />
   </div>
 </template>
 

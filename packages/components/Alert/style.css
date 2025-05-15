@@ -26,11 +26,11 @@
   color: var(--px-alert-text-color);
   /* css houdini paint */
   background-image: paint(pixelbox);
-  --px-border: 3px;
-  --px-border-t: 3px;
-  --px-border-r: 3px;
-  --px-border-b: 3px;
-  --px-border-l: 3px;
+  --px-border: 4px;
+  --px-border-t: 4px;
+  --px-border-r: 4px;
+  --px-border-b: 4px;
+  --px-border-l: 4px;
   --px-border-radius: 2px;
   --px-border-radius-lt: 2px;
   --px-border-radius-rt: 2px;
@@ -68,7 +68,7 @@
     .px-alert__close {
       opacity: 1;
       position: absolute;
-      top: 12px;
+      top: 9px;
       right: 15px;
       cursor: var(--px-cursor-pointer-src) 14 0, pointer;
       .px-alert__close-icon {
@@ -138,7 +138,19 @@
   }
   &.px-alert--dark {
     --px-alert-bg-color: var(--px-color-info);
-    /* --px-alert-border-color: var(--px-border-color-info); */
+    --px-alert-border-color: var(--px-color-info-dark-1);
+    --px-alert-text-color: var(--px-color-white);
+  }
+}
+.px-alert--sakura {
+  &.px-alert--light {
+    --px-alert-bg-color: var(--px-color-sakura-light-9);
+    --px-alert-border-color: var(--px-color-sakura-light-5);
+    --px-alert-text-color: var(--px-color-sakura);
+  }
+  &.px-alert--dark {
+    --px-alert-bg-color: var(--px-color-sakura);
+    --px-alert-border-color: var(--px-color-sakura-dark-1);
     --px-alert-text-color: var(--px-color-white);
   }
 }

@@ -57,7 +57,7 @@ const cancel = (e: MouseEvent) => {
           <slot name="actions" :confirm="confirm" :cancel="cancel">
             <px-button
               class="px-popconfirm__cancel"
-              size="mini"
+              size="small"
               :type="cancelButtonType"
               @click="cancel"
             >
@@ -65,7 +65,7 @@ const cancel = (e: MouseEvent) => {
             </px-button>
             <px-button
               class="px-popconfirm__confirm"
-              size="mini"
+              size="small"
               :type="confirmButtonType"
               @click="confirm"
             >

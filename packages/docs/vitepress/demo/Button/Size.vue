@@ -4,23 +4,20 @@
     <px-button type="success" size="large">817</px-button>
     <px-button type="warning" size="large">817</px-button>
     <px-button type="danger" size="large">817</px-button>
+    <px-button type="sakura" size="large">817</px-button>
   </p>
   <p>
     <px-button type="primary">817</px-button>
     <px-button type="success">817</px-button>
     <px-button type="warning">817</px-button>
     <px-button type="danger">817</px-button>
+    <px-button type="sakura">817</px-button>
   </p>
   <p>
     <px-button type="primary" size="small">817</px-button>
     <px-button type="success" size="small">817</px-button>
     <px-button type="warning" size="small">817</px-button>
     <px-button type="danger" size="small">817</px-button>
-  </p>
-  <p>
-    <px-button type="primary" size="mini">817</px-button>
-    <px-button type="success" size="mini">817</px-button>
-    <px-button type="warning" size="mini">817</px-button>
-    <px-button type="danger" size="mini">817</px-button>
+    <px-button type="sakura" size="small">817</px-button>
   </p>
 </template>

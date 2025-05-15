@@ -86,6 +86,11 @@
   --px-badge-bg-shadow-color: var(--px-color-info-dark-2);
 }
 
+.px-badge--sakura {
+  --px-badge-bg-color: var(--px-color-sakura);
+  --px-badge-bg-shadow-color: var(--px-color-sakura-dark-2);
+}
+
 .px-badge__content.is-custom {
   --px-badge-bg-color: var(--px-custom-bg-color);
   --px-badge-bg-shadow-color: var(--px-custom-bg-shadow-color);

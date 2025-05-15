@@ -1,4 +1,4 @@
-export type AlertType = 'info' | 'success' | 'warning' | 'danger'
+export type AlertType = 'info' | 'success' | 'warning' | 'danger' | 'sakura'
 
 export interface AlertProps {
   /**
@@ -10,7 +10,7 @@ export interface AlertProps {
   title?: string
   /**
    * @property type
-   * @type enum - info | success | warning | danger
+   * @type enum - info | success | warning | danger | sakura
    * @description Alert 类型
    * @default info
    */

@@ -19,10 +19,10 @@ const onCancel = () => {
       <px-button>Delete</px-button>
     </template>
     <template #actions="{ confirm, cancel }">
-      <px-button size="mini" @click="cancel">No!</px-button>
+      <px-button size="small" @click="cancel">No!</px-button>
       <px-button
         type="danger"
-        size="mini"
+        size="small"
         :disabled="!clicked"
         @click="confirm"
       >

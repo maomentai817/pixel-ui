@@ -9,14 +9,14 @@ type EffectType = 'dark' | 'light' | 'customized'
 export interface DropdownProps {
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 菜单按钮类型
    * @default base
    */
   type?: ButtonType
   /**
    * @property size
-   * @type enum - large | default | small | mini
+   * @type enum - large | default | small
    * @description 菜单按钮尺寸
    * @default default
    */

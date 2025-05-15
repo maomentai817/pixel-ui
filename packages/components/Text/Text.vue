@@ -6,7 +6,7 @@ defineOptions({
   name: 'PxText'
 })
 const props = withDefaults(defineProps<TextProps>(), {
-  size: 16,
+  size: 14,
   bold: false,
   tag: 'span',
   compact: false

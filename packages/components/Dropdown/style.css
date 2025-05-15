@@ -24,6 +24,11 @@
   --px-dropdown-menuItem-hover-fill: var(--px-color-danger-light-9);
   --px-dropdown-menuItem-hover-color: var(--px-color-danger);
 }
+
+.px-dropdown.px-dropdown--sakura .px-dropdown__menu {
+  --px-dropdown-menuItem-hover-fill: var(--px-color-sakura-light-5);
+  --px-dropdown-menuItem-hover-color: var(--px-text-color-sakura);
+}
 .px-dropdown {
   display: inline-block;
 

@@ -1,6 +1,12 @@
 import type { Component } from 'vue'
 
-export type TextType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
+export type TextType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'base'
+  | 'sakura'
 export type TextAlign = 'left' | 'center' | 'right'
 
 export interface TextProps {
@@ -8,12 +14,12 @@ export interface TextProps {
    * @property size
    * @type number
    * @description 文本大小(px)
-   * @default 16
+   * @default 14
    */
   size?: number
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 文本类型
    * @default base
    */

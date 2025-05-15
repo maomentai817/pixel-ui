@@ -1,4 +1,10 @@
-export type BadgeType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
+export type BadgeType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'info'
+  | 'sakura'
 
 export interface BadgeProps {
   /**
@@ -31,7 +37,7 @@ export interface BadgeProps {
   hidden?: boolean
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | info
+   * @type enum - primary | success | warning | danger | info | sakura
    * @description 徽章类型
    * @default danger
    */

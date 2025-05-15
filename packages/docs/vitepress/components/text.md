@@ -25,7 +25,7 @@ demo-preview=../demo/Text/Basic.vue
 
 ## 尺寸
 
-使用 `size` 属性设置 Text 尺寸, 默认大小为 `16px`, 传入值默认为 `px`
+使用 `size` 属性设置 Text 尺寸, 默认大小为 `14px`, 传入值默认为 `px`
 
 ::: preview
 demo-preview=../demo/Text/Size.vue

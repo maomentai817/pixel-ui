@@ -7,5 +7,6 @@
   <p>
     <px-text class="mr-10" size="24" type="warning">Warning</px-text>
     <px-text class="mr-10" size="28" type="danger">Danger</px-text>
+    <px-text class="mr-10" size="28" type="sakura">Sakura</px-text>
   </p>
 </template>

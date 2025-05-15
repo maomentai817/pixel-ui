@@ -44,12 +44,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <px-button size="mini" ref="BTN">Normal</px-button>
-  <px-button type="primary" size="mini">Primary</px-button>
-  <px-button type="success" size="mini">Success</px-button>
-  <px-button type="warning" size="mini">Warning</px-button>
-  <px-button type="danger" size="mini">Danger</px-button>
-  <px-button disabled size="mini">Disabled</px-button>
+  <px-button size="small" ref="BTN">Normal</px-button>
+  <px-button type="primary" size="small">Primary</px-button>
+  <px-button type="success" size="small">Success</px-button>
+  <px-button type="warning" size="small">Warning</px-button>
+  <px-button type="danger" size="small">Danger</px-button>
+  <px-button disabled size="small">Disabled</px-button>
   <br />
   <br />
   <px-button size="small">Normal</px-button>
@@ -484,10 +484,10 @@ onMounted(() => {
       <px-button>Delete</px-button>
     </template>
     <template #actions="{ confirm, cancel }">
-      <px-button size="mini" @click="cancel">No!</px-button>
+      <px-button size="small" @click="cancel">No!</px-button>
       <px-button
         type="danger"
-        size="mini"
+        size="small"
         :disabled="!clicked"
         @click="confirm"
       >

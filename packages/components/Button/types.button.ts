@@ -1,21 +1,27 @@
 // types.button.ts
 import type { Component, Ref, ComputedRef } from 'vue'
 
-export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'base'
+export type ButtonType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'base'
+  | 'sakura'
 export type NativeType = 'button' | 'submit' | 'reset'
-export type ButtonSize = 'large' | 'default' | 'small' | 'mini'
+export type ButtonSize = 'large' | 'default' | 'small'
 
 export interface ButtonProps {
   /**
    * @property size
-   * @type enum - large | default | small | mini
+   * @type enum - large | default | small
    * @description 按钮尺寸
    * @default default
    */
   size?: ButtonSize
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 按钮类型
    * @default base
    */

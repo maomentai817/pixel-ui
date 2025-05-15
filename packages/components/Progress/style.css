@@ -142,3 +142,8 @@
   --px-progress-bar-bg-color: var(--px-color-danger);
   --px-progress-bar-bg-shadow-color: var(--px-color-danger-dark-1);
 }
+
+.is-sakura {
+  --px-progress-bar-bg-color: var(--px-color-sakura);
+  --px-progress-bar-bg-shadow-color: var(--px-color-sakura-dark-1);
+}

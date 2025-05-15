@@ -19,7 +19,7 @@ prev:
 
 Alert 组件不属于浮层元素, 不会自动消失或关闭
 
-Alert 组件提供四种类型, 由 `type` 指定, 默认为 `info`
+Alert 组件提供五种类型, 由 `type` 指定, 默认为 `info`
 
 :::preview
 demo-preview=../demo/Alert/Basic.vue

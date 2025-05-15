@@ -4,14 +4,14 @@ import type { ButtonSize, ButtonType } from './types.button'
 export interface ButtonGroupProps {
   /**
    * @property size
-   * @type enum - large | default | small | mini
+   * @type enum - large | default | small
    * @description 按钮组尺寸
    * @default default
    */
   size?: ButtonSize
   /**
    * @property type
-   * @type enum - primary | success | warning | danger | base
+   * @type enum - primary | success | warning | danger | base | sakura
    * @description 按钮组类型
    * @default base
    */

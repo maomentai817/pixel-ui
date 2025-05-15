@@ -487,7 +487,7 @@ export const Size: StoryFn<typeof PxDropdown> = (args, { argTypes }) => ({
         </template>
       </px-dropdown>
 
-      <px-dropdown size="mini" split-button type="danger">
+      <px-dropdown size="small" split-button type="danger">
         Mini
         <template #dropdown>
           <px-dropdown-menu>

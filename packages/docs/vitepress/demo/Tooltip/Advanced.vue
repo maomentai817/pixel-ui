@@ -9,7 +9,7 @@ const disabled = ref(false)
     content="click to close tooltip function"
     placement="bottom"
   >
-    <px-button @click="disabled = !disabled" size="small">
+    <px-button @click="disabled = !disabled">
       click to {{ disabled ? 'active' : 'close' }} tooltip function
     </px-button>
   </px-tooltip>

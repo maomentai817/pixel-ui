@@ -13,6 +13,9 @@
 .px-text--danger {
   color: var(--px-color-danger);
 }
+.px-text--sakura {
+  color: var(--px-text-color-sakura);
+}
 .is-compact {
   line-height: 1;
 }

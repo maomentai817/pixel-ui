@@ -1,5 +1,5 @@
 <template>
-  <px-dropdown size="large" split-button type="primary">
+  <px-dropdown size="large" split-button type="sakura">
     Large
     <template #dropdown>
       <px-dropdown-menu>
@@ -25,18 +25,6 @@
 
   <px-dropdown size="small" split-button type="warning">
     Small
-    <template #dropdown>
-      <px-dropdown-menu>
-        <px-dropdown-item>Action 1</px-dropdown-item>
-        <px-dropdown-item>Action 2</px-dropdown-item>
-        <px-dropdown-item>Action 3</px-dropdown-item>
-        <px-dropdown-item>Action 4</px-dropdown-item>
-      </px-dropdown-menu>
-    </template>
-  </px-dropdown>
-
-  <px-dropdown size="mini" split-button type="danger">
-    Mini
     <template #dropdown>
       <px-dropdown-menu>
         <px-dropdown-item>Action 1</px-dropdown-item>

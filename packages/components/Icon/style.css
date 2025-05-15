@@ -98,3 +98,6 @@
 .px-icon.px-icon--danger {
   --px-icon-color: var(--px-color-danger);
 }
+.px-icon.px-icon--sakura {
+  --px-icon-color: var(--px-text-color-sakura);
+}
