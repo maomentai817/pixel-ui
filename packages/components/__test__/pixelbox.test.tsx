@@ -357,4 +357,122 @@ describe('PixelBox Paint Worklet', () => {
 
     expect(mockRegisterPaint).toHaveBeenCalledWith('pixelbox', PixelBox)
   })
+
+  // 测试新增其他圆角处理
+  it('should respect border and radius settings circle', () => {
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.fillRect).toHaveBeenCalled()
+    expect(ctx.clearRect).toHaveBeenCalled()
+  })
+
+  it('should draw top and right shadow lines when shadow position is top-right circle', () => {
+    props.set('--px-bg-shadow-position', 'top-right')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.moveTo).toHaveBeenCalled()
+    expect(ctx.lineTo).toHaveBeenCalled()
+  })
+  it('should draw top and left shadow lines when shadow position is top-left circle', () => {
+    props.set('--px-bg-shadow-position', 'top-left')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.moveTo).toHaveBeenCalled()
+    expect(ctx.lineTo).toHaveBeenCalled()
+  })
+  it('should draw bottom and right shadow lines when shadow position is bottom-right circle', () => {
+    props.set('--px-bg-shadow-position', 'bottom-right')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.moveTo).toHaveBeenCalled()
+    expect(ctx.lineTo).toHaveBeenCalled()
+  })
+  it('should draw bottom and left shadow lines when shadow position is bottom-left circle', () => {
+    props.set('--px-bg-shadow-position', 'bottom-left')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.moveTo).toHaveBeenCalled()
+    expect(ctx.lineTo).toHaveBeenCalled()
+  })
+
+  it('should not draw any shadow lines for unknown shadow position circle', () => {
+    props.set('--px-bg-shadow-position', 'weird-position')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+
+    const paint = new PixelBox()
+    paint.paint(ctx, size, {
+      get: (name: string) => props.get(name)
+    } as any)
+
+    expect(ctx.moveTo).toHaveBeenCalled()
+    expect(ctx.lineTo).toHaveBeenCalled()
+  })
+
+  it('should draw bottom and left shadow lines when shadow position is bottom-left with button single circle', () => {
+    props.set('--px-bg-shadow-position', 'bottom-left')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+    props.delete('--px-button-group-first')
+    props.delete('--px-button-single')
+
+    const paint = new PixelBox()
+    expect(() =>
+      paint.paint(ctx, size, {
+        get: (name: string) => props.get(name)
+      } as any)
+    ).not.toThrow()
+  })
+  it('should draw top and left shadow lines when shadow position is top-left with button single circle', () => {
+    props.set('--px-bg-shadow-position', 'top-left')
+    props.set('--px-border', '4')
+    props.set('--px-border-radius', '5')
+    size.height = 30
+    props.delete('--px-button-group-first')
+    props.delete('--px-button-single')
+
+    const paint = new PixelBox()
+    expect(() =>
+      paint.paint(ctx, size, {
+        get: (name: string) => props.get(name)
+      } as any)
+    ).not.toThrow()
+  })
 })
