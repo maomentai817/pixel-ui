@@ -1,6 +1,6 @@
 <template>
   <p>
-    <px-button chubby>Round</px-button>
+    <px-button chubby>Chubby</px-button>
     <px-button type="primary" chubby>Primary</px-button>
     <px-button type="success" chubby>Success</px-button>
   </p>
