@@ -102,6 +102,7 @@ onMounted(async () => {
       'is-plain': plain,
       'is-round': round,
       'is-circle': circle,
+      'is-chubby': chubby,
       'is-disabled': disabled,
       'is-loading': loading,
       'is-custom': color

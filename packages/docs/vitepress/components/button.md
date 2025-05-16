@@ -99,6 +99,18 @@ demo-preview=../demo/Button/CustomColor.vue
 demo-preview=../demo/Button/Throttle.vue
 :::
 
+## 新圆角样式
+
+对 `pixelbox.worklet` 进行修改, 支持一种新的圆角样式, 同时限定圆角种类为 3 种, 通过修改 `--px-border-radius` 值控制, 当前展示值大于 3 的情况, 提供属性 `chubby` 控制
+
+:::warning
+由于算法不够完善, 普适性不高, 提供属性 `chubby` 限制样式基础模板, 该圆角样式对 `--px-border`, `--px-border-[position]`, `--px-border-radius-[postion]`, `--px-bg-shadow-border`, 元素宽高都有一定要求, 请合理使用
+:::
+
+::: preview
+demo-preview=../demo/Button/Chubby.vue
+:::
+
 ## API_Table插件测试
 
 :::danger

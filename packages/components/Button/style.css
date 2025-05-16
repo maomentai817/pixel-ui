@@ -272,6 +272,22 @@
   --px-border-radius-rb: 2px;
 }
 
+/* chubby 新的圆角样式 */
+.px-button.is-chubby { 
+  --px-button-size: 60px;
+  --px-border: 4px;
+  --px-border-t: 4px;
+  --px-border-r: 4px;
+  --px-border-b: 4px;
+  --px-border-l: 4px;
+  --px-border-radius: 5px;
+  --px-border-radius-lt: 5px;
+  --px-border-radius-rt: 5px;
+  --px-border-radius-lb: 5px;
+  --px-border-radius-rb: 5px;
+  --px-bg-shadow-border: 4px;
+}
+
 /* custom button colors */
 .px-button.is-custom {
   --px-button-text-color: var(--px-text-color);

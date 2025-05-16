@@ -48,6 +48,13 @@ export interface ButtonProps {
    */
   circle?: boolean
   /**
+   * @property chubby
+   * @type boolean
+   * @description 另一种圆角样式,可能更圆
+   * @default false
+   */
+  chubby?: boolean
+  /**
    * @property loading
    * @type boolean
    * @description 是否为加载中状态
