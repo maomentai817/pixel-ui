@@ -44,7 +44,7 @@
 
 .px-dropdown__menu {
   list-style-type: none;
-  margin: 0;
+  margin: var(--px-popover-border-width);
   padding: 0;
   .px-dropdown__item {
     display: flex;
