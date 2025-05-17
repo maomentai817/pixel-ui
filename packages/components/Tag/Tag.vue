@@ -14,16 +14,25 @@ defineOptions({
 const props = withDefaults(defineProps<TagProps>(), {
   closable: false,
   size: 'default',
-  effect: 'filled',
-  disabled: false
+  effect: 'light',
+  disabled: false,
+  round: false,
+  circle: false,
+  chubby: false
 })
 
 const type = computed(() => {
-  const validTypes = ['primary', 'success', 'warning', 'danger', 'info', 'sakura']
-  return props?.type && validTypes.includes(props.type) ? props.type : 'default'
+  const validTypes = [
+    'primary',
+    'success',
+    'warning',
+    'danger',
+    'info',
+    'sakura'
+  ]
+  return props?.type && validTypes.includes(props.type) ? props.type : 'primary'
 })
 const emits = defineEmits<TagEmits>()
-const slots = defineSlots()
 
 const close = () => {
   if (props.disabled) return
@@ -86,7 +95,10 @@ onMounted(async () => {
         [`px-tag--${effect}`]: effect,
         [`px-tag--${type}`]: type,
         'is-disabled': disabled,
-        'is-custom': color
+        'is-custom': color,
+        'is-round': round,
+        'is-circle': circle,
+        'is-chubby': chubby
       }
     ]"
     :style="colorStyle"
@@ -99,6 +111,7 @@ onMounted(async () => {
       <px-icon
         class="px-tag__close-icon"
         icon="times-solid"
+        size="10"
         @click.stop="close"
       ></px-icon>
     </span>

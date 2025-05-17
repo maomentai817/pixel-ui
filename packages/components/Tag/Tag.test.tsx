@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
-import { PxTag, TagEffect, TagSize, TagType } from '.'
+import { PxTag } from '.'
+import type { TagEffect, TagSize, TagType } from '.'
 
 import Tag from './Tag.vue'
 

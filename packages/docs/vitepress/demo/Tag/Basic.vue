@@ -1,6 +1,5 @@
 <template>
   <div class="tag-demo">
-    <px-tag>Tag</px-tag>
     <px-tag type="primary">Primary</px-tag>
     <px-tag type="success">Success</px-tag>
     <px-tag type="warning">Warning</px-tag>

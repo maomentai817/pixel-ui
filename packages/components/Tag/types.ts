@@ -8,51 +8,72 @@ export type TagType =
 
 export type TagSize = 'large' | 'default' | 'small'
 
-export type TagEffect = 'plain' | 'filled'
+export type TagEffect = 'light' | 'dark' | 'plain'
 
 export interface TagProps {
   /**
    * @property size
    * @type enum - large | default | small
-   * @description Tag size
+   * @description Tag 的尺寸
    * @default default
    */
   size?: TagSize
   /**
    * @property type
    * @type enum - primary | success | warning | danger | info | sakura
-   * @description Tag type
+   * @description Tag 的类型
    * @default primary
    */
   type?: TagType
   /**
    * @property closable
    * @type boolean
-   * @description Whether the tag can be closed
+   * @description 是否可关闭
    * @default false
    */
   closable?: boolean
   /**
    * @property color
    * @type string
-   * @description Custom color
+   * @description 自定义颜色
    * @default -
    */
   color?: string
   /**
    * @property effect
-   * @type enum - plain | filled
-   * @description Tag effect
+   * @type enum - 'light' | 'dark' | 'plain'
+   * @description Tag 的主题
    * @default filled
    */
   effect?: TagEffect
   /**
    * @property disabled
    * @type boolean
-   * @description Whether the tag is disabled
+   * @description 是否禁用
    * @default false
    */
   disabled?: boolean
+  /**
+   * @property round
+   * @type boolean
+   * @description 是否圆角
+   * @default false
+   */
+  round?: boolean
+  /**
+   * @property round
+   * @type boolean
+   * @description 是否圆型
+   * @default false
+   */
+  circle?: boolean
+  /**
+   * @property round
+   * @type boolean
+   * @description 更圆的圆角
+   * @default false
+   */
+  chubby?: boolean
 }
 
 export interface TagEmits {
@@ -88,7 +109,7 @@ export interface TagEvents {
 export interface TagSlots {
   /**
    * @property default
-   * @description Default slot, used to set tag content
+   * @description 默认插槽
    */
   default: () => string
 }

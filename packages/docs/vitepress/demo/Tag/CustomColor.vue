@@ -19,7 +19,4 @@
 .tag-demo .px-tag {
   margin-right: 10px;
 }
-.mb-10 {
-  margin-bottom: 10px;
-}
 </style>

@@ -1,33 +1,33 @@
 <template>
-  <div class="flex gap-2">
-    <span class="w-80">Dark</span>
+  <div class="flex gap-2 mb-20" v-for="effect in effects" :key="effect">
     <px-tag
       v-for="item in items"
       :key="item.label"
       :type="item.type"
-      effect="dark"
+      :effect="effect"
+      round
     >
       {{ item.label }}
     </px-tag>
   </div>
-  <div class="flex gap-2 mt-10">
-    <span class="w-80">Light</span>
+  <div class="flex gap-2 mb-20" v-for="effect in effects" :key="effect">
     <px-tag
       v-for="item in items"
       :key="item.label"
       :type="item.type"
-      effect="light"
+      :effect="effect"
+      circle
     >
       {{ item.label }}
     </px-tag>
   </div>
-  <div class="flex gap-2 mt-10">
-    <span class="w-80">Plain</span>
+  <div class="flex gap-2 mb-20" v-for="effect in effects" :key="effect">
     <px-tag
       v-for="item in items"
       :key="item.label"
       :type="item.type"
-      effect="plain"
+      :effect="effect"
+      chubby
     >
       {{ item.label }}
     </px-tag>
@@ -45,7 +45,8 @@ const items = ref<Array<Item>>([
   { type: 'success', label: 'Tag 2' },
   { type: 'info', label: 'Tag 3' },
   { type: 'warning', label: 'Tag 4' },
-  { type: 'danger', label: 'Tag 5' },
-  { type: 'sakura', label: 'Tag 6' }
+  { type: 'danger', label: 'Tag 5' }
 ])
+
+const effects = ref<Array<TagProps['effect']>>(['dark', 'light', 'plain'])
 </script>

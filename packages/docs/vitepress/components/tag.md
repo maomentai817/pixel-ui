@@ -28,12 +28,20 @@ demo-preview=../demo/Tag/Size.vue
 
 ## 主题
 
-Tag组件提供了两种主题：`filled`（填充）和 `plain`（描边）。
+Tag 组件提供了两种主题：`filled`（填充）和 `plain`（描边）。
 
 通过设置 `effect` 属性来改变主题, 默认为 `filled`。
 
 :::preview
 demo-preview=../demo/Tag/Effect.vue
+:::
+
+## 圆角标签
+
+Tag 提供了圆角边框, 通过设置 `round`, `circle`, `chubby` 属性来改变标签的形状, 默认为 `false`。
+
+:::preview
+demo-preview=../demo/Tag/Round.vue
 :::
 
 ## 禁用状态
