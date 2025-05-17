@@ -13,7 +13,8 @@ import {
   PxTooltip,
   PxPopconfirm,
   PxDropdown,
-  PxDropdownItem
+  PxDropdownItem,
+  PxImage
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -33,5 +34,6 @@ export default [
   PxTooltip,
   PxPopconfirm,
   PxDropdown,
-  PxDropdownItem
+  PxDropdownItem,
+  PxImage
 ] as Plugin[]

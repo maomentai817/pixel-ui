@@ -1,0 +1,9 @@
+.px-image {
+  display: inline-block;
+  overflow: hidden;
+}
+canvas {
+  image-rendering: pixelated;
+  max-width: 100%;
+  height: auto;
+}

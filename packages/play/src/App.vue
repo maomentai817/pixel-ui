@@ -523,7 +523,7 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="">
+  <div class="mb-30">
     <px-dropdown split-button type="primary" effect="dark" trigger="click">
       Dropdown List
       <template #dropdown>
@@ -537,6 +537,11 @@ onMounted(() => {
       </template>
     </px-dropdown>
   </div>
+  <px-image
+    src="/images/heart.jpg"
+    :block-size="5"
+    :color-count="11"
+  ></px-image>
   <div class="h-300"></div>
 </template>
 
