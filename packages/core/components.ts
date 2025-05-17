@@ -15,7 +15,8 @@ import {
   PxDropdown,
   PxDropdownItem,
   PxImage,
-  PxPixelIt
+  PxPixelIt,
+  PxTag
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -37,5 +38,6 @@ export default [
   PxDropdown,
   PxDropdownItem,
   PxImage,
-  PxPixelIt
+  PxPixelIt,
+  PxTag
 ] as Plugin[]

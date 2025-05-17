@@ -500,6 +500,18 @@ const showGrid = ref(false)
       </px-button>
     </template>
   </px-popconfirm>
+  <br />
+  <br />
+  <!-- tag -->
+  <div>
+    <px-tag>Default</px-tag>
+    <px-tag type="primary" closable>Primary</px-tag>
+    <px-tag type="success" size="small">Success</px-tag>
+    <px-tag type="warning" size="large">Warning</px-tag>
+    <px-tag type="danger" effect="plain">Danger</px-tag>
+    <px-tag type="info" effect="plain">Info</px-tag>
+    <px-tag type="sakura" closable>Sakura</px-tag>
+  </div>
   <!-- dropdown -->
   <div class="flex flex-wrap m-y-30">
     <div class="flex-1">
