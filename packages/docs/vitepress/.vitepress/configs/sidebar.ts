@@ -26,6 +26,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
       { text: "Card 卡片", link: "card" },
       { text: "Collapse 折叠面板", link: "collapse" },
       { text: "Progress 进度条", link: "progress" },
+      { text: "Tag 标签", link: "tag" },
     ]
   },
   {

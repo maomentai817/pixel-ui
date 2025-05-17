@@ -7,8 +7,8 @@ next:
   text: Alert 提示
 
 prev:
-  link: /components/progress
-  text: Progress 进度条
+  link: /components/tag
+  text: Tag 标签
 ---
 
 # Dropdown 下拉菜单

@@ -1,0 +1,166 @@
+.px-tag {
+  --px-tag-font-weight: var(--px-font-weight-base);
+  --px-tag-bg-color: var(--px-color-white);
+  --px-tag-text-color: var(--px-color-base);
+  --px-tag-close-icon-color: var(--px-tag-text-color);
+  --px-tag-border-color: var(--px-color-base);
+  --px-tag-font-size: var(--px-font-size-small);
+  --px-tag-padding-h: 10px;
+  --px-tag-padding-v: 3px;
+  --px-tag-height: 34px;
+}
+
+.px-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--px-tag-text-color);
+  font-size: var(--px-tag-font-size);
+  font-weight: var(--px-tag-font-weight);
+  height: var(--px-tag-height);
+  padding: var(--px-tag-padding-v) var(--px-tag-padding-h);
+  position: relative;
+  white-space: nowrap;
+  box-sizing: border-box;
+  line-height: 1;
+  margin-right: 8px;
+
+  /* css houdini paint */
+  background-image: paint(pixelbox);
+  --px-border: 4px;
+  --px-border-t: 4px;
+  --px-border-r: 4px;
+  --px-border-b: 4px;
+  --px-border-l: 4px;
+  --px-border-radius: 0px;
+  --px-border-radius-lt: 0px;
+  --px-border-radius-rt: 0px;
+  --px-border-radius-lb: 0px;
+  --px-border-radius-rb: 0px;
+  --px-bg-color: var(--px-tag-bg-color);
+  --px-border-color: var(--px-tag-border-color);
+  --px-button-single: 1;
+}
+
+/* size */
+.px-tag--large {
+  --px-tag-font-size: 16px;
+  --px-tag-padding-h: 14px;
+  --px-tag-padding-v: 7px;
+  --px-tag-height: 38px;
+  --px-border: 5px;
+}
+
+.px-tag--small {
+  --px-tag-font-size: 12px;
+  --px-tag-padding-h: 8px;
+  --px-tag-padding-v: 3px;
+  --px-tag-height: 26px;
+  --px-border: 3px;
+}
+
+/* type */
+.px-tag--primary {
+  --px-tag-text-color: var(--px-color-white);
+  --px-tag-bg-color: var(--px-color-primary);
+}
+
+.px-tag--success {
+  --px-tag-text-color: var(--px-color-white);
+  --px-tag-bg-color: var(--px-color-success);
+}
+
+.px-tag--warning {
+  --px-tag-text-color: var(--px-color-white);
+  --px-tag-bg-color: var(--px-color-warning);
+}
+
+.px-tag--danger {
+  --px-tag-text-color: var(--px-color-white);
+  --px-tag-bg-color: var(--px-color-danger);
+}
+
+.px-tag--info {
+  --px-tag-text-color: var(--px-color-white);
+  --px-tag-bg-color: var(--px-color-info);
+}
+
+.px-tag--sakura {
+  --px-tag-text-color: var(--px-color-base);
+  --px-tag-bg-color: var(--px-color-sakura);
+}
+
+/* effect=plain */
+.px-tag--plain {
+  --px-tag-text-color: var(--px-color-base);
+  --px-tag-border-color: var(--px-color-base);
+  --px-tag-bg-color: var(--px-color-white);
+}
+
+.px-tag--plain.px-tag--primary {
+  --px-tag-text-color: var(--px-color-primary);
+  --px-tag-border-color: var(--px-color-primary);
+}
+
+.px-tag--plain.px-tag--success {
+  --px-tag-text-color: var(--px-color-success);
+  --px-tag-border-color: var(--px-color-success);
+}
+
+.px-tag--plain.px-tag--warning {
+  --px-tag-text-color: var(--px-color-warning);
+  --px-tag-border-color: var(--px-color-warning);
+}
+
+.px-tag--plain.px-tag--danger {
+  --px-tag-text-color: var(--px-color-danger);
+  --px-tag-border-color: var(--px-color-danger);
+}
+
+.px-tag--plain.px-tag--info {
+  --px-tag-text-color: var(--px-color-info);
+  --px-tag-border-color: var(--px-color-info);
+}
+
+.px-tag--plain.px-tag--sakura {
+  --px-tag-text-color: var(--px-color-sakura);
+  --px-tag-border-color: var(--px-color-sakura);
+}
+
+/* custom color */
+.px-tag.is-custom {
+  --px-tag-bg-color: var(--px-custom-bg-color, var(--px-tag-bg-color));
+  --px-tag-text-color: var(--px-custom-text-color, var(--px-tag-text-color));
+  --px-tag-border-color: var(--px-custom-border-color, var(--px-tag-border-color));
+  --px-bg-color: var(--px-custom-bg-color, var(--px-tag-bg-color));
+}
+
+/* plain+custom */
+.px-tag--plain.is-custom {
+  --px-tag-bg-color: var(--px-custom-bg-color, var(--px-color-white));
+  --px-tag-text-color: var(--px-custom-text-color, var(--px-color-base));
+  --px-tag-border-color: var(--px-custom-border-color, var(--px-color-base));
+  --px-bg-color: var(--px-custom-bg-color, var(--px-color-white));
+}
+
+/* diasbled */
+.px-tag.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* closable */
+.px-tag__close {
+  margin-left: 6px;
+  font-size: 120%;
+  font-style: normal;
+  line-height: 1;
+  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+  .px-tag__close-icon {
+    color: var(--px-tag-close-icon-color);
+  }
+}
+
+.px-tag.is-disabled .px-tag__close {
+  cursor: not-allowed;
+}
