@@ -14,7 +14,8 @@ import {
   PxPopconfirm,
   PxDropdown,
   PxDropdownItem,
-  PxImage
+  PxImage,
+  PxPixelIt
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -35,5 +36,6 @@ export default [
   PxPopconfirm,
   PxDropdown,
   PxDropdownItem,
-  PxImage
+  PxImage,
+  PxPixelIt
 ] as Plugin[]

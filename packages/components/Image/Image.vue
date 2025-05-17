@@ -22,9 +22,9 @@ const render = async () => {
   const canvas = canvasRef.value
   const img = await processor.loadImage(props.src)
   processor.processImage(canvas, img, {
-    blockSize: props.blockSize ?? 8,
-    colorCount: props.colorCount ?? 16,
-    showGrid: props.showGrid ?? false,
+    blockSize: props.blockSize,
+    colorCount: props.colorCount,
+    showGrid: props.showGrid,
     cwidth: props.width ?? 0,
     cheight: props.height ?? 0
   })

@@ -1,0 +1,9 @@
+.px-pixel-it {
+  display: inline-block;
+}
+.px-pixel-it__origin {
+  display: none;
+}
+canvas {
+  image-rendering: pixelated;
+}

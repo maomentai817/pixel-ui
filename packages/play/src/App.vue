@@ -41,6 +41,11 @@ const BTN = ref<ButtonInstance>()
 onMounted(() => {
   console.log(BTN.value?.ref)
 })
+
+const pixelitScale = ref(8)
+const pxImgBlockSize = ref(2)
+const pxImgColorCount = ref(32)
+const showGrid = ref(false)
 </script>
 
 <template>
@@ -537,11 +542,44 @@ onMounted(() => {
       </template>
     </px-dropdown>
   </div>
+  <label for="pxImgBlockSize">{{ pxImgBlockSize }}</label>
+  <input
+    type="range"
+    v-model="pxImgBlockSize"
+    :min="2"
+    :max="10"
+    :step="1"
+    id="pxImgBlockSize"
+  />
+  <label for="pxImgColorCount">{{ pxImgColorCount }}</label>
+  <input
+    type="range"
+    v-model="pxImgColorCount"
+    min="2"
+    max="64"
+    step="1"
+    id="pxImgColorCount"
+  />
+  <label for="showGrid">{{ showGrid }}</label>
+  <input type="checkbox" v-model="showGrid" id="showGrid" />
   <px-image
     src="/images/heart.jpg"
-    :block-size="5"
-    :color-count="11"
+    :block-size="8"
+    :color-count="pxImgColorCount"
+    :show-grid="showGrid"
   ></px-image>
+  <br />
+  <br />
+  <label for="pixelitScale">{{ pixelitScale }}</label>
+  <input
+    type="range"
+    v-model="pixelitScale"
+    min="2"
+    max="50"
+    step="1"
+    id="pixelitScale"
+  />
+  <px-pixel-it src="/images/heart.jpg" :scale="pixelitScale"></px-pixel-it>
   <div class="h-300"></div>
 </template>
 
