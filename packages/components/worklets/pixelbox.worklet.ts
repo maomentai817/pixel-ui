@@ -1,26 +1,29 @@
+import { getInt, getStr } from './utils'
+
+const PIXEL_BOX_PROPS = [
+  `--px-border`,
+  `--px-border-t`,
+  `--px-border-r`,
+  `--px-border-b`,
+  `--px-border-l`,
+  `--px-border-radius`,
+  `--px-border-radius-lt`,
+  `--px-border-radius-rt`,
+  `--px-border-radius-lb`,
+  `--px-border-radius-rb`,
+  `--px-border-color`,
+  `--px-bg-color`,
+  `--px-bg-shadow-border`,
+  `--px-bg-shadow-color`,
+  `--px-bg-shadow-position`,
+  `--px-button-group-flag`,
+  `--px-button-group-first`,
+  `--px-button-group-last`,
+  `--px-button-single`
+]
 export class PixelBox {
   static get inputProperties(): string[] {
-    return [
-      `--px-border`,
-      `--px-border-t`,
-      `--px-border-r`,
-      `--px-border-b`,
-      `--px-border-l`,
-      `--px-border-radius`,
-      `--px-border-radius-lt`,
-      `--px-border-radius-rt`,
-      `--px-border-radius-lb`,
-      `--px-border-radius-rb`,
-      `--px-border-color`,
-      `--px-bg-color`,
-      `--px-bg-shadow-border`,
-      `--px-bg-shadow-color`,
-      `--px-bg-shadow-position`,
-      `--px-button-group-flag`,
-      `--px-button-group-first`,
-      `--px-button-group-last`,
-      `--px-button-single`
-    ]
+    return PIXEL_BOX_PROPS
   }
 
   paint(
@@ -28,46 +31,36 @@ export class PixelBox {
     size: { width: number; height: number },
     props: StylePropertyMap
   ): void {
-    const pbBorder = parseInt(props.get(`--px-border`)?.toString() ?? '0') * 2
-    let pbBorderRadius = parseInt(
-      props.get(`--px-border-radius`)?.toString() ?? '0'
-    )
-    const pbBackgroundShadowBorder =
-      parseInt(props.get(`--px-bg-shadow-border`)?.toString() ?? '0') * 2
+    const pbBorder = getInt(props, '--px-border') * 2
 
-    const pbBackgroundShadowPosition =
-      props.get(`--px-bg-shadow-position`)?.toString().trim() || ''
-    const pbBorderColor =
-      props.get(`--px-border-color`)?.toString().trim() || ''
-    const pbBackgroundColor =
-      props.get(`--px-bg-color`)?.toString().trim() || ''
-    const pbBackgroundShadowColor =
-      props.get(`--px-bg-shadow-color`)?.toString().trim() || ''
+    let pbBorderRadius = getInt(props, '--px-border-radius')
+
+    const pbBackgroundShadowBorder = getInt(props, '--px-bg-shadow-border') * 2
+
+    const pbBackgroundShadowPosition = getStr(props, '--px-bg-shadow-position')
+
+    const pbBorderColor = getStr(props, '--px-border-color')
+
+    const pbBackgroundColor = getStr(props, '--px-bg-color')
+
+    const pbBackgroundShadowColor = getStr(props, '--px-bg-shadow-color')
 
     // button-group border-radius control
-    const lt = parseInt(props.get(`--px-border-radius-lt`)?.toString() ?? '0')
-    const rt = parseInt(props.get(`--px-border-radius-rt`)?.toString() ?? '0')
-    const lb = parseInt(props.get(`--px-border-radius-lb`)?.toString() ?? '0')
-    const rb = parseInt(props.get(`--px-border-radius-rb`)?.toString() ?? '0')
+    const lt = getInt(props, '--px-border-radius-lt')
+    const rt = getInt(props, '--px-border-radius-rt')
+    const lb = getInt(props, '--px-border-radius-lb')
+    const rb = getInt(props, '--px-border-radius-rb')
 
     // button-group border-width control
-    const pbBorderT = parseInt(props.get(`--px-border-t`)?.toString() ?? '0')
-    const pbBorderR = parseInt(props.get(`--px-border-r`)?.toString() ?? '0')
-    const pbBorderB = parseInt(props.get(`--px-border-b`)?.toString() ?? '0')
-    const pbBorderL = parseInt(props.get(`--px-border-l`)?.toString() ?? '0')
+    const pbBorderT = getInt(props, '--px-border-t')
+    const pbBorderR = getInt(props, '--px-border-r')
+    const pbBorderB = getInt(props, '--px-border-b')
+    const pbBorderL = getInt(props, '--px-border-l')
 
-    const buttonGroupFlag = parseInt(
-      props.get(`--px-button-group-flag`)?.toString() ?? '0'
-    )
-    const buttonGroupFirst = parseInt(
-      props.get(`--px-button-group-first`)?.toString() ?? '0'
-    )
-    const buttonGroupLast = parseInt(
-      props.get(`--px-button-group-last`)?.toString() ?? '0'
-    )
-    const buttonSingle = parseInt(
-      props.get(`--px-button-single`)?.toString() ?? '0'
-    )
+    const buttonGroupFlag = getInt(props, '--px-button-group-flag')
+    const buttonGroupFirst = getInt(props, '--px-button-group-first')
+    const buttonGroupLast = getInt(props, '--px-button-group-last')
+    const buttonSingle = getInt(props, '--px-button-single')
 
     ctx.fillStyle = pbBackgroundColor
 

@@ -1,15 +1,18 @@
 // pixelpanel.worklet.ts
+import { getInt, getStr } from './utils'
+
+const PIXEL_PANEL_PROPS = [
+  '--px-border',
+  '--px-border-color',
+  '--px-bg-color',
+  '--px-corner-size',
+  '--px-bg-shadow-color',
+  '--px-border-shadow'
+]
 
 export class PixelPanel implements PaintWorklet {
   static get inputProperties(): string[] {
-    return [
-      '--px-border',
-      '--px-border-color',
-      '--px-bg-color',
-      '--px-corner-size',
-      '--px-bg-shadow-color',
-      '--px-border-shadow'
-    ]
+    return PIXEL_PANEL_PROPS
   }
 
   paint(
@@ -17,16 +20,12 @@ export class PixelPanel implements PaintWorklet {
     size: { width: number; height: number },
     props: StylePropertyMap
   ): void {
-    const border = parseInt(props.get('--px-border')?.toString() ?? '0') || 0
-    const borderColor =
-      props.get('--px-border-color')?.toString().trim() ?? '#000'
-    const bgColor = props.get('--px-bg-color')?.toString().trim() ?? '#fff'
-    const cornerSize =
-      parseInt(props.get('--px-corner-size')?.toString() ?? '') || border
-    const bgShadowColor =
-      props.get('--px-bg-shadow-color')?.toString().trim() ?? 'transparent'
-    const borderShadow =
-      parseInt(props.get('--px-border-shadow')?.toString() ?? '') || border
+    const border = getInt(props, '--px-border')
+    const borderColor = getStr(props, '--px-border-color', '#000')
+    const bgColor = getStr(props, '--px-bg-color', '#fff')
+    const cornerSize = getInt(props, '--px-corner-size', border)
+    const bgShadowColor = getStr(props, '--px-bg-shadow-color', 'transparent')
+    const borderShadow = getInt(props, '--px-border-shadow', border)
 
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, size.width, size.height)

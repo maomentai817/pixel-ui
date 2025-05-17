@@ -1,13 +1,17 @@
+import { getInt, getStr } from './utils'
+
+const PIXEL_CONTENT_PROPS = [
+  '--px-border',
+  '--px-border-color',
+  '--px-bg-color',
+  '--px-corner-size',
+  '--px-bg-shadow-color',
+  '--px-border-shadow'
+]
+
 export class PixelContent implements PaintWorklet {
   static get inputProperties(): string[] {
-    return [
-      '--px-border',
-      '--px-border-color',
-      '--px-bg-color',
-      '--px-corner-size',
-      '--px-bg-shadow-color',
-      '--px-border-shadow'
-    ]
+    return PIXEL_CONTENT_PROPS
   }
 
   paint(
@@ -15,16 +19,12 @@ export class PixelContent implements PaintWorklet {
     size: { width: number; height: number },
     props: StylePropertyMap
   ): void {
-    const border = parseInt(props.get('--px-border')?.toString() || '0') || 0
-    const borderColor = props.get('--px-border-color')?.toString().trim() || ''
-    const bgColor =
-      props.get('--px-bg-color')?.toString().trim() || 'transparent'
-    const cornerSize =
-      parseInt(props.get('--px-corner-size')?.toString() || '0') || border
-    const bgShadowColor =
-      props.get('--px-bg-shadow-color')?.toString().trim() || ''
-    const borderShadow =
-      parseInt(props.get('--px-border-shadow')?.toString() || '0') || border
+    const border = getInt(props, '--px-border')
+    const borderColor = getStr(props, '--px-border-color')
+    const bgColor = getStr(props, '--px-bg-color', 'transparent')
+    const cornerSize = getInt(props, '--px-corner-size', border)
+    const bgShadowColor = getStr(props, '--px-bg-shadow-color')
+    const borderShadow = getInt(props, '--px-border-shadow', border)
 
     ctx.fillStyle = 'transparent'
     ctx.fillRect(0, 0, size.width, size.height)
