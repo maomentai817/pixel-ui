@@ -1,4 +1,18 @@
-import { getStr, getFloat } from './utils'
+const getFloat = (
+  props: StylePropertyMap,
+  name: string,
+  fallback = 0
+): number => {
+  return parseFloat(props.get(name)?.toString() ?? `${fallback}`)
+}
+
+const getStr = (
+  props: StylePropertyMap,
+  name: string,
+  fallback = ''
+): string => {
+  return props.get(name)?.toString().trim() ?? fallback
+}
 
 const PIXEL_STRIPE_PROPS = [
   '--px-stripe-size',
