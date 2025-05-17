@@ -29,16 +29,16 @@ export interface PixelItProps {
   grayscale?: boolean
   /**
    * @property width
-   * @type number
+   * @type {number | string}
    * @description 宽度(px)
    * @default -
    */
-  width?: number
+  width?: number | string
   /**
    * @property height
-   * @type number
+   * @type {number | string}
    * @description 高度(px)
    * @default -
    */
-  height?: number
+  height?: number | string
 }

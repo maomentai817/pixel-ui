@@ -1,18 +1,18 @@
 export interface ImageProps {
   /**
    * @property width
-   * @type number
+   * @type {number | string}
    * @description 宽度(px)
    * @default -
    */
-  width?: number
+  width?: number | string
   /**
    * @property height
-   * @type number
+   * @type {number | string}
    * @description 高度(px)
    * @default -
    */
-  height?: number
+  height?: number | string
   /**
    * @property src
    * @type string
@@ -22,18 +22,18 @@ export interface ImageProps {
   src: string
   /**
    * @property blockSize
-   * @type number
+   * @type {number | string}
    * @description 块大小
    * @default 2
    */
-  blockSize?: number
+  blockSize?: number | string
   /**
    * @property colorCount
-   * @type number
+   * @type {number | string}
    * @description 颜色数量
    * @default 32
    */
-  colorCount?: number
+  colorCount?: number | string
   /**
    * @property showGrid
    * @type boolean

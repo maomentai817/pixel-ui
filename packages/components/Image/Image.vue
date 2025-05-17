@@ -22,14 +22,13 @@ const render = async () => {
   const canvas = canvasRef.value
   const img = await processor.loadImage(props.src)
   processor.processImage(canvas, img, {
-    blockSize: props.blockSize,
-    colorCount: props.colorCount,
+    blockSize: +props.blockSize,
+    colorCount: +props.colorCount,
     showGrid: props.showGrid,
-    cwidth: props.width ?? 0,
-    cheight: props.height ?? 0
+    cwidth: Number(props.width) ?? 0,
+    cheight: Number(props.height) ?? 0
   })
 }
-
 onMounted(render)
 watch(() => props.src, render)
 watch(() => [props.blockSize, props.colorCount, props.showGrid], render)

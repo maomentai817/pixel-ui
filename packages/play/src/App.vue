@@ -43,7 +43,7 @@ onMounted(() => {
 })
 
 const pixelitScale = ref(8)
-const pxImgBlockSize = ref(2)
+const pxImgBlockSize = ref(6)
 const pxImgColorCount = ref(32)
 const showGrid = ref(false)
 </script>
@@ -542,16 +542,8 @@ const showGrid = ref(false)
       </template>
     </px-dropdown>
   </div>
-  <label for="pxImgBlockSize">{{ pxImgBlockSize }}</label>
-  <input
-    type="range"
-    v-model="pxImgBlockSize"
-    :min="2"
-    :max="10"
-    :step="1"
-    id="pxImgBlockSize"
-  />
-  <label for="pxImgColorCount">{{ pxImgColorCount }}</label>
+  <span>{{ pxImgBlockSize }}</span>
+  <input type="range" v-model="pxImgBlockSize" min="1" max="20" />
   <input
     type="range"
     v-model="pxImgColorCount"
@@ -564,7 +556,7 @@ const showGrid = ref(false)
   <input type="checkbox" v-model="showGrid" id="showGrid" />
   <px-image
     src="/images/heart.jpg"
-    :block-size="8"
+    :block-size="pxImgBlockSize"
     :color-count="pxImgColorCount"
     :show-grid="showGrid"
   ></px-image>

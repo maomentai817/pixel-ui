@@ -27,8 +27,8 @@ const render = async () => {
     to: canvasRef.value,
     scale: props.scale,
     palette: props.palette,
-    width: props.width,
-    height: props.height
+    width: Number(props.width),
+    height: Number(props.height)
   })
 
   pixelit.draw().pixelate()
