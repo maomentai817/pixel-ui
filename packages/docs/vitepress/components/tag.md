@@ -28,9 +28,9 @@ demo-preview=../demo/Tag/Size.vue
 
 ## 主题
 
-Tag 组件提供了两种主题：`filled`（填充）和 `plain`（描边）。
+Tag 组件提供了三种主题：`light` (亮色), `dark` (暗色), `plain` (描边)
 
-通过设置 `effect` 属性来改变主题, 默认为 `filled`。
+通过设置 `effect` 属性来改变主题, 默认为 `light`。
 
 :::preview
 demo-preview=../demo/Tag/Effect.vue

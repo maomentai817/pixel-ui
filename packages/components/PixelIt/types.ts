@@ -1,3 +1,5 @@
+import type { Ref } from 'vue'
+
 export interface PixelItProps {
   /**
    * @property src
@@ -41,4 +43,31 @@ export interface PixelItProps {
    * @default -
    */
   height?: number | string
+}
+
+export interface PixelItInstance {
+  /**
+   * @property render
+   * @description 渲染图片
+   */
+  render: () => Promise<void>
+  /**
+   * @property originRef
+   * @description 原始图片的引用
+   */
+  originRef: Ref<HTMLImageElement | undefined>
+}
+export interface PixelItExpose {
+  /**
+   * @property render
+   * @description 渲染图片
+   * @type Function - ()=>Promise<void>
+   */
+  render: () => Promise<void>
+  /**
+   * @property originRef
+   * @description 原始图片的引用
+   * @type {Ref<HTMLImageElement | undefined>}
+   */
+  originRef: Ref<HTMLImageElement | undefined>
 }

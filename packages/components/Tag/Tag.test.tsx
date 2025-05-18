@@ -48,7 +48,7 @@ describe('Tag', () => {
   })
 
   it('should render different effects of tags', () => {
-    const effects: TagEffect[] = ['plain', 'filled']
+    const effects: TagEffect[] = ['plain', 'light', 'dark']
 
     effects.forEach((effect) => {
       const wrapper = mount(Tag, {

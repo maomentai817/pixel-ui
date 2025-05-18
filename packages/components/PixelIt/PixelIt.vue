@@ -2,7 +2,7 @@
 import { ref, watch, onMounted } from 'vue'
 import Pixelit from './pixelit'
 
-import type { PixelItProps } from './types'
+import type { PixelItProps, PixelItInstance } from './types'
 
 const COMP_NAME = 'PxPixelIt'
 defineOptions({
@@ -35,6 +35,8 @@ const render = async () => {
   if (props.grayscale) pixelit.convertGrayscale()
   if (props.palette) pixelit.convertPalette()
 }
+
+defineExpose<PixelItInstance>({ render, originRef })
 
 watch(
   () => [
