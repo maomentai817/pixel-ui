@@ -3,8 +3,8 @@ title: AnimationFrame
 description: AnimationFrame 组件文档
 
 next:
-  link: /components/alert
-  text: 不知道喵
+  link: /components/image
+  text: Image 图片像素化
 
 prev:
   link: /components/tooltip

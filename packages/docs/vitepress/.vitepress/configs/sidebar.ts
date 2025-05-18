@@ -53,6 +53,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     base: "/components/",
     items: [
       { text: "AnimationFrame", link: "animationFrame" },
+      { text: "Image", link: "image" },
+      { text: "PixelIt", link: "pixelit" },
     ]
   },
 ]

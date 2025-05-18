@@ -146,6 +146,7 @@
 /* disabled */
 .px-button.is-disabled {
   cursor: not-allowed;
+  opacity: 0.8;
   --px-button-text-color: var(--px-color-white);
   --px-bg-color: var(--px-color-info);
   --px-button-bg-shadow-color: var(--px-color-info-dark-2);

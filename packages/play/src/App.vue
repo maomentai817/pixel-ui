@@ -43,7 +43,7 @@ onMounted(() => {
 })
 
 const pixelitScale = ref(8)
-const pxImgBlockSize = ref(6)
+const pxImgBlockSize = ref(2)
 const pxImgColorCount = ref(32)
 const showGrid = ref(false)
 </script>
@@ -567,7 +567,9 @@ const showGrid = ref(false)
   <label for="showGrid">{{ showGrid }}</label>
   <input type="checkbox" v-model="showGrid" id="showGrid" />
   <px-image
-    src="/images/heart.jpg"
+    src="/images/dazuo.png"
+    width="512"
+    height="512"
     :block-size="pxImgBlockSize"
     :color-count="pxImgColorCount"
     :show-grid="showGrid"
@@ -584,6 +586,7 @@ const showGrid = ref(false)
     id="pixelitScale"
   />
   <px-pixel-it src="/images/heart.jpg" :scale="pixelitScale"></px-pixel-it>
+  <!-- <px-image src="/images/Starbucks.png" :block-size="1" :color-count="8" /> -->
   <div class="h-300"></div>
 </template>
 
