@@ -187,6 +187,47 @@ export function usePixelProcessor() {
     }
   }
 
+  const getMostFrequentColor = (
+    imageData: ImageData,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    blockSize: number
+  ) => {
+    const { data } = imageData
+    const colorMap = new Map<string, { count: number; rgba: number[] }>()
+
+    const endY = Math.min(y + blockSize, height)
+    const endX = Math.min(x + blockSize, width)
+
+    for (let py = y; py < endY; py++) {
+      for (let px = x; px < endX; px++) {
+        const idx = (py * width + px) * 4
+        const rgba = [data[idx], data[idx + 1], data[idx + 2], data[idx + 3]]
+        const colorKey = rgba.join(',')
+
+        if (colorMap.has(colorKey)) {
+          colorMap.get(colorKey)!.count++
+        } else {
+          colorMap.set(colorKey, { count: 1, rgba })
+        }
+      }
+    }
+
+    let maxCount = 0
+    let mostFrequentColor = [0, 0, 0, 0]
+
+    colorMap.forEach(({ count, rgba }) => {
+      if (count > maxCount) {
+        maxCount = count
+        mostFrequentColor = rgba
+      }
+    })
+
+    return mostFrequentColor
+  }
+
   const processImage = (
     canvas: HTMLCanvasElement,
     image: HTMLImageElement,
@@ -215,29 +256,22 @@ export function usePixelProcessor() {
     // Pixelation
     for (let y = 0; y < height; y += blockSize) {
       for (let x = 0; x < width; x += blockSize) {
-        let r = 0,
-          g = 0,
-          b = 0,
-          a = 0,
-          count = 0
+        const mostFrequentColor = getMostFrequentColor(
+          imageData,
+          x,
+          y,
+          width,
+          height,
+          blockSize
+        )
+
         for (let by = 0; by < blockSize && y + by < height; by++) {
           for (let bx = 0; bx < blockSize && x + bx < width; bx++) {
             const idx = ((y + by) * width + (x + bx)) * 4
-            r += imageData.data[idx]
-            g += imageData.data[idx + 1]
-            b += imageData.data[idx + 2]
-            a += imageData.data[idx + 3]
-            count++
-          }
-        }
-        const avg = [r, g, b, a].map((v) => Math.round(v / count))
-        for (let by = 0; by < blockSize && y + by < height; by++) {
-          for (let bx = 0; bx < blockSize && x + bx < width; bx++) {
-            const idx = ((y + by) * width + (x + bx)) * 4
-            imageData.data[idx] = avg[0]
-            imageData.data[idx + 1] = avg[1]
-            imageData.data[idx + 2] = avg[2]
-            imageData.data[idx + 3] = avg[3]
+            imageData.data[idx] = mostFrequentColor[0]
+            imageData.data[idx + 1] = mostFrequentColor[1]
+            imageData.data[idx + 2] = mostFrequentColor[2]
+            imageData.data[idx + 3] = mostFrequentColor[3]
           }
         }
       }
