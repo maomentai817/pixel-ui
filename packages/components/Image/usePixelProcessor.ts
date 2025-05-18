@@ -81,18 +81,40 @@ export function usePixelProcessor() {
     }
 
     computeMinMax() {
-      const ranges = [0, 1, 2, 3].map((i) => {
-        const values = this.pixels.map((p) => p[i])
-        return Math.max(...values) - Math.min(...values)
-      })
-      this.largestRange = Math.max(...ranges)
-      this.splitChannel = ranges.indexOf(this.largestRange)
+      const min = [255, 255, 255, 255]
+      const max = [0, 0, 0, 0]
+
+      for (const [r, g, b, a] of this.pixels) {
+        min[0] = Math.min(min[0], r)
+        min[1] = Math.min(min[1], g)
+        min[2] = Math.min(min[2], b)
+        min[3] = Math.min(min[3], a)
+
+        max[0] = Math.max(max[0], r)
+        max[1] = Math.max(max[1], g)
+        max[2] = Math.max(max[2], b)
+        max[3] = Math.max(max[3], a)
+      }
+
+      const ranges = max.map((v, i) => v - min[i])
+      const maxRange = Math.max(...ranges)
+
+      this.largestRange = maxRange
+      this.splitChannel = ranges.indexOf(maxRange)
     }
 
     split(): ColorBox[] | null {
       if (this.pixels.length < 2) return null
+
+      // 添加分割安全校验
       const ch = this.splitChannel
       this.pixels.sort((a, b) => a[ch] - b[ch])
+
+      // 检查是否所有元素相同
+      const firstVal = this.pixels[0][ch]
+      const allSame = this.pixels.every((p) => p[ch] === firstVal)
+      if (allSame) return null
+
       const mid = Math.floor(this.pixels.length / 2)
       return [
         new ColorBox(this.pixels.slice(0, mid), this.level + 1),
@@ -118,13 +140,16 @@ export function usePixelProcessor() {
     }
 
     let boxes: ColorBox[] = [new ColorBox(pixels)]
-    while (boxes.length < colorCount) {
+    let safeCounter = 0
+    const MAX_ITERATIONS = 1000
+    while (boxes.length < colorCount && safeCounter++ < MAX_ITERATIONS) {
       const boxToSplit = boxes.reduce((a, b) =>
         a.largestRange > b.largestRange ? a : b
       )
+
       boxes = boxes.filter((b) => b !== boxToSplit)
       const newBoxes = boxToSplit.split()
-      if (!newBoxes) break
+      if (!newBoxes || newBoxes.length === 0) break
       boxes.push(...newBoxes)
     }
 
