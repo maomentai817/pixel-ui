@@ -17,7 +17,7 @@ const containerRef = ref<HTMLElement>()
 const isDragging = ref(false)
 const divider = ref(50) // 中线百分比位置
 const sliderWidth = 4
-const paddingWidth = 20
+const marginWidth = 20
 
 const clipStyle = computed(() => ({
   clipPath: `inset(0 0 0 ${divider.value}%)`
@@ -49,51 +49,55 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    ref="containerRef"
-    class="image-compare-container relative overflow-hidden border rounded box-content"
-    :style="{
-      width: `${addUnit(props.width)}`,
-      height: `${addUnit(props.height)}`,
-      padding: `${paddingWidth}px`
-    }"
-  >
-    <!-- 原图层 -->
-    <img
-      :src="props.src"
-      alt="original"
-      class="absolute object-cover"
+  <div class="image-compare-container">
+    <div
+      ref="containerRef"
+      class="relative border rounded"
       :style="{
-        top: `${paddingWidth}px`,
-        left: `${paddingWidth}px`,
         width: `${addUnit(props.width)}`,
-        height: `${addUnit(props.height)}`
+        height: `${addUnit(props.height)}`,
+        margin: `${addUnit(marginWidth)}`
       }"
-    />
-
-    <!-- px-image 裁剪层 -->
-    <div
-      class="absolute"
-      :style="clipStyle"
     >
-      <px-image
+      <!-- 原图层 -->
+      <img
         :src="props.src"
-        :width="props.width"
-        :height="props.height"
-        :block-size="props.blockSize"
-        :color-count="props.colorCount"
-        :show-grid="props.showGrid"
-        class="object-cover"
+        alt="original"
+        class="absolute object-cover select-none pointer-events-none"
+        :style="{
+          width: `${addUnit(props.width)}`,
+          height: `${addUnit(props.height)}`
+        }"
       />
-    </div>
 
-    <!-- 拖动条 -->
-    <div
-      class="slider absolute top-0 bottom-0 z-10 cursor-col-resize bg-#554562"
-      :style="{ left: `calc(${divider}% - ${sliderWidth / 2}px)`, width: `${sliderWidth}px` }"
-      @mousedown="startDrag"
-    >
-      <px-button class="slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-16 m-0" />
+      <!-- px-image 裁剪层 -->
+      <div class="absolute" :style="clipStyle">
+        <px-image
+          :src="props.src"
+          :width="props.width"
+          :height="props.height"
+          :block-size="props.blockSize"
+          :color-count="props.colorCount"
+          :show-grid="props.showGrid"
+          class="object-cover"
+        />
+      </div>
+
+      <!-- 拖动条 -->
+      <div
+        class="slider absolute top-0 bottom-0 z-10 cursor-col-resize bg-#554562"
+        :style="{
+          top: `-${marginWidth}px`,
+          left: `calc(${divider}% - ${sliderWidth / 2}px)`,
+          width: `${addUnit(sliderWidth)}`,
+          height: `calc(100% + ${2 * marginWidth}px)`
+        }"
+        @mousedown="startDrag"
+      >
+        <px-button
+          class="slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-16 m-0!"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -118,8 +122,7 @@ onUnmounted(() => {
 .slider .slider-handle {
   --px-button-text-color: #554562;
   --px-border-color: #554562;
-  --px-bg-color: #fadbe0;
+  --px-bg-color: #fadbe0 !important;
   --px-bg-shadow-color: #eaadbd;
 }
 </style>
-
