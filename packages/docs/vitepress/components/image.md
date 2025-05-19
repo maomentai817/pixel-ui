@@ -19,6 +19,35 @@ prev:
 
 通过 `src` 属性指定图片路径, 组件会在 Canvas 上渲染像素滤镜效果
 
+:::tip
+当前组件提供 `width`、`height` 来设置 Canvas 及组件盒子的宽高, 默认为图片的宽高。但由于缩放渲染问题, 宽高设置过小可能会导致图片模糊, 请酌情使用或按比例缩放
+:::
+
 :::preview
 demo-preview=../demo/Image/Basic.vue
+:::
+
+## 自定义参数
+
+你可以通过调整 `block-size`、`color-count` 等属性来自定义像素滤镜的效果
+
+:::preview
+demo-preview=../demo/Image/Custom.vue
+:::
+
+## 网格模式
+
+通过设置 `showGrid` 控制是否显示 canvas 网格
+
+:::preview
+demo-preview=../demo/Image/Grid.vue
+:::
+
+## API_Table插件测试
+
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
+
+::: api-table src=components/Image/types.ts
 :::

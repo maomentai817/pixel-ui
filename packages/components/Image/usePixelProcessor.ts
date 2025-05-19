@@ -285,6 +285,7 @@ export function usePixelProcessor() {
 
   return {
     loadImage,
-    processImage
+    processImage,
+    calculateScaledDimensions
   }
 }

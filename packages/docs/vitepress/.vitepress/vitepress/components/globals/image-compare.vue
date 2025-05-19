@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { addUnit } from '@pixel-ui/utils'
+import type { ImageInstance } from '@mmt817/pixel-ui'
 
 interface ImageCompareProps {
   src: string
@@ -18,6 +19,14 @@ const isDragging = ref(false)
 const divider = ref(50) // 中线百分比位置
 const sliderWidth = 4
 const marginWidth = 20
+const pxImageRef = ref<ImageInstance>()
+const pxImageSize = ref({ width: 0, height: 0 })
+const onPxImageReady = (size: { width: number; height: number }) => {
+  pxImageSize.value = {
+    width: Number(props.width) || size.width,
+    height: Number(props.height) || size.height,
+  }
+}
 
 const clipStyle = computed(() => ({
   clipPath: `inset(0 0 0 ${divider.value}%)`
@@ -54,8 +63,8 @@ onUnmounted(() => {
       ref="containerRef"
       class="relative border rounded"
       :style="{
-        width: `${addUnit(props.width)}`,
-        height: `${addUnit(props.height)}`,
+        width: `${addUnit(pxImageSize.width)}`,
+        height: `${addUnit(pxImageSize.height)}`,
         margin: `${addUnit(marginWidth)}`
       }"
     >
@@ -65,8 +74,8 @@ onUnmounted(() => {
         alt="original"
         class="absolute object-cover select-none pointer-events-none"
         :style="{
-          width: `${addUnit(props.width)}`,
-          height: `${addUnit(props.height)}`
+          width: `${addUnit(pxImageSize.width)}`,
+          height: `${addUnit(pxImageSize.height)}`
         }"
       />
 
@@ -74,12 +83,14 @@ onUnmounted(() => {
       <div class="absolute" :style="clipStyle">
         <px-image
           :src="props.src"
-          :width="props.width"
-          :height="props.height"
+          :width="pxImageSize.width"
+          :height="pxImageSize.height"
           :block-size="props.blockSize"
           :color-count="props.colorCount"
           :show-grid="props.showGrid"
           class="object-cover"
+          ref="pxImageRef"
+          @ready="onPxImageReady"
         />
       </div>
 
