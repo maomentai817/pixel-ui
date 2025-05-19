@@ -15,10 +15,7 @@ export function usePixelProcessor() {
     maxWidth = 800,
     maxHeight = 600
   ) => {
-    let scale = 1
-    if (width > maxWidth || height > maxHeight) {
-      scale = Math.min(maxWidth / width, maxHeight / height)
-    }
+    const scale = Math.min(1, maxWidth / width, maxHeight / height)
     return {
       width: Math.floor(width * scale),
       height: Math.floor(height * scale)
@@ -27,148 +24,121 @@ export function usePixelProcessor() {
 
   const detectBackgroundColor = (imageData: ImageData): number[] => {
     const { data, width, height } = imageData
-    const corners = [
+    // 增加边缘采样点
+    const points = [
       0,
-      (height - 1) * width * 4,
       (width - 1) * 4,
-      (width * height - 1) * 4
+      (height - 1) * width * 4,
+      (width * height - 1) * 4,
+      (Math.floor(height / 2) * width + Math.floor(width / 2)) * 4
     ]
-    let r = 0,
-      g = 0,
-      b = 0,
-      a = 0
-    for (const idx of corners) {
-      r += data[idx]
-      g += data[idx + 1]
-      b += data[idx + 2]
-      a += data[idx + 3]
+    const colorSum = [0, 0, 0, 0]
+    for (const i of points) {
+      for (let j = 0; j < 4; j++) colorSum[j] += data[i + j]
     }
-    return [r / 4, g / 4, b / 4, a / 4].map(Math.round)
+    return colorSum.map((v) => Math.round(v / points.length))
   }
 
   const removeAntiAliasing = (
     imageData: ImageData,
-    bgColor: number[],
-    threshold = 30
+    bg: number[],
+    threshold = 40
   ) => {
     const { data } = imageData
+    const sqThreshold = threshold * threshold
     for (let i = 0; i < data.length; i += 4) {
-      const d = Math.sqrt(
-        (data[i] - bgColor[0]) ** 2 +
-          (data[i + 1] - bgColor[1]) ** 2 +
-          (data[i + 2] - bgColor[2]) ** 2 +
-          (data[i + 3] - bgColor[3]) ** 2
-      )
-      if (d < threshold) {
-        data[i] = bgColor[0]
-        data[i + 1] = bgColor[1]
-        data[i + 2] = bgColor[2]
-        data[i + 3] = bgColor[3]
+      const diff =
+        (data[i] - bg[0]) ** 2 +
+        (data[i + 1] - bg[1]) ** 2 +
+        (data[i + 2] - bg[2]) ** 2
+
+      if (diff < sqThreshold && data[i + 3] < 255) {
+        for (let j = 0; j < 4; j++) data[i + j] = bg[j]
       }
     }
   }
 
   class ColorBox {
-    pixels: number[][]
-    level: number
-    splitChannel = 0
-    largestRange = 0
-
-    constructor(pixels: number[][], level = 0) {
-      this.pixels = pixels
-      this.level = level
-      this.computeMinMax()
+    constructor(
+      public _pixels: number[][],
+      public _level = 0
+    ) {
+      this.compute()
     }
 
-    computeMinMax() {
+    splitChannel = 0
+    compute() {
       const min = [255, 255, 255, 255]
       const max = [0, 0, 0, 0]
-
-      for (const [r, g, b, a] of this.pixels) {
-        min[0] = Math.min(min[0], r)
-        min[1] = Math.min(min[1], g)
-        min[2] = Math.min(min[2], b)
-        min[3] = Math.min(min[3], a)
-
-        max[0] = Math.max(max[0], r)
-        max[1] = Math.max(max[1], g)
-        max[2] = Math.max(max[2], b)
-        max[3] = Math.max(max[3], a)
+      for (const p of this._pixels) {
+        for (let i = 0; i < 4; i++) {
+          min[i] = Math.min(min[i], p[i])
+          max[i] = Math.max(max[i], p[i])
+        }
       }
-
-      const ranges = max.map((v, i) => v - min[i])
-      const maxRange = Math.max(...ranges)
-
-      this.largestRange = maxRange
-      this.splitChannel = ranges.indexOf(maxRange)
+      const range = max.map((v, i) => v - min[i])
+      this.splitChannel = range.indexOf(Math.max(...range))
     }
 
     split(): ColorBox[] | null {
-      if (this.pixels.length < 2) return null
-
-      // 添加分割安全校验
+      if (this._pixels.length < 2) return null
       const ch = this.splitChannel
-      this.pixels.sort((a, b) => a[ch] - b[ch])
-
-      // 检查是否所有元素相同
-      const firstVal = this.pixels[0][ch]
-      const allSame = this.pixels.every((p) => p[ch] === firstVal)
-      if (allSame) return null
-
-      const mid = Math.floor(this.pixels.length / 2)
+      const sorted = [...this._pixels].sort((a, b) => a[ch] - b[ch])
+      const mid = Math.floor(sorted.length / 2)
+      if (mid === 0 || mid === sorted.length) return null
       return [
-        new ColorBox(this.pixels.slice(0, mid), this.level + 1),
-        new ColorBox(this.pixels.slice(mid), this.level + 1)
+        new ColorBox(sorted.slice(0, mid), this._level + 1),
+        new ColorBox(sorted.slice(mid), this._level + 1)
       ]
     }
 
     getAverageColor(): number[] {
-      const sum = [0, 0, 0, 0]
-      for (const p of this.pixels) {
-        p.forEach((v, i) => (sum[i] += v))
+      const total = [0, 0, 0, 0]
+      const count = this._pixels.length
+      for (const p of this._pixels) {
+        for (let i = 0; i < 4; i++) total[i] += p[i]
       }
-      return sum.map((v) => Math.round(v / this.pixels.length))
+      return total.map((v) => Math.round(v / count))
     }
   }
 
   const medianCutQuantization = (imageData: ImageData, colorCount: number) => {
     const pixels: number[][] = []
     const { data } = imageData
-
     for (let i = 0; i < data.length; i += 4) {
       pixels.push([data[i], data[i + 1], data[i + 2], data[i + 3]])
     }
 
-    let boxes: ColorBox[] = [new ColorBox(pixels)]
-    let safeCounter = 0
-    const MAX_ITERATIONS = 1000
-    while (boxes.length < colorCount && safeCounter++ < MAX_ITERATIONS) {
-      const boxToSplit = boxes.reduce((a, b) =>
-        a.largestRange > b.largestRange ? a : b
-      )
-
-      boxes = boxes.filter((b) => b !== boxToSplit)
-      const newBoxes = boxToSplit.split()
-      if (!newBoxes || newBoxes.length === 0) break
-      boxes.push(...newBoxes)
+    const boxes = [new ColorBox(pixels)]
+    const maxIterations = 1000
+    let count = 0
+    while (boxes.length < colorCount && count++ < maxIterations) {
+      boxes.sort((a, b) => b._pixels.length - a._pixels.length)
+      const box = boxes.shift()!
+      const result = box.split()
+      if (!result) {
+        boxes.push(box)
+        break
+      }
+      boxes.push(...result)
     }
 
-    const palette = boxes.map((box) => box.getAverageColor())
+    const palette = boxes.map((b) => b.getAverageColor())
+
     for (let i = 0; i < data.length; i += 4) {
-      const pixel = [data[i], data[i + 1], data[i + 2], data[i + 3]]
-      let closest = palette[0]
       let minDist = Infinity
+      let best = palette[0]
       for (const color of palette) {
-        const d = color.reduce((sum, v, i) => sum + (v - pixel[i]) ** 2, 0)
-        if (d < minDist) {
-          minDist = d
-          closest = color
+        const dist = color.reduce(
+          (sum, v, idx) => sum + (v - data[i + idx]) ** 2,
+          0
+        )
+        if (dist < minDist) {
+          minDist = dist
+          best = color
         }
       }
-      data[i] = closest[0]
-      data[i + 1] = closest[1]
-      data[i + 2] = closest[2]
-      data[i + 3] = closest[3]
+      for (let j = 0; j < 4; j++) data[i + j] = best[j]
     }
   }
 
@@ -182,7 +152,7 @@ export function usePixelProcessor() {
     ctx.lineWidth = 1
     for (let y = 0; y < height; y += blockSize) {
       for (let x = 0; x < width; x += blockSize) {
-        ctx.strokeRect(x, y, blockSize, blockSize)
+        ctx.strokeRect(x + 0.5, y + 0.5, blockSize, blockSize)
       }
     }
   }

@@ -21,8 +21,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const blockSize = ref(4)
-const colorCount = ref(36)
+const blockSize = ref(5)
+const colorCount = ref(35)
 
 const decreaseBlock = () => {
   blockSize.value = Math.max(blockSize.value - 1, 2)
