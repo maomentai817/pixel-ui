@@ -52,9 +52,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     collapsed: false,
     base: "/components/",
     items: [
-      { text: "AnimationFrame", link: "animationFrame" },
-      { text: "Image", link: "image" },
-      { text: "PixelIt", link: "pixelit" },
+      { text: "AnimationFrame 动画帧", link: "animationFrame" },
+      { text: "Image 像素滤镜", link: "image" },
+      { text: "PixelIt 像素化", link: "pixelit" },
     ]
   },
 ]

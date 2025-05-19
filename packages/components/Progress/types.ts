@@ -84,6 +84,13 @@ export interface ProgressProps {
    */
   checker?: boolean
   /**
+   * @property blockSize
+   * @type number
+   * @description 像素块大小, 仅在开启条纹或棋盘时生效
+   * @default 4
+   */
+  blockSize?: number
+  /**
    * @property format
    * @type Function - (percentage: number) => string
    * @description 进度条文本回调

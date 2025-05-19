@@ -3,7 +3,16 @@ const getFloat = (
   name: string,
   fallback = 0
 ): number => {
-  return parseFloat(props.get(name)?.toString() ?? `${fallback}`)
+  return parseFloat(props.get(name)?.toString() || `${fallback}`)
+}
+
+const getInt = (
+  props: StylePropertyMap,
+  name: string,
+  fallback = 0
+): number => {
+  const val = parseInt(props.get(name)?.toString() || '')
+  return isNaN(val) ? fallback : val
 }
 
 const getStr = (
@@ -11,7 +20,7 @@ const getStr = (
   name: string,
   fallback = ''
 ): string => {
-  return props.get(name)?.toString().trim() ?? fallback
+  return props.get(name)?.toString().trim() || fallback
 }
 
 const PIXEL_STRIPE_PROPS = [
@@ -38,8 +47,7 @@ export class PixelStripe implements PaintWorklet {
     const offset = getFloat(props, '--px-stripe-offset')
     const ratio = getFloat(props, '--px-stripe-ratio', 0.5)
     const mode = getStr(props, '--px-stripe-mode', 'stripe')
-    const unitSizeRaw = getStr(props, '--px-stripe-size', '4')
-    const unitSize = parseInt(unitSizeRaw, 10) || 4
+    const unitSize = getInt(props, '--px-stripe-size', 4)
 
     ctx.imageSmoothingEnabled = false
 

@@ -21,7 +21,8 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   showText: true,
   striped: false,
   stripedFlow: false,
-  checker: false
+  checker: false,
+  blockSize: 4
 })
 
 const content = computed(() => {
@@ -50,6 +51,7 @@ const progressBarInnerStyle = computed(() => {
   const style: Record<string, string> = {
     width: `${props.percentage}%`,
     '--px-progress-bar-duration': `${props.duration}s`,
+    '--px-stripe-size': `${props.blockSize}`,
     transition: 'width .4s ease'
   }
 

@@ -3,7 +3,7 @@ const getInt = (
   name: string,
   fallback = 0
 ): number => {
-  return parseInt(props.get(name)?.toString() ?? `${fallback}`)
+  return parseInt(props.get(name)?.toString() || `${fallback}`)
 }
 
 const getStr = (
@@ -11,7 +11,7 @@ const getStr = (
   name: string,
   fallback = ''
 ): string => {
-  return props.get(name)?.toString().trim() ?? fallback
+  return props.get(name)?.toString().trim() || fallback
 }
 
 const PIXEL_PANEL_PROPS = [
