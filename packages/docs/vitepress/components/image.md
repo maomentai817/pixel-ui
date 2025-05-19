@@ -43,6 +43,14 @@ demo-preview=../demo/Image/Custom.vue
 demo-preview=../demo/Image/Grid.vue
 :::
 
+## 在线体验
+
+提供在线演练场, 上传图片, 快速体验
+
+:::preview
+demo-preview=../demo/Image/Playground.vue
+:::
+
 ## API_Table插件测试
 
 :::danger

@@ -1,4 +1,20 @@
 <template>
+  <div class="upload f-c mb-20">
+    <px-button type="sakura" @click="uploadImg">
+      Upload
+      <px-icon icon="upload-alt-solid" color="#554562" />
+    </px-button>
+    <input
+      ref="fileInputRef"
+      type="file"
+      accept="image/*"
+      class="hidden"
+      @change="handleFileChange"
+    />
+  </div>
+  <div class="mb-20 f-c">
+    <px-button @click="showGrid = !showGrid" type="sakura">grid</px-button>
+  </div>
   <div class="f-c mb-20">
     <px-text class="w-200" tag="div">BlockSize:{{ blockSize }}</px-text>
     <px-button icon="minus-solid" @click="decreaseBlock"></px-button>
@@ -11,9 +27,10 @@
   </div>
   <div class="px-image-container f-c">
     <image-compare
-      src="/pixel-ui/images/xtaffy.png"
+      :src="pxImageSrc"
       :block-size="blockSize"
       :color-count="colorCount"
+      :show-grid="showGrid"
     />
   </div>
 </template>
@@ -35,5 +52,22 @@ const decreaseColor = () => {
 }
 const increaseColor = () => {
   colorCount.value = Math.min(colorCount.value + 1, 64)
+}
+
+const showGrid = ref(true)
+const pxImageSrc = ref('/pixel-ui/images/Starbucks.png')
+
+const fileInputRef = ref<HTMLInputElement>()
+const uploadImg = () => {
+  fileInputRef.value?.click()
+}
+
+const handleFileChange = (e: Event) => {
+  const files = (e.target as HTMLInputElement).files
+  if (files && files.length > 0) {
+    const file = files[0]
+    const url = URL.createObjectURL(file)
+    pxImageSrc.value = url
+  }
 }
 </script>
