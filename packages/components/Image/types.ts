@@ -41,6 +41,13 @@ export interface ImageProps {
    * @default false
    */
   showGrid?: boolean
+  /**
+   * @property scale
+   * @type {number | string}
+   * @description 缩放比例,原图尺寸过大时强烈建议设置
+   * @default 1
+   */
+  scale?: number | string
 }
 
 export interface ImageInstance {

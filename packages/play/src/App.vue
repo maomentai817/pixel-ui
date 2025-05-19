@@ -567,10 +567,11 @@ const showGrid = ref(false)
   <label for="showGrid">{{ showGrid }}</label>
   <input type="checkbox" v-model="showGrid" id="showGrid" />
   <px-image
-    src="/images/Starbucks.png"
+    src="/images/image1_portrait.jpg"
     :block-size="pxImgBlockSize"
     :color-count="pxImgColorCount"
     :show-grid="showGrid"
+    scale="0.5"
   ></px-image>
   <br />
   <br />

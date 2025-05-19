@@ -12,10 +12,9 @@ export function usePixelProcessor() {
   const calculateScaledDimensions = (
     width: number,
     height: number,
-    maxWidth = 800,
-    maxHeight = 600
+    picScale = 1
   ) => {
-    const scale = Math.min(1, maxWidth / width, maxHeight / height)
+    const scale = Math.min(1, picScale)
     return {
       width: Math.floor(width * scale),
       height: Math.floor(height * scale)
@@ -207,13 +206,15 @@ export function usePixelProcessor() {
       showGrid: boolean
       cwidth: number
       cheight: number
+      scale: number
     }
   ) => {
-    const { blockSize, colorCount, showGrid, cwidth, cheight } = options
+    const { blockSize, colorCount, showGrid, cwidth, cheight, scale } = options
     const ctx = canvas.getContext('2d')!
     const { width, height } = calculateScaledDimensions(
       cwidth || image.width,
-      cheight || image.height
+      cheight || image.height,
+      scale
     )
     canvas.width = width
     canvas.height = height

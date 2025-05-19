@@ -11,7 +11,8 @@ defineOptions({
 const props = withDefaults(defineProps<ImageProps>(), {
   blockSize: 2,
   colorCount: 32,
-  showGrid: false
+  showGrid: false,
+  scale: 1
 })
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -31,12 +32,14 @@ const render = async () => {
     colorCount: Math.max(1, Number(props.colorCount) || 32),
     showGrid: props.showGrid,
     cwidth: Number(props.width) || img.naturalWidth,
-    cheight: Number(props.height) || img.naturalHeight
+    cheight: Number(props.height) || img.naturalHeight,
+    scale: Number(props.scale)
   })
 
   actualSize.value = processor.calculateScaledDimensions(
     Number(props.width) || img.naturalWidth,
-    Number(props.height) || img.naturalHeight
+    Number(props.height) || img.naturalHeight,
+    Number(props.scale)
   )
 
   emits('ready', actualSize.value)
@@ -44,7 +47,7 @@ const render = async () => {
 onMounted(render)
 watch(() => props.src, render)
 watch(() => [props.blockSize, props.colorCount, props.showGrid], render)
-watch(() => [props.width, props.height], render)
+watch(() => [props.width, props.height, props.scale], render)
 
 // 暴露接口
 defineExpose<ImageInstance>({
