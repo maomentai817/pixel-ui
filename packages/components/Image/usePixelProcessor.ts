@@ -3,9 +3,15 @@ export function usePixelProcessor() {
     return new Promise((resolve, reject) => {
       const img = new Image()
       img.crossOrigin = 'anonymous'
+      // 惰性设置 src
       img.onload = () => resolve(img)
       img.onerror = reject
-      img.src = src
+      img.crossOrigin = 'anonymous'
+      if (img.complete && img.naturalWidth) {
+        resolve(img)
+      } else {
+        img.src = src
+      }
     })
   }
 
@@ -16,26 +22,26 @@ export function usePixelProcessor() {
   ) => {
     const scale = Math.min(1, picScale)
     return {
-      width: Math.floor(width * scale),
-      height: Math.floor(height * scale)
+      width: (width * scale) | 0,
+      height: (height * scale) | 0
     }
   }
 
   const detectBackgroundColor = (imageData: ImageData): number[] => {
     const { data, width, height } = imageData
     // 增加边缘采样点
-    const points = [
-      0,
-      (width - 1) * 4,
-      (height - 1) * width * 4,
-      (width * height - 1) * 4,
-      (Math.floor(height / 2) * width + Math.floor(width / 2)) * 4
+    const positions = [
+      0, // 左上
+      (width - 1) * 4, // 右上
+      (height - 1) * width * 4, // 左下
+      (width * height - 1) * 4, // 右下
+      (Math.floor(height / 2) * width + Math.floor(width / 2)) * 4 // 中央
     ]
-    const colorSum = [0, 0, 0, 0]
-    for (const i of points) {
-      for (let j = 0; j < 4; j++) colorSum[j] += data[i + j]
+    const sum = [0, 0, 0, 0]
+    for (const idx of positions) {
+      for (let i = 0; i < 4; i++) sum[i] += data[idx + i]
     }
-    return colorSum.map((v) => Math.round(v / points.length))
+    return sum.map((v) => (v / positions.length) | 0)
   }
 
   const removeAntiAliasing = (
@@ -46,13 +52,13 @@ export function usePixelProcessor() {
     const { data } = imageData
     const sqThreshold = threshold * threshold
     for (let i = 0; i < data.length; i += 4) {
-      const diff =
-        (data[i] - bg[0]) ** 2 +
-        (data[i + 1] - bg[1]) ** 2 +
-        (data[i + 2] - bg[2]) ** 2
-
-      if (diff < sqThreshold && data[i + 3] < 255) {
-        for (let j = 0; j < 4; j++) data[i + j] = bg[j]
+      const r = data[i],
+        g = data[i + 1],
+        b = data[i + 2],
+        a = data[i + 3]
+      const diff = (r - bg[0]) ** 2 + (g - bg[1]) ** 2 + (b - bg[2]) ** 2
+      if (diff < sqThreshold && a < 255) {
+        data.set(bg, i)
       }
     }
   }
@@ -82,7 +88,7 @@ export function usePixelProcessor() {
     split(): ColorBox[] | null {
       if (this._pixels.length < 2) return null
       const ch = this.splitChannel
-      const sorted = [...this._pixels].sort((a, b) => a[ch] - b[ch])
+      const sorted = this._pixels.sort((a, b) => a[ch] - b[ch])
       const mid = Math.floor(sorted.length / 2)
       if (mid === 0 || mid === sorted.length) return null
       return [
@@ -102,42 +108,35 @@ export function usePixelProcessor() {
   }
 
   const medianCutQuantization = (imageData: ImageData, colorCount: number) => {
-    const pixels: number[][] = []
     const { data } = imageData
+    const pixels = new Array(data.length / 4)
     for (let i = 0; i < data.length; i += 4) {
-      pixels.push([data[i], data[i + 1], data[i + 2], data[i + 3]])
+      pixels[i >> 2] = [data[i], data[i + 1], data[i + 2], data[i + 3]]
     }
 
     const boxes = [new ColorBox(pixels)]
-    const maxIterations = 1000
     let count = 0
-    while (boxes.length < colorCount && count++ < maxIterations) {
+    while (boxes.length < colorCount && count++ < 1000) {
       boxes.sort((a, b) => b._pixels.length - a._pixels.length)
       const box = boxes.shift()!
       const result = box.split()
-      if (!result) {
-        boxes.push(box)
-        break
-      }
-      boxes.push(...result)
+      result ? boxes.push(...result) : boxes.push(box)
     }
 
     const palette = boxes.map((b) => b.getAverageColor())
 
     for (let i = 0; i < data.length; i += 4) {
-      let minDist = Infinity
-      let best = palette[0]
+      let minDist = Infinity,
+        best: number[] = palette[0]
       for (const color of palette) {
-        const dist = color.reduce(
-          (sum, v, idx) => sum + (v - data[i + idx]) ** 2,
-          0
-        )
+        let dist = 0
+        for (let j = 0; j < 4; j++) dist += (data[i + j] - color[j]) ** 2
         if (dist < minDist) {
           minDist = dist
           best = color
         }
       }
-      for (let j = 0; j < 4; j++) data[i + j] = best[j]
+      data.set(best, i)
     }
   }
 
@@ -165,7 +164,7 @@ export function usePixelProcessor() {
     blockSize: number
   ) => {
     const { data } = imageData
-    const colorMap = new Map<string, { count: number; rgba: number[] }>()
+    const colorMap = new Map<number, { count: number; rgba: number[] }>()
 
     const endY = Math.min(y + blockSize, height)
     const endX = Math.min(x + blockSize, width)
@@ -173,28 +172,28 @@ export function usePixelProcessor() {
     for (let py = y; py < endY; py++) {
       for (let px = x; px < endX; px++) {
         const idx = (py * width + px) * 4
-        const rgba = [data[idx], data[idx + 1], data[idx + 2], data[idx + 3]]
-        const colorKey = rgba.join(',')
-
-        if (colorMap.has(colorKey)) {
-          colorMap.get(colorKey)!.count++
+        const r = data[idx],
+          g = data[idx + 1],
+          b = data[idx + 2],
+          a = data[idx + 3]
+        const key = (r << 24) | (g << 16) | (b << 8) | a
+        if (colorMap.has(key)) {
+          colorMap.get(key)!.count++
         } else {
-          colorMap.set(colorKey, { count: 1, rgba })
+          colorMap.set(key, { count: 1, rgba: [r, g, b, a] })
         }
       }
     }
 
-    let maxCount = 0
-    let mostFrequentColor = [0, 0, 0, 0]
-
-    colorMap.forEach(({ count, rgba }) => {
+    let maxCount = 0,
+      result = [0, 0, 0, 0]
+    for (const { count, rgba } of colorMap.values()) {
       if (count > maxCount) {
         maxCount = count
-        mostFrequentColor = rgba
+        result = rgba
       }
-    })
-
-    return mostFrequentColor
+    }
+    return result
   }
 
   const processImage = (
