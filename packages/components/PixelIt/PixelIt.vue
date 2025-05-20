@@ -11,7 +11,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<PixelItProps>(), {
   src: '',
-  scale: 8,
+  scale: 4,
   palette: null,
   grayscale: false,
   aspectRatio: 1
@@ -19,6 +19,10 @@ const props = withDefaults(defineProps<PixelItProps>(), {
 
 const originRef = ref<HTMLImageElement>()
 const canvasRef = ref<HTMLCanvasElement>()
+const pixelSize = ref<{ width: number; height: number }>({
+  width: 0,
+  height: 0
+})
 
 const render = async () => {
   if (!originRef.value || !canvasRef.value) return
@@ -36,9 +40,15 @@ const render = async () => {
   pixelit.draw().pixelate()
   if (props.grayscale) pixelit.convertGrayscale()
   if (props.palette) pixelit.convertPalette()
+
+  pixelSize.value = pixelit.getSize()
 }
 
-defineExpose<PixelItInstance>({ render, originRef })
+defineExpose<PixelItInstance>({
+  render,
+  originRef,
+  getSize: () => pixelSize.value
+})
 
 watch(
   () => [

@@ -4,7 +4,7 @@
       src="/pixel-ui/images/Starbucks.png"
       width="395"
       height="400"
-      :block-size="4"
+      :block-size="8"
       :color-count="18"
     />
   </div>

@@ -16,6 +16,11 @@
     <px-button @click="showGrid = !showGrid" type="sakura">grid</px-button>
   </div>
   <div class="f-c mb-20">
+    <px-text class="w-200" tag="div">Scale:{{ scale }}</px-text>
+    <px-button icon="minus-solid" @click="decreaseScale"></px-button>
+    <px-button icon="plus-solid" @click="increaseScale"></px-button>
+  </div>
+  <div class="f-c mb-20">
     <px-text class="w-200" tag="div">BlockSize:{{ blockSize }}</px-text>
     <px-button icon="minus-solid" @click="decreaseBlock"></px-button>
     <px-button icon="plus-solid" @click="increaseBlock"></px-button>
@@ -31,6 +36,7 @@
       :block-size="blockSize"
       :color-count="colorCount"
       :show-grid="showGrid"
+      :scale="scale"
     />
   </div>
 </template>
@@ -40,7 +46,16 @@ import { ref } from 'vue'
 
 const blockSize = ref(4)
 const colorCount = ref(36)
+const scale = ref(0.5)
+const step = 0.1
 
+const decreaseScale = () => {
+  scale.value = Math.max(0.1, Math.round((scale.value - step) * 10) / 10)
+}
+
+const increaseScale = () => {
+  scale.value = Math.min(1.0, Math.round((scale.value + step) * 10) / 10)
+}
 const decreaseBlock = () => {
   blockSize.value = Math.max(blockSize.value - 1, 2)
 }

@@ -1,33 +1,30 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { addUnit } from '@pixel-ui/utils'
-import type { ImageInstance } from '@mmt817/pixel-ui'
+import type { PixelItProps, PixelItInstance } from '@mmt817/pixel-ui'
 
-interface ImageCompareProps {
-  src: string
-  width?: number | string
-  height?: number | string
-  blockSize?: number
-  colorCount?: number
-  showGrid?: boolean
-  scale?: number
-}
+interface PixelitCompareProps extends PixelItProps { }
 
-const props = defineProps<ImageCompareProps>()
+const props = withDefaults(defineProps<PixelitCompareProps>(), {
+  aspectRatio: 1
+})
 
 const containerRef = ref<HTMLElement>()
 const isDragging = ref(false)
 const divider = ref(50) // 中线百分比位置
 const sliderWidth = 4
 const marginWidth = 20
-const pxImageRef = ref<ImageInstance>()
-const pxImageSize = ref({ width: 0, height: 0 })
-const onPxImageReady = (size: { width: number; height: number }) => {
-  pxImageSize.value = {
-    width: Number(props.width) || size.width,
-    height: Number(props.height) || size.height,
+const pixelitRef = ref<PixelItInstance>()
+
+const pixelitSize = computed(() => {
+  const width = props.width || pixelitRef.value?.getSize().width
+  const height = props.height || pixelitRef.value?.getSize().height
+  return {
+    width,
+    height
   }
-}
+})
+
 
 const clipStyle = computed(() => ({
   clipPath: `inset(0 0 0 ${divider.value}%)`
@@ -59,13 +56,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="image-compare-container">
+  <div class="pixelit-compare-container">
     <div
       ref="containerRef"
       class="relative border rounded"
       :style="{
-        width: `${addUnit(pxImageSize.width)}`,
-        height: `${addUnit(pxImageSize.height)}`,
+        width: `${addUnit(pixelitSize.width)}`,
+        height: `${addUnit(pixelitSize.height)}`,
         margin: `${addUnit(marginWidth)}`
       }"
     >
@@ -75,24 +72,22 @@ onUnmounted(() => {
         alt="original"
         class="absolute object-cover select-none pointer-events-none"
         :style="{
-          width: `${addUnit(pxImageSize.width)}`,
-          height: `${addUnit(pxImageSize.height)}`
+          width: `${addUnit(pixelitSize.width)}`,
+          height: `${addUnit(pixelitSize.height)}`
         }"
       />
 
       <!-- px-image 裁剪层 -->
       <div class="absolute" :style="clipStyle">
-        <px-image
+        <px-pixel-it 
           :src="src"
-          :block-size="blockSize"
-          :color-count="colorCount"
-          :show-grid="showGrid"
-          :width="scale === 1 ? pxImageSize.width : void 0"
-          :height="scale === 1 ? pxImageSize.height : void 0"
           :scale="scale"
-          class="object-cover"
-          ref="pxImageRef"
-          @ready="onPxImageReady"
+          :aspect-ratio="aspectRatio"
+          :palette="palette"
+          :grayscale="grayscale"
+          :width="aspectRatio === 1 ? pixelitSize.width : void 0"
+          :height="aspectRatio === 1 ? pixelitSize.height : void 0"
+          ref="pixelitRef"
         />
       </div>
 
@@ -116,7 +111,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.image-compare-container {
+.pixelit-compare-container {
   background-image: paint(pixelbox);
   --px-border: 4px;
   --px-border-t: 4px;

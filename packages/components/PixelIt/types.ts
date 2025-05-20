@@ -12,7 +12,7 @@ export interface PixelItProps {
    * @property scale
    * @type number
    * @description 缩放比例, n*n 个像素块压缩到 1*1 个像素块
-   * @default 8
+   * @default 4
    */
   scale?: number
   /**
@@ -63,6 +63,11 @@ export interface PixelItInstance {
    * @description 原始图片的引用
    */
   originRef: Ref<HTMLImageElement | undefined>
+  /**
+   * @property pixelRef
+   * @description 图片尺寸获取
+   */
+  getSize: () => { width: number; height: number }
 }
 export interface PixelItExpose {
   /**
@@ -77,4 +82,10 @@ export interface PixelItExpose {
    * @type {Ref<HTMLImageElement | undefined>}
    */
   originRef: Ref<HTMLImageElement | undefined>
+  /**
+   * @property pixelRef
+   * @descrfiption 图片尺寸获取
+   * @type Function - ()=>{ width: number; height: number }
+   */
+  getSize: () => { width: number; height: number }
 }

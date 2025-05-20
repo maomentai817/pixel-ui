@@ -97,6 +97,10 @@ export default class Pixelit {
     return this
   }
 
+  getSize(): { width: number; height: number } {
+    return { width: this.width, height: this.height }
+  }
+
   private _findNearestColor(color: number[]): number[] {
     let minDist = Infinity
     let nearest: number[] = color
