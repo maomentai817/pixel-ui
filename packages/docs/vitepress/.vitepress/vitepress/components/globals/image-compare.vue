@@ -59,7 +59,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="image-compare-container">
+  <div class="image-compare-container f-c">
     <div
       ref="containerRef"
       class="relative border rounded"

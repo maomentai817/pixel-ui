@@ -33,6 +33,26 @@ npm i @mmt817/pixel-ui
 pnpm add @mmt817/pixel-ui
 yarn add @mmt817/pixel-ui
 ```
+
+## 🚀 项目启动 Quick Start
+
+```bash
+# 1. 安装依赖
+pnpm i 
+
+# 2. 项目打包
+# 注意: 这里是对 hooks 及 components 分包进行打包, 请预先检查 libs 下插件是否已有打包
+pnpm build
+
+# 3. 项目运行
+pnpm dev  # 启动 playground
+pnpm docs:dev # 启动 vitepress 文档
+pnpm docs:storybook # 启动 storybook
+
+# 其他
+pnpm test # 对 utils, hooks, components 分包进行单元测试
+```
+
 ---
 
 ## ✨ 特性 Highlights

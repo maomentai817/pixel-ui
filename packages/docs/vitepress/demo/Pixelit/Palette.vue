@@ -1,5 +1,5 @@
 <template>
-  <px-pixel-it
+  <pixelit-compare
     src="/pixel-ui/images/Starbucks.png"
     :palette="palette"
     aspect-ratio="0.5"

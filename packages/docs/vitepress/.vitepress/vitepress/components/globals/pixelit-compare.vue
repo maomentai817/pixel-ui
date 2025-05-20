@@ -55,7 +55,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="pixelit-compare-container">
+  <div class="pixelit-compare-container f-c">
     <div
       ref="containerRef"
       class="relative border rounded"
