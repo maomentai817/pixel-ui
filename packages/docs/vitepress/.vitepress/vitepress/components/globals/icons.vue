@@ -40,20 +40,24 @@ const filteredCategories = computed(() =>
   <input
     v-model="query"
     placeholder="搜索图标名称"
-    class="mb-16 p-8 w-full text-16"
+    class="w-full p-8 text-16 mb-16"
   />
 
-  <div v-for="category in filteredCategories" :key="category.name" class="mt-24">
+  <div
+    v-for="category in filteredCategories"
+    :key="category.name"
+    class="mt-24"
+  >
     <h3 class="icon-title mb-20!">{{ category.name }}</h3>
-    <ul class="icon-grid grid gap-12 p-0! m-0 list-none!">
+    <ul class="icon-grid grid m-0 gap-12 list-none! p-0!">
       <li
         v-for="icon in category.items"
         :key="icon"
-        class="icon-item text-center h-110 p-10 hover:bgc-#ecf5ff"
+        class="icon-item h-110 p-10 text-center hover:bgc-#ecf5ff"
         @click="handleCopy(icon)"
       >
         <px-icon size="32" :icon="icon" color="var(--px-text-color-sakura)" />
-        <div class="icon-name mt-6 text-12 break-words">{{ icon }}</div>
+        <div class="icon-name break-words text-12 mt-6">{{ icon }}</div>
       </li>
     </ul>
   </div>
@@ -73,7 +77,9 @@ const filteredCategories = computed(() =>
 }
 
 .icon-item {
-  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+  cursor:
+    var(--px-cursor-pointer-src) 14 0,
+    pointer;
   /* border: 1px solid #ddd; */
   transition: all 0.3s;
 

@@ -12,7 +12,7 @@
       @change="handleFileChange"
     />
   </div>
-  <div class="mb-20 f-c">
+  <div class="f-c mb-20">
     <px-button @click="isGrayscale = !isGrayscale" type="sakura"
       >grayscale</px-button
     >
@@ -25,13 +25,15 @@
     <px-button icon="plus-solid" @click="increaseAspectRatio"></px-button>
   </div>
   <div class="f-c mb-20">
-    <px-text class="w-250 text-10" tag="div">Scale:{{ scale }}</px-text>
+    <px-text class="w-120 text-10" tag="div">Scale:{{ scale }}</px-text>
     <px-button icon="minus-solid" @click="decreaseScale"></px-button>
     <px-button icon="plus-solid" @click="increaseScale"></px-button>
+    <input type="range" v-model="scale" min="2" max="50" step="1" />
   </div>
   <div class="f-c mb-20">
     <px-text class="w-250 text-10" tag="div">Palette:</px-text>
     <select v-model="selectedPaletteName">
+      <option value="">Default</option>
       <option v-for="(_, name) in palettes" :key="name" :value="name">
         {{ name }}
       </option>
@@ -71,7 +73,7 @@ const decreaseScale = () => {
   scale.value = Math.max(scale.value - 1, 2)
 }
 const increaseScale = () => {
-  scale.value = Math.min(scale.value + 1, 10)
+  scale.value = Math.min(scale.value + 1, 50)
 }
 
 const isGrayscale = ref(false)
@@ -93,7 +95,7 @@ const handleFileChange = (e: Event) => {
 
 // 🎨 定义常用调色板
 const palettes: Record<string, number[][]> = {
-  'Default (Gray)': [
+  Gray: [
     [0, 0, 0],
     [85, 85, 85],
     [170, 170, 170],
@@ -130,6 +132,6 @@ const palettes: Record<string, number[][]> = {
   ]
 }
 
-const selectedPaletteName = ref('Default (Gray)')
+const selectedPaletteName = ref('')
 const selectedPalette = computed(() => palettes[selectedPaletteName.value])
 </script>

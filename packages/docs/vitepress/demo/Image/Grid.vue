@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-20 f-c">
+  <div class="f-c mb-20">
     <px-button @click="showGrid = !showGrid" type="sakura">grid</px-button>
   </div>
   <div class="px-image-container f-c">

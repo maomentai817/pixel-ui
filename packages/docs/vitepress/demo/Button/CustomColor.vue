@@ -28,7 +28,7 @@
     </px-button-group>
   </div>
   <px-text size="12">直接修改paintWorklet变量</px-text>
-  <div class="m-y-20 paint">
+  <div class="paint m-y-20">
     <px-button>Button</px-button>
     <px-button-group>
       <px-button>Button1</px-button>

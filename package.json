@@ -33,6 +33,7 @@
     "@types/node": "^20.11.20",
     "@types/shelljs": "^0.8.15",
     "@typescript-eslint/parser": "^8.29.0",
+    "@unocss/eslint-config": "^66.1.2",
     "@unocss/preset-rem-to-px": "66.1.0-beta.6",
     "@unocss/preset-uno": "66.1.0-beta.6",
     "@unocss/reset": "66.1.0-beta.6",

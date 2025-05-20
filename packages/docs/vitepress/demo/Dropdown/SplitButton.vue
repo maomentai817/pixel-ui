@@ -5,7 +5,7 @@
         Dropdown List<px-icon
           icon="angle-down-solid"
           color="var(--px-color-white)"
-          class="ml-5 translate-y-1"
+          class="translate-y-1 ml-5"
         />
       </px-button>
       <template #dropdown>

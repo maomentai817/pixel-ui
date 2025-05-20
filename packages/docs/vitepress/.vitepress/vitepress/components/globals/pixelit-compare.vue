@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { addUnit } from '@pixel-ui/utils'
 import type { PixelItProps, PixelItInstance } from '@mmt817/pixel-ui'
 
-interface PixelitCompareProps extends PixelItProps { }
+type PixelitCompareProps = PixelItProps
 
 const props = withDefaults(defineProps<PixelitCompareProps>(), {
   aspectRatio: 1
@@ -24,7 +24,6 @@ const pixelitSize = computed(() => {
     height
   }
 })
-
 
 const clipStyle = computed(() => ({
   clipPath: `inset(0 0 0 ${divider.value}%)`
@@ -70,7 +69,7 @@ onUnmounted(() => {
       <img
         :src="props.src"
         alt="original"
-        class="absolute object-cover select-none pointer-events-none"
+        class="pointer-events-none absolute select-none object-cover"
         :style="{
           width: `${addUnit(pixelitSize.width)}`,
           height: `${addUnit(pixelitSize.height)}`
@@ -79,7 +78,7 @@ onUnmounted(() => {
 
       <!-- px-image 裁剪层 -->
       <div class="absolute" :style="clipStyle">
-        <px-pixel-it 
+        <px-pixel-it
           :src="src"
           :scale="scale"
           :aspect-ratio="aspectRatio"
@@ -93,7 +92,7 @@ onUnmounted(() => {
 
       <!-- 拖动条 -->
       <div
-        class="slider absolute top-0 bottom-0 z-10 cursor-col-resize bg-#554562"
+        class="slider absolute bottom-0 top-0 z-10 cursor-col-resize bg-#554562"
         :style="{
           top: `-${marginWidth}px`,
           left: `calc(${divider}% - ${sliderWidth / 2}px)`,
@@ -103,7 +102,7 @@ onUnmounted(() => {
         @mousedown="startDrag"
       >
         <px-button
-          class="slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-16 m-0!"
+          class="slider-handle absolute left-1/2 top-1/2 h-16 w-4 m-0! -translate-x-1/2 -translate-y-1/2"
         />
       </div>
     </div>

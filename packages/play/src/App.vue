@@ -244,7 +244,7 @@ const showGrid = ref(false)
       />
     </div>
   </div>
-  <div class="flex mt-20 gap-10">
+  <div class="flex gap-10 mt-20">
     <px-badge :value="102" class="item" :max="999">
       <px-button>comments</px-button>
     </px-badge>
@@ -261,7 +261,7 @@ const showGrid = ref(false)
       <px-button>replies</px-button>
     </px-badge>
   </div>
-  <div class="flex mt-20 gap-10">
+  <div class="flex gap-10 mt-20">
     <px-badge value="new" class="item" color="#626aef">
       <px-button>custom background</px-button>
     </px-badge>
@@ -513,11 +513,11 @@ const showGrid = ref(false)
     <px-tag type="sakura" closable>Sakura</px-tag>
   </div>
   <!-- dropdown -->
-  <div class="flex flex-wrap m-y-30">
+  <div class="m-y-30 flex flex-wrap">
     <div class="flex-1">
-      <div class="block text-14 mb-20 color-#209cee">通过 slot 传入 item</div>
+      <div class="block text-14 color-#209cee mb-20">通过 slot 传入 item</div>
       <px-dropdown trigger="click" placement="right-start">
-        <span class="flex items-center cursor-pointer color-#209cee">
+        <span class="flex cursor-pointer items-center color-#209cee">
           Dropdown List
           <px-icon icon="angle-down" />
         </span>
@@ -530,9 +530,9 @@ const showGrid = ref(false)
       </px-dropdown>
     </div>
     <div class="flex-1">
-      <div class="block text-14 mb-20 color-#209cee">通过 props 传入 item</div>
+      <div class="block text-14 color-#209cee mb-20">通过 props 传入 item</div>
       <px-dropdown disabled :items="items">
-        <span class="flex items-center cursor-pointer color-#209cee">
+        <span class="flex cursor-pointer items-center color-#209cee">
           Dropdown List
           <px-icon icon="angle-down" />
         </span>

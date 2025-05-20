@@ -25,7 +25,7 @@ const pxImageSize = ref({ width: 0, height: 0 })
 const onPxImageReady = (size: { width: number; height: number }) => {
   pxImageSize.value = {
     width: Number(props.width) || size.width,
-    height: Number(props.height) || size.height,
+    height: Number(props.height) || size.height
   }
 }
 
@@ -73,7 +73,7 @@ onUnmounted(() => {
       <img
         :src="props.src"
         alt="original"
-        class="absolute object-cover select-none pointer-events-none"
+        class="pointer-events-none absolute select-none object-cover"
         :style="{
           width: `${addUnit(pxImageSize.width)}`,
           height: `${addUnit(pxImageSize.height)}`
@@ -98,7 +98,7 @@ onUnmounted(() => {
 
       <!-- 拖动条 -->
       <div
-        class="slider absolute top-0 bottom-0 z-10 cursor-col-resize bg-#554562"
+        class="slider absolute bottom-0 top-0 z-10 cursor-col-resize bg-#554562"
         :style="{
           top: `-${marginWidth}px`,
           left: `calc(${divider}% - ${sliderWidth / 2}px)`,
@@ -108,7 +108,7 @@ onUnmounted(() => {
         @mousedown="startDrag"
       >
         <px-button
-          class="slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-16 m-0!"
+          class="slider-handle absolute left-1/2 top-1/2 h-16 w-4 m-0! -translate-x-1/2 -translate-y-1/2"
         />
       </div>
     </div>

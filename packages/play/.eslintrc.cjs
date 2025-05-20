@@ -7,7 +7,8 @@ module.exports = {
     'plugin:vue/vue3-essential',
     '@vue/eslint-config-typescript/recommended',
     'eslint:recommended',
-    '@vue/eslint-config-prettier'
+    '@vue/eslint-config-prettier',
+    '@unocss'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {

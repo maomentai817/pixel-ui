@@ -5,7 +5,7 @@
       <px-icon
         icon="angle-down-solid"
         color="var(--px-color-primary)"
-        class="ml-5 translate-y-1"
+        class="translate-y-1 ml-5"
       />
     </span>
     <template #dropdown>
