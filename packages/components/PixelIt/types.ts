@@ -43,6 +43,13 @@ export interface PixelItProps {
    * @default -
    */
   height?: number | string
+  /**
+   * @property aspectRatio
+   * @type {number | string}
+   * @description 缩放比例,原图尺寸过大时强烈建议设置
+   * @default 1
+   */
+  aspectRatio?: number | string
 }
 
 export interface PixelItInstance {

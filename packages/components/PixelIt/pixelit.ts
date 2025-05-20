@@ -5,6 +5,7 @@ export interface PixelitOptions {
   palette?: number[][] | null
   width?: number
   height?: number
+  aspectRatio: number
 }
 
 export default class Pixelit {
@@ -22,8 +23,11 @@ export default class Pixelit {
     this.scale = options.scale ?? 8
     this.palette = options.palette ?? null
     this.ctx = this.to.getContext('2d')!
-    this.width = options.width || this.from.naturalWidth
-    this.height = options.height || this.from.naturalHeight
+    this.width =
+      Math.floor(options.width || this.from.naturalWidth) * options.aspectRatio
+    this.height =
+      Math.floor(options.height || this.from.naturalHeight) *
+      options.aspectRatio
   }
 
   draw(): this {

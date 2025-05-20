@@ -13,7 +13,8 @@ const props = withDefaults(defineProps<PixelItProps>(), {
   src: '',
   scale: 8,
   palette: null,
-  grayscale: false
+  grayscale: false,
+  aspectRatio: 1
 })
 
 const originRef = ref<HTMLImageElement>()
@@ -28,7 +29,8 @@ const render = async () => {
     scale: props.scale,
     palette: props.palette,
     width: Number(props.width),
-    height: Number(props.height)
+    height: Number(props.height),
+    aspectRatio: Number(props.aspectRatio)
   })
 
   pixelit.draw().pixelate()
@@ -45,7 +47,8 @@ watch(
     props.palette,
     props.grayscale,
     props.width,
-    props.height
+    props.height,
+    props.aspectRatio
   ],
   render
 )

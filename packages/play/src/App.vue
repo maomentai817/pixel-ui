@@ -584,7 +584,11 @@ const showGrid = ref(false)
     step="1"
     id="pixelitScale"
   />
-  <px-pixel-it src="/images/heart.jpg" :scale="pixelitScale"></px-pixel-it>
+  <px-pixel-it
+    src="/images/image1_portrait.jpg"
+    :scale="pixelitScale"
+    :aspect-ratio="0.5"
+  ></px-pixel-it>
   <!-- <px-image src="/images/Starbucks.png" :block-size="1" :color-count="8" /> -->
   <div class="h-300"></div>
 </template>
