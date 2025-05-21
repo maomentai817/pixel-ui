@@ -198,12 +198,14 @@ const showGrid = ref(false)
       <px-alert type="info">Info alert</px-alert>
       <px-alert type="warning">Warning alert</px-alert>
       <px-alert type="danger">Error alert</px-alert>
+      <px-alert type="danger" iron>Iron alert</px-alert>
     </div>
     <div style="width: 600px">
       <px-alert title="Success Alert" type="success" effect="dark" />
       <px-alert title="Info Alert" type="info" effect="dark" />
       <px-alert title="Warning Alert" type="warning" effect="dark" />
       <px-alert title="Error Alert" type="danger" effect="dark" />
+      <px-alert title="Iron Alert" type="danger" effect="dark" iron />
     </div>
   </div>
   <div class="basic block" style="max-width: 600px">
@@ -216,6 +218,7 @@ const showGrid = ref(false)
       <px-alert title="Info alert" type="info" center show-icon />
       <px-alert title="Warning alert" type="warning" center show-icon />
       <px-alert title="Error alert" type="danger" center show-icon />
+      <px-alert title="Iron alert" type="danger" iron center show-icon />
     </div>
     <div style="width: 600px">
       <px-alert
@@ -239,6 +242,13 @@ const showGrid = ref(false)
       <px-alert
         title="Error alert"
         type="danger"
+        description="More text description"
+        show-icon
+      />
+      <px-alert
+        title="Iron alert"
+        type="danger"
+        iron
         description="More text description"
         show-icon
       />

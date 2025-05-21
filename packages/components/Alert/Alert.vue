@@ -5,6 +5,7 @@ import type { AlertProps, AlertEmits, AlertInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
 import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
+import boardWorklet from '../worklets/dist/pixelboard.worklet.js?url'
 
 const COMP_NAME = 'PxAlert' as const
 defineOptions({
@@ -47,6 +48,7 @@ const paint = () => {
   try {
     if ('paintWorklet' in CSS) {
       ;(CSS as any).paintWorklet.addModule(workletURL)
+      ;(CSS as any).paintWorklet.addModule(boardWorklet)
     } else {
       debugWarn(
         COMP_NAME,
@@ -73,7 +75,8 @@ onMounted(async () => {
       :class="{
         [`px-alert--${type}`]: type,
         [`px-alert--${effect}`]: effect,
-        'text-center': center
+        'text-center': center,
+        'is-iron': iron
       }"
     >
       <px-icon

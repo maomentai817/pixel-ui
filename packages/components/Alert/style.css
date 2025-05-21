@@ -155,3 +155,25 @@
     --px-alert-text-color: var(--px-color-white);
   }
 }
+
+/* 定制背景模板1, 默认金属配色 */
+.px-alert.is-iron {
+  min-height: 60px;
+
+  background-image: paint(pixelboard);
+  --px-corner-size: 2;
+  --px-block-size: 4;
+  --px-alert-border-color: #000000;
+  --px-board-color: #3A4567;
+  --px-shadow-color: #252D46;
+  --px-color-1: #8F9DB5;
+  --px-color-2: #B4C0D2;
+  --px-alert-padding: calc((var(--px-corner-size) + 2) * var(--px-block-size) * 1px);
+  padding: var(--px-alert-padding) calc(var(--px-alert-padding) * 2);
+  --px-alert-text-color: var(--px-color-1);
+
+  .px-alert__close {
+    top: 20px;
+    right: 22px;
+  }
+}

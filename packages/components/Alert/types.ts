@@ -50,6 +50,13 @@ export interface AlertProps {
    * @default false
    */
   showIcon?: boolean
+  /**
+   * @property iron
+   * @type boolean
+   * @description 定制背景1,默认金属配色
+   * @default false
+   */
+  iron?: boolean
 }
 
 export interface AlertEmits {
