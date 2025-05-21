@@ -69,6 +69,14 @@ import { PxButton } from '@mmt817/pixel-ui'
 </template>
 ```
 
+:::danger
+**实验性**: `CSS.paintWorklet` 静态属性是一项**实验性技术**, 在将其用于生产之前, 请仔细检查[浏览器兼容性表格](https://ishoudinireadyyet.com/?mode=light)
+:::
+
+:::danger
+**安全上下文**: 此项功能仅在一些支持的浏览器的安全上下文 (HTTPS、localhost) 中可用。
+:::
+
 ## 🧰 使用示例
 
 ```vue

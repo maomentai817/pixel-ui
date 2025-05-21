@@ -23,6 +23,14 @@ Pixel UI 基于 CSS Houdini 实现像素风格渲染, 因此要求浏览器支�
 
 [![caniuse](https://img.shields.io/badge/caniuse-orange)](https://caniuse.com/?search=paint)
 
+[![兼容表格](https://img.shields.io/badge/兼容表格-orange)](https://ishoudinireadyyet.com/?mode=light)
+
+> **⚠️ 实验性警告**  
+> `CSS.paintWorklet` 静态属性是一项**实验性技术**，在将其用于生产之前，请仔细检查[浏览器兼容性表格](https://ishoudinireadyyet.com/?mode=light)
+
+> **🚨 安全上下文要求**  
+> 此项功能仅在一些支持的浏览器的安全上下文 (HTTPS、localhost) 中可用。
+
 ## 📦 安装 Installation
 
 ```bash
