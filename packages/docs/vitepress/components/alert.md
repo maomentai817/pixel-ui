@@ -35,6 +35,14 @@ Alert 组件提供了两个主题: `light` 和 `dark`
 demo-preview=../demo/Alert/Effect.vue
 :::
 
+## 定制背景板-金属
+
+Alert 组件新增定制风格背景板, 通过 `iron` 开启, 默认为金属配色
+
+:::preview
+demo-preview=../demo/Alert/Iron.vue
+:::
+
 ## 不可关闭
 
 可以设置 Alert 组件是否为可关闭状态, `closable` 属性决定 Alert 组件是否可关闭, 该属性接受一个 `Boolean`, 默认为 `false`

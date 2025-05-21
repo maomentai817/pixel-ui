@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width: 600px">
+  <div class="max-w-600">
     <px-alert
       title="Success alert"
       type="success"
