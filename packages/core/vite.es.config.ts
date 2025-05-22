@@ -108,6 +108,9 @@ export default defineConfig({
           if (id.includes('/packages/hooks')) {
             return 'hooks'
           }
+          if (id.includes('/packages/locale')) {
+            return 'locale'
+          }
           if (
             id.includes('/packages/utils') ||
             id.includes('plugin-vue:export-helper')

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { addUnit } from '@pixel-ui/utils'
+import { useLocale } from '@pixel-ui/hooks'
 import type { PopconfirmProps, PopconfirmEmits } from './types'
 import type { TooltipInstance } from '../Tooltip'
 
@@ -18,11 +19,10 @@ const props = withDefaults(defineProps<PopconfirmProps>(), {
   icon: 'question-solid',
   iconColor: '#f90',
   hideAfter: 200,
-  width: 200,
-  confirmButtonText: 'Yes',
-  cancelButtonText: 'No'
+  width: 200
 })
 
+const locale = useLocale()
 const emits = defineEmits<PopconfirmEmits>()
 const tooltipRef = ref<TooltipInstance>()
 const style = computed(() => ({ width: addUnit(props.width) }))
@@ -61,7 +61,7 @@ const cancel = (e: MouseEvent) => {
               :type="cancelButtonType"
               @click="cancel"
             >
-              {{ cancelButtonText }}
+              {{ cancelButtonText || locale.t('popconfirm.cancelButtonText') }}
             </px-button>
             <px-button
               class="px-popconfirm__confirm"
@@ -69,7 +69,9 @@ const cancel = (e: MouseEvent) => {
               :type="confirmButtonType"
               @click="confirm"
             >
-              {{ confirmButtonText }}
+              {{
+                confirmButtonText || locale.t('popconfirm.confirmButtonText')
+              }}
             </px-button>
           </slot>
         </div>
