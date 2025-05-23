@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Zpix';
-  src: url('/fonts/Zpix.ttf') format('truetype');
+  src: url('/fonts/Zpix.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Zpixall';
-  src: url('/fonts/Zpix.ttf') format('truetype');
+  src: url('/fonts/Zpix.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'PS2P';
-  src: url('/fonts/PS2P.ttf') format('truetype');
+  src: url('/fonts/PS2P.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
