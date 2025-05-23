@@ -13,7 +13,7 @@ export const useLocale = (localeOverrides?: Ref<Language>) => {
   if (!localeOverrides) {
     const i18n: Ref<I18nInstance> =
       inject(i18nSymbol) ??
-      ref(createI18n({ locale: English.name, messages: { en: English.el } }))
+      ref(createI18n({ locale: English.name, messages: { en: English } }))
 
     return computed(() => omitInstall(unref(i18n)))
   }
@@ -23,8 +23,8 @@ export const useLocale = (localeOverrides?: Ref<Language>) => {
       createI18n({
         locale: localeOverrides.value.name,
         messages: {
-          en: English.el,
-          [localeOverrides.value.name]: localeOverrides.value.el
+          en: English,
+          [localeOverrides.value.name]: localeOverrides.value
         }
       })
     )

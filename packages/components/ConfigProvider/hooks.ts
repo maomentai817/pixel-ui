@@ -49,7 +49,7 @@ const _createI18n = (opts?: ConfigProviderContext) => {
     return createI18n({
       locale: 'en',
       messages: mergeMsg({
-        en: English.el
+        en: English
       })
     })
   }
@@ -57,8 +57,8 @@ const _createI18n = (opts?: ConfigProviderContext) => {
   return createI18n({
     locale: opts.locale?.name || 'en',
     messages: mergeMsg({
-      en: English.el,
-      [opts.locale?.name]: opts.locale?.el ?? {}
+      en: English,
+      [opts.locale?.name]: opts.locale ?? {}
     })
   })
 }

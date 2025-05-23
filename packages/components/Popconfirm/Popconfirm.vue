@@ -61,7 +61,9 @@ const cancel = (e: MouseEvent) => {
               :type="cancelButtonType"
               @click="cancel"
             >
-              {{ cancelButtonText || locale.t('popconfirm.cancelButtonText') }}
+              {{
+                cancelButtonText || locale.t('el.popconfirm.cancelButtonText')
+              }}
             </px-button>
             <px-button
               class="px-popconfirm__confirm"
@@ -70,7 +72,7 @@ const cancel = (e: MouseEvent) => {
               @click="confirm"
             >
               {{
-                confirmButtonText || locale.t('popconfirm.confirmButtonText')
+                confirmButtonText || locale.t('el.popconfirm.confirmButtonText')
               }}
             </px-button>
           </slot>
