@@ -1,0 +1,7 @@
+{
+  "vitest.disableWorkspaceWarning": true,
+  "i18n-ally.localesPaths": "packages/locale/lang",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
+  "i18n-ally.keystyle": "nested"
+}
