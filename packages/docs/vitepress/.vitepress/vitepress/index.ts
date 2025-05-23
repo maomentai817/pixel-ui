@@ -11,7 +11,7 @@ export const globals: [string, Component][] = [
   ['ApiEnum', ApiEnum],
   ['IconList', IconList],
   ['ImageCompare', ImageCompare],
-  ['PixelitCompare', PixelitCompare],
+  ['PixelitCompare', PixelitCompare]
 ]
 
 export default bsz

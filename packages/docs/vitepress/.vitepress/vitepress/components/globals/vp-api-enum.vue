@@ -6,8 +6,8 @@ import ApiTyping from './vp-api-typing.vue'
 const props = defineProps({
   values: {
     type: Array,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const processString = (s: unknown) => (isString(s) ? `'${s}'` : s)

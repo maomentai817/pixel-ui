@@ -3,8 +3,8 @@ title: Text
 description: Text 组件文档
 
 next:
-  link: /components/badge
-  text: Badge 徽章
+  link: /components/configProvider
+  text: ConfigProvider 全局配置
 
 prev:
   link: /components/icon

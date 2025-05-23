@@ -3,58 +3,62 @@ import type { DefaultTheme } from 'vitepress'
 
 export const sidebar: DefaultTheme.Config['sidebar'] = [
   {
-    text: "指南",
+    text: '指南',
     collapsed: false,
-    items: [{ text: "快速开始", link: "/get-started" }],
+    items: [{ text: '快速开始', link: '/get-started' }]
   },
   {
-    text: "Basic 基础组件",
+    text: 'Basic 基础组件',
     collapsed: false,
-    base: "/components/",
+    base: '/components/',
     items: [
-      { text: "Button 按钮", link: "button" },
-      { text: "Icon 图标", link: "icon" },
-      { text: "Text 文本", link: "text" },
-    ],
-  },
-  {
-    text: "Data 数据展示",
-    collapsed: false,
-    base: "/components/",
-    items: [
-      { text: "Badge 徽章", link: "badge" },
-      { text: "Card 卡片", link: "card" },
-      { text: "Collapse 折叠面板", link: "collapse" },
-      { text: "Progress 进度条", link: "progress" },
-      { text: "Tag 标签", link: "tag" },
+      { text: 'Button 按钮', link: 'button' },
+      { text: 'Icon 图标', link: 'icon' },
+      { text: 'Text 文本', link: 'text' }
     ]
   },
   {
-    text: "Navigation 导航",
+    text: '配置组件',
     collapsed: false,
-    base: "/components/",
+    base: '/components/',
+    items: [{ text: 'ConfigProvider 全局配置', link: 'configProvider' }]
+  },
+  {
+    text: 'Data 数据展示',
+    collapsed: false,
+    base: '/components/',
     items: [
-      { text: "Dropdown 下拉菜单", link: "dropdown" },
+      { text: 'Badge 徽章', link: 'badge' },
+      { text: 'Card 卡片', link: 'card' },
+      { text: 'Collapse 折叠面板', link: 'collapse' },
+      { text: 'Progress 进度条', link: 'progress' },
+      { text: 'Tag 标签', link: 'tag' }
     ]
   },
   {
-    text: "Feedback 反馈组件",
+    text: 'Navigation 导航',
     collapsed: false,
-    base: "/components/",
+    base: '/components/',
+    items: [{ text: 'Dropdown 下拉菜单', link: 'dropdown' }]
+  },
+  {
+    text: 'Feedback 反馈组件',
+    collapsed: false,
+    base: '/components/',
     items: [
-      { text: "Alert 提示", link: "alert" },
-      { text: "Popconfirm 气泡确认框", link: "popconfirm" },
-      { text: "Tooltip 文字提示", link: "tooltip" },
+      { text: 'Alert 提示', link: 'alert' },
+      { text: 'Popconfirm 气泡确认框', link: 'popconfirm' },
+      { text: 'Tooltip 文字提示', link: 'tooltip' }
     ]
   },
   {
-    text: "Fantastic 奇思妙想",
+    text: 'Fantastic 奇思妙想',
     collapsed: false,
-    base: "/components/",
+    base: '/components/',
     items: [
-      { text: "AnimationFrame 动画帧", link: "animationFrame" },
-      { text: "Image 像素滤镜", link: "image" },
-      { text: "PixelIt 像素化", link: "pixelit" },
+      { text: 'AnimationFrame 动画帧', link: 'animationFrame' },
+      { text: 'Image 像素滤镜', link: 'image' },
+      { text: 'PixelIt 像素化', link: 'pixelit' }
     ]
-  },
+  }
 ]

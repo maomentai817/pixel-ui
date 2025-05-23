@@ -1,15 +1,15 @@
-import { type App, watch } from "vue"
-import { type Router } from "vitepress"
-import { ElementPlusContainer } from "vitepress-preview-component"
-import { NProgress } from "nprogress-v2"
+import { type App, watch } from 'vue'
+import { type Router } from 'vitepress'
+import { ElementPlusContainer } from 'vitepress-preview-component'
+import { NProgress } from 'nprogress-v2'
 import { inBrowser } from 'vitepress'
-import bsz, { globals } from "../vitepress"
+import bsz, { globals } from '../vitepress'
 
 import busuanzi from 'busuanzi.pure.js'
-import DefaultTheme from "vitepress/theme"
-import PixelUI from "@mmt817/pixel-ui"
+import DefaultTheme from 'vitepress/theme'
+import PixelUI from '@mmt817/pixel-ui'
 
-import "vitepress-preview-component/style.css"
+import 'vitepress-preview-component/style.css'
 import '@hackernoon/pixel-icon-library/fonts/iconfont.css'
 import '@mmt817/pixel-ui/dist/index.css'
 import 'virtual:group-icons.css'
@@ -21,8 +21,8 @@ let homePageStyle: HTMLStyleElement | undefined
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app, router }: { app: App, router: Router }) {
-    app.component("demo-preview", ElementPlusContainer)
+  enhanceApp({ app, router }: { app: App; router: Router }) {
+    app.component('demo-preview', ElementPlusContainer)
     app.use(PixelUI)
 
     // 注册全局组件
@@ -35,7 +35,7 @@ export default {
       watch(
         () => router.route.data.relativePath,
         () => updateHomePageStyle(location.pathname === '/pixel-ui/'),
-        { immediate: true },
+        { immediate: true }
       )
     }
 
@@ -51,14 +51,13 @@ export default {
       }
     }
   },
-  Layout: bsz,
+  Layout: bsz
 }
 
 // 彩虹背景动画样式控制
 function updateHomePageStyle(value: boolean) {
   if (value) {
-    if (homePageStyle)
-      return
+    if (homePageStyle) return
 
     homePageStyle = document.createElement('style')
     homePageStyle.innerHTML = `
@@ -66,10 +65,8 @@ function updateHomePageStyle(value: boolean) {
       animation: rainbow 12s linear infinite;
     }`
     document.body.appendChild(homePageStyle)
-  }
-  else {
-    if (!homePageStyle)
-      return
+  } else {
+    if (!homePageStyle) return
 
     homePageStyle.remove()
     homePageStyle = undefined
