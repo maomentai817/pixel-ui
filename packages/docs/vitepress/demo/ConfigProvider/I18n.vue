@@ -12,15 +12,15 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { en, zhCN, zhTW } from '@mmt817/pixel-ui'
+import { en, zhCN, zhTW, ja } from '@mmt817/pixel-ui'
 import { get } from 'lodash-es'
 
 // 国际化
-const language = ref('zhCN')
-const langMap = { en, zhCN, zhTW } as const
+const language = ref('en')
+const langMap = { en, zhCN, zhTW, ja } as const
 const locale = computed(() => get(langMap, language.value))
 const changeLang = () => {
-  const l = ['en', 'zhCN', 'zhTW']
+  const l = ['en', 'zhCN', 'zhTW', 'ja']
   language.value = l[(l.indexOf(language.value) + 1) % l.length]
 }
 </script>

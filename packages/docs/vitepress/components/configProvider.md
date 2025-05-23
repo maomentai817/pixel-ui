@@ -19,7 +19,7 @@ Config Provider 被用来提供全局的配置选项，让你的配置能够在�
 
 通过 Config Provider 来配置多语言, 让你的应用可以随时切换语言。
 
-语言包文件存放在 `packages/locale/lang` 目录下, 默认语言为 `en`, 当前支持的语言包有`en`, `zhCN`, `zhTW`
+语言包文件存放在 `packages/locale/lang` 目录下, 默认语言为 `en`, 当前支持的语言包有`en`, `zhCN`, `zhTW`, `ja`
 
 :::tip
 Config Provider 还支持拓展翻译文本对象, 通过配置一个类型为 `TranslatePair` 的属性 `extendsI18nMsg` 实现, 具体格式参考语言包文件解构
