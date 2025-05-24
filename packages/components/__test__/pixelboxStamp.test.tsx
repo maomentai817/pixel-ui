@@ -1,11 +1,11 @@
-// __test__/pixelboxOrnament.test.tsx
+// __test__/pixelboxStamp.test.tsx
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import {
-  PixelBoxOrnament,
-  registerPixelBoxOrnament
-} from '../worklets/pixelboxOrnament.worklet'
+  PixelBoxStamp,
+  registerPixelBoxStamp
+} from '../worklets/pixelboxStamp.worklet'
 
-describe('PixelBoxOrnament Paint Worklet', () => {
+describe('PixelBoxStamp Paint Worklet', () => {
   let ctx: PaintRenderingContext2D
   let size: { width: number; height: number }
   let props: Map<string, string | number>
@@ -22,18 +22,24 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     } as any
     size = { width: 750, height: 350 }
     props = new Map([
-      ['--px-corner-size', '3'],
+      ['--px-corner-size', '4'],
       ['--px-main-color', '#209cee'],
-      ['--px-block-size', '5']
+      ['--px-block-size', '4'],
+      ['--px-shadow-color', '#006bb3'],
+      ['--px-content-color', '#e5f0f1'],
+      ['--px-gap-block', '1']
     ])
   })
 
   // props test
   it('should define correct inputProperties', () => {
-    expect(PixelBoxOrnament.inputProperties).toEqual([
+    expect(PixelBoxStamp.inputProperties).toEqual([
       '--px-corner-size',
       '--px-main-color',
-      '--px-block-size'
+      '--px-block-size',
+      '--px-shadow-color',
+      '--px-content-color',
+      '--px-gap-block'
     ])
   })
   // props default values
@@ -41,8 +47,11 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     props.delete('--px-corner-size')
     props.delete('--px-main-color')
     props.delete('--px-block-size')
+    props.delete('--px-shadow-color')
+    props.delete('--px-content-color')
+    props.delete('--px-gap-block')
 
-    const paint = new PixelBoxOrnament()
+    const paint = new PixelBoxStamp()
 
     expect(() =>
       paint.paint(ctx, size, {
@@ -55,7 +64,7 @@ describe('PixelBoxOrnament Paint Worklet', () => {
   it('should set corrent type for properties', () => {
     props.set('--px-corner-size', '1')
 
-    const paint = new PixelBoxOrnament()
+    const paint = new PixelBoxStamp()
 
     expect(() =>
       paint.paint(ctx, size, {
@@ -64,16 +73,16 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     ).not.toThrow()
   })
 
-  // registerPixelBoxOrnament()
-  it('should register pixelboxOrnament when registerPaint is available', () => {
+  // registerPixelBoxStamp()
+  it('should register pixelboxStamp when registerPaint is available', () => {
     const mockRegisterPaint = vi.fn()
     ;(globalThis as any).registerPaint = mockRegisterPaint
 
-    registerPixelBoxOrnament()
+    registerPixelBoxStamp()
 
     expect(mockRegisterPaint).toHaveBeenCalledWith(
-      'pixelboxOrnament',
-      PixelBoxOrnament
+      'pixelboxStamp',
+      PixelBoxStamp
     )
   })
 })

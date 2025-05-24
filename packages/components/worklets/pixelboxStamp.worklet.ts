@@ -57,12 +57,11 @@ export class PixelBoxStamp implements PaintWorklet {
       ctx: PaintRenderingContext2D,
       dx: number,
       dy: number,
-      flipX: boolean,
       flipY: boolean
     ) => {
       ctx.save()
       ctx.translate(dx, dy)
-      ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1)
+      ctx.scale(1, flipY ? -1 : 1)
       ctx.fillStyle = mainColor
       for (let i = 0; i < hStampCount; i++) {
         const offset = (cornerSize + 1) * blockSize * i
@@ -94,8 +93,8 @@ export class PixelBoxStamp implements PaintWorklet {
       }
       ctx.restore()
     }
-    drawHStamp(ctx, 2 * blockSize, 0, false, false)
-    drawHStamp(ctx, 2 * blockSize, height, false, true)
+    drawHStamp(ctx, 2 * blockSize, 0, false)
+    drawHStamp(ctx, 2 * blockSize, height, true)
     // 左边框绘制
     const drawLeftStamp = (
       ctx: PaintRenderingContext2D,
