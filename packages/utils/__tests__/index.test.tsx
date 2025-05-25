@@ -8,7 +8,8 @@ import {
   hexToHSL,
   HSLToHex,
   adjustColor,
-  addUnit
+  addUnit,
+  RenderVNode
 } from '..'
 import { each } from 'lodash-es'
 
@@ -27,6 +28,10 @@ describe('utils/index', () => {
 
   it('addUnit should be exported', () => {
     expect(addUnit).toBeDefined()
+  })
+
+  it('RenderVNode should be exported', () => {
+    expect(RenderVNode).toBeDefined()
   })
 
   it('typeIconMap should be worked', () => {
