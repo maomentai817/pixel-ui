@@ -64,7 +64,12 @@ export interface PixelItInstance {
    */
   originRef: Ref<HTMLImageElement | undefined>
   /**
-   * @property pixelRef
+   * @property canvasRef
+   * @description 渲染图片的引用
+   */
+  canvasRef: Ref<HTMLCanvasElement | undefined>
+  /**
+   * @property getSize
    * @description 图片尺寸获取
    */
   getSize: () => { width: number; height: number }
@@ -83,8 +88,14 @@ export interface PixelItExpose {
    */
   originRef: Ref<HTMLImageElement | undefined>
   /**
-   * @property pixelRef
-   * @descrfiption 图片尺寸获取
+   * @property canvasRef
+   * @description 渲染图片的引用
+   * @type {Ref<HTMLCanvasElement | undefined>}
+   */
+  canvasRef: Ref<HTMLCanvasElement | undefined>
+  /**
+   * @property getSize
+   * @description 图片尺寸获取
    * @type Function - ()=>{ width: number; height: number }
    */
   getSize: () => { width: number; height: number }

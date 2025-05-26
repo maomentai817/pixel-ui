@@ -1,9 +1,7 @@
-import type { AnimationFrameStage } from './types'
-
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { withInstall } from '@pixel-ui/utils'
-import { PxAnimationFrame } from '.'
+import { PxAnimationFrame, type AnimationFrameStage } from '.'
 
 import AnimationFrame from './AnimationFrame.vue'
 
@@ -159,6 +157,6 @@ describe('AnimationFrame.vue', () => {
 
     expect((wrapper.vm as any).isDragging).toBe(false)
   })
-
-  // super-gif load test
 })
+
+// super-gif load test

@@ -1,16 +1,14 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import English from '@pixel-ui/locale/lang/en'
-import zhCN from '@pixel-ui/locale/lang/zh-cn'
-import { reactive, nextTick } from 'vue'
-
+import { reactive, nextTick, createApp } from 'vue'
 import { withInstall } from '@pixel-ui/utils'
 import { PxConfigProvider, provideGlobalConfig, useGlobalConfig } from '.'
 
+import English from '@pixel-ui/locale/lang/en'
+import zhCN from '@pixel-ui/locale/lang/zh-cn'
 import ConfigProvider from './ConfigProvider.vue'
 import Popconfirm from '../Popconfirm/Popconfirm.vue'
 import Button from '../Button/Button.vue'
-import { createApp } from 'vue'
 
 describe('ConfigProvider/index', () => {
   // 测试 withInstall 函数是否被正确应用

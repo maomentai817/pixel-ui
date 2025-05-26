@@ -47,6 +47,7 @@ const render = async () => {
 defineExpose<PixelItInstance>({
   render,
   originRef,
+  canvasRef,
   getSize: () => pixelSize.value
 })
 
