@@ -1,6 +1,7 @@
 import { ref, computed, type Ref, type ComputedRef } from 'vue'
 
-const zIndex = ref(0)
+/** @internal 用于测试中重置全局 zIndex */
+export const zIndex = ref(0)
 
 interface UseZIndexResult {
   initialValue: Ref<number>
