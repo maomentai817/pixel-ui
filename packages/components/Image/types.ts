@@ -56,6 +56,11 @@ export interface ImageInstance {
    * @description 获取处理后 canvas 尺寸
    */
   getSize: () => { width: number; height: number }
+  /**
+   * @property render
+   * @description 渲染图片
+   */
+  render: () => Promise<void>
 }
 
 export interface ImageExpose {
@@ -65,6 +70,12 @@ export interface ImageExpose {
    * @type Function - ()=>{ width: number; height: number }
    */
   getSize: () => { width: number; height: number }
+  /**
+   * @property render
+   * @description 渲染图片
+   * @type Function - ()=>Promise<void>
+   */
+  render: () => Promise<void>
 }
 
 export interface ImageEmits {

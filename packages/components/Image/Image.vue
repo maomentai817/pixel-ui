@@ -23,13 +23,14 @@ const actualSize = ref<{ width: number; height: number }>({
   width: 0,
   height: 0
 })
+
 const render = async () => {
   if (!canvasRef.value || !props.src) return
   const canvas = canvasRef.value
   const img = await processor.loadImage(props.src)
   processor.processImage(canvas, img, {
-    blockSize: Math.max(1, Number(props.blockSize) || 2),
-    colorCount: Math.max(1, Number(props.colorCount) || 32),
+    blockSize: Math.max(2, Number(props.blockSize)),
+    colorCount: Math.max(2, Number(props.colorCount)),
     showGrid: props.showGrid,
     cwidth: Number(props.width) || img.naturalWidth,
     cheight: Number(props.height) || img.naturalHeight,
@@ -51,7 +52,8 @@ watch(() => [props.width, props.height, props.scale], render)
 
 // 暴露接口
 defineExpose<ImageInstance>({
-  getSize: () => actualSize.value
+  getSize: () => actualSize.value,
+  render
 })
 </script>
 

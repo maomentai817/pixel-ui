@@ -7,11 +7,7 @@ export function usePixelProcessor() {
       img.onload = () => resolve(img)
       img.onerror = reject
       img.crossOrigin = 'anonymous'
-      if (img.complete && img.naturalWidth) {
-        resolve(img)
-      } else {
-        img.src = src
-      }
+      img.src = src
     })
   }
 
@@ -90,7 +86,7 @@ export function usePixelProcessor() {
       const ch = this.splitChannel
       const sorted = this._pixels.sort((a, b) => a[ch] - b[ch])
       const mid = Math.floor(sorted.length / 2)
-      if (mid === 0 || mid === sorted.length) return null
+      // if (mid === 0 || mid === sorted.length) return null
       return [
         new ColorBox(sorted.slice(0, mid), this._level + 1),
         new ColorBox(sorted.slice(mid), this._level + 1)
