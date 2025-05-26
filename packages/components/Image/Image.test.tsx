@@ -203,9 +203,4 @@ describe('Image.vue', async () => {
     }
     processor.processImage(canvas, img, options)
   })
-
-  it.skip('should callback corrently when load image', async () => {
-    const processor = usePixelProcessor()
-    await processor.loadImage('https://picsum.photos/200/300')
-  })
 })

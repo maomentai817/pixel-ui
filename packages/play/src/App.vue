@@ -60,6 +60,7 @@ const changeLang = () => {
 </script>
 
 <template>
+  一二三四---___
   <px-button size="small" ref="BTN">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
   <px-button type="success" size="small">Success</px-button>
