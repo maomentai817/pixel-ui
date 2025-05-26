@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { delay, bind } from 'lodash-es'
-import { addUnit, typeIconMap } from '@pixel-ui/utils'
+import { getLastBottomOffset } from './methods'
+import { useOffset, useEventListener } from '@pixel-ui/hooks'
+import { addUnit, typeIconMap, RenderVNode } from '@pixel-ui/utils'
 
 import type { MessagePropsIn, MessageCompInstance } from './types'
 
@@ -27,6 +29,17 @@ const iconName = computed(
 // div 高度
 const boxHeight = ref(0)
 
+const { topOffset, bottomOffset } = useOffset({
+  getLastBottomOffset: bind(getLastBottomOffset, props),
+  offset: props.offset,
+  boxHeight
+})
+
+const customStyle = computed(() => ({
+  top: addUnit(topOffset.value),
+  zIndex: props.zIndex
+}))
+
 // ⏲ message 计时
 let timer: number
 const startTimer = () => {
@@ -43,6 +56,12 @@ const close = () => {
 // 退出动画
 watch(visible, (val) => {
   if (!val) boxHeight.value = -props.offset
+})
+
+// ESC 退出
+useEventListener(document, 'keydown', (e: Event) => {
+  const { code } = e as KeyboardEvent
+  if (code === 'Escape') close()
 })
 
 onMounted(() => {
@@ -79,7 +98,7 @@ defineExpose<MessageCompInstance>({
       <px-icon class="px-message__icon" :icon="iconName" />
       <div class="px-message__content">
         <slot>
-          <render-vnode v-if="message" :vNode="message" />
+          <RenderVNode v-if="message" :vNode="message" />
         </slot>
       </div>
       <div class="px-message__close" v-if="showClose">

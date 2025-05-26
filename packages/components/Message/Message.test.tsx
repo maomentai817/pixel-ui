@@ -1,6 +1,5 @@
 import { describe, test, expect } from 'vitest'
 import { nextTick } from 'vue'
-//@ts-ignore
 import { message, closeAll } from './methods'
 
 export const rAF = async () => {

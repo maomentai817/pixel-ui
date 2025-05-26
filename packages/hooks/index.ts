@@ -4,6 +4,8 @@ import useId from './useId'
 import useDisabledStyle from './useDisabledStyle'
 import useLocale from './useLocale'
 import { usePxBadgeCustomStyle, usePxButtonCustomStyle } from './useColor'
+import useOffset from './useOffset'
+import useZIndex from './useZIndex'
 
 export {
   useClickOutside,
@@ -12,5 +14,7 @@ export {
   useDisabledStyle,
   useLocale,
   usePxButtonCustomStyle,
-  usePxBadgeCustomStyle
+  usePxBadgeCustomStyle,
+  useOffset,
+  useZIndex
 }
