@@ -3,6 +3,7 @@ import {
   debugWarn,
   throwError,
   withInstall,
+  withInstallFunction,
   typeIconMap,
   updateColors,
   hexToHSL,
@@ -24,6 +25,10 @@ describe('utils/index', () => {
 
   it('withInstall should be exported', () => {
     expect(withInstall).toBeDefined()
+  })
+
+  it('withInstallFunction should be exported', () => {
+    expect(withInstallFunction).toBeDefined()
   })
 
   it('addUnit should be exported', () => {

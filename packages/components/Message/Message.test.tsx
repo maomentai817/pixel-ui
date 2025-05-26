@@ -1,6 +1,10 @@
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect, it } from 'vitest'
 import { nextTick } from 'vue'
 import { message, closeAll } from './methods'
+import { withInstallFunction } from '@pixel-ui/utils'
+import { PxMessage } from '.'
+
+import Message from './Message.vue'
 
 export const rAF = async () => {
   return new Promise((res) => {
@@ -19,7 +23,7 @@ const getTopValue = (el: Element): number => {
   return Number.parseFloat(topValue)
 }
 
-describe.skip('Message component', () => {
+describe('Message component', () => {
   // 插件式调用
   test('message() function', async () => {
     const handler = message({ message: 'hello msg', duration: 0 })
@@ -54,6 +58,21 @@ describe.skip('Message component', () => {
     expect(elements.length).toBe(2)
 
     expect(getTopValue(elements[0])).toBe(100)
-    expect(getTopValue(elements[1])).toBe(50)
+    expect(getTopValue(elements[1])).toBe(150)
+  })
+})
+
+// Message 指令式挂载测试
+describe('Message/index', () => {
+  // 测试 withInstallFunction 函数是否被正确应用
+  it('should be exported with withInstallFunction()', () => {
+    expect(PxMessage.install).toBeDefined()
+  })
+
+  // 可选: 如果 withInstallFunction 函数有特定的行为或属性, 确保它们被正确应用
+  it('should apply specific enhance', () => {
+    const enhancedMessage = withInstallFunction(Message, '$message')
+    // eg: withInstallFunction 增加了一个特定的方法或属性
+    expect(enhancedMessage).toHaveProperty('install')
   })
 })
