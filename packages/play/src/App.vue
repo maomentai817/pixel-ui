@@ -66,8 +66,34 @@ const handleMessage = () => {
       h('i', { style: 'color: teal' }, 'VNode')
     ])
   })
+  PxMessage({
+    message: 'This is a info message',
+    duration: 0
+  })
+  PxMessage.primary({
+    message: 'This is a primary message',
+    duration: 0,
+    showClose: true
+  })
+  PxMessage.success({
+    message: 'This is a success message',
+    duration: 0,
+    center: true
+  })
+  PxMessage.warning({
+    message: 'This is a warning message',
+    duration: 0
+  })
+  PxMessage.danger({
+    message: 'This is a danger message',
+    duration: 0
+  })
+  PxMessage.sakura({
+    message: 'This is a sakura message',
+    duration: 0
+  })
   PxMessage.error({
-    message: 'This is a message',
+    message: 'This is a error message',
     duration: 0
   })
 }

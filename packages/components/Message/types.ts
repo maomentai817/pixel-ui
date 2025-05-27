@@ -2,9 +2,11 @@ import type { Ref, VNode, ComponentInternalInstance } from 'vue'
 
 export const messageTypes = [
   'info',
+  'primary',
   'success',
   'warning',
   'danger',
+  'sakura',
   'error'
 ] as const
 
@@ -22,6 +24,8 @@ export type MessageFn = {
 export type MessageTypeFn = (_props: MessageParams) => MessageHandler
 
 export interface Message extends MessageFn {
+  primary: MessageTypeFn
+  sakura: MessageTypeFn
   success: MessageTypeFn
   warning: MessageTypeFn
   info: MessageTypeFn

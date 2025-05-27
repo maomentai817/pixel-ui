@@ -17,7 +17,8 @@ const getStr = (
 const PIXEL_BOX_ORNAMENT_PROPS = [
   '--px-corner-size',
   '--px-main-color',
-  '--px-block-size'
+  '--px-block-size',
+  '--px-content-color'
 ]
 
 export class PixelBoxOrnament implements PaintWorklet {
@@ -34,9 +35,11 @@ export class PixelBoxOrnament implements PaintWorklet {
     const cornerSize = getInt(props, '--px-corner-size', 3)
     const mainColor = getStr(props, '--px-main-color', '#209cee')
     const blockSize = getInt(props, '--px-block-size', 5)
+    const contentColor = getStr(props, '--px-content-color', '#a0cfff')
 
     // 主区域
-    ctx.fillStyle = mainColor
+    // ctx.fillStyle = mainColor
+    ctx.fillStyle = contentColor
     ctx.fillRect(
       cornerSize * blockSize,
       cornerSize * blockSize,

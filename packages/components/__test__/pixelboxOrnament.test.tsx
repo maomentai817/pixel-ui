@@ -24,7 +24,8 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     props = new Map([
       ['--px-corner-size', '3'],
       ['--px-main-color', '#209cee'],
-      ['--px-block-size', '5']
+      ['--px-block-size', '5'],
+      ['--px-content-color', '#a0cfff']
     ])
   })
 
@@ -33,7 +34,8 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     expect(PixelBoxOrnament.inputProperties).toEqual([
       '--px-corner-size',
       '--px-main-color',
-      '--px-block-size'
+      '--px-block-size',
+      '--px-content-color'
     ])
   })
   // props default values
@@ -41,6 +43,7 @@ describe('PixelBoxOrnament Paint Worklet', () => {
     props.delete('--px-corner-size')
     props.delete('--px-main-color')
     props.delete('--px-block-size')
+    props.delete('--px-content-color')
 
     const paint = new PixelBoxOrnament()
 
