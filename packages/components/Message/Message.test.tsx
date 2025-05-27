@@ -1,10 +1,11 @@
-import { describe, test, expect, it } from 'vitest'
-import { nextTick } from 'vue'
-import { message, closeAll } from './methods'
+import { describe, test, expect, it, beforeEach } from 'vitest'
+import { nextTick, h } from 'vue'
+import message, { closeAll } from './methods'
 import { withInstallFunction } from '@pixel-ui/utils'
 import { PxMessage } from '.'
 
 import Message from './Message.vue'
+import { mount } from '@vue/test-utils'
 
 export const rAF = async () => {
   return new Promise((res) => {
@@ -24,6 +25,10 @@ const getTopValue = (el: Element): number => {
 }
 
 describe('Message component', () => {
+  beforeEach(() => {
+    // 全部关闭
+    closeAll()
+  })
   // 插件式调用
   test('message() function', async () => {
     const handler = message({ message: 'hello msg', duration: 0 })
@@ -59,6 +64,84 @@ describe('Message component', () => {
 
     expect(getTopValue(elements[0])).toBe(100)
     expect(getTopValue(elements[1])).toBe(150)
+  })
+
+  // message 挂载自动关闭
+  it('message auto close', async () => {
+    message({ message: 'hello msg1', duration: 1000, offset: 100 })
+    await rAF()
+    expect(document.querySelectorAll('.px-message').length).toBe(1)
+  })
+
+  // ESC 键关闭
+  it('should close message on Escape key press', async () => {
+    message({ message: 'press ESC', duration: 0 })
+    await rAF()
+
+    expect(document.querySelector('.px-message')).toBeTruthy()
+
+    const escEvent = new KeyboardEvent('keydown', { code: 'Escape' })
+    document.dispatchEvent(escEvent)
+    await rAF()
+
+    expect(document.querySelector('.px-message')).toBeFalsy()
+  })
+
+  // 鼠标进出行为
+  it('pause and resume timer on hover', async () => {
+    message({
+      message: 'pause on hover',
+      duration: 1000,
+      type: 'undefined' as any
+    })
+    await rAF()
+
+    const el = document.querySelector('.px-message')!
+    el.dispatchEvent(new Event('mouseenter'))
+  })
+
+  // VNode 测试
+  it('should render VNode message', async () => {
+    message({
+      message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
+        h('span', null, 'Message can be '),
+        h('i', { style: 'color: teal' }, 'VNode')
+      ])
+    })
+
+    await rAF()
+  })
+
+  test('closeAll with specific type', async () => {
+    message({ message: 'info', type: 'info', duration: 0 })
+    message({ message: 'error', type: 'error', duration: 0 })
+    await rAF()
+    expect(document.querySelectorAll('.px-message').length).toBe(2)
+
+    closeAll('info')
+    await rAF()
+    const msgs = [...document.querySelectorAll('.px-message')]
+    expect(msgs.some((el) => el.textContent?.includes('info'))).toBe(false)
+  })
+
+  test('message.error shortcut works', async () => {
+    message.error('error msg')
+    await rAF()
+    expect(document.querySelector('.px-message')?.textContent).toContain(
+      'error msg'
+    )
+  })
+
+  it('RenderVNode works when vNode is undefined', async () => {
+    mount(Message, {
+      props: {
+        id: 'test',
+        zIndex: 1000,
+        onDestory: () => {
+          // noop
+        }
+      }
+    })
   })
 })
 

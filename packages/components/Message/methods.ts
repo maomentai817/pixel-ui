@@ -40,10 +40,10 @@ const createMessage = (props: CreateMessageProps): MessageInstance => {
   // 销毁函数
   const destory = () => {
     const idx = findIndex(instances, { id })
-    if (idx === -1) return
-
-    instances.splice(idx, 1)
-    render(null, container)
+    if (idx !== -1) {
+      instances.splice(idx, 1)
+      render(null, container)
+    }
   }
 
   // message 实例内部使用的 props
