@@ -8,7 +8,7 @@
   --px-message-icon-size: 16px;
   --px-message-icon-margin: 8px;
   --px-message-text-color: var(--px-color-base);
-  --px-message-text-font-size: var(--px-font-size-small);
+  --px-message-text-font-size: var(--px-font-size-base);
 }
 
 .px-message {

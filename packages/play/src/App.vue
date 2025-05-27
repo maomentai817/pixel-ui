@@ -100,7 +100,7 @@ const handleMessage = () => {
 </script>
 
 <template>
-  一二三四---___
+  一二三四---___"双引号"……'单引号'
   <px-button size="small" ref="BTN">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
   <px-button type="success" size="small">Success</px-button>

@@ -7,8 +7,8 @@ next:
   text: Tooltip 文字提示
 
 prev:
-  link: /components/alert
-  text: Alert 提示
+  link: /components/message
+  text: Message 消息提示
 ---
 
 # Popconfirm 气泡确认框
