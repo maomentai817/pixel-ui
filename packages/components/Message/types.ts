@@ -56,7 +56,7 @@ export interface MessageProps {
   message?: string | VNode | (() => VNode)
   /**
    * @property type
-   * @type enum - success | info | warning | danger | error
+   * @type enum - primary | success | info | warning | danger | error | sakura
    * @description 消息类型
    * @default info
    */
@@ -111,6 +111,21 @@ export interface MessageInstance {
 
 export interface MessageCompInstance {
   close(): void
+  bottomOffset: Ref<number>
+}
+
+export interface MessageExpose {
+  /**
+   * @property close
+   * @description 关闭消息
+   * @type  Function - () => void
+   */
+  close(): void
+  /**
+   * @property bottomOffset
+   * @description 消息底部距离视口顶偏移量
+   * @type  {Ref<number>}
+   */
   bottomOffset: Ref<number>
 }
 

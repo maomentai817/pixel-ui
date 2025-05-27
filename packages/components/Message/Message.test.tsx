@@ -1,4 +1,4 @@
-import { describe, test, expect, it, beforeEach } from 'vitest'
+import { describe, test, expect, it, beforeEach, afterEach, vi } from 'vitest'
 import { nextTick, h } from 'vue'
 import message, { closeAll } from './methods'
 import { withInstallFunction } from '@pixel-ui/utils'
@@ -157,5 +157,64 @@ describe('Message/index', () => {
     const enhancedMessage = withInstallFunction(Message, '$message')
     // eg: withInstallFunction 增加了一个特定的方法或属性
     expect(enhancedMessage).toHaveProperty('install')
+  })
+})
+
+// CSS Houdini Paint Worklet测试
+describe('PxMessage - CSS Houdini Paint Worklet', () => {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
+  it('should register Paint Worklet pixelbox when supported', async () => {
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    }
+
+    mount(Message)
+
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('/worklets/dist/pixelboxOrnament.worklet.js')
+    )
+  })
+
+  it('should emit warning when CSS Houdini Paint Worklet is not supported', () => {
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
+
+    mount(Message)
+
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringContaining(
+          'CSS Houdini Paint Worklet API is not supported in this browser.'
+        )
+      })
+    )
+  })
+
+  it('should log error when loading Paint Worklet fails', () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+
+    mount(Message)
+
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading Paint Worklet:',
+      error
+    )
   })
 })
