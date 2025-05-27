@@ -17,7 +17,8 @@ import {
   PxImage,
   PxPixelIt,
   PxTag,
-  PxConfigProvider
+  PxConfigProvider,
+  PxMessage
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -41,5 +42,6 @@ export default [
   PxImage,
   PxPixelIt,
   PxTag,
-  PxConfigProvider
+  PxConfigProvider,
+  PxMessage
 ] as Plugin[]

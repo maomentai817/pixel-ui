@@ -4,8 +4,8 @@ import type {
   CollapseItemName,
   DropdownItemProps
 } from '@mmt817/pixel-ui'
-import { ref, onMounted, computed } from 'vue'
-import { en, zhCN, zhTW } from '@mmt817/pixel-ui'
+import { ref, onMounted, computed, h } from 'vue'
+import { en, zhCN, zhTW, PxMessage } from '@mmt817/pixel-ui'
 import { get } from 'lodash-es'
 
 const activeNames = ref([])
@@ -56,6 +56,20 @@ const locale = computed(() => get(langMap, language.value))
 const changeLang = () => {
   const l = ['en', 'zhCN', 'zhTW']
   language.value = l[(l.indexOf(language.value) + 1) % l.length]
+}
+
+// message
+const handleMessage = () => {
+  PxMessage({
+    message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
+      h('span', null, 'Message can be '),
+      h('i', { style: 'color: teal' }, 'VNode')
+    ])
+  })
+  PxMessage.error({
+    message: 'This is a message',
+    duration: 0
+  })
 }
 </script>
 
@@ -622,6 +636,8 @@ const changeLang = () => {
       <px-button>Delete</px-button>
     </px-popconfirm>
   </px-config-provider>
+  <hr />
+  <px-button @click="handleMessage" />
   <div class="h-300"></div>
 </template>
 

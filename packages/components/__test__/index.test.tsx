@@ -16,7 +16,10 @@ import {
   PxPopconfirm,
   PxDropdown,
   PxDropdownItem,
-  PxImage
+  PxImage,
+  PxPixelIt,
+  PxTag,
+  PxConfigProvider
 } from '..'
 import { map, get } from 'lodash-es'
 
@@ -36,7 +39,10 @@ const components = [
   PxPopconfirm,
   PxDropdown,
   PxDropdownItem,
-  PxImage
+  PxImage,
+  PxPixelIt,
+  PxTag,
+  PxConfigProvider
 ] as Plugin[]
 
 describe('components/index.ts', () => {

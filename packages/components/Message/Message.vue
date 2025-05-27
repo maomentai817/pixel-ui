@@ -109,5 +109,5 @@ defineExpose<MessageCompInstance>({
 </template>
 
 <style scoped>
-@import './style.css';
+/* @import './style.css'; */
 </style>
