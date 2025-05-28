@@ -53,6 +53,14 @@ demo-preview=../demo/Message/Close.vue
 demo-preview=../demo/Message/Center.vue
 :::
 
+## 自定义图标
+
+可以通过设置 `icon` 属性来自定义图标。该属性会覆盖 `type` 的默认图标。
+
+:::preview
+demo-preview=../demo/Message/Icon.vue
+:::
+
 ## 全局方法​
 
 `Pixel UI` 为 `app.config.globalProperties` 添加了全局方法 `$message`。因此在 Vue 实例中可以作为 `this.$message` 使用。
