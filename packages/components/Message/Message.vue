@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<MessagePropsIn>(), {
 const visible = ref(false)
 const messageRef = ref<HTMLDivElement>()
 const iconName = computed(
-  () => typeIconMap.get(props.type) ?? 'info-circle-solid'
+  () => props.icon ?? typeIconMap.get(props.type) ?? 'info-circle-solid'
 )
 // div 高度
 const boxHeight = ref(0)

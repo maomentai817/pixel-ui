@@ -96,6 +96,12 @@ const handleMessage = () => {
     message: 'This is a error message',
     duration: 0
   })
+  PxMessage.iron({
+    message: 'This is a iron message',
+    duration: 0,
+    showClose: true,
+    icon: 'face-thinking-solid'
+  })
 }
 </script>
 

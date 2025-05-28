@@ -100,6 +100,22 @@
   --px-message-text-color: var(--px-color-danger);
 }
 
+/* iron */
+.px-message.px-message--iron {
+  min-height: 60px;
+
+  background-image: paint(pixelboard);
+  --px-corner-size: 3;
+  --px-block-size: 3;
+  --px-board-color: #3A4567;
+  --px-shadow-color: #252D46;
+  --px-color-1: #8F9DB5;
+  --px-color-2: #B4C0D2;
+  --px-message-padding: calc((var(--px-corner-size) + 2) * var(--px-block-size) * 1px);
+  padding: var(--px-message-padding) calc(var(--px-message-padding) * 2);
+  --px-message-text-color: var(--px-color-1);
+}
+
 .px-message.fade-up-enter-from,
 .px-message.fade-up-leave-to {
   opacity: 0;
