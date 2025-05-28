@@ -17,5 +17,6 @@ registerPaintWorklets()
 const installer = makeInstaller(components)
 
 export * from '@pixel-ui/components'
-export * from '@pixel-ui/locale'
+// export * from '@pixel-ui/locale'
+export { en, zhCN, zhTW, ja } from '@pixel-ui/locale'
 export default installer
