@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { throttle } from 'lodash-es'
 import { BUTTON_GROUP_CTX_KEY } from './contants'
-import { ref, onMounted, computed, inject } from 'vue'
-import { debugWarn } from '@pixel-ui/utils'
+import { ref, computed, inject } from 'vue'
 import { usePxButtonCustomStyle } from '@pixel-ui/hooks'
 import type { ButtonProps, ButtonEmits, ButtonInstance } from './types.button'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 // 异步引入解决打包依赖循环问题
 // import { defineAsyncComponent } from 'vue'
@@ -64,27 +62,6 @@ defineExpose<ButtonInstance>({
   disabled,
   size,
   type
-})
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-    // (CSS as any).paintWorklet.addModule(workletURL)
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(async () => {
-  paint()
 })
 </script>
 

@@ -41,7 +41,7 @@ const items: DropdownItemProps[] = [
 
 const BTN = ref<ButtonInstance>()
 onMounted(() => {
-  console.log(BTN.value?.ref)
+  // console.log(BTN.value?.ref)
 })
 
 const pixelitScale = ref(8)

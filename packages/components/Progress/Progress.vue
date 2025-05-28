@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { debugWarn, updateColors } from '@pixel-ui/utils'
+import { updateColors } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
-
-import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
-import workletStripeURL from '../worklets/dist/pixelstripe.worklet.js?url'
 
 const COMP_NAME = 'PxProgress' as const
 defineOptions({
@@ -79,24 +76,6 @@ const getColorStyle = (color: any) => {
   }
 }
 
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletBoxURL)
-      ;(CSS as any).paintWorklet.addModule(workletStripeURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-    // (CSS as any).paintWorklet.addModule(workletURL)
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
 const progressBarInnerRef = ref()
 let stripeOffset = 0
 let rafId = 0
@@ -122,7 +101,7 @@ const stopStripeFlow = () => {
 }
 
 onMounted(async () => {
-  paint()
+  // paint()
 
   props.stripedFlow && updateStripeFlow()
 })

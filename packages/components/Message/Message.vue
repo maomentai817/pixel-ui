@@ -3,12 +3,11 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { delay, bind } from 'lodash-es'
 import { getLastBottomOffset } from './methods'
 import { useOffset, useEventListener } from '@pixel-ui/hooks'
-import { addUnit, typeIconMap, RenderVNode, debugWarn } from '@pixel-ui/utils'
+import { addUnit, typeIconMap, RenderVNode } from '@pixel-ui/utils'
 
 import type { MessagePropsIn, MessageCompInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/dist/pixelboxOrnament.worklet.js?url'
 
 const COMP_NAME = 'PxMessage' as const
 defineOptions({
@@ -65,26 +64,9 @@ useEventListener(document, 'keydown', (e: Event) => {
   if (code === 'Escape') close()
 })
 
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if (typeof CSS !== 'undefined' && 'paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
 onMounted(() => {
   visible.value = true
   startTimer()
-  paint()
 })
 
 defineExpose<MessageCompInstance>({

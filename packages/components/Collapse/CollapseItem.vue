@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { inject, computed, onMounted } from 'vue'
+import { inject, computed } from 'vue'
 import { COLLAPSE_CTX_KEY } from './contants'
-import { debugWarn } from '@pixel-ui/utils'
 import type { CollapseItemProps } from './types.collapseItem'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletPanelURL from '../worklets/dist/pixelpanel.worklet.js?url'
-import workletContentURL from '../worklets/dist/pixelcontent.worklet.js?url'
 import transitionEvents from './transitionEvents'
 
 // 异步引入, 避免打包后报错
@@ -30,28 +27,6 @@ const handleClick = () => {
 
   ctx?.handleItemClick(props.name)
 }
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletPanelURL)
-      ;(CSS as any).paintWorklet.addModule(workletContentURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-    // (CSS as any).paintWorklet.addModule(workletURL)
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(async () => {
-  paint()
-})
 </script>
 
 <template>

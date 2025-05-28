@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import {
-  ref,
-  computed,
-  watch,
-  watchEffect,
-  onUnmounted,
-  onMounted,
-  type Ref
-} from 'vue'
+import { ref, computed, watch, watchEffect, onUnmounted, type Ref } from 'vue'
 import { createPopper, type Instance } from '@popperjs/core'
 import { bind, debounce, type DebouncedFunc } from 'lodash-es'
 import { useClickOutside } from '@pixel-ui/hooks'
-import { debugWarn } from '@pixel-ui/utils'
 import type { TooltipProps, TooltipEmits, TooltipInstance } from './types'
 
 import useEventsToTriggerNode from './useEventsToTriggerNode'
-import workletBoxURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxTooltip' as const
 defineOptions({
@@ -213,27 +203,6 @@ defineExpose<TooltipInstance>({
 // 注销
 onUnmounted(() => {
   destroyPopperInstance()
-})
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletBoxURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-    // (CSS as any).paintWorklet.addModule(workletURL)
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(() => {
-  paint()
 })
 </script>
 

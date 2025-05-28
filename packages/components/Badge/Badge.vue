@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { isNumber } from 'lodash-es'
-import { debugWarn } from '@pixel-ui/utils'
 import { usePxBadgeCustomStyle } from '@pixel-ui/hooks'
 import type { BadgeProps } from './types'
-
-import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxBadge' as const
 defineOptions({
@@ -40,26 +37,6 @@ const offsetStyle = computed(() => {
     marginRight: `${-x}px`,
     marginTop: `${y}px`
   }
-})
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(async () => {
-  paint()
 })
 </script>
 

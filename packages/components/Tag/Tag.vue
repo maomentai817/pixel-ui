@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { debugWarn } from '@pixel-ui/utils'
+import { computed } from 'vue'
 import type { TagProps, TagEmits } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
 
 const COMP_NAME = 'PxTag' as const
 defineOptions({
@@ -63,26 +61,6 @@ const colorStyle = computed(() => {
       '--px-custom-border-color': color
     }
   }
-})
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if (typeof CSS !== 'undefined' && 'paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(async () => {
-  paint()
 })
 </script>
 

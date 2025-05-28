@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test, vi, it, afterEach } from 'vitest'
+import { beforeAll, describe, expect, test, vi, it } from 'vitest'
 import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
 import { withInstall } from '@pixel-ui/utils'
 import { PxCollapse, PxCollapseItem } from '.'
@@ -257,78 +257,6 @@ describe('Collapse.vue', () => {
     addModule: vi.fn()
   }
 }
-
-describe('PxCollapse - CSS Houdini Paint Worklet', () => {
-  const originalCSS = (globalThis as any).CSS
-
-  afterEach(() => {
-    ;(globalThis as any).CSS = originalCSS
-    vi.restoreAllMocks()
-  })
-
-  it('should register the Paint Worklet pixelpanel when supported', async () => {
-    ;(globalThis as any).CSS = {
-      paintWorklet: {
-        addModule: vi.fn()
-      }
-    }
-
-    mount(CollapseItem)
-
-    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('/worklets/dist/pixelpanel.worklet.js')
-    )
-  })
-
-  it('should register the Paint Worklet pixelcontent when supported', async () => {
-    ;(globalThis as any).CSS = {
-      paintWorklet: {
-        addModule: vi.fn()
-      }
-    }
-
-    mount(CollapseItem)
-
-    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
-      expect.stringContaining('/worklets/dist/pixelcontent.worklet.js')
-    )
-  })
-
-  it('should warn if CSS Houdini Paint Worklet is not supported', () => {
-    console.warn = vi.fn()
-
-    globalThis.CSS = {} as any
-
-    mount(CollapseItem)
-
-    expect(console.warn).toHaveBeenCalledWith(
-      expect.objectContaining({
-        message: expect.stringContaining(
-          'CSS Houdini Paint Worklet API is not supported in this browser.'
-        )
-      })
-    )
-  })
-
-  it('should log an error if loading the Paint Worklet fails', () => {
-    const error = new Error('Mock addModule error')
-    console.error = vi.fn()
-    ;(globalThis as any).CSS = {
-      paintWorklet: {
-        addModule: vi.fn(() => {
-          throw error
-        })
-      }
-    }
-
-    mount(CollapseItem)
-
-    expect(console.error).toHaveBeenCalledWith(
-      'Error loading Paint Worklet:',
-      error
-    )
-  })
-})
 
 describe('Collapse/transitionEvents.ts', () => {
   const wrapper = mount(() => <div></div>)

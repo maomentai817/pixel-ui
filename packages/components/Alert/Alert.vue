@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { typeIconMap, debugWarn } from '@pixel-ui/utils'
+import { ref, computed } from 'vue'
+import { typeIconMap } from '@pixel-ui/utils'
 import type { AlertProps, AlertEmits, AlertInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
-import workletURL from '../worklets/dist/pixelbox.worklet.js?url'
-import boardWorklet from '../worklets/dist/pixelboard.worklet.js?url'
 
 const COMP_NAME = 'PxAlert' as const
 defineOptions({
@@ -41,28 +39,6 @@ const open = () => {
 defineExpose<AlertInstance>({
   open,
   close
-})
-
-// CSS Houdini Paint Worklet
-const paint = () => {
-  try {
-    if ('paintWorklet' in CSS) {
-      ;(CSS as any).paintWorklet.addModule(workletURL)
-      ;(CSS as any).paintWorklet.addModule(boardWorklet)
-    } else {
-      debugWarn(
-        COMP_NAME,
-        'CSS Houdini Paint Worklet API is not supported in this browser.'
-      )
-    }
-    // (CSS as any).paintWorklet.addModule(workletURL)
-  } catch (error) {
-    console.error('Error loading Paint Worklet:', error)
-  }
-}
-
-onMounted(async () => {
-  paint()
 })
 </script>
 
