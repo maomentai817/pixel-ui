@@ -1,6 +1,7 @@
 import type { Plugin } from 'vue'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, afterEach } from 'vitest'
 import {
+  registerPaintWorklets,
   PxButton,
   PxButtonGroup,
   PxIcon,
@@ -53,4 +54,56 @@ describe('components/index.ts', () => {
       expect(component.install).toBeDefined()
     }
   )
+})
+
+describe('registerPaintWorklets', () => {
+  const originalCSS = (globalThis as any).CSS
+
+  afterEach(() => {
+    ;(globalThis as any).CSS = originalCSS
+    vi.restoreAllMocks()
+  })
+
+  it('should register the Paint Worklet pixelpanel when supported', async () => {
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn()
+      }
+    }
+    await registerPaintWorklets()
+    expect((globalThis as any).CSS.paintWorklet.addModule).toHaveBeenCalledWith(
+      expect.stringContaining('/worklets/dist/pixelbox.worklet.js')
+    )
+  })
+
+  it('should warn if CSS Houdini Paint Worklet is not supported', async () => {
+    console.warn = vi.fn()
+
+    globalThis.CSS = {} as any
+
+    await registerPaintWorklets()
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.stringContaining(
+        '[Pixel UI] CSS Houdini Paint Worklet API is not supported in this browser.'
+      )
+    )
+  })
+
+  it('should log an error if loading the Paint Worklet fails', async () => {
+    const error = new Error('Mock addModule error')
+    console.error = vi.fn()
+    ;(globalThis as any).CSS = {
+      paintWorklet: {
+        addModule: vi.fn(() => {
+          throw error
+        })
+      }
+    }
+    await registerPaintWorklets()
+
+    expect(console.warn).toHaveBeenCalledWith(
+      '[Pixel UI] Error loading paintWorklet: ',
+      error
+    )
+  })
 })
