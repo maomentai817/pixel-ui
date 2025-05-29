@@ -14,12 +14,12 @@ const meta: Meta<typeof PxButton> = {
     type: {
       control: { type: 'select' },
       description: '按钮类型',
-      options: ['base', 'primary', 'success', 'warning', 'danger', '']
+      options: ['base', 'primary', 'success', 'warning', 'danger', 'sakura']
     },
     size: {
       control: { type: 'select' },
       description: '按钮尺寸',
-      options: ['large', 'default', 'small', 'mini', '']
+      options: ['large', 'default', 'small']
     },
     label: {
       description: '按钮内容(可被插槽覆盖)',
@@ -77,7 +77,7 @@ const meta: Meta<typeof PxButton> = {
     nativeType: {
       description: '原生type属性',
       control: { type: 'select' },
-      options: ['button', 'submit', 'reset', '']
+      options: ['button', 'submit', 'reset']
     }
   },
   args: { onClick: fn() }
@@ -139,24 +139,21 @@ const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
 		<px-button v-bind="args" size="large" type="success" @click="onClick" />
 		<px-button v-bind="args" size="large" type="warning" @click="onClick" />
 		<px-button v-bind="args" size="large" type="danger" @click="onClick" />
+		<px-button v-bind="args" size="large" type="sakura" @click="onClick" />
 		<br/>
 		<br/>
 		<px-button v-bind="args" size="default" type="primary" @click="onClick" />
 		<px-button v-bind="args" size="default" type="success" @click="onClick" />
 		<px-button v-bind="args" size="default" type="warning" @click="onClick" />
 		<px-button v-bind="args" size="default" type="danger" @click="onClick" />
+		<px-button v-bind="args" size="default" type="sakura" @click="onClick" />
 		<br/>
 		<br/>
 		<px-button v-bind="args" size="small" type="primary" @click="onClick" />
 		<px-button v-bind="args" size="small" type="success" @click="onClick" />
 		<px-button v-bind="args" size="small" type="warning" @click="onClick" />
 		<px-button v-bind="args" size="small" type="danger" @click="onClick" />
-		<br/>
-		<br/>
-		<px-button v-bind="args" size="small" type="primary" @click="onClick" />
-		<px-button v-bind="args" size="small" type="success" @click="onClick" />
-		<px-button v-bind="args" size="small" type="warning" @click="onClick" />
-		<px-button v-bind="args" size="small" type="danger" @click="onClick" />
+		<px-button v-bind="args" size="small" type="sakura" @click="onClick" />
 	</div>`,
   methods
 })
@@ -183,6 +180,12 @@ export const Danger = AllSizesTemplate.bind({})
 Danger.args = {
   type: 'danger',
   label: 'Danger'
+}
+
+export const Sakura = AllSizesTemplate.bind({})
+Sakura.args = {
+  type: 'sakura',
+  label: 'Sakura'
 }
 
 export const WithIcon = AllSizesTemplate.bind({})

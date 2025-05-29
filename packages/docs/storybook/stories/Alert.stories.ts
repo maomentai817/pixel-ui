@@ -11,7 +11,7 @@ const meta: Meta<typeof PxAlert> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: ['info', 'success', 'warning', 'danger']
+      options: ['info', 'success', 'warning', 'danger', 'sakura']
     },
     effect: {
       control: { type: 'radio' },

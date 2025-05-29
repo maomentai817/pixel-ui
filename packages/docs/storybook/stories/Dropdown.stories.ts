@@ -21,7 +21,7 @@ const meta: Meta<typeof PxDropdown> = {
       control: {
         type: 'select'
       },
-      options: ['primary', 'success', 'warning', 'danger', 'base'],
+      options: ['primary', 'success', 'warning', 'danger', 'base', 'sakura'],
       description: '按钮类型',
       defaultValue: 'base'
     },
@@ -29,7 +29,7 @@ const meta: Meta<typeof PxDropdown> = {
       control: {
         type: 'select'
       },
-      options: ['large', 'default', 'small', 'mini'],
+      options: ['large', 'default', 'small'],
       description: '按钮尺寸',
       defaultValue: 'default'
     },
@@ -477,18 +477,6 @@ export const Size: StoryFn = (args, { argTypes }) => ({
 
       <px-dropdown size="small" split-button type="warning">
         Small
-        <template #dropdown>
-          <px-dropdown-menu>
-            <px-dropdown-item>Action 1</px-dropdown-item>
-            <px-dropdown-item>Action 2</px-dropdown-item>
-            <px-dropdown-item>Action 3</px-dropdown-item>
-            <px-dropdown-item>Action 4</px-dropdown-item>
-          </px-dropdown-menu>
-        </template>
-      </px-dropdown>
-
-      <px-dropdown size="small" split-button type="danger">
-        Mini
         <template #dropdown>
           <px-dropdown-menu>
             <px-dropdown-item>Action 1</px-dropdown-item>

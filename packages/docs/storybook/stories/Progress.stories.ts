@@ -25,7 +25,7 @@ const meta: Meta<typeof PxProgress> = {
     },
     status: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger']
+      options: ['primary', 'success', 'warning', 'danger', 'sakura']
     },
     indeterminate: {
       control: { type: 'boolean' }
@@ -71,6 +71,7 @@ const Template: StoryFn = (args) => ({
     <PxProgress v-bind="args" status="success" style="marginBottom:25px" />
     <PxProgress v-bind="args" status="warning" style="marginBottom:25px" />
     <PxProgress v-bind="args" status="danger" style="marginBottom:25px" />
+    <PxProgress v-bind="args" status="sakura" style="marginBottom:25px" />
   `
 })
 

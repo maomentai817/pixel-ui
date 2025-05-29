@@ -28,7 +28,7 @@ const meta: Meta<typeof PxBadge> = {
     },
     type: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'info']
+      options: ['primary', 'success', 'warning', 'danger', 'info', 'sakura']
     },
     showZero: {
       control: 'boolean'
@@ -93,6 +93,9 @@ export const Types: StoryFn = (args) => ({
         <px-button>Badge</px-button>
       </px-badge>
       <px-badge v-bind="args" type="info">
+        <px-button>Badge</px-button>
+      </px-badge>
+      <px-badge v-bind="args" type="sakura">
         <px-button>Badge</px-button>
       </px-badge>
     </div>

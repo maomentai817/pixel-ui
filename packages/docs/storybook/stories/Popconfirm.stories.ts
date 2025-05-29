@@ -26,12 +26,12 @@ const meta: Meta<typeof PxPopconfirm> = {
     },
     confirmButtonType: {
       control: 'select',
-      options: ['primary', 'success', 'warning', 'danger', 'base'],
+      options: ['primary', 'success', 'warning', 'danger', 'base', 'sakura'],
       description: '确认按钮类型'
     },
     cancelButtonType: {
       control: 'select',
-      options: ['primary', 'success', 'warning', 'danger', 'base'],
+      options: ['primary', 'success', 'warning', 'danger', 'base', 'sakura'],
       description: '取消按钮类型'
     },
     icon: {

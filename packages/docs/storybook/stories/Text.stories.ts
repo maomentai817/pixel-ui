@@ -16,7 +16,7 @@ const meta: Meta<typeof PxText> = {
     type: {
       control: { type: 'select' },
       description: '字体类型',
-      options: ['base', 'primary', 'success', 'warning', 'danger', '']
+      options: ['base', 'primary', 'success', 'warning', 'danger', 'sakura']
     },
     color: {
       control: { type: 'color' },
@@ -29,7 +29,7 @@ const meta: Meta<typeof PxText> = {
     align: {
       control: { type: 'select' },
       description: '对齐方式',
-      options: ['left', 'center', 'right', '']
+      options: ['left', 'center', 'right']
     },
     tag: {
       description: '元素类型',
