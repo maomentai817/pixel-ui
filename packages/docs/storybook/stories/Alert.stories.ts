@@ -101,3 +101,18 @@ NonClosable.args = {
   type: 'info',
   showIcon: true
 }
+
+export const Types: StoryFn<typeof PxAlert> = (args: AlertProps) => ({
+  components: { PxAlert },
+  setup() {
+    return { args }
+  },
+  template: `
+    <px-alert title="Success alert" type="success" />
+    <px-alert title="Info alert" type="info" />
+    <px-alert title="Warning alert" type="warning" />
+    <px-alert title="Error alert" type="danger" />
+    <px-alert title="Sakura alert" type="sakura" />
+    <px-alert title="Iron alert" iron />
+  `
+})

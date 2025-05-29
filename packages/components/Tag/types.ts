@@ -41,7 +41,7 @@ export interface TagProps {
   color?: string
   /**
    * @property effect
-   * @type enum - 'light' | 'dark' | 'plain'
+   * @type enum - light | dark | plain
    * @description Tag 的主题
    * @default filled
    */
@@ -80,13 +80,11 @@ export interface TagEmits {
   /**
    * @property close
    * @description Close event
-   * @type Function - ()=>void
    */
   (_e: 'close'): void
   /**
    * @property click
    * @description Click event
-   * @type Function - (event: MouseEvent)=>void
    */
   (_e: 'click', _val: MouseEvent): void
 }
