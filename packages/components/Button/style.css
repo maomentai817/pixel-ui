@@ -11,6 +11,7 @@
   --px-button-font-size: var(--px-font-size-small);
   --px-button-size: 34px;
   --px-button-padding: calc((var(--px-button-size) - var(--px-button-font-size)) / 2);
+  --px-button-bg-shadow-border: 3px;
 }
 
 .px-button {
@@ -40,6 +41,7 @@
   border-width: 0;
   height: var(--px-button-size);
   padding: var(--px-button-padding);
+  padding-top: calc(var(--px-button-padding) - var(--px-button-bg-shadow-border));
   margin: 0 3px;
   font-size: var(--px-button-font-size);
   font-family: var(--px-font-family);
@@ -53,7 +55,7 @@
   --px-border-radius: 0px;
   --px-border-color: var(--px-color-base);
   --px-bg-color: transparent;
-  --px-bg-shadow-border: 3px;
+  --px-bg-shadow-border: var(--px-button-bg-shadow-border);
   --px-bg-shadow-color: var(--px-button-bg-shadow-color);
   --px-bg-shadow-position: bottom-right;
   /* button single 区别于 button-group */
@@ -258,6 +260,7 @@
 }
 /* round */
 .px-button.is-round {
+  padding: var(--px-button-padding);
   --px-border-radius: 1px;
   --px-border-radius-lt: 1px;
   --px-border-radius-rt: 1px;
@@ -266,6 +269,7 @@
 }
 /* circle */
 .px-button.is-circle {
+  padding: var(--px-button-padding);
   --px-border-radius: 2px;
   --px-border-radius-lt: 2px;
   --px-border-radius-rt: 2px;
@@ -275,6 +279,7 @@
 
 /* chubby 新的圆角样式 */
 .px-button.is-chubby { 
+  padding: var(--px-button-padding);
   --px-button-size: 60px;
   --px-border: 4px;
   --px-border-t: 4px;

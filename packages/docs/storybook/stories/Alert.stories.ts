@@ -108,11 +108,11 @@ export const Types: StoryFn<typeof PxAlert> = (args: AlertProps) => ({
     return { args }
   },
   template: `
-    <px-alert title="Success alert" type="success" />
-    <px-alert title="Info alert" type="info" />
-    <px-alert title="Warning alert" type="warning" />
-    <px-alert title="Error alert" type="danger" />
-    <px-alert title="Sakura alert" type="sakura" />
-    <px-alert title="Iron alert" iron />
+    <px-alert v-bind="args" title="Success alert" type="success" />
+    <px-alert v-bind="args" title="Info alert" type="info" />
+    <px-alert v-bind="args" title="Warning alert" type="warning" />
+    <px-alert v-bind="args" title="Error alert" type="danger" />
+    <px-alert v-bind="args" title="Sakura alert" type="sakura" />
+    <px-alert v-bind="args" title="Iron alert" iron />
   `
 })
