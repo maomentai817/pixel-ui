@@ -106,14 +106,18 @@ const handleMessage = () => {
 </script>
 
 <template>
-  一二三四---___"双引号"……'单引号'
+  <div>一二三四---___"双引号"……'单引号'</div>
+  <hr />
+  <div>abcdefghijklmnopqrstuvwxyz事件发生加班费</div>
+  <hr />
+  <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+  <hr />
   <px-button size="small" ref="BTN">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
   <px-button type="success" size="small">Success</px-button>
   <px-button type="warning" size="small">Warning</px-button>
   <px-button type="danger" size="small">Danger</px-button>
   <px-button disabled size="small">Disabled</px-button>
-  <hr />
   <hr />
   <px-button size="small">Normal</px-button>
   <px-button type="primary" size="small">Primary</px-button>
@@ -122,14 +126,12 @@ const handleMessage = () => {
   <px-button type="danger" size="small">Danger</px-button>
   <px-button disabled size="small">Disabled</px-button>
   <hr />
-  <hr />
   <px-button>Normal</px-button>
   <px-button type="primary">Primary</px-button>
   <px-button type="success">Success</px-button>
   <px-button type="warning">Warning</px-button>
   <px-button type="danger">Danger</px-button>
   <px-button disabled>Disabled</px-button>
-  <hr />
   <hr />
   <px-button size="large">Normal</px-button>
   <px-button type="primary" size="large">Primary</px-button>
@@ -138,14 +140,12 @@ const handleMessage = () => {
   <px-button type="danger" size="large">Danger</px-button>
   <px-button disabled size="large">Disabled</px-button>
   <hr />
-  <hr />
   <px-button round>Normal</px-button>
   <px-button type="primary" round>Primary</px-button>
   <px-button type="success" round>Success</px-button>
   <px-button type="warning" round>Warning</px-button>
   <px-button type="danger" round>Danger</px-button>
   <px-button disabled round>Disabled</px-button>
-  <hr />
   <hr />
   <px-button circle>Normal</px-button>
   <px-button type="primary" circle>Primary</px-button>
@@ -154,7 +154,6 @@ const handleMessage = () => {
   <px-button type="danger" circle>Danger</px-button>
   <px-button disabled circle>Disabled</px-button>
   <px-button disabled circle>1</px-button>
-  <hr />
   <hr />
   <px-icon icon="face-thinking-solid"></px-icon>
   <px-icon icon="face-thinking-solid" size="30"></px-icon>
@@ -172,7 +171,6 @@ const handleMessage = () => {
   <px-icon icon="face-thinking-solid" shake></px-icon>
   <px-icon icon="face-thinking-solid" beat></px-icon>
   <hr />
-  <hr />
   <px-button-group type="primary" round>
     <px-button>Button1</px-button>
     <px-button>Button2</px-button>
@@ -189,7 +187,6 @@ const handleMessage = () => {
     <px-button>Button4</px-button>
   </px-button-group>
   <hr />
-  <hr />
   <px-button color="#626aef">Button</px-button>
   <px-button color="#626aef" disabled>Button</px-button>
   <px-button color="#626aef" plain>Button</px-button>
@@ -199,7 +196,6 @@ const handleMessage = () => {
   <px-button color="#fadbe0">Button</px-button>
   <px-button color="#fadbe0" disabled>Button</px-button>
   <px-button color="#fadbe0" plain>Button</px-button>
-  <hr />
   <hr />
   <px-card style="width: 240px" hoverable round>
     <template #prepend>
@@ -213,15 +209,12 @@ const handleMessage = () => {
     </template>
   </px-card>
   <hr />
-  <hr />
   <px-text>Base</px-text>
   <px-text type="primary">Primary</px-text>
   <px-text type="success">Success</px-text>
   <px-text type="warning">Warning</px-text>
   <px-text type="danger">Danger</px-text>
   <px-text size="26" color="#626aef" align="left" bold>Text</px-text>
-  <hr />
-  <hr />
   <hr />
   <px-collapse
     v-model="activeNames"
@@ -241,14 +234,12 @@ const handleMessage = () => {
     <px-collapse-item name="3" title="标题3"> 内容3 </px-collapse-item>
   </px-collapse>
   <hr />
-  <hr />
   <px-animation-frame
     src="/images/pet.gif"
     :stages="stages"
     :width="320"
     :height="320"
   />
-  <hr />
   <hr />
   <div class="f-b">
     <div style="width: 600px">
