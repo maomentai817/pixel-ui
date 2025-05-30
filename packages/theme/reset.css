@@ -2,7 +2,7 @@ body {
   font-family: var(--px-font-family);
   font-weight: var(--px-font-weight-base);
   font-size: var(--px-font-size-base);
-  line-height: calc(var(--px-font-size-base) * 1.2);
+  /* line-height: calc(var(--px-font-size-base) * 1.2); */
   color: var(--px-color-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

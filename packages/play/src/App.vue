@@ -93,7 +93,7 @@ const handleMessage = () => {
     duration: 0
   })
   PxMessage.error({
-    message: 'This is a error message',
+    message: '错误消息弹出',
     duration: 0
   })
   PxMessage.iron({
