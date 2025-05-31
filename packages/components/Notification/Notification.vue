@@ -81,17 +81,17 @@ defineExpose<NotificationCompInstance>({
 
 <template>
   <transition
-    :name="`px-notification-${transitionName}`"
+    :name="transitionName"
+    @enter="() => (boxHeight = notifyRef!.getBoundingClientRect().height)"
     @after-leave="!visible && onDestory()"
-    @enter="boxHeight = notifyRef!.getBoundingClientRect().height"
   >
     <div
-      ref="notifyRef"
       class="px-notification"
+      ref="notifyRef"
       :class="{
         [`px-notification--${type}`]: type,
         [horizontalClass]: true,
-        'show-close': showClose
+        'is-close': showClose
       }"
       :style="customStyle"
       v-show="visible"
@@ -101,7 +101,6 @@ defineExpose<NotificationCompInstance>({
       @mouseleave="startTimmer"
     >
       <px-icon class="px-notification__icon" :icon="iconName" />
-
       <div class="px-notification__text">
         <div class="px-notification__title">{{ title }}</div>
         <div class="px-notification__content">

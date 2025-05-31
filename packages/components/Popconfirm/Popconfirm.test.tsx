@@ -65,7 +65,10 @@ describe('Popconfirm.vue', () => {
   // 插槽测试
   it('should render slot content corrently', () => {
     const slotContent = 'slot content'
-    const wrapper = mount(Popconfirm, { slots: { default: slotContent } })
+    const wrapper = mount(Popconfirm, {
+      slots: { default: slotContent },
+      props
+    })
 
     expect(wrapper.text()).toContain(slotContent)
   })

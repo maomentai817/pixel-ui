@@ -30,7 +30,12 @@ describe('Notification component', () => {
   })
   // 插件式调用
   test('notification() function', async () => {
-    const handler = notification({ message: 'hello notify', duration: 0 })
+    const handler = notification({
+      title: 'test',
+      message: 'hello notify',
+      duration: 0,
+      position: 'top-right'
+    })
     await rAF()
     expect(document.querySelector('.px-notification')).toBeTruthy()
 
@@ -41,8 +46,18 @@ describe('Notification component', () => {
 
   // 多次调用, closeAll() 测试
   test('call notification() function more than once', async () => {
-    notification({ message: 'hello notify1', duration: 0 })
-    notification({ message: 'hello notify2', duration: 0 })
+    notification({
+      title: 'test',
+      message: 'hello notify1',
+      duration: 0,
+      position: 'top-right'
+    })
+    notification({
+      title: 'test',
+      message: 'hello notify2',
+      duration: 0,
+      position: 'top-right'
+    })
 
     await rAF()
     expect(document.querySelectorAll('.px-notification').length).toBe(2)
@@ -55,8 +70,20 @@ describe('Notification component', () => {
 
   // 多次调用, 偏移量计算
   test('notification offset', async () => {
-    notification({ message: 'hello notify1', duration: 0, offset: 100 })
-    notification({ message: 'hello notify2', duration: 0, offset: 50 })
+    notification({
+      title: 'test',
+      message: 'hello notify1',
+      duration: 0,
+      offset: 100,
+      position: 'top-right'
+    })
+    notification({
+      title: 'test',
+      message: 'hello notify2',
+      duration: 0,
+      offset: 50,
+      position: 'top-right'
+    })
 
     await rAF()
     const elements = document.querySelectorAll('.px-notification')
@@ -68,7 +95,13 @@ describe('Notification component', () => {
 
   // notification 挂载自动关闭
   it('notification auto close', async () => {
-    notification({ message: 'hello msg1', duration: 1000, offset: 100 })
+    notification({
+      title: 'test',
+      message: 'hello msg1',
+      duration: 1000,
+      offset: 100,
+      position: 'top-right'
+    })
     await rAF()
     expect(document.querySelectorAll('.px-notification').length).toBe(1)
   })
@@ -76,9 +109,11 @@ describe('Notification component', () => {
   // 鼠标进出行为
   it('pause and resume timer on hover', async () => {
     notification({
+      title: 'test',
       message: 'pause on hover',
       duration: 1000,
-      type: 'undefined' as any
+      type: 'undefined' as any,
+      position: 'top-right'
     })
     await rAF()
 
@@ -89,6 +124,7 @@ describe('Notification component', () => {
   // VNode 测试
   it('should render VNode notification', async () => {
     notification({
+      title: 'test',
       message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
         h('span', null, 'Notification can be '),
         h('i', { style: 'color: teal' }, 'VNode')
@@ -99,8 +135,20 @@ describe('Notification component', () => {
   })
 
   test('closeAll with specific type', async () => {
-    notification({ message: 'info', type: 'info', duration: 0 })
-    notification({ message: 'error', type: 'error', duration: 0 })
+    notification({
+      title: 'test',
+      message: 'info',
+      type: 'info',
+      duration: 0,
+      position: 'top-right'
+    })
+    notification({
+      title: 'test',
+      message: 'error',
+      type: 'error',
+      duration: 0,
+      position: 'top-right'
+    })
     await rAF()
     expect(document.querySelectorAll('.px-notification').length).toBe(2)
 
@@ -125,6 +173,18 @@ describe('Notification component', () => {
         id: 'test',
         position: '' as any,
         zIndex: 1000,
+        message: undefined,
+        duration: 0,
+        showClose: false,
+        offset: 0,
+        transitionName: '',
+        icon: '',
+        onClick: () => {
+          // noop
+        },
+        onClose: () => {
+          // noop
+        },
         onDestory: () => {
           // noop
         }
@@ -135,7 +195,13 @@ describe('Notification component', () => {
   // onClick 回调
   it('should trigger onClick callback', async () => {
     const onClick = vi.fn()
-    notification({ message: 'click me', duration: 0, onClick })
+    notification({
+      title: 'test',
+      message: 'click me',
+      duration: 0,
+      position: 'top-right',
+      onClick
+    })
 
     await rAF()
     const el = document.querySelector('.px-notification') as HTMLElement
@@ -147,8 +213,10 @@ describe('Notification component', () => {
   it('should trigger onClose callback when closed', async () => {
     const onClose = vi.fn()
     const handler = notification({
+      title: 'test',
       message: 'close test',
       duration: 0,
+      position: 'top-right',
       onClose
     })
     await rAF()
