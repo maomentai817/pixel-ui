@@ -60,10 +60,10 @@ const createNotification = (
   // 销毁函数
   const destory = () => {
     const idx = findIndex(instances, { id })
-    if (idx === -1) return
-
-    instances.splice(idx, 1)
-    render(null, container)
+    if (idx !== -1) {
+      instances.splice(idx, 1)
+      render(null, container)
+    }
   }
 
   // notification 实例内部使用的 props
@@ -96,7 +96,7 @@ const createNotification = (
   return instance
 }
 
-// 获取最后一个 message 的偏移量
+// 获取最后一个 notification 的偏移量
 // eslint-disable-next-line
 export function getLastBottomOffset(this: NotificationPropsIn) {
   const instances = getInstancesByPosition(this.position || 'top-right')

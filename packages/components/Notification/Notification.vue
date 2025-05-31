@@ -64,6 +64,7 @@ function clearTimer() {
 
 function close() {
   visible.value = false
+  props.onClose?.()
 }
 
 onMounted(() => {
@@ -99,7 +100,7 @@ defineExpose<NotificationCompInstance>({
       @mouseenter="clearTimer"
       @mouseleave="startTimmer"
     >
-      <px-icon v-if="iconName" :icon="iconName" class="px-notification__icon" />
+      <px-icon class="px-notification__icon" :icon="iconName" />
 
       <div class="px-notification__text">
         <div class="px-notification__title">{{ title }}</div>
