@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { delay, bind } from 'lodash-es'
+import { getLastBottomOffset } from './methods'
 import { useOffset } from '@pixel-ui/hooks'
 import { addUnit, typeIconMap, RenderVNode } from '@pixel-ui/utils'
 
@@ -30,11 +31,11 @@ const iconName = computed(
 // div 高度
 const boxHeight = ref(0)
 
-// const { topOffset, bottomOffset } = useOffset({
-//   getLastBottomOffset: bind(getLastBottomOffset, props),
-//   offset: props.offset,
-//   boxHeight
-// })
+const { topOffset, bottomOffset } = useOffset({
+  getLastBottomOffset: bind(getLastBottomOffset, props),
+  offset: props.offset,
+  boxHeight
+})
 
 // 水平位置
 const horizontalClass = computed(() =>
@@ -44,6 +45,11 @@ const horizontalClass = computed(() =>
 const verticalClass = computed(() =>
   props.position.startsWith('top') ? 'top' : 'bottom'
 )
+
+const customStyle = computed(() => ({
+  [verticalClass.value]: addUnit(topOffset.value),
+  zIndex: props.zIndex
+}))
 
 // ⏲ notification 计时
 let timer: number
@@ -67,7 +73,7 @@ onMounted(() => {
 
 // 暴露方法
 defineExpose<NotificationCompInstance>({
-  bottomOffset: ref(0),
+  bottomOffset,
   close
 })
 </script>

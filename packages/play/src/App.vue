@@ -5,7 +5,7 @@ import type {
   DropdownItemProps
 } from '@mmt817/pixel-ui'
 import { ref, onMounted, computed, h } from 'vue'
-import { en, zhCN, zhTW, PxMessage } from '@mmt817/pixel-ui'
+import { en, zhCN, zhTW, PxMessage, PxNotification } from '@mmt817/pixel-ui'
 import { get } from 'lodash-es'
 
 const activeNames = ref([])
@@ -98,6 +98,51 @@ const handleMessage = () => {
   })
   PxMessage.iron({
     message: 'This is a iron message',
+    duration: 0,
+    showClose: true,
+    icon: 'face-thinking-solid'
+  })
+}
+// notification
+const handleNotification = () => {
+  PxNotification({
+    message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
+      h('span', null, 'Message can be '),
+      h('i', { style: 'color: teal' }, 'VNode')
+    ])
+  })
+  PxNotification({
+    message: 'This is a info notification',
+    duration: 0
+  })
+  PxNotification.primary({
+    message: 'This is a primary notification',
+    duration: 0,
+    showClose: true
+  })
+  PxNotification.success({
+    message: 'This is a success notification',
+    duration: 0,
+    center: true
+  })
+  PxNotification.warning({
+    message: 'This is a warning notification',
+    duration: 0
+  })
+  PxNotification.danger({
+    message: 'This is a danger notification',
+    duration: 0
+  })
+  PxNotification.sakura({
+    message: 'This is a sakura notification',
+    duration: 0
+  })
+  PxNotification.error({
+    message: '错误消息弹出',
+    duration: 0
+  })
+  PxNotification.iron({
+    message: 'This is a iron notification',
     duration: 0,
     showClose: true,
     icon: 'face-thinking-solid'
@@ -660,7 +705,8 @@ const handleMessage = () => {
     </px-popconfirm>
   </px-config-provider>
   <hr />
-  <px-button @click="handleMessage" />
+  <px-button @click="handleMessage">message</px-button>
+  <px-button @click="handleNotification">notification</px-button>
   <div class="h-300"></div>
 </template>
 
