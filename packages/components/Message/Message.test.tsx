@@ -1,22 +1,11 @@
 import { describe, test, expect, it, beforeEach } from 'vitest'
-import { nextTick, h } from 'vue'
+import { h } from 'vue'
 import message, { closeAll } from './methods'
-import { withInstallFunction } from '@pixel-ui/utils'
+import { withInstallFunction, rAF } from '@pixel-ui/utils'
 import { PxMessage } from '.'
 
 import Message from './Message.vue'
 import { mount } from '@vue/test-utils'
-
-export const rAF = async () => {
-  return new Promise((res) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(async () => {
-        res(null)
-        await nextTick()
-      })
-    })
-  })
-}
 
 const getTopValue = (el: Element): number => {
   const styles = window.getComputedStyle(el)

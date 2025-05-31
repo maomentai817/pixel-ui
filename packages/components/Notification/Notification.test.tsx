@@ -1,22 +1,11 @@
 import { describe, test, expect, it, beforeEach, vi } from 'vitest'
-import { nextTick, h } from 'vue'
+import { h } from 'vue'
 import { mount } from '@vue/test-utils'
 import notification, { closeAll } from './methods'
-import { withInstallFunction } from '@pixel-ui/utils'
+import { withInstallFunction, rAF } from '@pixel-ui/utils'
 import { PxNotification } from '.'
 
 import Notification from './Notification.vue'
-
-export const rAF = async () => {
-  return new Promise((res) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(async () => {
-        res(null)
-        await nextTick()
-      })
-    })
-  })
-}
 function getTopValue(element: Element) {
   const styles = window.getComputedStyle(element)
   const topValue = styles.getPropertyValue('top')
