@@ -14,7 +14,11 @@
         type="circle"
         status="danger"
         :stroke-width="20"
-      />
+      >
+        <template #default="{ percentage }">
+          {{ percentage + '°C' }}
+        </template>
+      </px-progress>
       <px-progress
         :percentage="100"
         type="circle"

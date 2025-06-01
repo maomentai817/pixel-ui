@@ -170,7 +170,9 @@ onBeforeUnmount(() => {
         :showText="showText"
         :color="color"
         :content="content"
-      />
+      >
+        <slot :percentage="percentage"></slot>
+      </ProgressRing>
     </template>
   </div>
 </template>

@@ -57,32 +57,39 @@ const points = computed(() => {
     for (let y = 0; y < size.value; y += gridSize) {
       const pixelCenterX = x + gridSize / 2
       const pixelCenterY = y + gridSize / 2
-      
+
       const distance = Math.sqrt(
-        Math.pow(pixelCenterX - centerX.value, 2) + 
-        Math.pow(pixelCenterY - centerY.value, 2)
+        Math.pow(pixelCenterX - centerX.value, 2) +
+          Math.pow(pixelCenterY - centerY.value, 2)
       )
 
       const distanceToInner = Math.abs(distance - innerRadius.value)
       const distanceToOuter = Math.abs(distance - outerRadius.value)
-      
-      const isInnerBorder = distanceToInner <= borderWidth && distance <= innerRadius.value + borderWidth
-      const isOuterBorder = distanceToOuter <= borderWidth && distance >= outerRadius.value - borderWidth
-      
+
+      const isInnerBorder =
+        distanceToInner <= borderWidth &&
+        distance <= innerRadius.value + borderWidth
+      const isOuterBorder =
+        distanceToOuter <= borderWidth &&
+        distance >= outerRadius.value - borderWidth
+
       if (isInnerBorder || isOuterBorder) {
         pointsData.borderPoints.push({ x, y })
-      } else if (distance > innerRadius.value + borderWidth && distance < outerRadius.value - borderWidth) {
+      } else if (
+        distance > innerRadius.value + borderWidth &&
+        distance < outerRadius.value - borderWidth
+      ) {
         // 在圆环内部，计算角度
         const angle = Math.atan2(
           pixelCenterY - centerY.value,
           pixelCenterX - centerX.value
         )
-        
+
         // 标准化角度，从顶部开始 (12点方向)
         let normalizedAngle = angle + Math.PI / 2
         if (normalizedAngle < 0) normalizedAngle += Math.PI * 2
         if (normalizedAngle >= Math.PI * 2) normalizedAngle -= Math.PI * 2
-        
+
         // 判断是否在进度范围内
         if (normalizedAngle <= progressAngle) {
           pointsData.progressPoints.push({ x, y })
@@ -144,7 +151,9 @@ const points = computed(() => {
     </svg>
 
     <div v-if="showText" class="px-progress-circle__text">
-      <span> {{ content }}</span>
+      <slot>
+        <span>{{ content }}</span>
+      </slot>
     </div>
   </div>
 </template>
