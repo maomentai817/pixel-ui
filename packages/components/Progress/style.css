@@ -147,3 +147,40 @@
   --px-progress-bar-bg-color: var(--px-color-sakura);
   --px-progress-bar-bg-shadow-color: var(--px-color-sakura-dark-1);
 }
+
+/* 环形进度条 */
+.px-progress.is-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.px-progress-circle {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.px-progress-circle__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  font-weight: bold;
+  white-space: nowrap;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 5px;
+  color: var(--px-progress-text-color);
+}
+.px-progress-circle__progress {
+  color: var(--px-progress-bar-bg-color);
+}

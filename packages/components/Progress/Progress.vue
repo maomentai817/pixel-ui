@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { updateColors } from '@pixel-ui/utils'
 import type { ProgressProps } from './types'
+import ProgressRing from './ProgressRing.vue'
 
 const COMP_NAME = 'PxProgress' as const
 defineOptions({
@@ -19,7 +20,9 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   striped: false,
   stripedFlow: false,
   checker: false,
-  blockSize: 4
+  blockSize: 4,
+  type: 'line',
+  width: 126
 })
 
 const content = computed(() => {
@@ -33,7 +36,8 @@ const statusColorMap: Record<string, string> = {
   primary: 'var(--px-color-primary, #209cee)',
   success: 'var(--px-color-success, #92cc41)',
   warning: 'var(--px-color-warning, #f7d51d)',
-  danger: 'var(--px-color-danger, #e76e55)'
+  danger: 'var(--px-color-danger, #e76e55)',
+  sakura: 'var(--px-color-sakura, #f06595)'
 }
 
 const progressBarOuterStyle = computed(() => {
@@ -118,39 +122,56 @@ onBeforeUnmount(() => {
     :aria-valuenow="percentage"
     aria-valuemin="0"
     aria-valuemax="100"
+    :class="{
+      'is-circle': type === 'circle'
+    }"
   >
-    <div class="px-progress-bar">
-      <div class="px-progress-bar__outer" :style="progressBarOuterStyle">
-        <div class="px-progress-bar-gap">
-          <div
-            class="px-progress-bar__inner"
-            :class="{
-              'is-striped': striped,
-              'is-striped-flow': stripedFlow,
-              'is-indeterminate': indeterminate,
-              'is-checker': checker,
-              [`is-${status}`]: status
-            }"
-            :style="progressBarInnerStyle"
-            ref="progressBarInnerRef"
-          >
+    <template v-if="type === 'line'">
+      <div class="px-progress-bar">
+        <div class="px-progress-bar__outer" :style="progressBarOuterStyle">
+          <div class="px-progress-bar-gap">
             <div
-              v-if="showText && textInside"
-              class="px-progress-bar__inner-text"
+              class="px-progress-bar__inner"
+              :class="{
+                'is-striped': striped,
+                'is-striped-flow': stripedFlow,
+                'is-indeterminate': indeterminate,
+                'is-checker': checker,
+                [`is-${status}`]: status
+              }"
+              :style="progressBarInnerStyle"
+              ref="progressBarInnerRef"
             >
-              <slot :percentage="percentage">
-                <span>{{ content }}</span>
-              </slot>
+              <div
+                v-if="showText && textInside"
+                class="px-progress-bar__inner-text"
+              >
+                <slot :percentage="percentage">
+                  <span>{{ content }}</span>
+                </slot>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div v-if="showText && !textInside" class="px-progress__text">
-      <slot :percentage="percentage">
-        <span>{{ content }}</span>
-      </slot>
-    </div>
+      <div v-if="showText && !textInside" class="px-progress__text">
+        <slot :percentage="percentage">
+          <span>{{ content }}</span>
+        </slot>
+      </div>
+    </template>
+
+    <template v-else-if="type === 'circle'">
+      <ProgressRing
+        :width="props.width"
+        :percentage="percentage"
+        :status="status"
+        :strokeWidth="props.strokeWidth"
+        :showText="showText"
+        :color="color"
+        :content="content"
+      />
+    </template>
   </div>
 </template>
 
