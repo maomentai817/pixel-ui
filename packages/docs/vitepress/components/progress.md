@@ -73,6 +73,14 @@ demo-preview=../demo/Progress/Striped.vue
 demo-preview=../demo/Progress/Checker.vue
 :::
 
+## 环形进度条
+
+通过设置 `type="circle"` 属性来显示环形进度条。你还可以设置 `width` 和 `stroke-width` 属性来自定义环形进度条的大小和宽度。
+
+:::preview
+demo-preview=../demo/Progress/Circle.vue
+:::
+
 ## API_Table插件测试
 
 :::danger

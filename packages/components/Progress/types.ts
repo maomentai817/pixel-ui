@@ -7,6 +7,13 @@ export type ProgressType =
 
 export interface ProgressProps {
   /**
+   * @property type
+   * @type enum - line | circle
+   * @description 进度条类型
+   * @default line
+   */
+  type?: 'line' | 'circle'
+  /**
    * @property percentage
    * @type number
    * @description 进度条百分比
@@ -97,6 +104,13 @@ export interface ProgressProps {
    * @default ()=>{}
    */
   format?: (_percentage: number) => string
+  /**
+   * @property width
+   * @type number
+   * @description 环形进度条画布宽度
+   * @default 126
+   */
+  width?: number
 }
 
 export interface ProgressSlots {
