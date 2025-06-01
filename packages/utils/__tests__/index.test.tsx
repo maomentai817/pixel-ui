@@ -10,7 +10,8 @@ import {
   HSLToHex,
   adjustColor,
   addUnit,
-  RenderVNode
+  RenderVNode,
+  rAF
 } from '..'
 import { each } from 'lodash-es'
 
@@ -37,6 +38,10 @@ describe('utils/index', () => {
 
   it('RenderVNode should be exported', () => {
     expect(RenderVNode).toBeDefined()
+  })
+
+  it('rAF() should be exported', () => {
+    expect(rAF).toBeDefined()
   })
 
   it('typeIconMap should be worked', () => {
