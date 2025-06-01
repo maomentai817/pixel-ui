@@ -169,4 +169,121 @@ describe('Progress.vue', () => {
 
     expect(cancelSpy).toHaveBeenCalled()
   })
+
+  describe('Circle type progress', () => {
+    it('renders ProgressRing component when type is circle', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 50,
+          width: 120
+        }
+      })
+
+      expect(wrapper.find('.px-progress-circle').exists()).toBe(true)
+      expect(wrapper.find('.px-progress-bar').exists()).toBe(false)
+    })
+
+    it('passes correct props to ProgressRing', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 75,
+          width: 150,
+          strokeWidth: 8,
+          status: 'success',
+          showText: true
+        }
+      })
+
+      const svg = wrapper.find('svg')
+      expect(svg.attributes('width')).toBe('150')
+      expect(svg.attributes('height')).toBe('150')
+      expect(wrapper.find('.px-progress-circle__text').exists()).toBe(true)
+    })
+
+    it('renders correct percentage text in circle', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 66,
+          showText: true
+        }
+      })
+
+      expect(wrapper.find('.px-progress-circle__text').text()).toContain('66%')
+    })
+
+    it('applies custom color to circle progress', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 60,
+          color: '#ff6b6b'
+        }
+      })
+
+      const progressRects = wrapper.findAll('g:nth-child(2) rect')
+      if (progressRects.length > 0) {
+        expect(progressRects[0].attributes('fill')).toBe('#ff6b6b')
+      }
+    })
+
+    it('applies status color to circle progress', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 80,
+          status: 'success'
+        }
+      })
+
+      const progressRects = wrapper.findAll('g:nth-child(2) rect')
+      if (progressRects.length > 0) {
+        expect(progressRects[0].attributes('fill')).toContain('--px-color-success')
+      }
+    })
+
+    it('renders custom content via slot in circle', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 90,
+          showText: true
+        },
+        slots: {
+          default: ({ percentage }) => `<span>圆形: ${percentage}</span>`
+        }
+      })
+
+      expect(wrapper.html()).toContain('圆形: 90')
+    })
+
+    it('formats circle content with custom format function', () => {
+      const formatMock = vi.fn((p) => `${p}/100`)
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 45,
+          showText: true,
+          format: formatMock
+        }
+      })
+
+      expect(formatMock).toHaveBeenCalledWith(45)
+      expect(wrapper.text()).toContain('45/100')
+    })
+
+    it('hides text when showText is false in circle', () => {
+      const wrapper = mount(Progress, {
+        props: {
+          type: 'circle',
+          percentage: 50,
+          showText: false
+        }
+      })
+
+      expect(wrapper.find('.px-progress-circle__text').exists()).toBe(false)
+    })
+  })
 })

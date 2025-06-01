@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<ProgressRingProps>(), {
 // 进度圆环尺寸
 const size = computed(() => props.width)
 // 像素块尺寸
-const pixelSize = computed(() => props.pixelSize ?? 2)
+const pixelSize = computed(() => props.pixelSize)
 // 圆心坐标
 const centerX = computed(() => size.value / 2)
 const centerY = computed(() => size.value / 2)
@@ -88,7 +88,6 @@ const points = computed(() => {
         // 标准化角度，从顶部开始 (12点方向)
         let normalizedAngle = angle + Math.PI / 2
         if (normalizedAngle < 0) normalizedAngle += Math.PI * 2
-        if (normalizedAngle >= Math.PI * 2) normalizedAngle -= Math.PI * 2
 
         // 判断是否在进度范围内
         if (normalizedAngle <= progressAngle) {
