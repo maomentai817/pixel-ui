@@ -1,10 +1,10 @@
 ---
-title: Alert
-description: Alert 组件文档
+title: Message
+description: Message 组件文档
 
 next:
-  link: /components/popconfirm
-  text: Popconfirm 气泡确认框
+  link: /components/notification
+  text: Notification 通知
 
 prev:
   link: /components/alert
@@ -29,7 +29,7 @@ demo-preview=../demo/Message/Basic.vue
 
 用来显示「成功、警告、消息、错误」等类的操作反馈。
 
-当需要自定义更多属性时, Message 也可以接收一个对象为参数。比如, 设置 `type` 字段可以定义不同的状态，默认为 `info`。此时正文内容以 `message` 的值传入。同时，我们也为 Message 的各种 type 注册了方法, 可以在不传入 type 字段的情况下像 `open4` 那样直接调用。
+当需要自定义更多属性时, Message 也可以接收一个对象为参数。比如, 设置 `type` 字段可以定义不同的状态, 默认为 `info`。此时正文内容以 `message` 的值传入。同时，我们也为 Message 的各种 type 注册了方法, 可以在不传入 type 字段的情况下像 `open4` 那样直接调用。
 
 :::preview
 demo-preview=../demo/Message/Types.vue

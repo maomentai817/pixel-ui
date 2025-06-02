@@ -57,6 +57,7 @@ transition: opacity var(--px-transition-duration-400),
 .px-notification .px-notification__title {
   font-weight: 700;
   font-size: var(--px-notification-title-font-size);
+  font-family: var(--px-font-family);
   line-height: var(--px-notification-icon-size);
   color: var(--px-notification-title-color);
   margin: 0;
@@ -66,7 +67,7 @@ transition: opacity var(--px-transition-duration-400),
   font-size: var(--px-notification-content-font-size);
   font-family: var(--px-font-family);
   line-height: 1.6;
-  margin: 6px 0 0;
+  margin: 6px 0 3px;
   color: var(--px-notification-text-color);
 }
 
