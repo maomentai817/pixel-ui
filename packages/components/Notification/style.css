@@ -1,6 +1,6 @@
 .px-notification {
   --px-notification-width: 330px;
-  --px-notification-padding: 14px 26px 14px 13px;
+  --px-notification-padding: 14px 26px 14px 17px;
   --px-notification-icon-size: 24px;
   --px-notification-icon-color: var(--px-color-base);
   --px-notification-content-font-size: var(--px-font-size-small);
@@ -18,7 +18,11 @@
   box-sizing: border-box;
   color: var(--px-notification-icon-color);
   position: fixed;
-transition: opacity var(--px-transition-duration),transform var(--px-transition-duration),right var(--px-transition-duration),top .4s,bottom var(--px-transition-duration);
+transition: opacity var(--px-transition-duration-400),
+  transform var(--px-transition-duration-400),
+    right var(--px-transition-duration-400),
+    top var(--px-transition-duration-400),
+    bottom var(--px-transition-duration-400);
   overflow-wrap: anywhere;
   overflow: hidden;
   z-index: 9999;
@@ -60,7 +64,8 @@ transition: opacity var(--px-transition-duration),transform var(--px-transition-
 
 .px-notification .px-notification__content {
   font-size: var(--px-notification-content-font-size);
-  line-height: 24px;
+  font-family: var(--px-font-family);
+  line-height: 1.6;
   margin: 6px 0 0;
   color: var(--px-notification-text-color);
 }
@@ -78,17 +83,17 @@ transition: opacity var(--px-transition-duration),transform var(--px-transition-
   color: var(--px-notification-border-color);
 }
 
-.px-notification-fade-enter-from.left {
+.px-notification.fade-enter-from.left {
   left: 0;
   transform: translate(-100%);
 }
 
-.px-notification-fade-enter-from.right {
+.px-notification.fade-enter-from.right {
   right: 0;
   transform: translate(100%);
 }
 
-.px-notification-fade-leave-to {
+.px-notification.fade-leave-to {
   opacity: 0;
 }
 
@@ -130,8 +135,23 @@ transition: opacity var(--px-transition-duration),transform var(--px-transition-
   --px-notification-text-color: var(--px-color-danger);
 }
 .px-notification.px-notification--sakura {
-  --px-notification-icon-color: var(--px-color-sakura);
+  --px-notification-icon-color: var(--px-color-sakura-dark-1);
   --px-notification-content-color: var(--px-color-sakura-light-5);
   --px-notification-border-color: var(--px-color-sakura-dark-1);
   --px-notification-text-color: var(--px-color-sakura-dark-1);
+}
+
+.px-notification.px-notification--iron {
+  min-height: 60px;
+
+  background-image: paint(pixelboard);
+  --px-corner-size: 3;
+  --px-block-size: 3;
+  --px-board-color: #3A4567;
+  --px-shadow-color: #252D46;
+  --px-color-1: #8F9DB5;
+  --px-color-2: #B4C0D2;
+
+  --px-notification-icon-color: var(--px-color-1);
+  --px-notification-text-color: var(--px-color-1);
 }

@@ -107,6 +107,7 @@ const handleMessage = () => {
 const handleNotification = () => {
   PxNotification({
     title: 'VNode',
+    duration: 0,
     message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
       h('span', null, 'Message can be '),
       h('i', { style: 'color: teal' }, 'VNode')
