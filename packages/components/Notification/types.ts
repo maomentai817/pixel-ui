@@ -118,7 +118,7 @@ export interface NotificationProps {
    * @property transitionName
    * @type string
    * @description 过渡动画名称
-   * @default fade-up
+   * @default fade
    */
   transitionName?: string
   /**

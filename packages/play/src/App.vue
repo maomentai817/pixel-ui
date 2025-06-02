@@ -106,42 +106,51 @@ const handleMessage = () => {
 // notification
 const handleNotification = () => {
   PxNotification({
+    title: 'VNode',
     message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
       h('span', null, 'Message can be '),
       h('i', { style: 'color: teal' }, 'VNode')
     ])
   })
   PxNotification({
+    title: 'Info',
     message: 'This is a info notification',
     duration: 0
   })
   PxNotification.primary({
+    title: 'Primary',
     message: 'This is a primary notification',
     duration: 0,
     showClose: true
   })
   PxNotification.success({
+    title: 'Success',
     message: 'This is a success notification',
     duration: 0,
     center: true
   })
   PxNotification.warning({
+    title: 'Warning',
     message: 'This is a warning notification',
     duration: 0
   })
   PxNotification.danger({
+    title: 'Danger',
     message: 'This is a danger notification',
     duration: 0
   })
   PxNotification.sakura({
+    title: 'Sakura',
     message: 'This is a sakura notification',
     duration: 0
   })
   PxNotification.error({
+    title: 'Error',
     message: '错误消息弹出',
     duration: 0
   })
   PxNotification.iron({
+    title: 'Iron',
     message: 'This is a iron notification',
     duration: 0,
     showClose: true,
@@ -707,6 +716,7 @@ const handleNotification = () => {
   <hr />
   <px-button @click="handleMessage">message</px-button>
   <px-button @click="handleNotification">notification</px-button>
+  This is a warning notification
   <div class="h-300"></div>
 </template>
 

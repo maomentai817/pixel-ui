@@ -1,0 +1,137 @@
+.px-notification {
+  --px-notification-width: 330px;
+  --px-notification-padding: 14px 26px 14px 13px;
+  --px-notification-icon-size: 24px;
+  --px-notification-icon-color: var(--px-color-base);
+  --px-notification-content-font-size: var(--px-font-size-small);
+  --px-notification-content-color: var(--px-color-info-light-9);
+  --px-notification-text-color: var(--px-color-base);
+  --px-notification-title-font-size: var(--px-font-size-base);
+  --px-notification-title-color: var(--px-notification-text-color);
+  --px-notification-border-color: var(--px-color-info);
+}
+
+.px-notification {
+  display: flex;
+  width: var(--px-notification-width);
+  padding: var(--px-notification-padding);
+  box-sizing: border-box;
+  color: var(--px-notification-icon-color);
+  position: fixed;
+transition: opacity var(--px-transition-duration),transform var(--px-transition-duration),right var(--px-transition-duration),top .4s,bottom var(--px-transition-duration);
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  z-index: 9999;
+
+  /* paint worklet */
+  background-image: paint(pixelboxOrnament);
+  --px-corner-size: 3;
+  --px-main-color: var(--px-notification-border-color);
+  --px-block-size: 3;
+  --px-content-color: var(--px-notification-content-color);
+}
+
+.px-notification.left {
+  left: 10px;
+}
+
+.px-notification.right {
+  right: 10px;
+}
+
+.px-notification .px-notification__text {
+  margin: 0 10px;
+}
+
+.px-notification .px-notification__icon {
+  height: var(--px-notification-icon-size);
+  width: var(--px-notification-icon-size);
+  font-size: var(--px-notification-icon-size) !important;
+  color: var(--px-notification-icon-color);
+}
+
+.px-notification .px-notification__title {
+  font-weight: 700;
+  font-size: var(--px-notification-title-font-size);
+  line-height: var(--px-notification-icon-size);
+  color: var(--px-notification-title-color);
+  margin: 0;
+}
+
+.px-notification .px-notification__content {
+  font-size: var(--px-notification-content-font-size);
+  line-height: 24px;
+  margin: 6px 0 0;
+  color: var(--px-notification-text-color);
+}
+
+.px-notification .px-notification__close {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.px-notification .px-notification__close .px-icon {
+  cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+  color: var(--px-notification-border-color);
+}
+
+.px-notification-fade-enter-from.left {
+  left: 0;
+  transform: translate(-100%);
+}
+
+.px-notification-fade-enter-from.right {
+  right: 0;
+  transform: translate(100%);
+}
+
+.px-notification-fade-leave-to {
+  opacity: 0;
+}
+
+/* types */
+.px-notification.px-notification--info {
+  --px-notification-icon-color: var(--px-color-info);
+  --px-notification-content-color: var(--px-color-info-light-9);
+  --px-notification-border-color: var(--px-color-info);
+  --px-notification-text-color: var(--px-color-base);
+}
+.px-notification.px-notification--error {
+  --px-notification-icon-color: var(--px-color-danger);
+  --px-notification-content-color: var(--px-color-danger-light-5);
+  --px-notification-border-color: var(--px-color-danger);
+  --px-notification-text-color: var(--px-color-danger);
+}
+.px-notification.px-notification--primary {
+  --px-notification-icon-color: var(--px-color-primary);
+  --px-notification-content-color: var(--px-color-primary-light-5);
+  --px-notification-border-color: var(--px-color-primary);
+  --px-notification-text-color: var(--px-color-primary);
+}
+.px-notification.px-notification--success {
+  --px-notification-icon-color: var(--px-color-success);
+  --px-notification-content-color: var(--px-color-success-light-7);
+  --px-notification-border-color: var(--px-color-success);
+  --px-notification-text-color: var(--px-color-success);
+}
+.px-notification.px-notification--warning {
+  --px-notification-icon-color: var(--px-color-warning);
+  --px-notification-content-color: var(--px-color-warning-light-8);
+  --px-notification-border-color: var(--px-color-warning);
+  --px-notification-text-color: var(--px-color-warning);
+}
+.px-notification.px-notification--danger {
+  --px-notification-icon-color: var(--px-color-danger);
+  --px-notification-content-color: var(--px-color-danger-light-5);
+  --px-notification-border-color: var(--px-color-danger);
+  --px-notification-text-color: var(--px-color-danger);
+}
+.px-notification.px-notification--sakura {
+  --px-notification-icon-color: var(--px-color-sakura);
+  --px-notification-content-color: var(--px-color-sakura-light-5);
+  --px-notification-border-color: var(--px-color-sakura-dark-1);
+  --px-notification-text-color: var(--px-color-sakura-dark-1);
+}

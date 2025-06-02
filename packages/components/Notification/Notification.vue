@@ -80,8 +80,8 @@ defineExpose<NotificationCompInstance>({
 </script>
 
 <template>
-  <transition
-    :name="transitionName"
+  <Transition
+    :name="`px-notification-${transitionName}`"
     @enter="() => (boxHeight = notifyRef!.getBoundingClientRect().height)"
     @after-leave="!visible && onDestory()"
   >
@@ -113,7 +113,7 @@ defineExpose<NotificationCompInstance>({
         <px-icon icon="times-solid" @click.stop="close" />
       </div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>
