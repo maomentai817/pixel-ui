@@ -240,7 +240,9 @@ describe('Progress.vue', () => {
 
       const progressRects = wrapper.findAll('g:nth-child(2) rect')
       if (progressRects.length > 0) {
-        expect(progressRects[0].attributes('fill')).toContain('--px-color-success')
+        expect(progressRects[0].attributes('fill')).toContain(
+          '--px-color-success'
+        )
       }
     })
 
@@ -284,6 +286,14 @@ describe('Progress.vue', () => {
       })
 
       expect(wrapper.find('.px-progress-circle__text').exists()).toBe(false)
+    })
+
+    it('c8 render fake', () => {
+      mount(Progress, {
+        props: {
+          type: 'c8-error' as any
+        } as any
+      })
     })
   })
 })
