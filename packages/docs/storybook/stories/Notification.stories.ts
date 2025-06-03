@@ -1,13 +1,17 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import MessageDemo from './TemplateDemo/MessageDemo.vue'
+import NotificationDemo from './TemplateDemo/NotificationDemo.vue'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
-import '@mmt817/pixel-ui/dist/theme/Message.css'
+import '@mmt817/pixel-ui/dist/theme/Notification.css'
 
-const meta: Meta<typeof MessageDemo> = {
-  title: 'Feedback/Message',
-  component: MessageDemo,
+const meta: Meta<typeof NotificationDemo> = {
+  title: 'Feedback/Notification',
+  component: NotificationDemo,
   tags: ['autodocs'],
   argTypes: {
+    title: {
+      control: { type: 'text' },
+      defaultValue: ''
+    },
     message: {
       control: { type: 'text' },
       defaultValue: ''
@@ -35,11 +39,7 @@ const meta: Meta<typeof MessageDemo> = {
     },
     showClose: {
       control: 'boolean',
-      defaultValue: false
-    },
-    center: {
-      control: 'boolean',
-      defaultValue: false
+      defaultValue: true
     },
     offset: {
       control: { type: 'number' },
@@ -47,7 +47,12 @@ const meta: Meta<typeof MessageDemo> = {
     },
     transitionName: {
       control: { type: 'text' },
-      defaultValue: 'fade-up'
+      defaultValue: 'fade'
+    },
+    position: {
+      control: { type: 'select' },
+      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      defaultValue: 'top-right'
     }
   }
 }
@@ -55,9 +60,9 @@ const meta: Meta<typeof MessageDemo> = {
 export default meta
 
 export const Default: StoryFn = (args) => ({
-  components: { MessageDemo },
+  components: { NotificationDemo },
   setup() {
     return { args }
   },
-  template: '<MessageDemo v-bind="args" />'
+  template: '<NotificationDemo v-bind="args" />'
 })

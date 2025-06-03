@@ -1,29 +1,31 @@
 <script setup lang="ts">
-import { PxMessage, PxButton } from '@pixel-ui/components'
-import type { MessageProps } from '@mmt817/pixel-ui'
+import { PxNotification, PxButton } from '@pixel-ui/components'
+import type { NotificationProps } from '@mmt817/pixel-ui'
 
-withDefaults(defineProps<MessageProps>(), {
+withDefaults(defineProps<NotificationProps>(), {
+  title: '',
   message: '',
   type: 'info',
   icon: 'info-circle-solid',
+  position: 'top-right',
   duration: 3000,
-  showClose: false,
-  center: false,
-  offset: 10,
-  transitionName: 'fade-up'
+  showClose: true,
+  offset: 20,
+  transitionName: 'fade'
 })
 </script>
 <template>
-  <div class="message-demo">
+  <div class="notification-demo">
     <px-button
       @click="
         () =>
-          PxMessage.info({
-            message: 'This is a info message.',
+          PxNotification.info({
+            title: 'Info',
+            message: 'This is a info notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -35,12 +37,13 @@ withDefaults(defineProps<MessageProps>(), {
       type="primary"
       @click="
         () =>
-          PxMessage.primary({
-            message: 'This is a primary message.',
+          PxNotification.primary({
+            title: 'Primary',
+            message: 'This is a primary notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -52,12 +55,13 @@ withDefaults(defineProps<MessageProps>(), {
       type="success"
       @click="
         () =>
-          PxMessage.success({
-            message: 'This is a success message.',
+          PxNotification.success({
+            title: 'Success',
+            message: 'This is a success notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -69,12 +73,13 @@ withDefaults(defineProps<MessageProps>(), {
       type="warning"
       @click="
         () =>
-          PxMessage.warning({
-            message: 'This is a warning message.',
+          PxNotification.warning({
+            title: 'Warning',
+            message: 'This is a warning notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -86,12 +91,13 @@ withDefaults(defineProps<MessageProps>(), {
       type="danger"
       @click="
         () =>
-          PxMessage.danger({
-            message: 'Oops, this is a danger message.',
+          PxNotification.danger({
+            title: 'Danger',
+            message: 'Oops, this is a danger notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -103,12 +109,13 @@ withDefaults(defineProps<MessageProps>(), {
       type="sakura"
       @click="
         () =>
-          PxMessage.sakura({
-            message: 'This is a sakura message.',
+          PxNotification.sakura({
+            title: 'Sakura',
+            message: 'This is a sakura notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -120,12 +127,13 @@ withDefaults(defineProps<MessageProps>(), {
       class="iron-btn"
       @click="
         () =>
-          PxMessage.iron({
-            message: 'This is a iron message.',
+          PxNotification.iron({
+            title: 'Iron',
+            message: 'This is a iron notification.',
             icon,
             duration,
             showClose,
-            center,
+            position,
             offset,
             transitionName
           })
@@ -137,7 +145,7 @@ withDefaults(defineProps<MessageProps>(), {
 </template>
 
 <style scoped>
-.message-demo {
+.notification-demo {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
