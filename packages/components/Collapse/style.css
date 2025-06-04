@@ -19,7 +19,7 @@
   justify-content: space-between;
   height: var(--px-collapse-header-height);
   line-height: var(--px-collapse-header-height);
-  background-color: var(--px-collapse-header-bg-color);
+  background-color: transparent;
   color: var(--px-collapse-header-text-color);
   cursor: var(--px-cursor-pointer-src) 14 0, pointer;
   font-size: var(--px-collapse-header-font-size);
@@ -30,7 +30,7 @@
   background-image: paint(pixelpanel);
   --px-border: 4;
   --px-border-color: var(--px-collapse-border-color);
-  --px-bg-color: transparent;
+  --px-bg-color: var(--px-color-white);
   --px-corner-size: 6;
   --px-bg-shadow-color: var(--px-collapse-shadow-color-light);
   --px-border-shadow: -4;
@@ -59,7 +59,7 @@
   background-image: paint(pixelcontent);
   --px-border: 4;
   --px-border-color: var(--px-collapse-border-color);
-  --px-bg-color: transparent;
+  --px-bg-color: var(--px-color-white);
   --px-corner-size: 6;
   --px-bg-shadow-color: var(--px-collapse-shadow-color);
   --px-border-shadow: 3;

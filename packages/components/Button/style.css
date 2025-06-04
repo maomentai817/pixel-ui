@@ -53,7 +53,7 @@
   --px-border-l: 3px;
   --px-border-radius: 0px;
   --px-border-color: var(--px-color-base);
-  --px-bg-color: transparent;
+  --px-bg-color: var(--px-color-white);
   --px-bg-shadow-border: var(--px-button-bg-shadow-border);
   --px-bg-shadow-color: var(--px-button-bg-shadow-color);
   --px-bg-shadow-position: bottom-right;
