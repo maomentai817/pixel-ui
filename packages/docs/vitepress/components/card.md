@@ -57,6 +57,14 @@ demo-preview=../demo/Card/Round.vue
 demo-preview=../demo/Card/Hover.vue
 :::
 
+## 定制背景板-信封
+
+Card 组件新增定制风格背景板, 通过 `stamp` 开启, 默认为信封标签风格
+
+:::preview
+demo-preview=../demo/Card/Stamp.vue
+:::
+
 ## 更多配置
 
 :::danger
