@@ -93,4 +93,6 @@
   --px-shadow-color: #0000000d;
   --px-content-color: var(--px-color-white);
   --px-gap-block: 1;
+
+  min-height: calc((var(--px-corner-size) + var(--px-gap-block)) * var(--px-block-size) * 5px);
 }

@@ -117,6 +117,19 @@
   --px-message-text-color: var(--px-color-1);
 }
 
+/* stamp */
+.px-message.px-message--stamp {
+  background-image: paint(pixelboxStamp);
+  --px-corner-size: 4;
+  --px-main-color: var(--px-color-white);
+  --px-block-size: 4;
+  --px-shadow-color: #0000000d;
+  --px-content-color: var(--px-color-white);
+  --px-gap-block: 1;
+
+  min-height: calc((var(--px-corner-size) + var(--px-gap-block)) * var(--px-block-size) * 3px);
+}
+
 .px-message.fade-up-enter-from,
 .px-message.fade-up-leave-to {
   opacity: 0;

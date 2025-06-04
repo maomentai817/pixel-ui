@@ -102,6 +102,11 @@ const handleMessage = () => {
     showClose: true,
     icon: 'face-thinking-solid'
   })
+  PxMessage.stamp({
+    message: 'This is a stamp message',
+    duration: 0,
+    showClose: true
+  })
 }
 // notification
 const handleNotification = () => {
@@ -155,6 +160,12 @@ const handleNotification = () => {
     duration: 0,
     showClose: true,
     icon: 'face-thinking-solid'
+  })
+  PxNotification.stamp({
+    title: 'Stamp',
+    message: 'This is a stamp notification',
+    duration: 0,
+    showClose: true
   })
 }
 </script>

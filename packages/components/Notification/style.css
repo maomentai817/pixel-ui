@@ -142,6 +142,7 @@ transition: opacity var(--px-transition-duration-400),
   --px-notification-text-color: var(--px-color-sakura-dark-1);
 }
 
+/* iron */
 .px-notification.px-notification--iron {
   min-height: 60px;
 
@@ -155,4 +156,17 @@ transition: opacity var(--px-transition-duration-400),
 
   --px-notification-icon-color: var(--px-color-1);
   --px-notification-text-color: var(--px-color-1);
+}
+
+/* stamp */
+.px-notification.px-notification--stamp {
+  background-image: paint(pixelboxStamp);
+  --px-corner-size: 4;
+  --px-main-color: var(--px-color-white);
+  --px-block-size: 4;
+  --px-shadow-color: #0000000d;
+  --px-content-color: var(--px-color-white);
+  --px-gap-block: 1;
+
+  min-height: calc((var(--px-corner-size) + var(--px-gap-block)) * var(--px-block-size) * 5px);
 }

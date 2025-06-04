@@ -8,7 +8,8 @@ export const messageTypes = [
   'danger',
   'sakura',
   'error',
-  'iron'
+  'iron',
+  'stamp'
 ] as const
 
 export type MessageType = (typeof messageTypes)[number]
@@ -33,6 +34,7 @@ export interface Message extends MessageFn {
   danger: MessageTypeFn
   error: MessageTypeFn
   iron: MessageTypeFn
+  stamp: MessageTypeFn
 }
 
 export interface MessagePropsIn {
@@ -59,7 +61,7 @@ export interface MessageProps {
   message?: string | VNode | (() => VNode)
   /**
    * @property type
-   * @type enum - primary | success | info | warning | danger | error | sakura | iron
+   * @type enum - primary | success | info | warning | danger | error | sakura | iron | stamp
    * @description 消息类型
    * @default info
    */

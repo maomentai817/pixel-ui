@@ -8,7 +8,8 @@ export const notificationTypes = [
   'danger',
   'sakura',
   'error',
-  'iron'
+  'iron',
+  'stamp'
 ] as const
 
 export type NotificationType = (typeof notificationTypes)[number]
@@ -44,6 +45,7 @@ export interface Notification extends NotificationFn {
   danger: NotificationTypeFn
   error: NotificationTypeFn
   iron: NotificationTypeFn
+  stamp: NotificationTypeFn
 }
 
 export interface NotificationPropsIn {
@@ -81,7 +83,7 @@ export interface NotificationProps {
   message?: string | VNode
   /**
    * @property type
-   * @type enum - primary | success | info | warning | danger | error | sakura | iron
+   * @type enum - primary | success | info | warning | danger | error | sakura | iron | stamp
    * @description 通知类型
    * @default info
    */
