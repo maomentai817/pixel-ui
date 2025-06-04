@@ -79,3 +79,18 @@
   --px-border-radius-lb: 3px;
   --px-border-radius-rb: 3px;
 }
+
+/* card stamp */
+.is-stamp {
+  background: none;
+  padding: 1.5rem;
+  
+  /* css houdini paintWorklet */
+  background-image: paint(pixelboxStamp);
+  --px-corner-size: 4;
+  --px-main-color: var(--px-color-white);
+  --px-block-size: 4;
+  --px-shadow-color: #0000000d;
+  --px-content-color: var(--px-color-white);
+  --px-gap-block: 1;
+}

@@ -4,6 +4,8 @@ body {
   font-size: var(--px-font-size-base);
   /* line-height: calc(var(--px-font-size-base) * 1.2); */
   color: var(--px-color-base);
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;

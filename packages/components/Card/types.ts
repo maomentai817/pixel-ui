@@ -20,6 +20,13 @@ export interface CardProps {
    * @default false
    */
   circle?: boolean
+  /**
+   * @property stamp
+   * @type boolean
+   * @description 是否启用标签效果
+   * @default false
+   */
+  stamp?: boolean
 }
 
 export interface CardSlots {

@@ -15,7 +15,8 @@ defineProps<CardProps>()
     :class="{
       [`px-card--hover`]: hoverable,
       [`is-round`]: round,
-      [`is-circle`]: circle
+      [`is-circle`]: circle,
+      [`is-stamp`]: stamp
     }"
   >
     <div v-if="$slots.prepend" class="px-card__icon">
