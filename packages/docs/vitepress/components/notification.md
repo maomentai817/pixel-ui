@@ -29,6 +29,10 @@ demo-preview=../demo/Notification/Basic.vue
 
 当需要自定义更多属性时, Notification 也可以接收一个对象为参数。比如, 设置 `type` 字段可以定义不同的状态，默认为 `info`。此时正文内容以 `message` 的值传入。同时，我们也为 Notification 的各种 type 注册了方法, 可以在不传入 type 字段的情况下像 `open4` 那样直接调用。形式同 Message 组件。
 
+:::tip
+`type="stamp"` 默认白色背景, 建议搭配深色底色使用。
+:::
+
 :::preview
 demo-preview=../demo/Notification/Types.vue
 :::
