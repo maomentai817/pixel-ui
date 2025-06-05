@@ -20,6 +20,10 @@ const meta: Meta<typeof PxCard> = {
     circle: {
       description: '圆形',
       control: 'boolean'
+    },
+    stamp: {
+      description: '戳记风格',
+      control: 'boolean'
     }
   }
 }
@@ -110,4 +114,19 @@ export const Circle: StoryFn = (args, { argTypes }) => ({
 })
 Circle.args = {
   circle: true
+}
+
+export const Stamp: StoryFn = (args, { argTypes }) => ({
+  setup: () => ({ args }),
+  props: Object.keys(argTypes),
+  components: {
+    PxCard
+  },
+  template: `<div style="display:flex;justify-content:center;align-items:center;background-color:#ebe6e0;padding:20px">
+    <px-card v-bind="args" style="width: 80%">This is a card.</px-card>
+  </div>`
+})
+
+Stamp.args = {
+  stamp: true
 }

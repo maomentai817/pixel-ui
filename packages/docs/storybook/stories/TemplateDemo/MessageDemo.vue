@@ -133,6 +133,23 @@ withDefaults(defineProps<MessageProps>(), {
     >
       Iron
     </px-button>
+    <px-button
+      class="stamp-btn"
+      @click="
+        () =>
+          PxMessage.stamp({
+            message: 'This is a stamp message.',
+            icon,
+            duration,
+            showClose,
+            center,
+            offset,
+            transitionName
+          })
+      "
+    >
+      Stamp
+    </px-button>
   </div>
 </template>
 
@@ -150,6 +167,14 @@ withDefaults(defineProps<MessageProps>(), {
 
   &:hover {
     --px-bg-color: #3a4567;
+  }
+}
+.stamp-btn {
+  --px-bg-color: #ebe6e0;
+  --px-bg-shadow-color: #00000033;
+
+  &:hover {
+    --px-bg-color: #ebe6e0;
   }
 }
 </style>
