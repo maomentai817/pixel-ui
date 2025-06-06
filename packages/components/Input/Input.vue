@@ -1,9 +1,109 @@
 <script setup lang="ts">
+import { computed, ref, shallowRef, useAttrs, nextTick, watch } from 'vue'
+import { each, noop } from 'lodash-es'
+import type { InputProps, InputEmits, InputInstance } from './types'
+
 import PxIcon from '../Icon/Icon.vue'
 
 const COMP_NAME = 'PxInput' as const
 defineOptions({
-  name: COMP_NAME
+  name: COMP_NAME,
+  inheritAttrs: false
+})
+
+const props = withDefaults(defineProps<InputProps>(), {
+  type: 'text',
+  size: 'default',
+  autocomplete: 'off'
+})
+
+const emits = defineEmits<InputEmits>()
+
+// 表单双向绑定数据
+const innerValue = ref(props.modelValue)
+// pwd 可见性
+const pwdVisible = ref(false)
+// input 元素
+const inputRef = shallowRef<HTMLInputElement>()
+// textarea 元素
+const textareaRef = shallowRef<HTMLTextAreaElement>()
+
+const attrs = useAttrs()
+// 获取原生元素
+const _ref = computed(() => inputRef.value || textareaRef.value)
+
+//todo: Form 组件传递禁用状态
+const isDisabled = ref(false)
+//todo: Form 获取 FormItem
+//todo: FormItem 获取 id
+
+// 清除按钮显示
+//todo: focusController 获取状态
+const showClear = computed(
+  () => props.clearable && !!innerValue.value && !isDisabled.value && 1
+  // isFocused.value
+)
+
+// 显示密码
+const showPwdArea = computed(
+  () =>
+    props.type === 'password' &&
+    props.showPassword &&
+    !isDisabled.value &&
+    !!innerValue.value
+)
+
+// input 方法及暴露方法
+const clear: InputInstance['clear'] = function () {
+  innerValue.value = ''
+  each(['input', 'change', 'update:modelValue'], (e) => emits(e as any, ''))
+  emits('clear')
+  // 清空表单校验
+  // formItem?.clearValidate()
+}
+const focus: InputInstance['focus'] = async function () {
+  await nextTick()
+  _ref.value?.focus()
+}
+
+const blur: InputInstance['blur'] = function () {
+  _ref.value?.blur()
+}
+
+const select: InputInstance['select'] = function () {
+  _ref.value?.select()
+}
+
+// 事件父子通信
+const handleInput = () => {
+  emits('update:modelValue', innerValue.value)
+  emits('input', innerValue.value)
+}
+
+const handleChange = () => {
+  emits('change', innerValue.value)
+}
+
+// pwd 可见切换
+const togglePwdVisible = () => {
+  pwdVisible.value = !pwdVisible.value
+}
+
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    innerValue.value = newVal
+    // 表单校验出发
+    // formItem?.validate("change").catch((err) => debugWarn(err));
+  }
+)
+
+defineExpose<InputInstance>({
+  ref: _ref,
+  focus,
+  blur,
+  select,
+  clear
 })
 </script>
 
