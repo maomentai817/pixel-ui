@@ -3,9 +3,10 @@ import useEventListener from './useEventListener'
 import useId from './useId'
 import useDisabledStyle from './useDisabledStyle'
 import useLocale from './useLocale'
-import { usePxBadgeCustomStyle, usePxButtonCustomStyle } from './useColor'
 import useOffset from './useOffset'
 import useZIndex from './useZIndex'
+import useFocusController from './useFocusController'
+import { usePxBadgeCustomStyle, usePxButtonCustomStyle } from './useColor'
 
 export {
   useClickOutside,
@@ -16,5 +17,6 @@ export {
   usePxButtonCustomStyle,
   usePxBadgeCustomStyle,
   useOffset,
-  useZIndex
+  useZIndex,
+  useFocusController
 }
