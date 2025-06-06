@@ -6,7 +6,10 @@ import {
   useDisabledStyle,
   useLocale,
   usePxButtonCustomStyle,
-  usePxBadgeCustomStyle
+  usePxBadgeCustomStyle,
+  useOffset,
+  useZIndex,
+  useFocusController
 } from '../index'
 
 describe('utils/index', () => {
@@ -36,5 +39,17 @@ describe('utils/index', () => {
 
   it('usePxBadgeCustomStyle should be exported', () => {
     expect(usePxBadgeCustomStyle).toBeDefined()
+  })
+
+  it('useOffset should be exported', () => {
+    expect(useOffset).toBeDefined()
+  })
+
+  it('useZIndex should be exported', () => {
+    expect(useZIndex).toBeDefined()
+  })
+
+  it('useFocusController should be exported', () => {
+    expect(useFocusController).toBeDefined()
   })
 })
