@@ -8,7 +8,7 @@ import {
   watch,
   type StyleValue
 } from 'vue'
-import { each, noop } from 'lodash-es'
+import { each, noop, omit } from 'lodash-es'
 import { useFocusController, useId } from '@pixel-ui/hooks'
 import type { InputProps, InputEmits, InputInstance } from './types'
 
@@ -38,9 +38,10 @@ const inputRef = shallowRef<HTMLInputElement>()
 const textareaRef = shallowRef<HTMLTextAreaElement>()
 
 const attrs = useAttrs()
-
 // 拦截行内样式
 const containerStyle = computed<StyleValue>(() => [attrs.style as StyleValue])
+// 过滤行内样式
+const filterAttrs = computed(() => omit(attrs, ['style']))
 
 // 获取原生元素
 const _ref = computed(() => inputRef.value || textareaRef.value)
@@ -167,7 +168,7 @@ defineExpose<InputInstance>({
           :autofocus="autofocus"
           :form="form"
           v-model="innerValue"
-          v-bind="attrs"
+          v-bind="filterAttrs"
           @input="handleInput"
           @change="handleChange"
           @focus="handleFocus"
@@ -215,7 +216,7 @@ defineExpose<InputInstance>({
         :autofocus="autofocus"
         :form="form"
         v-model="innerValue"
-        v-bind="attrs"
+        v-bind="filterAttrs"
         @input="handleInput"
         @change="handleChange"
         @focus="handleFocus"

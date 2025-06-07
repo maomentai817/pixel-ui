@@ -777,7 +777,6 @@ const textarea = ref('')
     <div class="mb-20">
       <px-input
         v-model="input2"
-        style="width: 240px"
         type="password"
         placeholder="Please input password"
         show-password

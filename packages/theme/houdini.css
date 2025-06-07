@@ -417,3 +417,14 @@ html {
   initial-value: #2b2b2c;
   inherits: false;
 }
+/* disabled */
+@property --px-disabled-bg-color  {
+  syntax: "<color>";
+  initial-value: #f5f7fa;
+  inherits: false;
+}
+@property --px-disabled-text-color  {
+  syntax: "<color>";
+  initial-value: #a8abb2;
+  inherits: false;
+}
