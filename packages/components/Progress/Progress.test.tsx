@@ -291,7 +291,8 @@ describe('Progress.vue', () => {
     it('c8 render fake', () => {
       mount(Progress, {
         props: {
-          type: 'c8-error' as any
+          type: 'c8-error' as any,
+          percentage: 50
         } as any
       })
     })

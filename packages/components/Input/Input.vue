@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, shallowRef, useAttrs, nextTick, watch } from 'vue'
 import { each, noop } from 'lodash-es'
+import { useFocusController } from '@pixel-ui/hooks'
 import type { InputProps, InputEmits, InputInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
@@ -37,11 +38,23 @@ const isDisabled = ref(false)
 //todo: Form 获取 FormItem
 //todo: FormItem 获取 id
 
+// focusController 获取状态
+const { wrapperRef, isFocused, handleFocus, handleBlur } = useFocusController(
+  _ref,
+  {
+    afterBlur() {
+      // form 校验
+      // formItem?.validate('blur').catch((err) => debugWarn(err))
+    }
+  }
+)
 // 清除按钮显示
-//todo: focusController 获取状态
 const showClear = computed(
-  () => props.clearable && !!innerValue.value && !isDisabled.value && 1
-  // isFocused.value
+  () =>
+    props.clearable &&
+    !!innerValue.value &&
+    !isDisabled.value &&
+    isFocused.value
 )
 
 // 显示密码

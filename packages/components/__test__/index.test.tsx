@@ -20,7 +20,8 @@ import {
   PxImage,
   PxPixelIt,
   PxTag,
-  PxConfigProvider
+  PxConfigProvider,
+  PxInput
 } from '..'
 import { map, get } from 'lodash-es'
 
@@ -43,7 +44,8 @@ const components = [
   PxImage,
   PxPixelIt,
   PxTag,
-  PxConfigProvider
+  PxConfigProvider,
+  PxInput
 ] as Plugin[]
 
 describe('components/index.ts', () => {

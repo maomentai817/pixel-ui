@@ -117,7 +117,8 @@ describe('Notification component', () => {
       message: h('p', { style: 'line-height: 1; font-size: 14px' }, [
         h('span', null, 'Notification can be '),
         h('i', { style: 'color: teal' }, 'VNode')
-      ])
+      ]),
+      position: 'top-right'
     })
 
     await rAF()
