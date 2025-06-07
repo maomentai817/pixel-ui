@@ -19,7 +19,8 @@ import {
   PxTag,
   PxConfigProvider,
   PxMessage,
-  PxNotification
+  PxNotification,
+  PxInput
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -45,5 +46,6 @@ export default [
   PxTag,
   PxConfigProvider,
   PxMessage,
-  PxNotification
+  PxNotification,
+  PxInput
 ] as Plugin[]

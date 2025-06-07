@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import { computed, ref, shallowRef, useAttrs, nextTick, watch } from 'vue'
+import {
+  computed,
+  ref,
+  shallowRef,
+  useAttrs,
+  nextTick,
+  watch,
+  type StyleValue
+} from 'vue'
 import { each, noop } from 'lodash-es'
-import { useFocusController } from '@pixel-ui/hooks'
+import { useFocusController, useId } from '@pixel-ui/hooks'
 import type { InputProps, InputEmits, InputInstance } from './types'
 
 import PxIcon from '../Icon/Icon.vue'
@@ -30,11 +38,15 @@ const inputRef = shallowRef<HTMLInputElement>()
 const textareaRef = shallowRef<HTMLTextAreaElement>()
 
 const attrs = useAttrs()
+
+// 拦截行内样式
+const containerStyle = computed<StyleValue>(() => [attrs.style as StyleValue])
+
 // 获取原生元素
 const _ref = computed(() => inputRef.value || textareaRef.value)
 
 //todo: Form 组件传递禁用状态
-const isDisabled = ref(false)
+const isDisabled = computed(() => props.disabled)
 //todo: Form 获取 FormItem
 //todo: FormItem 获取 id
 
@@ -133,6 +145,7 @@ defineExpose<InputInstance>({
       'is-suffix': $slots.suffix,
       'is-focus': isFocused
     }"
+    :style="containerStyle"
   >
     <template v-if="type !== 'textarea'">
       <div v-if="$slots.prepend" class="px-input__prepend">
@@ -145,7 +158,7 @@ defineExpose<InputInstance>({
         <input
           class="px-input__inner"
           ref="inputRef"
-          :id="inputId"
+          :id="useId().value"
           :type="showPassword ? (pwdVisible ? 'text' : 'password') : type"
           :disabled="isDisabled"
           :readonly="readonly"
@@ -166,7 +179,7 @@ defineExpose<InputInstance>({
         >
           <slot name="suffix"></slot>
           <px-icon
-            icon="times-solid"
+            icon="times-circle"
             v-if="showClear"
             class="px-input__clear"
             @click="clear"
@@ -194,7 +207,7 @@ defineExpose<InputInstance>({
       <textarea
         class="px-textarea__wrapper"
         ref="textareaRef"
-        :id="inputId"
+        :id="useId().value"
         :disabled="isDisabled"
         :readonly="readonly"
         :autocomplete="autocomplete"

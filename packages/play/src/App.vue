@@ -168,6 +168,13 @@ const handleNotification = () => {
     showClose: true
   })
 }
+
+// input
+const input1 = ref('')
+const input2 = ref('')
+const input3 = ref('')
+const input4 = ref('')
+const textarea = ref('')
 </script>
 
 <template>
@@ -673,13 +680,11 @@ const handleNotification = () => {
       <px-dropdown split-button type="primary" effect="dark" trigger="click">
         Dropdown List
         <template #dropdown>
-          <px-dropdown-menu>
-            <px-dropdown-item>Action 1</px-dropdown-item>
-            <px-dropdown-item>Action 2</px-dropdown-item>
-            <px-dropdown-item>Action 3</px-dropdown-item>
-            <px-dropdown-item divided>Action 4</px-dropdown-item>
-            <px-dropdown-item>Action 5</px-dropdown-item>
-          </px-dropdown-menu>
+          <px-dropdown-item>Action 1</px-dropdown-item>
+          <px-dropdown-item>Action 2</px-dropdown-item>
+          <px-dropdown-item>Action 3</px-dropdown-item>
+          <px-dropdown-item divided>Action 4</px-dropdown-item>
+          <px-dropdown-item>Action 5</px-dropdown-item>
         </template>
       </px-dropdown>
     </div>
@@ -745,6 +750,66 @@ const handleNotification = () => {
         <px-button>Button1</px-button>
       </template>
     </px-card>
+    <hr />
+    <div class="mb-20">
+      <px-input
+        v-model="input1"
+        style="width: 240px"
+        placeholder="Please input"
+      />
+    </div>
+    <div class="mb-20">
+      <px-input
+        v-model="input1"
+        style="width: 240px"
+        disabled
+        placeholder="Please input"
+      />
+    </div>
+    <div class="mb-20">
+      <px-input
+        v-model="input1"
+        style="width: 240px"
+        clearable
+        placeholder="Please input"
+      />
+    </div>
+    <div class="mb-20">
+      <px-input
+        v-model="input2"
+        style="width: 240px"
+        type="password"
+        placeholder="Please input password"
+        show-password
+      />
+    </div>
+    <div class="mb-20">
+      <px-input v-model="input3" style="width: 240px" placeholder="Pick a date">
+        <template #suffix>
+          <px-icon icon="bluesky" />
+        </template>
+      </px-input>
+    </div>
+    <div class="mb-20">
+      <px-input
+        v-model="input4"
+        style="width: 240px"
+        placeholder="Type something"
+      >
+        <template #prefix>
+          <px-icon icon="unsplash" />
+        </template>
+      </px-input>
+    </div>
+    <div class="mb-20">
+      <px-input
+        v-model="textarea"
+        style="width: 240px"
+        :rows="3"
+        type="textarea"
+        placeholder="Please input"
+      />
+    </div>
     <div class="h-300"></div>
   </div>
 </template>
