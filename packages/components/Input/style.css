@@ -59,9 +59,7 @@
   &.is-disabled {
     cursor: not-allowed;
     opacity: .8;
-    .px-input__wrapper {
-      --px-input-bg-color: var(--px-disabled-bg-color);
-    }
+    --px-input-bg-color: var(--px-color-info-dark-1);
     .px-input__inner {
       font-family: var(--px-font-family);
       color: var(--px-disabled-text-color);
@@ -70,13 +68,16 @@
       background-color: transparent;
     }
     .px-textarea__inner {
-      --px-input-bg-color: var(--px-disabled-bg-color);
       font-family: var(--px-font-family);
       color: var(--px-disabled-text-color);
       -webkit-text-fill-color: var(--px-disabled-text-color);
       cursor: not-allowed;
       background-color: transparent;
     }
+  }
+
+  &.is-focus  {
+    --px-input-border-color: var(--px-input-focus-border-color);
   }
 }
 
@@ -126,7 +127,15 @@
   justify-content: center;
   min-height: 100%;
   padding: 0 20px;
+  margin: var(--px-input-inner-padding);
+  background-color: var(--px-color-info-dark-1);
   white-space: nowrap;
+}
+.px-input__prepend {
+  border-right: var(--px-border) solid var(--px-input-border-color);
+}
+.px-input__append {
+  border-left: var(--px-border) solid var(--px-input-border-color);
 }
 
 .px-input--textarea {
@@ -198,8 +207,6 @@
     }
   }  
   .px-icon {
-    height: inherit;
-    line-height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,8 +7,8 @@ next:
   text: Card 卡片
 
 prev:
-  link: /components/configProvider
-  text: ConfigProvider 全局配置
+  link: /components/input
+  text: Input 输入框
 ---
 
 # Badge 徽章

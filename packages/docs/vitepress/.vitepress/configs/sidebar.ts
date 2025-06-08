@@ -24,6 +24,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     items: [{ text: 'ConfigProvider 全局配置', link: 'configProvider' }]
   },
   {
+    text: 'Form 表单组件',
+    collapsed: false,
+    base: '/components/',
+    items: [{ text: 'Input 输入框', link: 'input' }]
+  },
+  {
     text: 'Data 数据展示',
     collapsed: false,
     base: '/components/',

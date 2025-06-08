@@ -38,10 +38,12 @@ const inputRef = shallowRef<HTMLInputElement>()
 const textareaRef = shallowRef<HTMLTextAreaElement>()
 
 const attrs = useAttrs()
-// 拦截行内样式
+// 拦截行内样式 类名
 const containerStyle = computed<StyleValue>(() => [attrs.style as StyleValue])
+const containerClass = computed(() => attrs.class)
+
 // 过滤行内样式
-const filterAttrs = computed(() => omit(attrs, ['style']))
+const filterAttrs = computed(() => omit(attrs, ['style', 'class']))
 
 // 获取原生元素
 const _ref = computed(() => inputRef.value || textareaRef.value)
@@ -144,7 +146,8 @@ defineExpose<InputInstance>({
       'is-append': $slots.append,
       'is-prefix': $slots.prefix,
       'is-suffix': $slots.suffix,
-      'is-focus': isFocused
+      'is-focus': isFocused,
+      [`${containerClass}`]: containerClass
     }"
     :style="containerStyle"
   >

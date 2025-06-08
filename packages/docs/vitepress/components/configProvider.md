@@ -3,8 +3,8 @@ title: Config Provider
 description: ConfigProvider 组件文档
 
 next:
-  link: /components/badge
-  text: Badge 徽章
+  link: /components/input
+  text: Input 输入框
 
 prev:
   link: /components/text
