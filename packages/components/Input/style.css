@@ -86,7 +86,7 @@
   .px-input__wrapper {
     padding: var(--px-input-inner-padding) 15px;
     .px-input__inner {
-      --px-input-inner-height: calc(var(--px-input-height, 40px) - 2px);
+      --px-input-inner-height: calc(var(--px-input-height, 40px) - var(--px-input-inner-padding) * 2);
     }
   }
 
@@ -97,7 +97,7 @@
   .px-input__wrapper {
     padding: var(--px-input-inner-padding) 7px;
     .px-input__inner {
-      --px-input-inner-height: calc(var(--px-input-height, 24px) - 2px);
+      --px-input-inner-height: calc(var(--px-input-height, 24px) - var(--px-input-inner-padding) * 2);
     } 
   }
 }
@@ -151,30 +151,10 @@
   appearance: none;
   -webkit-appearance: none;
   border: none;
-
-  .px-textarea__inner {
-    --px-input-inner-height: calc(var(--px-input-height, 32px) - var(--px-input-inner-padding) * 2);
-    width: 100%;
-    flex-grow: 1;
-    appearance: none;
-    -webkit-appearance: none;
-    color: var(--px-input-text-color);
-    background-color: transparent;
-    font-size: inherit;
-    font-family: var(--px-font-family);
-    height: var(--px-input-inner-height);
-    line-height: var(--px-input-inner-height);
-    padding: 0;
-    outline: none;
-    border: none;
-    box-sizing: border-box;
-
-    &::placeholder {
-      font-size: var(--px-font-size-small);
-      font-family: var(--px-font-family);
-      color: var(--px-input-placeholder-color);
-      height: 1.5em;
-    }
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none !important;
   }
 
   &:focus {
