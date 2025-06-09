@@ -13,6 +13,7 @@
   --px-component-size: 32px;
   --px-component-size-small: 24px;
   --px-input-inner-padding: calc(var(--px-border) + 1px);
+  --px-input-inner-height: calc(var(--px-component-size, 32px) - var(--px-input-inner-padding) * 2);
 }
 
 .px-input {
@@ -126,6 +127,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100%;
+  line-height: var(--px-input-inner-height);
   padding: 0 20px;
   margin: var(--px-input-inner-padding);
   background-color: var(--px-color-info-dark-1);
@@ -181,7 +183,6 @@
   align-items: center;
   justify-content: center;
   padding: var(--px-input-inner-padding) 11px;
-  height: var(--px-input-inner-height);
 
   .px-input__inner {
     --px-input-inner-height: calc(var(--px-input-height, 32px) - var(--px-input-inner-padding) * 2);
