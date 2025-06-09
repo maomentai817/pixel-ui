@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 
-import InputDemo from './TemplateDemo/InputDemo.vue'
+import InputDemo from './InputDemo.vue'
 import { PxIcon, PxInput, type InputProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Input.css'
 import '@mmt817/pixel-ui/dist/theme/Icon.css'

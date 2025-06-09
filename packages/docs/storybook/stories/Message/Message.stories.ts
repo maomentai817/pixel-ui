@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import MessageDemo from './TemplateDemo/MessageDemo.vue'
+import MessageDemo from './MessageDemo.vue'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 import '@mmt817/pixel-ui/dist/theme/Message.css'
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import NotificationDemo from './TemplateDemo/NotificationDemo.vue'
+import NotificationDemo from './NotificationDemo.vue'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 import '@mmt817/pixel-ui/dist/theme/Notification.css'
 
