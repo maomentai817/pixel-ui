@@ -185,6 +185,19 @@ const textarea = ref('')
     <hr />
     <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
     <hr />
+    <div class="b-red b-solid b-1">
+      逗号， 句号。 顿号、 分号； 冒号： 双引号“ 双引号” 单引号‘ 单引号’
+      书名号《 书名号》 圆括号（ 圆括号） 方括号【 方括号】 破折号—— 省略号……
+      感叹号！ 问号？ 人民币符号￥
+      <br />
+      <br />
+      英文逗号, 英文句号. 英文分号; 英文冒号: 英文双引号" 英文单引号' 小于号&lt;
+      大于号&gt; 圆括号( 圆括号) 方括号[ 方括号] 大括号{ 大括号} 连接号/中横线-
+      下划线_ 省略号… 感叹号! 问号? 艾特符@ 井号# 美元符号$ 百分号%
+      脱字符/抑扬符^ 和号&amp; 星号* 斜杠/ 反斜杠\ 竖线| 波浪线~ 反引号` 等号=
+      减号- 加号+
+    </div>
+    <hr />
     <px-button size="small" ref="BTN">Normal</px-button>
     <px-button type="primary" size="small">Primary</px-button>
     <px-button type="success" size="small">Success</px-button>
