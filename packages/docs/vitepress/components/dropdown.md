@@ -75,10 +75,6 @@ demo-preview=../demo/Dropdown/HideOnClick.vue
 
 点击菜单项后会触发事件, 用户可以通过相应的菜单项 key 进行不同的操作。
 
-:::warning
-此处触发回调等待后续 `px-message` 组件开发完成后再完善。
-:::
-
 :::preview
 demo-preview=../demo/Dropdown/Event.vue
 :::
