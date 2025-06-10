@@ -1,9 +1,11 @@
-export type ProgressType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'sakura'
+export const progressTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'sakura'
+] as const
+export type ProgressType = (typeof progressTypes)[number]
 
 export interface ProgressProps {
   /**

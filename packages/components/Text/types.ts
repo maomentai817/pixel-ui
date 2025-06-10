@@ -1,13 +1,17 @@
 import type { Component } from 'vue'
 
-export type TextType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'base'
-  | 'sakura'
-export type TextAlign = 'left' | 'center' | 'right'
+export const textTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'base',
+  'sakura'
+] as const
+export type TextType = (typeof textTypes)[number]
+
+export const textAligns = ['left', 'center', 'right'] as const
+export type TextAlign = (typeof textAligns)[number]
 
 export interface TextProps {
   /**

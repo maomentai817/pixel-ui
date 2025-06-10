@@ -1,14 +1,18 @@
-export type TagType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'sakura'
+export const tagTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'sakura'
+] as const
+export type TagType = (typeof tagTypes)[number]
 
-export type TagSize = 'large' | 'default' | 'small'
+export const tagSizes = ['large', 'default', 'small'] as const
+export type TagSize = (typeof tagSizes)[number]
 
-export type TagEffect = 'light' | 'dark' | 'plain'
+export const tagEffects = ['light', 'dark', 'plain'] as const
+export type TagEffect = (typeof tagEffects)[number]
 
 export interface TagProps {
   /**

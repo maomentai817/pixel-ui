@@ -1,10 +1,8 @@
 import type { ComputedRef } from 'vue'
 import type { ButtonType, ButtonSize } from '../Button'
+import type { TriggerType, EffectType } from '../Tooltip'
 import type { DropdownCommand, DropdownItemProps } from './types.dropdownItem'
 import type { Placement, Options } from '@popperjs/core'
-
-type TriggerType = 'hover' | 'click' | 'contextmenu'
-type EffectType = 'dark' | 'light' | 'customized'
 
 export interface DropdownProps {
   /**

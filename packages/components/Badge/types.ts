@@ -1,10 +1,12 @@
-export type BadgeType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'sakura'
+export const badgeTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'sakura'
+] as const
+export type BadgeType = (typeof badgeTypes)[number]
 
 export interface BadgeProps {
   /**

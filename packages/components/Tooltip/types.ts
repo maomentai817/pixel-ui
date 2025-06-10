@@ -1,8 +1,10 @@
 import type { Placement, Options } from '@popperjs/core'
 
-export type TriggerType = 'hover' | 'click' | 'contextmenu'
+export const triggerTypes = ['hover', 'click', 'contextmenu'] as const
+export type TriggerType = (typeof triggerTypes)[number]
 
-export type EffectType = 'dark' | 'light' | 'customized'
+export const effectTypes = ['dark', 'light', 'customized'] as const
+export type EffectType = (typeof effectTypes)[number]
 
 export interface TooltipProps {
   /**

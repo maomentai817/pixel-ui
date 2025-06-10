@@ -1,15 +1,21 @@
 // types.button.ts
 import type { Component, Ref, ComputedRef } from 'vue'
 
-export type ButtonType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'base'
-  | 'sakura'
-export type NativeType = 'button' | 'submit' | 'reset'
-export type ButtonSize = 'large' | 'default' | 'small'
+export const buttonTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'base',
+  'sakura'
+] as const
+export type ButtonType = (typeof buttonTypes)[number]
+
+export const buttonNativeTypes = ['button', 'submit', 'reset'] as const
+export type NativeType = (typeof buttonNativeTypes)[number]
+
+export const buttonSizes = ['large', 'default', 'small'] as const
+export type ButtonSize = (typeof buttonSizes)[number]
 
 export interface ButtonProps {
   /**

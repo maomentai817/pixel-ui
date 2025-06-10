@@ -1,4 +1,11 @@
-export type AlertType = 'info' | 'success' | 'warning' | 'danger' | 'sakura'
+export const alertTypes = [
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'sakura'
+] as const
+export type AlertType = (typeof alertTypes)[number]
 
 export interface AlertProps {
   /**

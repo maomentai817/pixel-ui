@@ -1,10 +1,12 @@
-export type IconType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'base'
-  | 'sakura'
+export const iconTypes = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'base',
+  'sakura'
+] as const
+export type IconType = (typeof iconTypes)[number]
 
 export interface IconProps {
   /**

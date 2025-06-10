@@ -1,4 +1,5 @@
-export type AnimationFrameType = 'loop' | 'once'
+export const animationFrameTypes = ['loop', 'once'] as const
+export type AnimationFrameType = (typeof animationFrameTypes)[number]
 
 export interface AnimationFrameStage {
   start: number

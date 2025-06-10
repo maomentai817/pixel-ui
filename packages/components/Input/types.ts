@@ -1,6 +1,7 @@
 import type { Ref } from 'vue'
 
-export type InputSize = 'small' | 'default' | 'large'
+export const inputSizes = ['small', 'default', 'large'] as const
+export type InputSize = (typeof inputSizes)[number]
 
 export interface InputProps {
   /**
