@@ -8,15 +8,6 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F, U+3040-309F, U+30A0-30FF, U+31F0-31FF, U+3000-303F;
-}
-
-@font-face {
-  font-family: 'Zpixall';
-  src: url('/fonts/Zpix.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -29,7 +20,7 @@
 }
 
 :root {
-  --vp-font-family-base: "Zpixall";
+  --vp-font-family-base: "Zpix";
   --vp-font-family-mono: "PS2P", "Zpix";
 }
 
@@ -60,7 +51,7 @@ table pre,
 table code,
 .api-typing code {
   font-size: 0.75rem;
-  font-family: 'Zpixall';
+  font-family: 'Zpix';
 }
 
 .vitepress-demo-preview-preview {
