@@ -839,7 +839,7 @@ const textarea = ref('')
         placeholder="Please input"
       />
     </div>
-    <!-- <px-overlay mask></px-overlay> -->
+    <px-overlay mask grid :overlayClass="['customa', 'customb']"></px-overlay>
     <div class="h-300"></div>
   </div>
 </template>

@@ -22,7 +22,7 @@ const handleClick = (e: MouseEvent) => {
   <div
     v-if="mask"
     class="px-overlay"
-    :class="overlayClass"
+    :class="[overlayClass, { 'is-grid-basic': grid }]"
     :style="{ zIndex: zIndex }"
     @click="handleClick"
   >
@@ -30,7 +30,7 @@ const handleClick = (e: MouseEvent) => {
   </div>
   <div
     v-else
-    :class="overlayClass"
+    :class="[overlayClass, { 'is-grid-basic': grid }]"
     :style="{
       zIndex: zIndex,
       position: 'fixed',

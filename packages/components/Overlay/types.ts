@@ -20,6 +20,13 @@ export interface OverlayProps {
    * @default -
    */
   overlayClass?: string | string[] | Record<string, boolean>
+  /**
+   * @property grid
+   * @type boolean
+   * @description 网格背景预设-1
+   * @default false
+   */
+  grid?: boolean
 }
 
 export interface OverlayEmits {
