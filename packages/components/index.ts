@@ -30,6 +30,7 @@ import pixelcontentWorkletURL from './worklets/dist/pixelcontent.worklet.js?url'
 import pixelpanelWorkletURL from './worklets/dist/pixelpanel.worklet.js?url'
 import pixelstripeWorkletURL from './worklets/dist/pixelstripe.worklet.js?url'
 import pixelgridBasicWorkletURL from './worklets/dist/pixelgridBasic.worklet.js?url'
+import pixelgridPreset1WorkletURL from './worklets/dist/pixelgridPreset1.worklet.js?url'
 
 export function registerPaintWorklets() {
   if (typeof CSS !== 'undefined' && 'paintWorklet' in CSS) {
@@ -42,6 +43,7 @@ export function registerPaintWorklets() {
       ;(CSS as any).paintWorklet.addModule(pixelpanelWorkletURL)
       ;(CSS as any).paintWorklet.addModule(pixelstripeWorkletURL)
       ;(CSS as any).paintWorklet.addModule(pixelgridBasicWorkletURL)
+      ;(CSS as any).paintWorklet.addModule(pixelgridPreset1WorkletURL)
     } catch (err) {
       console.warn('[Pixel UI] Error loading paintWorklet: ', err)
     }

@@ -23,10 +23,23 @@ export interface OverlayProps {
   /**
    * @property grid
    * @type boolean
-   * @description 网格背景预设-1
+   * @description 网格背景默认
    * @default false
    */
   grid?: boolean
+  /**
+   * @property matte
+   * @type boolean
+   * @description 是否开启哑光
+   * @default false
+   */
+  matte?: boolean
+  /**
+   * @property preset1
+   * @type boolean
+   * @description 网格背景预设-1
+   */
+  preset1?: boolean
 }
 
 export interface OverlayEmits {
