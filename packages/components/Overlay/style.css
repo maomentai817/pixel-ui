@@ -9,6 +9,7 @@
 
 .is-grid-basic {
   background: none;
+  background-color: transparent !important;
   background-image: paint(pixelgridBasic);
 }
 
@@ -20,5 +21,6 @@
 
 .is-grid-preset-1 {
   background: none;
+  background-color: transparent !important;
   background-image: paint(pixelgridPreset1);
 }

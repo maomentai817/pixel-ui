@@ -28,6 +28,13 @@ export interface OverlayProps {
    */
   lockScroll?: boolean
   /**
+   * @property color
+   * @type string
+   * @description 默认遮罩层自定义颜色
+   * @default -
+   */
+  color?: string
+  /**
    * @property grid
    * @type boolean
    * @description 网格背景默认

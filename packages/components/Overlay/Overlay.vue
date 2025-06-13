@@ -38,7 +38,7 @@ watch(
       overlayClass,
       { 'is-grid-basic': grid, 'is-matte': matte, 'is-grid-preset-1': preset1 }
     ]"
-    :style="{ zIndex: zIndex }"
+    :style="{ zIndex: zIndex, backgroundColor: color }"
     @click="handleClick"
   >
     <slot></slot>
@@ -52,7 +52,8 @@ watch(
     :style="{
       zIndex: zIndex,
       position: 'fixed',
-      inset: 0
+      inset: 0,
+      backgroundColor: color
     }"
   >
     <slot></slot>

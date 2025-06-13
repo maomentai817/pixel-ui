@@ -848,6 +848,7 @@ const overlay = ref(true)
       preset1
       matte
       grid
+      color="rgba(255, 119, 7, 0.4)"
       :overlayClass="['customa', 'customb', 'f-c']"
     >
       <px-button @click="overlay = !overlay">Close</px-button>

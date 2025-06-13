@@ -22,11 +22,27 @@ prev:
 设置在 `px-overlay` 上的 `attrs` 会被拦截, 自定义类名列表可通过 `overlayClass` 添加
 
 :::tip
-`mask` 属性仅控制 **遮罩层显示**, 对于插槽内容不做处理, 建议用例同时配置 `mask` 和 `v-show` 属性控制遮罩层显示隐藏
+`mask` 属性仅控制 **遮罩层显示**, 对于插槽内容不做处理
+
+建议用例同时配置 `mask` 和 `v-show` 属性控制遮罩层显示隐藏
 :::
 
 ::: preview
 demo-preview=../demo/Overlay/Basic.vue
+:::
+
+## 自定义颜色
+
+通过 `color` 设置默认遮罩层颜色
+
+:::tip
+`grid`, `preset` 等预设装饰性遮罩层优先级高于 `color` 自定义颜色
+
+其颜色通过 `--px-grid-color-1` 等属性修改
+:::
+
+::: preview
+demo-preview=../demo/Overlay/Color.vue
 :::
 
 ## 网格背景-默认
