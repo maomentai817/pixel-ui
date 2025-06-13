@@ -213,7 +213,7 @@ const overlay = ref(true)
       脱字符/抑扬符^ 和号&amp; 星号* 斜杠/ 反斜杠\ 竖线| 波浪线~ 反引号` 等号=
       减号- 加号+
       <hr />
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ口口毛十力====----()=>VOID
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ口口毛十力====----()=>VOIDzxiabI123456:;
       <hr />
       abcdefghijklmnopqrstuvwxyz口口毛十力====----()=>void
     </div>
