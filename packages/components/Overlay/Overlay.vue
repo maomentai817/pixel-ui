@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, onBeforeUnmount } from 'vue'
 import type { OverlayProps, OverlayEmits } from './types'
 
 const COMP_NAME = 'PxOverlay' as const
@@ -28,6 +28,12 @@ watch(
   },
   { immediate: true }
 )
+
+onBeforeUnmount(() => {
+  if (props.lockScroll) {
+    document.body.style.overflow = ''
+  }
+})
 </script>
 
 <template>

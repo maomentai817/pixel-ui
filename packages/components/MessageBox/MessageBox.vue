@@ -91,11 +91,7 @@ const handleClose = () => {
 
 <template>
   <transition name="fade-in-linear" @after-leave="destroy">
-    <px-overlay
-      v-show="(visible as Ref).value"
-      :z-index="state.zIndex"
-      :mask="(visible as Ref).value"
-    >
+    <px-overlay v-show="(visible as Ref).value" :z-index="state.zIndex" mask>
       <div
         role="dialog"
         class="px-overlay-message-box"

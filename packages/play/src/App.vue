@@ -5,7 +5,14 @@ import type {
   DropdownItemProps
 } from '@mmt817/pixel-ui'
 import { ref, onMounted, computed, h } from 'vue'
-import { en, zhCN, zhTW, PxMessage, PxNotification } from '@mmt817/pixel-ui'
+import {
+  en,
+  zhCN,
+  zhTW,
+  PxMessage,
+  PxNotification,
+  PxMessageBox
+} from '@mmt817/pixel-ui'
 import { get } from 'lodash-es'
 
 const activeNames = ref([])
@@ -178,6 +185,17 @@ const textarea = ref('')
 
 // overlay
 const overlay = ref(true)
+
+// messagebox
+const openAlert = () => {
+  PxMessageBox.alert('This is a message', 'Title')
+    .then((action: any) => {
+      PxMessage.info(`action: ${action}`)
+    })
+    .catch((action: any) => {
+      PxMessage.warning(`action: ${action}`)
+    })
+}
 </script>
 
 <template>
@@ -853,6 +871,8 @@ const overlay = ref(true)
     >
       <px-button @click="overlay = !overlay">Close</px-button>
     </px-overlay>
+
+    <px-button @click="openAlert">MessageBox</px-button>
     <div class="h-300"></div>
   </div>
 </template>
