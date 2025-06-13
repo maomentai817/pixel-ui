@@ -72,3 +72,11 @@ export interface OverlayEvents {
    */
   (_e: 'click', _value: MouseEvent): void
 }
+
+export interface OverlaySlots {
+  /**
+   * @property default
+   * @description 默认插槽
+   */
+  default: () => string
+}

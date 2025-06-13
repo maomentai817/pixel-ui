@@ -89,6 +89,13 @@ export interface MessageBoxProps {
    */
   type?: MessageType
   /**
+   * @property boxType
+   * @type enum - alert | confirm | prompt
+   * @description MessageBox 类型
+   * @default alert
+   */
+  boxType?: MessageBoxType
+  /**
    * @property icon
    * @type string
    * @description 自定义图标
@@ -265,7 +272,7 @@ export type MessageBoxShortcutMethod = ((
     _options?: MessageBoxOptions
   ) => Promise<MessageBoxData>)
 
-export interface IErMessageBox {
+export interface IPxMessageBox {
   (_options: MessageBoxOptions | string | VNode): Promise<any>
 
   alert: MessageBoxShortcutMethod
