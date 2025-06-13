@@ -21,5 +21,4 @@
 .is-grid-preset-1 {
   background: none;
   background-image: paint(pixelgridPreset1);
-  mix-blend-mode: hard-light;
 }

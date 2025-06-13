@@ -21,6 +21,13 @@ export interface OverlayProps {
    */
   overlayClass?: string | string[] | Record<string, boolean>
   /**
+   * @property lockScroll
+   * @type boolean
+   * @description 是否锁定滚动
+   * @default true
+   */
+  lockScroll?: boolean
+  /**
    * @property grid
    * @type boolean
    * @description 网格背景默认

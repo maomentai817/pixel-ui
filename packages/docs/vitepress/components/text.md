@@ -7,8 +7,8 @@ next:
   text: ConfigProvider 全局配置
 
 prev:
-  link: /components/icon
-  text: Icon 图标
+  link: /components/overlay
+  text: Overlay 遮罩层
 ---
 
 # Text 文本

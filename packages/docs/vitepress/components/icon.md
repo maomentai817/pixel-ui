@@ -3,8 +3,8 @@ title: Icon
 description: Icon 组件文档
 
 next:
-  link: /components/text
-  text: Text 文本
+  link: /components/overlay
+  text: Overlay 遮罩层
 
 prev:
   link: /components/button

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import type { OverlayProps, OverlayEmits } from './types'
 
 const COMP_NAME = 'PxOverlay' as const
@@ -6,9 +7,10 @@ defineOptions({
   name: COMP_NAME
 })
 
-withDefaults(defineProps<OverlayProps>(), {
+const props = withDefaults(defineProps<OverlayProps>(), {
   mask: true,
-  zIndex: 2000
+  zIndex: 2000,
+  lockScroll: true
 })
 
 const emits = defineEmits<OverlayEmits>()
@@ -16,6 +18,16 @@ const emits = defineEmits<OverlayEmits>()
 const handleClick = (e: MouseEvent) => {
   emits('click', e)
 }
+
+watch(
+  () => props.mask,
+  (val) => {
+    if (props.lockScroll) {
+      document.body.style.overflow = val ? 'hidden' : ''
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <template>

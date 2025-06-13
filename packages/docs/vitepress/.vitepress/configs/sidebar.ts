@@ -14,6 +14,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     items: [
       { text: 'Button 按钮', link: 'button' },
       { text: 'Icon 图标', link: 'icon' },
+      { text: 'Overlay 遮罩层', link: 'overlay' },
       { text: 'Text 文本', link: 'text' }
     ]
   },

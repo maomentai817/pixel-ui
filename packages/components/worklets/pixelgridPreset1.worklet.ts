@@ -33,7 +33,7 @@ export class PixelGridPreset1 implements PaintWorklet {
     const { width, height } = size
 
     const gridSize = getInt(props, '--px-grid-size', 48)
-    const gridColor1 = getStr(props, '--px-grid-color-1', '#0000002f')
+    const gridColor1 = getStr(props, '--px-grid-color-1', '#00000080')
     const gridColor2 = getStr(props, '--px-grid-color-2', '#ffffff2f')
 
     // 清空画布

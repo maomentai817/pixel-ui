@@ -175,6 +175,9 @@ const input2 = ref('')
 const input3 = ref('')
 const input4 = ref('')
 const textarea = ref('')
+
+// overlay
+const overlay = ref(true)
 </script>
 
 <template>
@@ -840,12 +843,15 @@ const textarea = ref('')
       />
     </div>
     <px-overlay
-      mask
+      v-show="overlay"
+      :mask="overlay"
       preset1
       matte
       grid
-      :overlayClass="['customa', 'customb']"
-    ></px-overlay>
+      :overlayClass="['customa', 'customb', 'f-c']"
+    >
+      <px-button @click="overlay = !overlay">Close</px-button>
+    </px-overlay>
     <div class="h-300"></div>
   </div>
 </template>
