@@ -136,8 +136,9 @@ const handleClose = () => {
           <div class="px-message-box__content">
             <px-icon
               v-if="iconComponent && !state.center && hasMessage"
+              class="px-message-box__icon"
               :class="{
-                [`px-icon-${state.type}`]: state.type
+                [`px-icon--${state.type}`]: state.type
               }"
               :icon="iconComponent"
             />

@@ -65,14 +65,14 @@ export interface TagProps {
    */
   round?: boolean
   /**
-   * @property round
+   * @property circle
    * @type boolean
    * @description 是否圆型
    * @default false
    */
   circle?: boolean
   /**
-   * @property round
+   * @property chubby
    * @type boolean
    * @description 更圆的圆角
    * @default false

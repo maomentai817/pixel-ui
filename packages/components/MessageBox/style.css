@@ -8,7 +8,7 @@
   --px-message-box-font-line-height: 16px;
   --px-message-box-close-size: var(--px-message-close-size, 16px);
   --px-message-box-icon-color: var(--px-color-base);
-  --px-message-box-icon-size: 16px;
+  --px-message-box-icon-size: 18px;
   --px-message-box-icon-margin: 8px;
 }
 
@@ -35,6 +35,7 @@
   width: 100%;
   padding: var(--px-message-box-padding-primary);
   vertical-align: middle;
+  font-family: var(--px-font-family);
   font-size: var(--px-message-box-font-size);
   text-align: left;
   overflow: hidden;

@@ -7,8 +7,8 @@ next:
   text: Popconfirm 气泡确认框
 
 prev:
-  link: /components/message
-  text: Message 消息提示
+  link: /components/messageBox
+  text: MessageBox 消息弹出框
 ---
 
 # Notification 通知
