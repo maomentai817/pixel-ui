@@ -2,6 +2,7 @@
 import clipboardCopy from 'clipboard-copy'
 import IconCategories from './icons-categories.json'
 import { ref, computed, shallowRef } from 'vue'
+import { PxMessage } from '@mmt817/pixel-ui'
 
 type CategoriesItem = {
   name: string
@@ -14,9 +15,9 @@ const categories = shallowRef<CategoriesItem[]>(IconCategories.categories)
 const copyContent = async (content: string) => {
   try {
     await clipboardCopy(content)
-    alert(`已复制：${content}`)
+    PxMessage.success(`已复制：${content}`)
   } catch {
-    alert('复制失败')
+    PxMessage.error('复制失败')
   }
 }
 
@@ -37,7 +38,7 @@ const filteredCategories = computed(() =>
 </script>
 
 <template>
-  <input
+  <px-input
     v-model="query"
     placeholder="搜索图标名称"
     class="w-full p-8 text-16 mb-16"

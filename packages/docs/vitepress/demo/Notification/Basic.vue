@@ -1,6 +1,6 @@
 <template>
-  <px-button @click="open1" size="small">Closes automatically</px-button>
-  <px-button @click="open2" size="small">Won't close automatically</px-button>
+  <px-button @click="open1">Closes automatically</px-button>
+  <px-button @click="open2">Won't close automatically</px-button>
 </template>
 
 <script lang="ts" setup>
