@@ -1,9 +1,12 @@
 import { describe, it, expect, vi } from 'vitest'
-import { h } from 'vue'
+import { h, createApp, ref } from 'vue'
+import { mount } from '@vue/test-utils'
 import { rAF } from '@pixel-ui/utils'
 
 import type { MessageBoxType } from './types'
 import MessageBox from './methods'
+import PxMessageBox from '.'
+import MessageBoxSFC from './MessageBox.vue'
 
 describe('MessageBox Component', () => {
   it('renders correctly', async () => {
@@ -161,6 +164,62 @@ describe('MessageBox Component', () => {
     MessageBox.close()
   })
 
+  it('handleInputEnter triggers confirm action on Enter key', async () => {
+    const wrapper = mount(MessageBoxSFC, {
+      props: {
+        visible: ref(true),
+        showInput: true,
+        inputType: 'text',
+        doAction: vi.fn(),
+        doClose: vi.fn(),
+        destroy: vi.fn()
+      }
+    })
+
+    const input = wrapper.find('input')
+    await input.trigger('keyup.enter')
+
+    // 断言 doAction 被调用，且参数是 'confirm'
+    expect(wrapper.props().doAction).toHaveBeenCalledWith('confirm', '')
+  })
+
+  it('should do nothing when press enter with textarea', async () => {
+    const wrapper = mount(MessageBoxSFC, {
+      props: {
+        visible: ref(true),
+        showInput: true,
+        inputType: 'textarea',
+        doAction: vi.fn(),
+        doClose: vi.fn(),
+        destroy: vi.fn()
+      }
+    })
+
+    const textarea = wrapper.find('textarea')
+    await textarea.trigger('keyup.enter')
+  })
+
+  it('should be prevented when press enter on button', async () => {
+    const wrapper = mount(MessageBoxSFC, {
+      props: {
+        visible: ref(true),
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonType: null as any,
+        beforeClose: () => false,
+        doAction: vi.fn(),
+        doClose: vi.fn(),
+        destroy: vi.fn()
+      }
+    })
+
+    const cancelBtn = wrapper.find('.px-message-box__cancel-btn')
+    const confirmBtn = wrapper.find('.px-message-box__confirm-btn')
+
+    await cancelBtn.trigger('keydown.enter')
+    await confirmBtn.trigger('keydown.enter')
+  })
+
   it('mount SFC component', async () => {
     MessageBox({
       title: 'Message',
@@ -193,5 +252,44 @@ describe('MessageBox Component', () => {
         alert(`action: ${action}`)
       }
     })
+
+    MessageBox.confirm(
+      'proxy will permanently delete the file. Continue?',
+      'Warning',
+      {
+        type: 'warning',
+        center: true,
+        showCancelButton: false,
+        showConfirmButton: true,
+        // 这里展示一下 不用 Promise 写法的时候
+        callback(action) {
+          if (action === 'confirm') {
+            alert(action)
+          } else {
+            alert(action as string)
+          }
+        }
+      }
+    )
+  })
+})
+
+describe('PxMessageBox Plugin', () => {
+  it('should install and provide global methods', () => {
+    const app = createApp({})
+    app.use(PxMessageBox)
+
+    expect(app.config.globalProperties.$msgbox).toBe(PxMessageBox)
+    expect(app.config.globalProperties.$messagebox).toBe(PxMessageBox)
+    expect(app.config.globalProperties.$alert).toBe(PxMessageBox.alert)
+    expect(app.config.globalProperties.$confirm).toBe(PxMessageBox.confirm)
+    expect(app.config.globalProperties.$prompt).toBe(PxMessageBox.prompt)
+  })
+
+  it('should export the correct API', () => {
+    expect(PxMessageBox).toHaveProperty('alert')
+    expect(PxMessageBox).toHaveProperty('confirm')
+    expect(PxMessageBox).toHaveProperty('prompt')
+    expect(typeof PxMessageBox.alert).toBe('function')
   })
 })

@@ -188,13 +188,29 @@ const overlay = ref(false)
 
 // messagebox
 const openAlert = () => {
-  PxMessageBox.alert('This is a message', 'Title')
-    .then((action: any) => {
-      PxMessage.info(`action: ${action}`)
-    })
-    .catch((action: any) => {
-      PxMessage.warning(`action: ${action}`)
-    })
+  // PxMessageBox.alert('This is a message', 'Title')
+  //   .then((action: any) => {
+  //     PxMessage.info(`action: ${action}`)
+  //   })
+  //   .catch((action: any) => {
+  //     PxMessage.warning(`action: ${action}`)
+  //   })
+  PxMessageBox.confirm(
+    'proxy will permanently delete the file. Continue?',
+    'Warning',
+    {
+      type: 'warning',
+      center: true,
+      // 这里展示一下 不用 Promise 写法的时候
+      callback(action: any) {
+        if (action === 'confirm') {
+          PxMessage.info(action)
+        } else {
+          PxMessage.warning(action as string)
+        }
+      }
+    }
+  )
 }
 </script>
 
