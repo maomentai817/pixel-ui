@@ -6,6 +6,7 @@ import useLocale from './useLocale'
 import useOffset from './useOffset'
 import useZIndex from './useZIndex'
 import useFocusController from './useFocusController'
+import useDraggable from './useDraggable'
 import { usePxBadgeCustomStyle, usePxButtonCustomStyle } from './useColor'
 
 export {
@@ -18,5 +19,6 @@ export {
   usePxBadgeCustomStyle,
   useOffset,
   useZIndex,
-  useFocusController
+  useFocusController,
+  useDraggable
 }

@@ -9,7 +9,8 @@ import {
   usePxBadgeCustomStyle,
   useOffset,
   useZIndex,
-  useFocusController
+  useFocusController,
+  useDraggable
 } from '../index'
 
 describe('utils/index', () => {
@@ -51,5 +52,9 @@ describe('utils/index', () => {
 
   it('useFocusController should be exported', () => {
     expect(useFocusController).toBeDefined()
+  })
+
+  it('useDraggable should be exported', () => {
+    expect(useDraggable).toBeDefined()
   })
 })
