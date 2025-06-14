@@ -102,7 +102,8 @@ const handleClose = () => {
           :class="[
             'px-message-box',
             {
-              'is-center': state.center
+              'is-center': state.center,
+              [`px-message-box--${state.type}`]: state.type
             }
           ]"
           @click.stop
@@ -116,8 +117,9 @@ const handleClose = () => {
             <div class="px-message-box__title">
               <px-icon
                 v-if="iconComponent && state.center"
+                class="px-message-box__icon"
                 :class="{
-                  [`px-icon-${state.type}`]: state.type
+                  [`px-icon--${state.type}`]: state.type
                 }"
                 :icon="iconComponent"
               />
@@ -169,8 +171,7 @@ const handleClose = () => {
               @click="handleAction('cancel')"
               @keydown.prevent.enter="handleAction('cancel')"
               >{{
-                state.cancelButtonText ||
-                locale.t('el.popconfirm.cancelButtonText')
+                state.cancelButtonText || locale.t('el.messagebox.cancel')
               }}</px-button
             >
             <px-button
@@ -182,8 +183,7 @@ const handleClose = () => {
               @click="handleAction('confirm')"
               @keydown.prevent.enter="handleAction('confirm')"
               >{{
-                state.confirmButtonText ||
-                locale.t('el.popconfirm.confirmButtonText')
+                state.confirmButtonText || locale.t('el.messagebox.confirm')
               }}</px-button
             >
           </div>

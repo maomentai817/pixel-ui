@@ -1,0 +1,244 @@
+.px-message-box {
+  --px-message-box-title-color: var(--px-text-color-primary);
+  --px-message-box-width: 420px;
+  --px-message-box-font-size: var(--px-font-size-base);
+  --px-message-box-content-font-size: var(--px-font-size-small);
+  --px-message-box-content-color: var(--px-text-color-regular);
+  --px-message-box-padding-primary: 22px;
+  --px-message-box-font-line-height: 16px;
+  --px-message-box-close-size: var(--px-message-close-size, 16px);
+  --px-message-box-icon-color: var(--px-color-base);
+  --px-message-box-icon-size: 16px;
+  --px-message-box-icon-margin: 8px;
+}
+
+.px-overlay-message-box {
+  text-align: center;
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+  overflow: auto;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle;
+  }  
+}
+
+.px-message-box {
+  display: inline-block;
+  position: relative; 
+  max-width: var(--px-message-box-width);
+  width: 100%;
+  padding: var(--px-message-box-padding-primary);
+  vertical-align: middle;
+  font-size: var(--px-message-box-font-size);
+  text-align: left;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+
+  /* css houdini paintWorklet */
+    background-image: paint(pixelbox);
+    --px-border: 3px;
+    --px-border-t: 3px;
+    --px-border-r: 3px;
+    --px-border-b: 3px;
+    --px-border-l: 3px;
+    --px-border-radius: 0px;
+    --px-border-radius-lt: 0px;
+    --px-border-radius-rt: 0px;
+    --px-border-radius-lb: 0px;
+    --px-border-radius-rb: 0px;
+    --px-bg-color: var(--px-color-white);
+    --px-border-color: var(--px-color-base);
+    --px-button-single: 1;
+
+  &:focus{
+    outline: none !important;
+  }
+  
+  &.is-center {
+    .px-message-box__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .px-message-box__footer,.px-message-box__content {
+      justify-content: center;
+    }
+  }
+  .px-message-box__icon {
+    color: var(--px-message-box-icon-color);
+    font-size: var(--px-message-box-icon-size) !important;
+    width: var(--px-message-box-icon-size);
+    margin-right: var(--px-message-box-icon-margin);
+  }
+
+  /* icon types */
+  .px-message-box__icon.px-icon--error {
+    --px-message-box-icon-color: var(--px-color-danger);
+  }
+  .px-message-box__icon.px-icon--primary {
+    --px-message-box-icon-color: var(--px-color-primary);
+  }
+  .px-message-box__icon.px-icon--info {
+    --px-message-box-icon-color: var(--px-color-info);
+  }
+  .px-message-box__icon.px-icon--success {
+    --px-message-box-icon-color: var(--px-color-success);
+  }
+  .px-message-box__icon.px-icon--warning {
+    --px-message-box-icon-color: var(--px-color-warning);
+  }
+  .px-message-box__icon.px-icon--danger {
+    --px-message-box-icon-color: var(--px-color-danger);
+  }
+  .px-message-box__icon.px-icon--sakura {
+    --px-message-box-icon-color: var(--px-color-sakura-dark-1);
+  }
+  .px-message-box__icon.px-icon--iron {
+    --px-message-box-icon-color: #B4C0D2;
+  }
+  .px-message-box__icon.px-icon--stamp {
+    --px-message-box-icon-color: #EBE6E0;
+  }
+
+  .px-message-box__header {
+    padding-bottom: var(--px-message-box-padding-primary);
+
+    .px-message-box__title {
+      color: var(--px-message-box-title-color);
+      font-size: var(--px-message-box-font-size);
+      line-height: var(--px-message-box-font-line-height);
+    }
+
+    .px-message-box__header-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: var(--px-message-box-close-size);
+      cursor: var(--px-cursor-pointer-src) 14 0, pointer;
+
+      i {
+        color: var(--px-color-base) !important;
+        font-size: inherit; 
+      }
+      &:focus,
+      &:hover {
+        i {
+          color: var(--px-color-danger) !important;
+        }
+      }
+    }
+
+    &.show-close {
+      padding-right: calc(var(--px-message-box-padding-primary) + var(--px-message-box-close-size));
+    }
+
+
+  }
+
+  .px-message-box__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--px-message-box-content-font-size);
+    color: var(--px-message-box-content-color);
+    
+    .px-message-box__message {
+      margin: 0;
+      & p {
+        margin: 0;
+        line-height: var(--px-message-box-font-line-height);
+      }
+    }
+  }
+  .px-message-box__input {
+    padding-top: 12px;
+  }
+
+  .px-message-box__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: var(--px-message-box-padding-primary);
+  }
+}
+
+.px-message-box.px-message-box--iron {
+  min-height: 60px;
+  --px-message-box-padding-primary: 30px;
+
+  background-image: paint(pixelboard);
+  --px-corner-size: 5;
+  --px-block-size: 4;
+  --px-board-color: #3A4567;
+  --px-shadow-color: #252D46;
+  --px-color-1: #8F9DB5;
+  --px-color-2: #B4C0D2;
+
+  --px-message-box-content-color: var(--px-color-1);
+  --px-message-box-title-color: var(--px-shadow-color);
+
+  .px-message-box__header .px-message-box__header-btn {
+    top: 20px;
+    right: 16px;
+  }
+}
+.px-message-box--stamp {
+  --px-message-box-padding-primary: 29px;
+
+  background-image: paint(pixelboxStamp);
+  --px-corner-size: 4;
+  --px-main-color: var(--px-color-white);
+  --px-block-size: 4;
+  --px-shadow-color: #0000000d;
+  --px-content-color: var(--px-color-white);
+  --px-gap-block: 1;
+
+  min-height: calc((var(--px-corner-size) + var(--px-gap-block)) * var(--px-block-size) * 3px);
+  
+  .px-message-box__header .px-message-box__header-btn {
+    top: 18px;
+    right: 16px;
+  }
+}
+
+
+.fade-in-linear-enter-active {
+  .px-overlay-message-box {
+    animation: msgbox-fade-in var(--px-transition-duration-400);
+  }
+}
+
+.fade-in-linear-leave-active {
+  .px-overlay-message-box {
+    animation: msgbox-fade-in var(--px-transition-duration-400) reverse;
+  }
+}
+
+@keyframes msgbox-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
