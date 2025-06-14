@@ -9,7 +9,7 @@
       <px-button @click="handleOpen" type="sakura">Sakura</px-button>
     </div>
     <px-overlay
-      v-show="visible"
+      v-if="visible"
       :mask="visible"
       preset1
       matte

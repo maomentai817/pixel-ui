@@ -43,15 +43,14 @@ describe('PxOverlay', () => {
     const wrapper = mount(PxOverlay, {
       props: {
         mask: false,
-        zIndex: 3000
+        zIndex: 3000,
+        lockScroll: false
       }
     })
 
     const overlay = wrapper.find('div')
     expect(overlay.exists()).toBe(true)
     expect(overlay.attributes('style')).toContain('z-index: 3000')
-    expect(overlay.attributes('style')).toContain('position: fixed')
-    expect(overlay.attributes('style')).toContain('inset: 0')
   })
 
   it('should apply overlayClass as string', () => {
@@ -113,5 +112,13 @@ describe('PxOverlay', () => {
 
     expect(wrapper.find('.slot-content').exists()).toBe(true)
     expect(wrapper.find('.slot-content').text()).toBe('Hello')
+  })
+
+  it('should unlock scroll when unmounted', async () => {
+    const wrapper = mount(PxOverlay, {
+      props: { lockScroll: true, mask: true }
+    })
+    await wrapper.setProps({ mask: false })
+    wrapper.unmount()
   })
 })

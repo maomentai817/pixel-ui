@@ -184,7 +184,7 @@ const input4 = ref('')
 const textarea = ref('')
 
 // overlay
-const overlay = ref(true)
+const overlay = ref(false)
 
 // messagebox
 const openAlert = () => {
@@ -861,8 +861,7 @@ const openAlert = () => {
       />
     </div>
     <px-overlay
-      v-show="overlay"
-      :mask="overlay"
+      v-if="overlay"
       preset1
       matte
       grid
@@ -871,6 +870,7 @@ const openAlert = () => {
     >
       <px-button @click="overlay = !overlay">Close</px-button>
     </px-overlay>
+    <px-button @click="overlay = !overlay">overlay</px-button>
 
     <px-button @click="openAlert">MessageBox</px-button>
     <div class="h-300"></div>

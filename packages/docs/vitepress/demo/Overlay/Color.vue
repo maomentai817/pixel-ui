@@ -9,7 +9,7 @@
       <px-button @click="handleOpen" type="sakura">Sakura</px-button>
     </div>
     <px-overlay
-      v-show="visible"
+      v-if="visible"
       :mask="visible"
       :overlayClass="'f-c'"
       color="rgba(255, 119, 7, 0.4)"

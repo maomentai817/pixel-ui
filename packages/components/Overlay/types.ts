@@ -2,7 +2,7 @@ export interface OverlayProps {
   /**
    * @property mask
    * @type boolean
-   * @description 是否显示遮罩层
+   * @description 是否显示遮罩层(仅为样式上的区分, 控制使用 v-if)
    * @default true
    */
   mask?: boolean

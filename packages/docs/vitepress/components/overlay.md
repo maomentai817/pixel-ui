@@ -21,10 +21,12 @@ prev:
 
 设置在 `px-overlay` 上的 `attrs` 会被拦截, 自定义类名列表可通过 `overlayClass` 添加
 
-:::tip
-`mask` 属性仅控制 **遮罩层显示**, 对于插槽内容不做处理
+:::warning
+`mask` 属性仅控制 **遮罩层显示**, 仅属于样式上的区分, 对于插槽内容不做处理
 
-建议用例同时配置 `mask` 和 `v-show` 属性控制遮罩层显示隐藏
+页面滚动的锁定与 `px-overlay` 卸载挂载关联, 建议使用 `v-if` 实现
+
+`:mask="false"` 将不会锁定页面滚动
 :::
 
 ::: preview

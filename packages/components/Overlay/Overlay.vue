@@ -19,48 +19,50 @@ const handleClick = (e: MouseEvent) => {
   emits('click', e)
 }
 
+let lockCount = 0
+const lockScroll = () => {
+  lockCount++
+  if (lockCount === 1) {
+    document.body.style.overflow = 'hidden'
+  }
+}
+const unlockScroll = () => {
+  lockCount--
+  if (lockCount <= 0) {
+    document.body.style.overflow = ''
+  }
+}
+
+const updateScroll = (shouldLock: boolean) => {
+  if (!props.lockScroll) return
+  shouldLock ? lockScroll() : unlockScroll()
+}
+
 watch(
   () => props.mask,
-  (val) => {
-    if (props.lockScroll) {
-      document.body.style.overflow = val ? 'hidden' : ''
-    }
-  },
+  (val) => updateScroll(val),
   { immediate: true }
 )
 
 onBeforeUnmount(() => {
-  if (props.lockScroll) {
-    document.body.style.overflow = ''
-  }
+  if (props.lockScroll) unlockScroll()
 })
 </script>
 
 <template>
   <div
-    v-if="mask"
     class="px-overlay"
     :class="[
       overlayClass,
-      { 'is-grid-basic': grid, 'is-matte': matte, 'is-grid-preset-1': preset1 }
+      {
+        'is-grid-basic': grid,
+        'is-transparent': !mask,
+        'is-matte': matte,
+        'is-grid-preset-1': preset1
+      }
     ]"
     :style="{ zIndex: zIndex, backgroundColor: color }"
     @click="handleClick"
-  >
-    <slot></slot>
-  </div>
-  <div
-    v-else
-    :class="[
-      overlayClass,
-      { 'is-grid-basic': grid, 'is-matte': matte, 'is-grid-preset-1': preset1 }
-    ]"
-    :style="{
-      zIndex: zIndex,
-      position: 'fixed',
-      inset: 0,
-      backgroundColor: color
-    }"
   >
     <slot></slot>
   </div>

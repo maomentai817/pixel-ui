@@ -132,7 +132,7 @@ describe('MessageBox Component', () => {
       beforeClose: null as any
     }
 
-    MessageBox(props)
+    const res = MessageBox(props)
     await rAF()
 
     const outside = document.querySelector(
@@ -140,7 +140,7 @@ describe('MessageBox Component', () => {
     ) as HTMLElement
     outside.click()
 
-    MessageBox.close()
+    await expect(res).rejects.toThrow('close')
   })
 
   it('enter to submit form', async () => {

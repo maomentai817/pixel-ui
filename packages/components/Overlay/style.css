@@ -7,6 +7,10 @@
   z-index: 2000;
 }
 
+.px-overlay.is-transparent {
+  background-color: transparent;
+}
+
 .is-grid-basic {
   background: none;
   background-color: transparent !important;
