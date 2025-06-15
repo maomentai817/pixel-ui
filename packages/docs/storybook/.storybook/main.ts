@@ -3,7 +3,10 @@ import { mergeConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
+  ],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
@@ -11,13 +14,17 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/vue3-vite',
-    options: {}
+    options: {
+      // docgen: 'vue-component-meta'
+    }
   },
-  async viteFinal(config) { 
+  async viteFinal(config) {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@pixel-ui/components': fileURLToPath(new URL('../../../components', import.meta.url))
+          '@pixel-ui/components': fileURLToPath(
+            new URL('../../../components', import.meta.url)
+          )
         }
       },
       define: {

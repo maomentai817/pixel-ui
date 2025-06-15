@@ -1,7 +1,7 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 
-import { PxPopconfirm } from '@pixel-ui/components'
+import { PxPopconfirm, type PopconfirmProps } from '@pixel-ui/components'
 import { PxButton } from '@mmt817/pixel-ui'
 
 import '@mmt817/pixel-ui/dist/theme/Popconfirm.css'
@@ -73,7 +73,9 @@ const meta: Meta<typeof PxPopconfirm> = {
 
 export default meta
 
-const Template: StoryFn = (args) => ({
+type Story = StoryObj<typeof meta>
+
+const Template = (args: PopconfirmProps) => ({
   components: { PxPopconfirm, PxButton },
   setup() {
     return { args }
@@ -87,40 +89,51 @@ const Template: StoryFn = (args) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  title: '你确定要执行此操作吗？'
+export const Default: Story = {
+  args: {
+    title: '你确定要执行此操作吗? '
+  },
+  render: Template
 }
 
-export const HideIcon = Template.bind({})
-HideIcon.args = {
-  title: '没有图标的提示',
-  hideIcon: true
+export const HideIcon: Story = {
+  args: {
+    title: '没有图标的提示',
+    hideIcon: true
+  },
+  render: Template
+}
+export const CustomIcon: Story = {
+  args: {
+    title: '自定义图标和颜色',
+    icon: 'info-circle-solid',
+    iconColor: '#626AEF'
+  },
+  render: Template
 }
 
-export const CustomIcon = Template.bind({})
-CustomIcon.args = {
-  title: '自定义图标和颜色',
-  icon: 'info-circle-solid',
-  iconColor: '#626AEF'
+export const CustomWidth: Story = {
+  args: {
+    title: '更宽的 Popconfirm 弹层',
+    width: 300
+  },
+  render: Template
 }
 
-export const CustomWidth = Template.bind({})
-CustomWidth.args = {
-  title: '更宽的 Popconfirm 弹层',
-  width: 300
+export const CustomType: Story = {
+  args: {
+    title: '成功类型按钮',
+    confirmButtonType: 'success',
+    cancelButtonType: 'warning'
+  },
+  render: Template
 }
 
-export const CustomType = Template.bind({})
-CustomType.args = {
-  title: '成功类型按钮',
-  confirmButtonType: 'success',
-  cancelButtonType: 'warning'
-}
-
-export const CustomText = Template.bind({})
-CustomText.args = {
-  title: '自定义按钮文字',
-  confirmButtonText: '确定',
-  cancelButtonText: '取消'
+export const CustomText: Story = {
+  args: {
+    title: '自定义按钮文字',
+    confirmButtonText: '确定',
+    cancelButtonText: '取消'
+  },
+  render: Template
 }

@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
-import { PxPixelIt } from '@pixel-ui/components'
+import { PxPixelIt, type PixelItProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/PixelIt.css'
 
 const meta: Meta<typeof PxPixelIt> = {
@@ -39,12 +39,14 @@ const meta: Meta<typeof PxPixelIt> = {
 
 export default meta
 
+type Story = StoryObj<typeof meta>
+
 const Starbucks = '../assets/images/Starbucks.png'
 const xtaffy = '../assets/images/xtaffy.png'
 const monaka = '../assets/images/monaka.jpg'
 const human = '../assets/images/e.png'
 
-const Template: StoryFn = (args, { argTypes }) => ({
+const Template = (args: PixelItProps, { argTypes }: ArgTypes) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: { PxPixelIt },
@@ -57,36 +59,44 @@ const Template: StoryFn = (args, { argTypes }) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  src: human,
-  scale: 4
+export const Default: Story = {
+  args: {
+    src: human,
+    scale: 4
+  },
+  render: Template
 }
-export const Size = Template.bind({})
-Size.args = {
-  src: monaka,
-  scale: 5,
-  aspectRatio: 0.5
+export const Size: Story = {
+  args: {
+    src: monaka,
+    scale: 5,
+    aspectRatio: 0.5
+  },
+  render: Template
 }
-export const Gray = Template.bind({})
-Gray.args = {
-  src: xtaffy,
-  scale: 4,
-  grayscale: true
+export const Gray: Story = {
+  args: {
+    src: xtaffy,
+    scale: 4,
+    grayscale: true
+  },
+  render: Template
 }
-export const Palette = Template.bind({})
-Palette.args = {
-  src: Starbucks,
-  scale: 4,
-  aspectRatio: 0.5,
-  palette: [
-    [0, 0, 0],
-    [29, 43, 83],
-    [126, 37, 83],
-    [0, 135, 81],
-    [171, 82, 54],
-    [95, 87, 79],
-    [194, 195, 199],
-    [255, 241, 232]
-  ]
+export const Palette: Story = {
+  args: {
+    src: Starbucks,
+    scale: 4,
+    aspectRatio: 0.5,
+    palette: [
+      [0, 0, 0],
+      [29, 43, 83],
+      [126, 37, 83],
+      [0, 135, 81],
+      [171, 82, 54],
+      [95, 87, 79],
+      [194, 195, 199],
+      [255, 241, 232]
+    ]
+  },
+  render: Template
 }

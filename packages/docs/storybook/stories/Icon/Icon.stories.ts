@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
 // import { PxIcon } from '@mmt817/pixel-ui'
 import { PxIcon } from '@pixel-ui/components'
@@ -61,63 +61,72 @@ const meta: Meta<typeof PxIcon> = {
 
 export default meta
 
-const Template: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxIcon
-  },
-  template: `<px-icon v-bind="args" />`
-})
+type Story = StoryObj<typeof meta>
 
 // 默认示例
-export const Default = Template.bind({})
-Default.args = {
-  icon: 'face-thinking-solid',
-  size: 38
+export const Default: Story = {
+  args: {
+    icon: 'face-thinking-solid',
+    size: 38
+  },
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxIcon
+    },
+    template: `<px-icon v-bind="args" />`
+  })
 }
 
 // 颜色示例
-export const Colors: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxIcon
-  },
-  template: `
+export const Colors: Story = {
+  args: {},
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxIcon
+    },
+    template: `
     <px-icon v-bind="args" color="#ff4785" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" color="rgb(0,212,255)"icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" color="hsl(265, 100%, 50%)" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" color="hwb(38 0% 0%)" icon="face-thinking-solid" size="38" />
   `
-})
+  })
+}
 
 // 动画示例
-export const Animations: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxIcon
-  },
-  template: `
+export const Animations: Story = {
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxIcon
+    },
+    template: `
     <px-icon v-bind="args" spin type="primary" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" bounce type="success" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" shake type="warning" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" beat type="danger" icon="face-thinking-solid" size="38" />
   `
-})
+  })
+}
 
 // 翻转和旋转示例
-export const Transformations: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxIcon
-  },
-  template: `
+export const Transformations: Story = {
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxIcon
+    },
+    template: `
     <px-icon v-bind="args" flip="horizontal" type="primary" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" flip="vertical" type="success" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" flip="both" type="warning" icon="face-thinking-solid" size="38" />
     <px-icon v-bind="args" rotation="270" type="danger" icon="face-thinking-solid" size="38" />
   `
-})
+  })
+}

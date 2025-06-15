@@ -1,8 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import { ref } from 'vue'
 
-import { PxTooltip } from '@pixel-ui/components'
+import { PxTooltip, type TooltipProps } from '@pixel-ui/components'
 import { PxButton } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Tooltip.css'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
@@ -76,7 +76,9 @@ const meta: Meta<typeof PxTooltip> = {
 
 export default meta
 
-const Template: StoryFn = (args) => ({
+type Story = StoryObj<typeof meta>
+
+const Template = (args: TooltipProps) => ({
   components: { PxTooltip, PxButton },
   setup() {
     return { args }
@@ -90,48 +92,71 @@ const Template: StoryFn = (args) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  trigger: 'hover',
-  placement: 'top',
-  content: '默认提示内容'
-}
-
-export const ClickTrigger = Template.bind({})
-ClickTrigger.args = {
-  trigger: 'click',
-  placement: 'bottom',
-  content: '点击触发的提示'
-}
-
-export const ContextmenuTrigger = Template.bind({})
-ContextmenuTrigger.args = {
-  trigger: 'contextmenu',
-  placement: 'right',
-  content: '右键触发的提示'
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  trigger: 'hover',
-  placement: 'top',
-  content: '禁用提示，不会显示',
-  disabled: true
-}
-
-export const ManualControl: StoryFn = (args) => ({
-  components: { PxTooltip, PxButton },
-  setup() {
-    const tooltipRef = ref()
-    const open = () => {
-      tooltipRef.value?.show()
-    }
-    const close = () => {
-      tooltipRef.value?.hide()
-    }
-    return { args, tooltipRef, open, close }
+export const Default: Story = {
+  args: {
+    trigger: 'hover',
+    placement: 'top',
+    content: '默认提示内容'
   },
-  template: `
+  render: Template
+}
+
+export const ClickTrigger: Story = {
+  args: {
+    trigger: 'click',
+    placement: 'bottom',
+    content: '点击触发的提示'
+  },
+  render: Template
+}
+
+export const ContextmenuTrigger = {
+  args: {
+    trigger: 'contextmenu',
+    placement: 'right',
+    content: '右键触发的提示'
+  },
+  render: Template
+}
+
+export const Disabled: Story = {
+  args: {
+    trigger: 'hover',
+    placement: 'top',
+    content: '禁用提示，不会显示',
+    disabled: true
+  },
+  render: Template
+}
+
+export const Effect: Story = {
+  args: {
+    trigger: 'hover',
+    content: 'dark 效果',
+    effect: 'dark'
+  },
+  render: Template
+}
+
+export const ManualControl: Story = {
+  args: {
+    manual: true,
+    content: '手动控制的提示',
+    placement: 'top'
+  },
+  render: (args) => ({
+    components: { PxTooltip, PxButton },
+    setup() {
+      const tooltipRef = ref()
+      const open = () => {
+        tooltipRef.value?.show()
+      }
+      const close = () => {
+        tooltipRef.value?.hide()
+      }
+      return { args, tooltipRef, open, close }
+    },
+    template: `
     <div style="margin: 100px; text-align: center;">
       <px-tooltip v-bind="args" ref="tooltipRef">
         <px-button>手动控制提示</px-button>
@@ -142,16 +167,5 @@ export const ManualControl: StoryFn = (args) => ({
       </div>
     </div>
   `
-})
-ManualControl.args = {
-  manual: true,
-  content: '手动控制的提示',
-  placement: 'top'
-}
-
-export const Effect = Template.bind({})
-Effect.args = {
-  trigger: 'hover',
-  content: 'dark 效果',
-  effect: 'dark'
+  })
 }

@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
 import InputDemo from './InputDemo.vue'
 import { PxIcon, PxInput, type InputProps } from '@pixel-ui/components'
@@ -69,7 +69,9 @@ const meta: Meta<typeof PxInput> = {
 
 export default meta
 
-const Template: StoryFn<typeof PxInput> = (args: InputProps) => ({
+type Story = StoryObj<typeof meta>
+
+const Template = (args: InputProps) => ({
   components: { PxInput },
   setup() {
     return { args }
@@ -79,33 +81,50 @@ const Template: StoryFn<typeof PxInput> = (args: InputProps) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  disabled: true
+export const Default: Story = {
+  args: {},
+  render: Template
 }
 
-export const Clearable = Template.bind({})
-Clearable.args = {
-  modelValue: '待清空内容',
-  clearable: true
-}
-
-export const Password = Template.bind({})
-Password.args = {
-  modelValue: '123456',
-  type: 'password',
-  showPassword: true
-}
-
-export const WithIcon: StoryFn<typeof PxInput> = (args: InputProps) => ({
-  components: { PxInput, PxIcon },
-  setup() {
-    return { args }
+export const Disabled: Story = {
+  args: {
+    disabled: true
   },
-  template: `
+  render: Template
+}
+
+export const Clearable: Story = {
+  args: {
+    modelValue: '待清空内容',
+    clearable: true
+  },
+  render: Template
+}
+
+export const Password: Story = {
+  args: {
+    modelValue: '123456',
+    type: 'password',
+    showPassword: true
+  },
+  render: Template
+}
+
+export const Textarea: Story = {
+  args: {
+    type: 'textarea'
+  },
+  render: Template
+}
+
+export const WithIcon: Story = {
+  args: {},
+  render: (args: InputProps) => ({
+    components: { PxInput, PxIcon },
+    setup() {
+      return { args }
+    },
+    template: `
     <px-input v-bind="args" style="width: 340px; margin-right: 10px;" placeholder="Pick a date">
       <template #suffix>
         <px-icon icon="calender-solid" />
@@ -121,24 +140,23 @@ export const WithIcon: StoryFn<typeof PxInput> = (args: InputProps) => ({
       </template>
     </px-input>
   `
-})
-
-export const Textarea = Template.bind({})
-Textarea.args = {
-  type: 'textarea'
+  })
 }
 
-export const WithSlots: StoryFn = () => ({
-  components: { InputDemo },
-  template: `<InputDemo />`
-})
+export const WithSlots: Story = {
+  render: () => ({
+    components: { InputDemo },
+    template: `<InputDemo />`
+  })
+}
 
-export const Size: StoryFn<typeof PxInput> = (args: InputProps) => ({
-  components: { PxInput },
-  setup() {
-    return { args }
-  },
-  template: `
+export const Size: Story = {
+  render: (args: InputProps) => ({
+    components: { PxInput },
+    setup() {
+      return { args }
+    },
+    template: `
     <div style="margin-bottom: 8px;">
       <px-input v-bind="args" size="large" style="width: 340px" />
     </div>
@@ -149,4 +167,5 @@ export const Size: StoryFn<typeof PxInput> = (args: InputProps) => ({
       <px-input v-bind="args" size="small" style="width: 340px" />
     </div>
   `
-})
+  })
+}
