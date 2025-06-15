@@ -13,7 +13,9 @@ const open1 = () => {
     {
       type: 'iron',
       icon: 'imgur',
-      center: true
+      center: true,
+      matte: true,
+      preset1: true
     }
   )
 }
@@ -24,7 +26,8 @@ const open2 = () => {
     {
       type: 'stamp',
       icon: 'imgur',
-      center: true
+      center: true,
+      grid: true
     }
   )
 }

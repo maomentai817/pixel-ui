@@ -97,6 +97,8 @@ demo-preview=../demo/MessageBox/Icon.vue
 
 特殊的, 组件库当前将 `iron`, `stamp` 集成到 `type` 属性中, 可配置查看使用
 
+同时, 继承 `OverlayProps` 属性, 可配置 [Overlay](/components/overlay) 组件样式
+
 :::preview
 demo-preview=../demo/MessageBox/Style.vue
 :::

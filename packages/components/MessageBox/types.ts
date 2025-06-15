@@ -1,6 +1,7 @@
 import { type Ref, type VNode } from 'vue'
 import { type MessageType } from '../Message'
 import { type ButtonType, type ButtonSize } from '../Button'
+import type { OverlayProps } from '../Overlay'
 
 export const messageBoxActions = ['confirm', 'cancel', 'close'] as const
 export type MessageBoxAction = (typeof messageBoxActions)[number]
@@ -21,7 +22,8 @@ export type MessageBoxInputData = {
 
 export type MessageBoxData = MessageBoxInputData & MessageBoxAction
 
-export interface MessageBoxOptions {
+export interface MessageBoxOptions extends OverlayProps {
+  // 基础相关配置项
   title?: string
   message?: string | VNode | (() => VNode)
   type?: MessageType
@@ -36,6 +38,7 @@ export interface MessageBoxOptions {
   ) => void
   lockScroll?: boolean
 
+  // button 类配置项
   showCancelButton?: boolean
   showConfirmButton?: boolean
   cancelButtonText?: string
@@ -49,16 +52,20 @@ export interface MessageBoxOptions {
   buttonSize?: ButtonSize
   roundButton?: boolean
 
+  // input 类配置项
   showInput?: boolean
   inputPlaceholder?: string
   inputValue?: string
   inputType?: 'text' | 'textarea' | 'password' | 'number'
 
+  // 新增
+  // 布局/逻辑
   center?: boolean
   closeOnClickModal?: boolean
-
+  // 拖拽 API
   draggable?: boolean
   overflow?: boolean
+  // 蒙层穿透 ...
 }
 
 export interface MessageBoxPropsIn extends MessageBoxOptions {
@@ -277,6 +284,13 @@ export interface MessageBoxProps {
    * @default false
    */
   overflow?: boolean
+  /**
+   * @property overlayOptions
+   * @type OverlayProps
+   * @description 继承自遮罩层属性, 详细参见 [`Overlay`](/pixel-ui/components/overlay) 组件
+   * @default -
+   */
+  overlayOptions?: OverlayProps
 }
 
 export type MessageBoxShortcutMethod = ((

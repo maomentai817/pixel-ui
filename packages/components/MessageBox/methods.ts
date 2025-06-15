@@ -93,6 +93,8 @@ const createMessageBox = (options: MessageBoxOptions) => {
       }
       currentMsg?.resolve(resolve)
     },
+    //! 经测试, destroy() 无实际触发时机, 导致 messageInstanceMap 实例堆积缓存 (副作用: 影响 messageInstanceMap.get(vm) 获取, 导致部分测试用例 props 杂糅)
+    //! 暂不明确具体使用场景
     destroy: () => {
       render(null, container)
       messageInstanceMap.delete(vm)
