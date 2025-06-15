@@ -111,6 +111,12 @@
     --px-message-box-icon-color: #EBE6E0;
   }
 
+  /* 拖拽 API */
+  &.is-draggable .px-message-box__header {
+    cursor: move;
+    user-select: none;
+  }
+  
   .px-message-box__header {
     padding-bottom: var(--px-message-box-padding-primary);
 

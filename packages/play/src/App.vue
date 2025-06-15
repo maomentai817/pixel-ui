@@ -202,6 +202,7 @@ const openAlert = () => {
       type: 'warning',
       center: true,
       closeOnClickModal: false,
+      draggable: true,
       // 这里展示一下 不用 Promise 写法的时候
       callback(action: any) {
         if (action === 'confirm') {

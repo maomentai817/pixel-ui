@@ -9,6 +9,32 @@ import PxMessageBox from '.'
 import MessageBoxSFC from './MessageBox.vue'
 
 describe('MessageBox Component', () => {
+  //! 这里的 callback 测试必须在首位测试, 后续测试中 MessageBox 创建后
+  //! methods.ts 中 messageInstanceMap 并未销毁, 导致测试失败
+  it('should call callback when defined in options', async () => {
+    const cb = vi.fn()
+
+    const options = {
+      title: 'Callback Test',
+      message: 'Trigger callback',
+      showCancelButton: false,
+      showConfirmButton: true,
+      callback: cb
+    }
+
+    MessageBox(options)
+    await rAF()
+
+    const confirmBtn = document.querySelector(
+      '.px-message-box__confirm-btn'
+    ) as HTMLButtonElement
+    confirmBtn.click()
+
+    await rAF()
+
+    expect(cb).toHaveBeenCalledWith('confirm')
+  })
+
   it('renders correctly', async () => {
     const props = {
       title: 'Test Title',

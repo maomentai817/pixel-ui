@@ -2,7 +2,7 @@
 import { reactive, ref, computed, watch, nextTick, type Ref } from 'vue'
 import { isFunction, isNil } from 'lodash-es'
 import { typeIconMap } from '@pixel-ui/utils'
-import { useZIndex, useLocale, useId } from '@pixel-ui/hooks'
+import { useZIndex, useLocale, useId, useDraggable } from '@pixel-ui/hooks'
 
 import type { InputInstance } from '../Input'
 import type { MessageBoxPropsIn, MessageBoxAction } from './types'
@@ -35,9 +35,18 @@ const props = withDefaults(defineProps<MessageBoxPropsIn>(), {
 const { doAction } = props
 const { nextZIndex } = useZIndex()
 
+const rootRef = ref<HTMLElement>()
 const headerRef = ref<HTMLElement>()
 const inputRef = ref<InputInstance>()
 const inputId = useId()
+
+// 拖拽 API
+useDraggable(
+  rootRef,
+  headerRef,
+  computed(() => props.draggable),
+  computed(() => props.overflow)
+)
 
 // 参数拓展
 const state = reactive({
@@ -103,6 +112,7 @@ const handleClose = () => {
             'px-message-box',
             {
               'is-center': state.center,
+              'is-draggable': state.draggable,
               [`px-message-box--${state.type}`]: state.type
             }
           ]"

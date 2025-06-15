@@ -56,6 +56,9 @@ export interface MessageBoxOptions {
 
   center?: boolean
   closeOnClickModal?: boolean
+
+  draggable?: boolean
+  overflow?: boolean
 }
 
 export interface MessageBoxPropsIn extends MessageBoxOptions {
@@ -260,6 +263,20 @@ export interface MessageBoxProps {
    * @default true
    */
   closeOnClickModal?: boolean
+  /**
+   * @property draggable
+   * @type boolean
+   * @description 是否可拖拽
+   * @default false
+   */
+  draggable?: boolean
+  /**
+   * @property overflow
+   * @type boolean
+   * @description 拖动范围是否可超出可视区域
+   * @default false
+   */
+  overflow?: boolean
 }
 
 export type MessageBoxShortcutMethod = ((

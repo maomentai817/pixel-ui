@@ -68,6 +68,7 @@ const createMessageBox = (options: MessageBoxOptions) => {
     },
     doAction: (action: MessageBoxAction, inputValue: string) => {
       const currentMsg = messageInstanceMap.get(vm)
+
       let resolve:
         | MessageBoxAction
         | { value: string; action: MessageBoxAction }
@@ -106,6 +107,7 @@ const createMessageBox = (options: MessageBoxOptions) => {
   }>
 
   vm.visible.value = true
+
   return vm
 }
 
