@@ -13,6 +13,7 @@ dist/
 packages/docs/storybook/.storybook/out/
 packages/docs/storybook/.storybook/.cache/
 packages/docs/storybook/storybook-static/
+packages/docs/storybook/problem/
 
 # VitePress 相关
 packages/docs/vitepress/.vitepress/cache/
