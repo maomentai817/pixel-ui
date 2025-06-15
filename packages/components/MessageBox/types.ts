@@ -280,7 +280,7 @@ export interface MessageBoxProps {
   /**
    * @property overflow
    * @type boolean
-   * @description 拖动范围是否可超出可视区域
+   * @description 拖动范围是否可超出**可视区域**(非容器区域)
    * @default false
    */
   overflow?: boolean

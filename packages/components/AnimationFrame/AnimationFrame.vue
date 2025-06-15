@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { SuperGif } from '@mmt817/super-gif'
-import { onMounted, ref, nextTick } from 'vue'
+import { onMounted, ref, nextTick, computed } from 'vue'
 import type { AnimationFrameProps } from './types'
+import { useDraggable } from '@pixel-ui/hooks'
 
 defineOptions({
   name: 'PxAnimationFrame'
@@ -9,53 +10,18 @@ defineOptions({
 
 const props = withDefaults(defineProps<AnimationFrameProps>(), {
   stages: () => [{ type: 'loop', start: 0, end: 0 }],
-  loop: false
+  loop: false,
+  draggable: true
 })
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-//todo 拖拽相关状态
-const position = ref({ x: 0, y: 0 })
-const isDragging = ref(false)
-const dragStartPos = ref({ x: 0, y: 0 })
-const elementStartPos = ref({ x: 0, y: 0 })
-const hasMoved = ref(false)
+const canvasRef = ref<HTMLCanvasElement>()
 
-// 拖拽 API
-// 拖拽逻辑
-const startDrag = (e: MouseEvent) => {
-  isDragging.value = true
-  hasMoved.value = false
-  dragStartPos.value = { x: e.clientX, y: e.clientY }
-  elementStartPos.value = { ...position.value }
-
-  document.addEventListener('mousemove', onDrag)
-  document.addEventListener('mouseup', onDragEnd)
-}
-
-const onDrag = (e: MouseEvent | TouchEvent) => {
-  if (!isDragging.value) return
-
-  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-  const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY
-
-  const deltaX = clientX - dragStartPos.value.x
-  const deltaY = clientY - dragStartPos.value.y
-
-  // 检测是否移动超过阈值
-  if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-    hasMoved.value = true
-  }
-
-  position.value = {
-    x: elementStartPos.value.x + deltaX,
-    y: elementStartPos.value.y + deltaY
-  }
-}
-
-const onDragEnd = () => {
-  isDragging.value = false
-  document.removeEventListener('mousemove', onDrag)
-  document.removeEventListener('mouseup', onDragEnd)
-}
+// 新拖拽 API
+useDraggable(
+  canvasRef,
+  canvasRef,
+  computed(() => props.draggable),
+  computed(() => props.overflow)
+)
 
 //todo 动画控制相关
 let player: SuperGif | null = null
@@ -126,7 +92,7 @@ const handleClick = () => {
 
 onMounted(async () => {
   await nextTick()
-  if (!canvasRef.value) return
+  // if (!canvasRef.value) return
 
   const img = document.createElement('img')
   img.src = props.src
@@ -147,14 +113,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
-    class="px-animation-frame"
-    @mousedown="startDrag"
-    :style="{
-      transform: `translate(${position.x}px, ${position.y}px)`,
-      cursor: isDragging ? 'grabbing' : 'grab'
-    }"
-  >
+  <div class="px-animation-frame">
     <canvas
       class="super-gif"
       ref="canvasRef"

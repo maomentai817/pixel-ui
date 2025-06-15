@@ -43,6 +43,20 @@ export interface AnimationFrameProps {
    * @default 320
    */
   height?: number
+  /**
+   * @property draggable
+   * @type boolean
+   * @description 是否可拖拽
+   * @default true
+   */
+  draggable?: boolean
+  /**
+   * @property overflow
+   * @type boolean
+   * @description 拖动范围是否可超出**可视区域**(非容器区域)
+   * @default false
+   */
+  overflow?: boolean
 }
 
 export interface AnimationFrameEmits {

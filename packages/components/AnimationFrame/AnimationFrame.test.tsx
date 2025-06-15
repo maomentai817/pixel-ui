@@ -84,7 +84,12 @@ describe('AnimationFrame.vue', () => {
     expect(true).toBeTruthy() // 如果无报错，视为阶段切换逻辑正常
   })
 
-  it('should drag the component', async () => {
+  it('should return when playing', async () => {
+    const stages: AnimationFrameStage[] = [
+      { type: 'once', start: 0, end: 5 },
+      { type: 'once', start: 6, end: 10 }
+    ]
+
     const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
@@ -94,68 +99,50 @@ describe('AnimationFrame.vue', () => {
       }
     })
 
-    const root = wrapper.find('.px-animation-frame')
+    await wrapper.vm.$nextTick()
 
-    await root.trigger('mousedown', { clientX: 100, clientY: 100 })
-    await window.dispatchEvent(
-      new MouseEvent('mousemove', { clientX: 120, clientY: 130 })
-    )
-    await window.dispatchEvent(new MouseEvent('mouseup'))
-
-    // 获取更新后的 transform 样式
-    const style = (root.element as HTMLElement).style.transform
-    expect(style).toContain('translate')
+    const canvas = wrapper.find('canvas')
+    canvas.trigger('click')
+    canvas.trigger('click')
   })
 
-  it('should update position on mouse drag and set hasMoved', async () => {
+  it('should return when looping', async () => {
+    const stages: AnimationFrameStage[] = [
+      { type: 'loop', start: 0, end: 5 },
+      { type: 'loop', start: 6, end: 10 }
+    ]
+
     const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
         stages,
         width: 320,
-        height: 320
-      },
-      attachTo: document.body // 保证事件冒泡正常工作
+        height: 320,
+        loop: true
+      }
     })
 
-    const root = wrapper.find('.px-animation-frame')
+    await wrapper.vm.$nextTick()
 
-    // 触发拖拽开始
-    await root.trigger('mousedown', { clientX: 100, clientY: 100 })
-
-    // 模拟鼠标移动到新位置
-    document.dispatchEvent(
-      new MouseEvent('mousemove', { clientX: 120, clientY: 120 })
-    )
-
-    const vm = wrapper.vm as any
-    expect(vm.hasMoved).toBe(true)
-    expect(vm.position).toEqual({ x: 20, y: 20 })
-
-    // 结束拖拽，清除监听器
-    document.dispatchEvent(new MouseEvent('mouseup'))
+    const canvas = wrapper.find('canvas')
+    canvas.trigger('click')
+    canvas.trigger('click')
   })
 
-  it('should stop dragging on mouseup', async () => {
+  it('should render corrently when stages is empty', async () => {
     const wrapper = mount(AnimationFrame, {
       props: {
         src: fakeGifSrc,
-        stages,
+        stages: [] as any,
         width: 320,
         height: 320
-      },
-      attachTo: document.body
+      }
     })
 
-    const root = wrapper.find('.px-animation-frame')
+    await wrapper.vm.$nextTick()
 
-    await root.trigger('mousedown', { clientX: 100, clientY: 100 })
-    expect((wrapper.vm as any).isDragging).toBe(true)
-
-    // 触发 document 的 mouseup，模拟释放
-    document.dispatchEvent(new MouseEvent('mouseup'))
-
-    expect((wrapper.vm as any).isDragging).toBe(false)
+    const canvas = wrapper.find('canvas')
+    canvas.trigger('click')
   })
 })
 
