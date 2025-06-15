@@ -1,7 +1,7 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
-// import { PxProgress } from '@mmt817/pixel-ui'
-import { PxProgress } from '@pixel-ui/components'
+// import { PxProgress, type ProgressProps } from '@mmt817/pixel-ui'
+import { PxProgress, type ProgressProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Progress.css'
 
 const meta: Meta<typeof PxProgress> = {
@@ -61,7 +61,9 @@ const meta: Meta<typeof PxProgress> = {
 
 export default meta
 
-const Template: StoryFn = (args) => ({
+type Story = StoryObj<typeof meta>
+
+const Template = (args: ProgressProps) => ({
   components: { PxProgress },
   setup() {
     return { args }
@@ -75,67 +77,83 @@ const Template: StoryFn = (args) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  percentage: 50
-}
-
-export const StrokeWidth = Template.bind({})
-StrokeWidth.args = {
-  percentage: 75,
-  strokeWidth: 30
-}
-
-export const TextInside = Template.bind({})
-TextInside.args = {
-  percentage: 75,
-  strokeWidth: 24,
-  textInside: true
-}
-
-export const Indeterminate = Template.bind({})
-Indeterminate.args = {
-  percentage: 75,
-  indeterminate: true,
-  duration: 4
-}
-
-export const CustomColor: StoryFn = (args) => ({
-  components: { PxProgress },
-  setup() {
-    return { args }
+export const Default: Story = {
+  args: {
+    percentage: 50
   },
-  template: `
+  render: Template
+}
+
+export const StrokeWidth: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 30
+  },
+  render: Template
+}
+
+export const TextInside: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 24,
+    textInside: true
+  },
+  render: Template
+}
+
+export const Indeterminate: Story = {
+  args: {
+    percentage: 75,
+    indeterminate: true,
+    duration: 4
+  },
+  render: Template
+}
+
+export const Striped: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 24,
+    striped: true
+  },
+  render: Template
+}
+
+export const StripedFlow: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 24,
+    striped: true,
+    stripedFlow: true
+  },
+  render: Template
+}
+
+export const Checker: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 24,
+    checker: true
+  },
+  render: Template
+}
+
+export const CustomColor: Story = {
+  args: {
+    percentage: 75,
+    strokeWidth: 24,
+    striped: true
+  },
+  render: (args) => ({
+    components: { PxProgress },
+    setup() {
+      return { args }
+    },
+    template: `
     <PxProgress v-bind="args" color="#626aef" style="marginBottom:25px" />
     <PxProgress v-bind="args" color="#ff4785" style="marginBottom:25px" />
     <PxProgress v-bind="args" color="#08979c" style="marginBottom:25px" />
     <PxProgress v-bind="args" color="#ad4e00" style="marginBottom:25px" />
   `
-})
-CustomColor.args = {
-  percentage: 75,
-  strokeWidth: 24,
-  striped: true
-}
-
-export const Striped = Template.bind({})
-Striped.args = {
-  percentage: 75,
-  strokeWidth: 24,
-  striped: true
-}
-
-export const StripedFlow = Template.bind({})
-StripedFlow.args = {
-  percentage: 75,
-  strokeWidth: 24,
-  striped: true,
-  stripedFlow: true
-}
-
-export const Checker = Template.bind({})
-Checker.args = {
-  percentage: 75,
-  strokeWidth: 24,
-  checker: true
+  })
 }

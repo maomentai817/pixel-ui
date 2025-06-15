@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { PxTag, PxIcon } from '@pixel-ui/components'
+import { PxTag, PxIcon, type TagProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Tag.css'
 import '@mmt817/pixel-ui/dist/theme/Icon.css'
 
@@ -32,25 +32,29 @@ const meta: Meta<typeof PxTag> = {
 
 export default meta
 
-const Template: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  render: (args: TagProps) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args">Tag</px-tag>
     </div>
   `
-})
-export const Default = Template.bind({})
+  })
+}
 
-export const Types: StoryFn = (args) => ({
-  components: { PxTag, PxIcon },
-  setup() {
-    return { args }
-  },
-  template: `
+export const Types: Story = {
+  render: (args) => ({
+    components: { PxTag, PxIcon },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" type="primary">Primary</px-tag>
       <px-tag v-bind="args" type="success">Success</px-tag>
@@ -63,13 +67,16 @@ export const Types: StoryFn = (args) => ({
       </px-tag>
     </div>
   `
-})
-export const Closable: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+
+export const Closable: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" type="primary" closable @close="handleClose">Primary</px-tag>
       <px-tag v-bind="args" type="success" closable @close="handleClose">Success</px-tag>
@@ -78,82 +85,97 @@ export const Closable: StoryFn = (args) => ({
       <px-tag v-bind="args" type="sakura" closable @close="handleClose">Sakura</px-tag>
     </div>
   `
-})
-export const Sizes: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+
+export const Sizes: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" size="large">Large</px-tag>
       <px-tag v-bind="args" size="default">Default</px-tag>
       <px-tag v-bind="args" size="small">Small</px-tag>
     </div>
     `
-})
-export const Effect: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+export const Effect: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" effect="light">Light</px-tag>
       <px-tag v-bind="args" effect="dark">Dark</px-tag>
       <px-tag v-bind="args" effect="plain">Plain</px-tag>
     </div>
     `
-})
-export const Disabled: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+
+export const Disabled: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" disabled>Disabled</px-tag>
       <px-tag v-bind="args" disabled effect="dark">Disabled</px-tag>
       <px-tag v-bind="args" disabled closable>Disabled</px-tag>
     </div>
     `
-})
-export const Round: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+export const Round: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" round>Round</px-tag>
       <px-tag v-bind="args" round effect="dark">Round</px-tag>
       <px-tag v-bind="args" round closable>Round</px-tag>
     </div>
     `
-})
-export const Circle: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+export const Circle: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" circle>Circle</px-tag>
       <px-tag v-bind="args" circle effect="dark">Circle</px-tag>
       <px-tag v-bind="args" circle closable>Circle</px-tag>
     </div>
     `
-})
-export const Chubby: StoryFn = (args) => ({
-  components: { PxTag },
-  setup() {
-    return { args }
-  },
-  template: `
+  })
+}
+export const Chubby: Story = {
+  render: (args) => ({
+    components: { PxTag },
+    setup() {
+      return { args }
+    },
+    template: `
     <div class="px-badge-container">
       <px-tag v-bind="args" chubby>Chubby</px-tag>
       <px-tag v-bind="args" chubby effect="dark">Chubby</px-tag>
       <px-tag v-bind="args" chubby closable>Chubby</px-tag>
     </div>
     `
-})
+  })
+}

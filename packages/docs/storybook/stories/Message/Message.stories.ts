@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 import MessageDemo from './MessageDemo.vue'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 import '@mmt817/pixel-ui/dist/theme/Message.css'
@@ -54,10 +54,14 @@ const meta: Meta<typeof MessageDemo> = {
 
 export default meta
 
-export const Default: StoryFn = (args) => ({
-  components: { MessageDemo },
-  setup() {
-    return { args }
-  },
-  template: '<MessageDemo v-bind="args" />'
-})
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  render: (args) => ({
+    components: { MessageDemo },
+    setup() {
+      return { args }
+    },
+    template: '<MessageDemo v-bind="args" />'
+  })
+}

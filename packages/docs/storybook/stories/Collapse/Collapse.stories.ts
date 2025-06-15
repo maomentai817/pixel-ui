@@ -1,6 +1,10 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
-import { PxCollapse, PxCollapseItem } from '@pixel-ui/components'
+import {
+  PxCollapse,
+  PxCollapseItem,
+  type CollapseProps
+} from '@pixel-ui/components'
 import { PxIcon } from '@mmt817/pixel-ui'
 import '@mmt817/pixel-ui/dist/theme/Collapse.css'
 
@@ -28,8 +32,9 @@ const meta: Meta<typeof PxCollapse> = {
 }
 
 export default meta
+type Story = StoryObj<typeof meta>
 
-const Template: StoryFn = (args, { argTypes }) => ({
+const Template = (args: CollapseProps, { argTypes }: ArgTypes) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -54,27 +59,32 @@ const Template: StoryFn = (args, { argTypes }) => ({
     </px-collapse>`
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  modelValue: ['a'],
-  accordion: false
-}
-
-export const Accordion = Template.bind({})
-Accordion.args = {
-  modelValue: [],
-  accordion: true
-}
-
-export const CustomIcon: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxCollapse,
-    PxCollapseItem,
-    PxIcon
+export const Default: Story = {
+  args: {
+    modelValue: ['a'],
+    accordion: false
   },
-  template: `
+  render: Template
+}
+
+export const Accordion: Story = {
+  args: {
+    modelValue: [],
+    accordion: true
+  },
+  render: Template
+}
+
+export const CustomIcon: Story = {
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxCollapse,
+      PxCollapseItem,
+      PxIcon
+    },
+    template: `
     <px-collapse style="width: 30%" v-bind="args">
       <px-collapse-item title="Title a" name="a" icon="cog">
         <div>折叠面板内容1🐱</div>
@@ -89,4 +99,5 @@ export const CustomIcon: StoryFn = (args, { argTypes }) => ({
         <div>折叠面板内容4🐱</div>
       </px-collapse-item>
     </px-collapse>`
-})
+  })
+}

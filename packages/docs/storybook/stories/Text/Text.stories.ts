@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
 // import { PxText } from '@mmt817/pixel-ui'
 import { PxText } from '@pixel-ui/components'
@@ -45,13 +45,15 @@ const meta: Meta<typeof PxText> = {
 
 export default meta
 
-const Template: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: {
-    PxText
-  },
-  template: '<px-text v-bind="args">嘻嘻喵🐱mmt817喵</px-text>'
-})
+type Story = StoryObj<typeof meta>
 
-export const Text = Template.bind({})
+export const Default: Story = {
+  render: (args, { argTypes }) => ({
+    setup: () => ({ args }),
+    props: Object.keys(argTypes),
+    components: {
+      PxText
+    },
+    template: '<px-text v-bind="args">嘻嘻喵🐱mmt817喵</px-text>'
+  })
+}

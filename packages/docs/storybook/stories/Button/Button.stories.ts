@@ -1,10 +1,12 @@
-import type { StoryFn, ArgTypes, StoryObj, Meta } from '@storybook/vue3'
+import type { ArgTypes, StoryObj, Meta } from '@storybook/vue3'
 import { fn, within, userEvent, expect } from '@storybook/test'
 import { action } from '@storybook/addon-actions'
 
 // import { PxButton, PxButtonGroup } from '@mmt817/pixel-ui'
-import { PxButton, PxButtonGroup } from '@pixel-ui/components'
+import { PxButton, PxButtonGroup, type ButtonProps } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
+
+// type a =  ComponentProps(typeof PxButton)
 
 const meta: Meta<typeof PxButton> = {
   title: 'Basic/Button',
@@ -91,19 +93,19 @@ const methods = {
   onClick: action('onClick')
 }
 
-const Template: StoryFn = (args, { argTypes }) => ({
-  setup: () => ({ args }),
-  props: Object.keys(argTypes),
-  components: { PxButton },
-  template: '<px-button v-bind="args" @click="onClick" />',
-  methods
-})
-export const Button = Template.bind({})
-Button.args = {
-  type: 'base',
-  label: 'Button'
+export const Button: Story = {
+  args: {
+    type: 'base',
+    label: 'Button'
+  },
+  render: (args: ButtonProps) => ({
+    setup: () => ({ args }),
+    components: { PxButton },
+    template: '<px-button v-bind="args" @click="onClick" />',
+    methods
+  })
 }
-const AllSizesTemplate: StoryFn = (args, { argTypes }) => ({
+const AllSizesTemplate = (args: ButtonProps, { argTypes }: ArgTypes) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -128,7 +130,58 @@ const AllSizesTemplate: StoryFn = (args, { argTypes }) => ({
   methods
 })
 
-const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
+export const Primary: Story = {
+  args: {
+    type: 'primary',
+    label: 'Primary'
+  },
+  render: AllSizesTemplate
+}
+
+export const Success: Story = {
+  args: {
+    type: 'success',
+    label: 'Success'
+  },
+  render: AllSizesTemplate
+}
+
+export const Warning: Story = {
+  args: {
+    type: 'warning',
+    label: 'Warning'
+  },
+  render: AllSizesTemplate
+}
+
+export const Danger: Story = {
+  args: {
+    type: 'danger',
+    label: 'Danger'
+  },
+  render: AllSizesTemplate
+}
+
+export const Sakura: Story = {
+  args: {
+    type: 'sakura',
+    label: 'Sakura'
+  },
+  render: AllSizesTemplate
+}
+
+export const WithIcon: Story = {
+  args: {
+    label: 'Button',
+    icon: 'search'
+  },
+  render: AllSizesTemplate
+}
+
+const AllColorsAndSizesTemplate = (
+  args: ButtonProps,
+  { argTypes }: ArgTypes
+) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: {
@@ -158,46 +211,12 @@ const AllColorsAndSizesTemplate: StoryFn = (args, { argTypes }) => ({
   methods
 })
 
-export const Primary = AllSizesTemplate.bind({})
-Primary.args = {
-  type: 'primary',
-  label: 'Primary'
-}
-
-export const Success = AllSizesTemplate.bind({})
-Success.args = {
-  type: 'success',
-  label: 'Success'
-}
-
-export const Warning = AllSizesTemplate.bind({})
-Warning.args = {
-  type: 'warning',
-  label: 'Warning'
-}
-
-export const Danger = AllSizesTemplate.bind({})
-Danger.args = {
-  type: 'danger',
-  label: 'Danger'
-}
-
-export const Sakura = AllSizesTemplate.bind({})
-Sakura.args = {
-  type: 'sakura',
-  label: 'Sakura'
-}
-
-export const WithIcon = AllSizesTemplate.bind({})
-WithIcon.args = {
-  label: 'Button',
-  icon: 'search'
-}
-
-export const Square = AllColorsAndSizesTemplate.bind({})
-Square.args = {
-  label: '817',
-  square: true
+export const Square: Story = {
+  args: {
+    label: '817',
+    square: 'true'
+  },
+  render: AllColorsAndSizesTemplate
 }
 
 // ButtonGroup
@@ -205,7 +224,7 @@ export const Group: Story & { args: { content1: string; content2: string } } = {
   argTypes: {
     groupType: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'base', '']
+      options: ['primary', 'success', 'warning', 'danger', 'base']
     },
     groupSize: {
       control: { type: 'select' },

@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 import NotificationDemo from './NotificationDemo.vue'
 import '@mmt817/pixel-ui/dist/theme/Button.css'
 import '@mmt817/pixel-ui/dist/theme/Notification.css'
@@ -59,10 +59,14 @@ const meta: Meta<typeof NotificationDemo> = {
 
 export default meta
 
-export const Default: StoryFn = (args) => ({
-  components: { NotificationDemo },
-  setup() {
-    return { args }
-  },
-  template: '<NotificationDemo v-bind="args" />'
-})
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  render: (args) => ({
+    components: { NotificationDemo },
+    setup() {
+      return { args }
+    },
+    template: '<NotificationDemo v-bind="args" />'
+  })
+}

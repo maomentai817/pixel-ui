@@ -1,7 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
 import { PxImage } from '@pixel-ui/components'
 import '@mmt817/pixel-ui/dist/theme/Image.css'
+import type { ImageProps } from '@mmt817/pixel-ui'
 
 const meta: Meta<typeof PxImage> = {
   title: 'Fantastic/Image',
@@ -43,7 +44,9 @@ const Starbucks = '../assets/images/Starbucks.png'
 const xtaffy = '../assets/images/xtaffy.png'
 const xinlang = '../assets/images/xinlang.jpg'
 
-const Template: StoryFn = (args, { argTypes }) => ({
+type Story = StoryObj<typeof meta>
+
+const Template = (args: ImageProps, { argTypes }: ArgTypes) => ({
   setup: () => ({ args }),
   props: Object.keys(argTypes),
   components: { PxImage },
@@ -56,25 +59,31 @@ const Template: StoryFn = (args, { argTypes }) => ({
   `
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  src: Starbucks,
-  width: 395,
-  height: 400,
-  blockSize: 5,
-  colorCount: 18
+export const Default: Story = {
+  args: {
+    src: Starbucks,
+    width: 395,
+    height: 400,
+    blockSize: 5,
+    colorCount: 18
+  },
+  render: Template
 }
-export const Custom = Template.bind({})
-Custom.args = {
-  src: xtaffy,
-  blockSize: 5,
-  colorCount: 35,
-  scale: 0.8
+export const Customo: Story = {
+  args: {
+    src: xtaffy,
+    blockSize: 5,
+    colorCount: 35,
+    scale: 0.8
+  },
+  render: Template
 }
-export const withGrid = Template.bind({})
-withGrid.args = {
-  src: xinlang,
-  blockSize: 4,
-  colorCount: 18,
-  showGrid: true
+export const withGrid: Story = {
+  args: {
+    src: xinlang,
+    blockSize: 4,
+    colorCount: 18,
+    showGrid: true
+  },
+  render: Template
 }
