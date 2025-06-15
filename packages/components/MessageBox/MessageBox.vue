@@ -102,8 +102,8 @@ const handleClose = () => {
   <transition name="fade-in-linear" @after-leave="destroy">
     <px-overlay
       v-show="(visible as Ref).value"
+      mask
       :z-index="state.zIndex"
-      :mask="state.mask"
       :overlay-class="state.overlayClass"
       :lock-scroll="state.lockScroll"
       :color="state.color"

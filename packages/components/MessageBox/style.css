@@ -202,7 +202,7 @@
   --px-message-box-title-color: var(--px-shadow-color);
 
   .px-message-box__header .px-message-box__header-btn {
-    top: 20px;
+    top: 16px;
     right: 16px;
   }
 }
@@ -220,7 +220,7 @@
   min-height: calc((var(--px-corner-size) + var(--px-gap-block)) * var(--px-block-size) * 3px);
   
   .px-message-box__header .px-message-box__header-btn {
-    top: 18px;
+    top: 16px;
     right: 16px;
   }
 }

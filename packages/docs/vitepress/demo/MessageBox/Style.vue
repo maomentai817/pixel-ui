@@ -27,7 +27,8 @@ const open2 = () => {
       type: 'stamp',
       icon: 'imgur',
       center: true,
-      grid: true
+      grid: true,
+      draggable: true
     }
   )
 }

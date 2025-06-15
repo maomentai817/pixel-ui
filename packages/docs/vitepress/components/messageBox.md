@@ -93,6 +93,16 @@ demo-preview=../demo/MessageBox/Center.vue
 demo-preview=../demo/MessageBox/Icon.vue
 :::
 
+## 拖拽 API
+
+设置 MessageBox 可以拖拽。
+
+设置 `draggable` 属性为 `true` 来开启拖拽弹窗能力。设置 `overflow` 为 `true` 可以让拖拽范围超出可视区。
+
+:::preview
+demo-preview=../demo/MessageBox/Draggable.vue
+:::
+
 ## 定制化风格
 
 特殊的, 组件库当前将 `iron`, `stamp` 集成到 `type` 属性中, 可配置查看使用
