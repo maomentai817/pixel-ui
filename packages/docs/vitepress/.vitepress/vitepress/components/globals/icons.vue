@@ -42,7 +42,11 @@ const filteredCategories = computed(() =>
     v-model="query"
     placeholder="搜索图标名称"
     class="w-full p-8 text-16 mb-16"
-  />
+  >
+    <template #prefix>
+      <px-icon icon="search" />
+    </template>
+  </px-input>
 
   <div
     v-for="category in filteredCategories"
@@ -54,11 +58,15 @@ const filteredCategories = computed(() =>
       <li
         v-for="icon in category.items"
         :key="icon"
-        class="icon-item h-110 p-10 text-center hover:bgc-#ecf5ff"
+        class="icon-item h-110 fd-col p-10 text-center hover:bgc-#ecf5ff"
         @click="handleCopy(icon)"
       >
         <px-icon size="32" :icon="icon" color="var(--px-text-color-sakura)" />
-        <div class="icon-name break-words text-12 mt-6">{{ icon }}</div>
+        <div
+          class="icon-name [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] overflow-hidden text-ellipsis break-words text-12 mt-6 f-1"
+        >
+          {{ icon }}
+        </div>
       </li>
     </ul>
   </div>
