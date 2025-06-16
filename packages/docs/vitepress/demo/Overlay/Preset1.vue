@@ -8,13 +8,7 @@
       <px-button @click="handleOpen" type="danger">Danger</px-button>
       <px-button @click="handleOpen" type="sakura">Sakura</px-button>
     </div>
-    <px-overlay
-      v-if="visible"
-      :mask="visible"
-      preset1
-      matte
-      :overlayClass="'f-c'"
-    >
+    <px-overlay v-if="visible" preset1 matte :overlayClass="'f-c'">
       <px-button @click="handleClose">Close</px-button>
     </px-overlay>
   </div>

@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<MessageBoxPropsIn>(), {
   boxType: '',
   showClose: true,
   lockScroll: true,
+  mask: true,
   showConfirmButton: true,
   confirmButtonType: 'primary',
   roundButton: false,
@@ -102,7 +103,7 @@ const handleClose = () => {
   <transition name="fade-in-linear" @after-leave="destroy">
     <px-overlay
       v-show="(visible as Ref).value"
-      mask
+      :mask="state.mask"
       :z-index="state.zIndex"
       :overlay-class="state.overlayClass"
       :lock-scroll="state.lockScroll"

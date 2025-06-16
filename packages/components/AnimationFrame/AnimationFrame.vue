@@ -3,6 +3,7 @@ import { SuperGif } from '@mmt817/super-gif'
 import { onMounted, ref, nextTick, computed } from 'vue'
 import type { AnimationFrameProps } from './types'
 import { useDraggable } from '@pixel-ui/hooks'
+import { addUnit } from '@pixel-ui/utils'
 
 defineOptions({
   name: 'PxAnimationFrame'
@@ -13,11 +14,12 @@ const props = withDefaults(defineProps<AnimationFrameProps>(), {
   loop: false,
   draggable: true
 })
+const rootRef = ref<HTMLDivElement>()
 const canvasRef = ref<HTMLCanvasElement>()
 
 // 新拖拽 API
 useDraggable(
-  canvasRef,
+  rootRef,
   canvasRef,
   computed(() => props.draggable),
   computed(() => props.overflow)
@@ -113,12 +115,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="px-animation-frame">
+  <div
+    class="px-animation-frame"
+    ref="rootRef"
+    :style="{ width: `${addUnit(width)}`, height: `${addUnit(height)}` }"
+  >
     <canvas
       class="super-gif"
       ref="canvasRef"
       @click="handleClick"
-      :style="{ width: `${props.width}px`, height: `${props.height}px` }"
+      :style="{
+        width: `${addUnit(width)}`,
+        height: `${addUnit(height)}`
+      }"
     ></canvas>
   </div>
 </template>

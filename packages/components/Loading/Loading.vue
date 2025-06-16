@@ -34,7 +34,7 @@ const iconName = computed(() => {
   </transition>
 </template>
 
-<style scoped>
+<style>
 @import './style.css';
 .px-loading {
   --px-loading-bg-color: v-bind(background) !important;

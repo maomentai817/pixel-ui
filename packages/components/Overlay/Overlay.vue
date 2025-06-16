@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 import type { OverlayProps, OverlayEmits } from './types'
 
 const COMP_NAME = 'PxOverlay' as const
@@ -34,18 +34,16 @@ const unlockScroll = () => {
 }
 
 const updateScroll = (shouldLock: boolean) => {
-  if (!props.lockScroll) return
   shouldLock ? lockScroll() : unlockScroll()
 }
 
-watch(
-  () => props.mask,
-  (val) => updateScroll(val),
-  { immediate: true }
-)
+//! lockScroll 逻辑彻底与 mask 解绑, mask 仅表示样式上的区分
+onMounted(() => {
+  updateScroll(props.lockScroll)
+})
 
 onBeforeUnmount(() => {
-  if (props.lockScroll) unlockScroll()
+  if (props.lockScroll) updateScroll(!props.lockScroll)
 })
 </script>
 
