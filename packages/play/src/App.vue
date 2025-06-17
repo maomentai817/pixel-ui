@@ -237,7 +237,13 @@ const openAlert = () => {
       减号- 加号+
     </div>
     <hr />
-    <div class="b-red b-solid b-1" style="font-family: 'Zpix'">
+    <div
+      class="b-red b-solid b-1"
+      style="font-family: 'Zpix'"
+      v-loading="true"
+      px-loading-text="Loading..."
+      px-loading-spinner="brightness-low-solid"
+    >
       逗号， 句号。 顿号、 分号； 冒号： 双引号“ 双引号” 单引号‘ 单引号’
       书名号《 书名号》 圆括号（ 圆括号） 方括号【 方括号】 破折号—— 省略号……
       感叹号！ 问号？ 人民币符号￥

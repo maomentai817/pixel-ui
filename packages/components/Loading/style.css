@@ -38,7 +38,8 @@
     }
     
     i {
-      font-size: var(--px-loading-icon-size);
+      font-size: var(--px-loading-icon-size) !important;
+      color: var(--px-loading-icon-color) !important;
     }
   }
 }

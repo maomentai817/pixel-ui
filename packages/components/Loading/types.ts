@@ -82,13 +82,6 @@ export interface LoadingProps {
    */
   customClass?: string
   /**
-   * @property visible
-   * @type boolean
-   * @description 是否显示 Loading 遮罩层
-   * @default false
-   */
-  visible?: boolean
-  /**
    * @property beforeClose
    * @type Function - () => boolean
    * @description 关闭前的回调, 返回 `false` 将阻止关闭

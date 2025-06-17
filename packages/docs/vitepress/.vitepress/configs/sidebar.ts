@@ -54,6 +54,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     base: '/components/',
     items: [
       { text: 'Alert 提示', link: 'alert' },
+      { text: 'Loading 加载', link: 'loading' },
       { text: 'Message 消息提示', link: 'message' },
       { text: 'MessageBox 消息弹出框', link: 'messageBox' },
       { text: 'Notification 通知', link: 'notification' },

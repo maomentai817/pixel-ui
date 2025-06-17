@@ -7,8 +7,8 @@ next:
   text: MessageBox 消息弹出框
 
 prev:
-  link: /components/alert
-  text: Alert 提示
+  link: /components/loading
+  text: Loading 加载
 ---
 
 # Message 消息提示

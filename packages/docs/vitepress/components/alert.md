@@ -3,8 +3,8 @@ title: Alert
 description: Alert 组件文档
 
 next:
-  link: /components/message
-  text: Message 消息提示
+  link: /components/loading
+  text: Loading 加载
 
 prev:
   link: /components/dropdown
