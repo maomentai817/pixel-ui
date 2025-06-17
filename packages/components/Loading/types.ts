@@ -102,6 +102,7 @@ export interface LoadingProps {
    * @property preset1
    * @type boolean
    * @description 网格背景预设-1
+   * @default false
    */
   preset1?: boolean
   /**

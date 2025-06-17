@@ -35,6 +35,14 @@ demo-preview=../demo/Loading/Basic.vue
 demo-preview=../demo/Loading/Custom.vue
 :::
 
+## 自定义遮罩层
+
+同 [Overlay](/components/overlay) 组件类似, 提供了 `grid`, `matte`, `preset1` 属性, 用于设置遮罩层的样式。
+
+:::preview
+demo-preview=../demo/Loading/Overlay.vue
+:::
+
 ## 全屏加载
 
 加载数据时显示全屏动画。
