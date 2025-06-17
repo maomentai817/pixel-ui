@@ -21,6 +21,7 @@ export * from './Notification'
 export * from './Input'
 export * from './Overlay'
 export * from './MessageBox'
+export * from './Loading'
 
 // 注册所有 paintworklet
 import pixelboardWorkletURL from './worklets/dist/pixelboard.worklet.js?url'

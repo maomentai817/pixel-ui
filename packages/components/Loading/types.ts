@@ -8,7 +8,7 @@ export interface LoadingOptionsResolved {
   text?: MaybeRef<string>
   spinner?: MaybeRef<boolean | string>
   background?: MaybeRef<string>
-  customClass?: string
+  customClass?: MaybeRef<string>
   visible?: MaybeRef<boolean>
   beforeClose?(): boolean
   closed?(): void
