@@ -30,6 +30,9 @@ const createInstance = (
     target: fullscreen ? void 0 : el,
     body: getModifier('body'),
     lock: getModifier('lock'),
+    grid: getModifier('grid'),
+    matte: getModifier('matte'),
+    preset1: getModifier('preset1'),
     fullscreen
   }
 

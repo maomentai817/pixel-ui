@@ -240,7 +240,7 @@ const openAlert = () => {
     <div
       class="b-red b-solid b-1"
       style="font-family: 'Zpix'"
-      v-loading="true"
+      v-loading.preset1="true"
       px-loading-text="Loading..."
       px-loading-spinner="brightness-low-solid"
     >

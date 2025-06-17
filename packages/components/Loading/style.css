@@ -26,6 +26,23 @@
     &.is-fullscreen {
       position: fixed;
     }
+    &.is-grid-basic {
+      background: none;
+      background-color: transparent !important;
+      background-image: paint(pixelgridBasic);
+    }
+
+    &.is-matte {
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8), transparent);
+      mask-size: cover;
+      mask-repeat: no-repeat;
+    }
+
+    &.is-grid-preset-1 {
+      background: none;
+      background-color: transparent !important;
+      background-image: paint(pixelgridPreset1);
+    }
   }
 
   .px-loading__spinner {

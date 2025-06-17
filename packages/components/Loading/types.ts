@@ -10,6 +10,9 @@ export interface LoadingOptionsResolved {
   background?: MaybeRef<string>
   customClass?: MaybeRef<string>
   visible?: MaybeRef<boolean>
+  grid?: MaybeRef<boolean>
+  matte?: MaybeRef<boolean>
+  preset1?: MaybeRef<boolean>
   beforeClose?(): boolean
   closed?(): void
 }
@@ -81,6 +84,26 @@ export interface LoadingProps {
    * @default -
    */
   customClass?: string
+  /**
+   * @property grid
+   * @type boolean
+   * @description 是否显示网格背景
+   * @default false
+   */
+  grid?: boolean
+  /**
+   * @property matte
+   * @type boolean
+   * @description 是否开启哑光
+   * @default false
+   */
+  matte?: boolean
+  /**
+   * @property preset1
+   * @type boolean
+   * @description 网格背景预设-1
+   */
+  preset1?: boolean
   /**
    * @property beforeClose
    * @type Function - () => boolean

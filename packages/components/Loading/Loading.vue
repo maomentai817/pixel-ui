@@ -24,7 +24,15 @@ const iconName = computed(() => {
     <div
       v-show="(props.visible as Ref).value"
       class="px-loading px-loading__mask"
-      :class="[customClass, { 'is-fullscreen': fullscreen }]"
+      :class="[
+        customClass,
+        {
+          'is-fullscreen': fullscreen,
+          'is-grid-basic': grid,
+          'is-matte': matte,
+          'is-grid-preset-1': preset1
+        }
+      ]"
     >
       <div class="px-loading__spinner">
         <px-icon v-if="props.spinner !== false" :icon="iconName" spin />

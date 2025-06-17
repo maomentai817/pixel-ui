@@ -99,7 +99,10 @@ const resolveOptions = (opts: LoadingOptions): LoadingOptionsResolved => {
     spinner: opts.spinner,
     background: opts.background ?? 'rgba(0, 0, 0, .5)',
     customClass: opts.customClass || '',
-    visible: opts.visible ?? true
+    visible: opts.visible ?? true,
+    grid: opts.grid ?? false,
+    matte: opts.matte ?? false,
+    preset1: opts.preset1 ?? false
   }
 }
 
