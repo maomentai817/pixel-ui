@@ -8,7 +8,7 @@ export interface LoadingOptionsResolved {
   text?: MaybeRef<string>
   spinner?: MaybeRef<boolean | string>
   background?: MaybeRef<string>
-  // customClass?: string | string[] | Record<string, boolean>
+  customClass?: string
   visible?: MaybeRef<boolean>
   beforeClose?(): boolean
   closed?(): void
@@ -74,6 +74,13 @@ export interface LoadingProps {
    * @default -
    */
   background?: string
+  /**
+   * @property customClass
+   * @type string
+   * @description Loading 自定义类名
+   * @default -
+   */
+  customClass?: string
   /**
    * @property visible
    * @type boolean
