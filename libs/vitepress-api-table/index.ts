@@ -7,7 +7,14 @@ import { resolve, dirname } from 'path'
 
 import type { RenderRule } from 'markdown-it/lib/renderer'
 
-type ApiCategory = 'Props' | 'Events' | 'Slots' | 'Expose'
+const apiCategories = [
+  'Props',
+  'Events',
+  'Slots',
+  'Expose',
+  'Directives'
+] as const
+type ApiCategory = (typeof apiCategories)[number]
 
 interface ColumnConfig {
   header: string
@@ -63,6 +70,21 @@ const categoryColumns: Record<ApiCategory, ColumnConfig[]> = {
         }
 
         // 处理普通类型
+        return `\`${p.propertyType.replace(/\|/g, '\\|')}\``
+      }
+    }
+  ],
+  Directives: [
+    { header: 'Name', render: (p) => p.propertyName },
+    { header: 'Description', render: (p) => p.description },
+    {
+      header: 'Type',
+      render: (p) => {
+        const match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/)
+        if (match) {
+          return match[0]
+        }
+
         return `\`${p.propertyType.replace(/\|/g, '\\|')}\``
       }
     }
@@ -153,12 +175,13 @@ function generateComponentDocumentation(content: string, filePath: string) {
       : matchComp[1][0].toUpperCase() + matchComp[1].slice(1)
     : 'UnknownComponent'
 
-  // 分类收集接口（Props/Slots/Emits/Expose）
+  // 分类收集接口 (Props/Slots/Emits/Expose), 新增 Directives
   const apiCategories = {
     Props: [] as PropertyInfo[],
     Slots: [] as PropertyInfo[],
     Events: [] as PropertyInfo[],
-    Expose: [] as PropertyInfo[]
+    Expose: [] as PropertyInfo[],
+    Directives: [] as PropertyInfo[]
   }
 
   // 匹配所有接口并分类
@@ -178,6 +201,8 @@ function generateComponentDocumentation(content: string, filePath: string) {
       apiCategories.Slots.push(...properties)
     } else if (interfaceName.endsWith('Expose')) {
       apiCategories.Expose.push(...properties)
+    } else if (interfaceName.endsWith('Directives')) {
+      apiCategories.Directives.push(...properties)
     }
   }
 
@@ -196,6 +221,9 @@ function generateComponentDocumentation(content: string, filePath: string) {
   }
   if (apiCategories.Expose.length > 0) {
     markdown += `### Expose\n\n${generateCategoryTable('Expose', apiCategories.Expose)}\n\n`
+  }
+  if (apiCategories.Directives.length > 0) {
+    markdown += `### Directives\n\n${generateCategoryTable('Directives', apiCategories.Directives)}\n\n`
   }
 
   return markdown

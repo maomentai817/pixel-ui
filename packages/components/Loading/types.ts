@@ -120,3 +120,36 @@ export interface LoadingProps {
    */
   closed?(): void
 }
+
+export interface LoadingDirectives {
+  /**
+   * @property v-loading
+   * @type {boolean | LoadingOptions}
+   * @description 是否显示动画
+   */
+  vLoading: boolean | LoadingOptions
+  /**
+   * @property px-loading-text
+   * @type string
+   * @description 显示在加载图标下方的加载文案
+   */
+  pxLoadingText: string
+  /**
+   * @property px-loading-spinner
+   * @type string
+   * @description 自定义加载图标
+   */
+  pxLoadingSpinner: string
+  /**
+   * @property px-loading-background
+   * @type string
+   * @description 背景遮罩的颜色
+   */
+  pxLoadingBackground: string
+  /**
+   * @property px-loading-custom-class
+   * @type string
+   * @description loading 自定义类名
+   */
+  pxLoadingcustomClass: string
+}

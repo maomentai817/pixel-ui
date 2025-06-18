@@ -97,13 +97,3 @@ console.log(loadingInstance1 === loadingInstance2) // true
 
 ::: api-table src=components/Loading/types.ts
 :::
-
-### Directives
-
-| Name                         | Description                                                  | Type                           |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------ |
-| v-loading                    | 是否显示动画                                                   | ^[boolean] / ^[LoadingOptions] |
-| px-loading-text              | 显示在加载图标下方的加载文案                                     | ^[string]                      |
-| px-loading-spinner           | 自定义加载图标                                                 | ^[string]                      |
-| px-loading-background        | 背景遮罩的颜色                                                 | ^[string]                      |
-| px-loading-custom-class      | loading 的自定义类名                                           | ^[string]                      |

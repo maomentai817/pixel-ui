@@ -54,6 +54,20 @@ var categoryColumns = {
                 return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
             }
         }
+    ],
+    Directives: [
+        { header: 'Name', render: function (p) { return p.propertyName; } },
+        { header: 'Description', render: function (p) { return p.description; } },
+        {
+            header: 'Type',
+            render: function (p) {
+                var match = p.propertyType.match(/^<api-typing\b[^]*?\/>$/);
+                if (match) {
+                    return match[0];
+                }
+                return "`".concat(p.propertyType.replace(/\|/g, '\\|'), "`");
+            }
+        }
     ]
 };
 // markdown-it-anchor 自定义 slug 去重规则, 仿照 vitepress 处理结果
@@ -108,19 +122,20 @@ function generateCategoryTable(category, properties) {
         .join('\n'));
 }
 function generateComponentDocumentation(content, filePath) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
     var matchComp = filePath.match(/components\/([^/]+)\/types(?:\.(\w+))?\.ts$/);
     var componentName = matchComp
         ? matchComp[2]
             ? matchComp[2][0].toUpperCase() + matchComp[2].slice(1)
             : matchComp[1][0].toUpperCase() + matchComp[1].slice(1)
         : 'UnknownComponent';
-    // 分类收集接口（Props/Slots/Emits/Expose）
+    // 分类收集接口 (Props/Slots/Emits/Expose), 新增 Directives
     var apiCategories = {
         Props: [],
         Slots: [],
         Events: [],
-        Expose: []
+        Expose: [],
+        Directives: []
     };
     // 匹配所有接口并分类
     var interfaceRegex = /export\s+interface\s+(\w+)\s*{((?:[^{}]*|{(?:[^{}]*|{[^{}]*})*})*)}/gm;
@@ -141,6 +156,9 @@ function generateComponentDocumentation(content, filePath) {
         else if (interfaceName.endsWith('Expose')) {
             (_d = apiCategories.Expose).push.apply(_d, properties);
         }
+        else if (interfaceName.endsWith('Directives')) {
+            (_e = apiCategories.Directives).push.apply(_e, properties);
+        }
     }
     // 生成结构化文档
     var markdown = "## ".concat(componentName, " API\n\n");
@@ -156,6 +174,9 @@ function generateComponentDocumentation(content, filePath) {
     }
     if (apiCategories.Expose.length > 0) {
         markdown += "### Expose\n\n".concat(generateCategoryTable('Expose', apiCategories.Expose), "\n\n");
+    }
+    if (apiCategories.Directives.length > 0) {
+        markdown += "### Directives\n\n".concat(generateCategoryTable('Directives', apiCategories.Directives), "\n\n");
     }
     return markdown;
 }
