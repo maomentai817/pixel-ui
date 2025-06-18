@@ -37,7 +37,7 @@ demo-preview=../demo/Dropdown/Placement.vue
 
 可使用按钮触发下拉菜单。
 
-设置 `split-button` 属性来让触发下拉元素呈现为按钮组, 左边是功能按钮, 右边是触发下拉菜单的按钮, 设置为 `true` 即可。如果你想要在第三和第四个选项之间添加一个分隔符，你只需要为第四个选项添加一个 `divided` 的属性。
+设置 `split-button` 属性来让触发下拉元素呈现为按钮组, 左边是功能按钮, 右边是触发下拉菜单的按钮, 设置为 `true` 即可。如果你想要在第三和第四个选项之间添加一个分隔符, 你只需要为第四个选项添加一个 `divided` 的属性。
 
 :::preview
 demo-preview=../demo/Dropdown/SplitButton.vue

@@ -13,7 +13,7 @@ prev:
 
 # Notification 通知
 
-悬浮出现在页面角落，显示全局的通知提醒消息。
+悬浮出现在页面角落, 显示全局的通知提醒消息。
 
 ## 基础用法
 
@@ -27,7 +27,7 @@ demo-preview=../demo/Notification/Basic.vue
 
 用来显示「成功、警告、消息、错误」等类的操作反馈。
 
-当需要自定义更多属性时, Notification 也可以接收一个对象为参数。比如, 设置 `type` 字段可以定义不同的状态，默认为 `info`。此时正文内容以 `message` 的值传入。同时，我们也为 Notification 的各种 type 注册了方法, 可以在不传入 type 字段的情况下像 `open4` 那样直接调用。形式同 Message 组件。
+当需要自定义更多属性时, Notification 也可以接收一个对象为参数。比如, 设置 `type` 字段可以定义不同的状态, 默认为 `info`。此时正文内容以 `message` 的值传入。同时, 我们也为 Notification 的各种 type 注册了方法, 可以在不传入 type 字段的情况下像 `open4` 那样直接调用。形式同 Message 组件。
 
 :::tip
 `type="stamp"` 默认白色背景, 建议搭配深色底色使用。
@@ -79,7 +79,7 @@ import { PxNotification } from '@mmt817/pixel-ui'
 
 > 此时调用方法为 `PxNotification(options)`。
 
-> 我们也为每个 type 定义了各自的方法，
+> 我们也为每个 type 定义了各自的方法
 > 如 `PxNotification.success(options)`。
 
 > 并且可以调用 `PxNotification.closeAll()` 手动关闭所有实例。

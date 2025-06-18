@@ -35,7 +35,7 @@ demo-preview=../demo/Collapse/Accordion.vue
 
 ## 自定义面板标题
 
-除了可以通过 `title` 属性来设置标题内容，也可以通过具名 `title` 插槽来自定义标题内容
+除了可以通过 `title` 属性来设置标题内容, 也可以通过具名 `title` 插槽来自定义标题内容
 
 :::preview
 demo-preview=../demo/Collapse/Title.vue

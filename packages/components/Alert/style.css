@@ -53,6 +53,7 @@
   .px-alert__content {
     color:  var(--px-alert-text-color);
     vertical-align: text-top;
+    margin-bottom: 4px;
     .px-alert__title{
       font-size: var(--px-alert-title-font-size);
       line-height: 24px;

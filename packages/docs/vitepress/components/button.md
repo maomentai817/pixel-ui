@@ -17,7 +17,7 @@ prev:
 
 ## 基础用法
 
-使用 `type`、`plain`、 `round`和 `circle` 来定义按钮的样式。
+使用 `type`、`plain`、`round` 和 `circle` 来定义按钮的样式。
 
 ::: preview
 demo-preview=../demo/Button/Basic.vue
@@ -71,7 +71,7 @@ demo-preview=../demo/Button/Size.vue
 
 ## Tag
 
-可以自定义元素标签。例如，按钮，div，路由链接，nuxt 链接。
+可以自定义元素标签。例如, 按钮, div, 路由链接, nuxt 链接。
 
 ::: preview
 demo-preview=../demo/Button/Tag.vue

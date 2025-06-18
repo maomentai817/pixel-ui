@@ -35,15 +35,18 @@
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  border-width: 4px;
-  border-style: solid;
-  border-color: var(--px-button-border-color);
   border-width: 0;
   height: var(--px-button-size);
   padding: var(--px-button-padding);
+  padding-bottom: calc(var(--px-button-padding) + var(--px-button-bg-shadow-border));
   margin: 0 3px;
   font-size: var(--px-button-font-size);
   font-family: var(--px-font-family);
+
+  .px-icon {
+    transform: translateY(1px);
+  }
+
   /* CSS Houdini Paint */
   background-image: paint(pixelbox);
   --px-border: 3px;

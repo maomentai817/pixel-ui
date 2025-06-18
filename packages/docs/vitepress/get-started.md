@@ -57,7 +57,7 @@ createApp(App).use(PixelUI).mount('#app')
 
 ### 按需引入组件
 
-Pixel-UI 提供了 ESModule 构建，支持 TreeShaking，推荐按需引入以减少打包体积。
+Pixel-UI 提供了 ESModule 构建, 支持 TreeShaking, 推荐按需引入以减少打包体积。
 
 ```vue
 <script setup lang="ts">

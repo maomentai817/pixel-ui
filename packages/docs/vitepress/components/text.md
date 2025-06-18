@@ -49,7 +49,7 @@ demo-preview=../demo/Text/Align.vue
 
 ## Tag
 
-可以自定义元素标签。例如，按钮，div，路由链接，nuxt 链接。
+可以自定义元素标签。例如, 按钮, div, 路由链接, nuxt 链接。
 
 ::: preview
 demo-preview=../demo/Text/Tag.vue

@@ -63,9 +63,9 @@ demo-preview=../demo/Tooltip/MoreContent.vue
 
 ## 高级扩展
 
-除了这些基本设置外，还有一些属性可以让使用者更好的定制自己的效果:
+除了这些基本设置外, 还有一些属性可以让使用者更好的定制自己的效果:
 
-`transition` 属性可以定制显隐的动画效果，默认为`fade`。
+`transition` 属性可以定制显隐的动画效果, 默认为`fade`。
 
 如果需要关闭 `tooltip` 功能, 可以使用 `disabled` 属性
 
@@ -77,7 +77,7 @@ demo-preview=../demo/Tooltip/Advanced.vue
 
 ## 虚拟触发
 
-有时候我们想把 tooltip 的触发元素放在别的地方，而不需要写在一起，这时候就可以使用虚拟触发。
+有时候我们想把 tooltip 的触发元素放在别的地方, 而不需要写在一起, 这时候就可以使用虚拟触发。
 
 :::warning
 设计缺陷问题, 由虚拟触发的 `popover` 元素需要光标从 `placement` 位置移出才能触发消失事件, 暂未解决。

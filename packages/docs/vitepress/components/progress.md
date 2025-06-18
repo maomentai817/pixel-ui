@@ -25,7 +25,7 @@ demo-preview=../demo/Progress/Line.vue
 
 ## 进度条内显示百分比标识
 
-百分比不占用额外控件， 适用于文件上传等场景
+百分比不占用额外控件, 适用于文件上传等场景
 
 Progress 组件可通过 `stroke-width` 属性更改进度条的高度, 并可通过 `text-inside` 属性来改变进度条内部的文字。
 

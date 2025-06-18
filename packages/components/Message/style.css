@@ -44,6 +44,7 @@
     font-family: var(--px-font-family);
     color: var(--px-message-text-color);
     overflow-wrap: break-word;
+    margin-bottom: 4px;
   }
 
   &.is-close .px-message__content {

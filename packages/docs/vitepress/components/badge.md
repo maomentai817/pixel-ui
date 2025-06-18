@@ -27,7 +27,7 @@ demo-preview=../demo/Badge/Basic.vue
 
 ## 最大值
 
-通过 `max` 属性设置最大值，超过最大值会显示 `{max}+`, 仅当 `value`  为 `Number` 时生效
+通过 `max` 属性设置最大值, 超过最大值会显示 `{max}+`, 仅当 `value`  为 `Number` 时生效
 
 :::preview
 demo-preview=../demo/Badge/Max.vue

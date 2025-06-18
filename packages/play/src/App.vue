@@ -220,9 +220,12 @@ const openAlert = () => {
   <div class="playground-container p-x-20 bgc-#ebe6e0">
     <div>一二三四---___"双引号"……'单引号'</div>
     <hr />
-    <div>abcdefghijklmnopqrstuvwxyz事件发生加班费</div>
+    <div>abcdefghijklmnopqrstuvwxyz事件发生ADJBasfbaf加班费</div>
     <hr />
-    <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+    <div>
+      <span>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+      <span style="font-family: 'Zpix'">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+    </div>
     <hr />
     <div class="b-red b-solid b-1">
       逗号， 句号。 顿号、 分号； 冒号： 双引号“ 双引号” 单引号‘ 单引号’

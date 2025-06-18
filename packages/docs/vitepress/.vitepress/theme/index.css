@@ -22,6 +22,7 @@
 :root {
   --vp-font-family-base: "Zpix";
   --vp-font-family-mono: "PS2P", "Zpix";
+  /* --vp-font-family-mono: "Zpix", "PS2P"; */
 }
 
 body {
@@ -45,13 +46,17 @@ body {
 }
 
 pre, code {
-  font-size: 0.75rem;
+  --vp-code-font-size: 0.75em;
 }
 table pre,
 table code,
 .api-typing code {
-  font-size: 0.75rem;
+  --vp-code-font-size: 0.875em;
   font-family: 'Zpix';
+}
+
+.vp-code code {
+  font-family: var(--vp-font-family-nomo);
 }
 
 .vitepress-demo-preview-preview {
@@ -78,5 +83,16 @@ table code,
 .VPNavBarTitle .title span {
   height: var(--vp-nav-logo-height);
   line-height: 1.4;
+}
+
+.VPDoc.has-sidebar.has-aside {
+  padding-left: 0;
+  padding-right: 0;
+
+  .container .content {
+    .content-container {
+      max-width: 750px;
+    }
+  }
 }
 

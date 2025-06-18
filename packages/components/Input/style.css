@@ -175,6 +175,7 @@
     font-size: var(--px-font-size-small);
     font-family: var(--px-font-family);
     color: var(--px-input-placeholder-color);
+    height: inherit !important;
   }
 }
 .px-input__wrapper {
@@ -205,6 +206,7 @@
       font-size: var(--px-font-size-small);
       font-family: var(--px-font-family);
       color: var(--px-input-placeholder-color);
+      height: inherit !important;
     }
   }  
   .px-icon {

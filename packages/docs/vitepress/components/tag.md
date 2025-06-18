@@ -4,7 +4,7 @@
 
 ## 基础用法
 
-基础的标签用法，可以通过`type`属性设置不同的标签类型。
+基础的标签用法, 可以通过`type`属性设置不同的标签类型。
 
 :::preview
 demo-preview=../demo/Tag/Basic.vue
@@ -12,7 +12,7 @@ demo-preview=../demo/Tag/Basic.vue
 
 ## 可关闭标签
 
-设置`closable`属性可以定义一个标签是否可关闭，关闭时会触发`close`事件。
+设置`closable`属性可以定义一个标签是否可关闭, 关闭时会触发`close`事件。
 
 :::preview
 demo-preview=../demo/Tag/Closable.vue
@@ -20,7 +20,7 @@ demo-preview=../demo/Tag/Closable.vue
 
 ## 不同尺寸
 
-Tag组件提供了三种不同尺寸，用于不同场景。
+Tag组件提供了三种不同尺寸, 用于不同场景。
 
 :::preview
 demo-preview=../demo/Tag/Size.vue
