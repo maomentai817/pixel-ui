@@ -22,7 +22,7 @@ const iconName = computed(() => {
 <template>
   <transition name="fade-in-linear" @after-leave="onAfterLeave">
     <div
-      v-show="(props.visible as Ref).value"
+      v-show="(visible as Ref).value"
       class="px-loading px-loading__mask"
       :class="[
         customClass,
@@ -35,7 +35,7 @@ const iconName = computed(() => {
       ]"
     >
       <div class="px-loading__spinner">
-        <px-icon v-if="props.spinner !== false" :icon="iconName" spin />
+        <px-icon v-if="spinner !== false" :icon="iconName" spin />
         <p v-if="text" class="px-loading-text">{{ text }}</p>
       </div>
     </div>

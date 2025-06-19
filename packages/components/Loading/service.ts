@@ -32,7 +32,7 @@ const createLoading = (opts: LoadingOptionsResolved) => {
 
   // 实例的销毁
   const destory = () => {
-    const target = _props.parent
+    const target = _props.parent!
     subLoadingCount(target)
 
     // 同一节点下多次触发, 不为 0 不做销毁
@@ -44,7 +44,8 @@ const createLoading = (opts: LoadingOptionsResolved) => {
     }, 1)
 
     // 节点 dom 及映射的销毁卸载
-    instanceMap.delete(target ?? document.body)
+    // instanceMap.delete(target ?? document.body)
+    instanceMap.delete(target)
     vm.$el?.parentNode?.removeChild(vm.$el)
     app.unmount()
   }
@@ -102,7 +103,9 @@ const resolveOptions = (opts: LoadingOptions): LoadingOptionsResolved => {
     visible: opts.visible ?? true,
     grid: opts.grid ?? false,
     matte: opts.matte ?? false,
-    preset1: opts.preset1 ?? false
+    preset1: opts.preset1 ?? false,
+    beforeClose: opts.beforeClose,
+    closed: opts.closed
   }
 }
 
@@ -154,7 +157,8 @@ export type LoadingInstance = ReturnType<typeof createLoading>
 // 创建 Loading 实例
 export const Loading = (options: LoadingOptions = {}): LoadingInstance => {
   const resolved = resolveOptions(options)
-  const target = resolved.parent ?? document.body
+  // const target = resolved.parent ?? document.body
+  const target = resolved.parent!
 
   // 全屏单例模式
   if (resolved.fullscreen && !isNil(fullscreenInstance))

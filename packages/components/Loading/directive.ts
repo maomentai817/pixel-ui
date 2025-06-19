@@ -2,7 +2,7 @@ import { Loading, type LoadingInstance } from './service'
 import type { LoadingOptions } from './types'
 import type { Directive, DirectiveBinding, MaybeRef } from 'vue'
 
-const INSTANCE_KEY = Symbol('loading')
+export const INSTANCE_KEY = Symbol('loading')
 
 export interface ElementLoading extends HTMLElement {
   [INSTANCE_KEY]?: {
