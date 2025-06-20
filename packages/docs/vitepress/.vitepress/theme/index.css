@@ -74,10 +74,21 @@ table code,
 /* sidebar scrollbar */
 .VPSidebar {
   scrollbar-width: none;
+  padding: 48px !important;
+  width: calc(var(--vp-sidebar-width) + 48px) !important;
 }
 
 .DocSearch-Button {
   background-color: transparent;
+}
+
+.VPNav .VPNavBar .wrapper .container>.title {
+  padding-left: 48px;
+  width: calc(var(--vp-sidebar-width) + 48px)
+}
+
+.VPNav .VPNavBar .wrapper .container>.content {
+  padding-left: calc(var(--vp-sidebar-width) + 48px)
 }
 
 .VPNavBarTitle .title span {
@@ -89,10 +100,17 @@ table code,
   padding-left: 0;
   padding-right: 0;
 
-  .container .content {
+  .container>.content {
+    display: flex;
+    justify-content: center;
     .content-container {
-      max-width: 750px;
+      min-width: 800px;
+      max-width: none;
+      width: 90%;
     }
   }
 }
 
+.VPContent.has-sidebar {
+  padding-left: calc(var(--vp-sidebar-width) + 48px) !important;
+}

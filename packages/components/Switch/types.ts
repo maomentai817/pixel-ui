@@ -35,19 +35,40 @@ export interface SwitchProps {
    */
   size?: SwitchSize
   /**
+   * @property inlinePrompt
+   * @type boolean
+   * @description 无论图标或文本是否显示在点内, 只会呈现文本的第一个字符
+   * @default false
+   */
+  inlinePrompt?: boolean
+  /**
    * @property activeIcon
    * @type string
-   * @description 开启状态的图标
+   * @description 开启状态的图标, 覆盖 `activeText`
    * @default -
    */
   activeIcon?: string
   /**
    * @property inactiveIcon
    * @type string
-   * @description 关闭状态的图标
+   * @description 关闭状态的图标, 覆盖 `inactiveText`
    * @default -
    */
   inactiveIcon?: string
+  /**
+   * @property activeActionIcon
+   * @type string
+   * @description 开启状态内部图标
+   * @default -
+   */
+  activeActionIcon?: string
+  /**
+   * @property inactiveActionIcon
+   * @type string
+   * @description 关闭状态内部图标
+   * @default -
+   */
+  inactiveActionIcon?: string
   /**
    * @property activeText
    * @type string
