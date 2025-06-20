@@ -22,6 +22,7 @@ export * from './Input'
 export * from './Overlay'
 export * from './MessageBox'
 export * from './Loading'
+export * from './Switch'
 
 // 注册所有 paintworklet
 import pixelboardWorkletURL from './worklets/dist/pixelboard.worklet.js?url'
@@ -33,6 +34,7 @@ import pixelpanelWorkletURL from './worklets/dist/pixelpanel.worklet.js?url'
 import pixelstripeWorkletURL from './worklets/dist/pixelstripe.worklet.js?url'
 import pixelgridBasicWorkletURL from './worklets/dist/pixelgridBasic.worklet.js?url'
 import pixelgridPreset1WorkletURL from './worklets/dist/pixelgridPreset1.worklet.js?url'
+import pixeldotWorkletURL from './worklets/dist/pixeldot.worklet.js?url'
 
 export function registerPaintWorklets() {
   if (typeof CSS !== 'undefined' && 'paintWorklet' in CSS) {
@@ -46,6 +48,7 @@ export function registerPaintWorklets() {
       ;(CSS as any).paintWorklet.addModule(pixelstripeWorkletURL)
       ;(CSS as any).paintWorklet.addModule(pixelgridBasicWorkletURL)
       ;(CSS as any).paintWorklet.addModule(pixelgridPreset1WorkletURL)
+      ;(CSS as any).paintWorklet.addModule(pixeldotWorkletURL)
     } catch (err) {
       console.warn('[Pixel UI] Error loading paintWorklet: ', err)
     }

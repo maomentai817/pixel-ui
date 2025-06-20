@@ -214,6 +214,9 @@ const openAlert = () => {
     }
   )
 }
+
+// switch
+const switch1 = ref(true)
 </script>
 
 <template>
@@ -900,6 +903,8 @@ const openAlert = () => {
     <px-button @click="overlay = !overlay">overlay</px-button>
 
     <px-button @click="openAlert">MessageBox</px-button>
+    <hr />
+    <px-switch v-model="switch1" />
     <div class="h-300"></div>
   </div>
 </template>
