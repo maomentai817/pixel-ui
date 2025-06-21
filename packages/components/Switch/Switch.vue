@@ -81,9 +81,7 @@ defineExpose<SwitchInstance>({
       :class="{ 'is-active': !checked }"
     >
       <px-icon v-if="inactiveIcon" :icon="inactiveIcon" />
-      <span v-if="!inactiveIcon && inactiveText" :aria-hidden="checked">{{
-        inactiveText
-      }}</span>
+      <span v-if="!inactiveIcon && inactiveText">{{ inactiveText }}</span>
     </span>
     <span class="px-switch__core">
       <div v-if="inlinePrompt" class="px-switch__core-inner">
@@ -94,7 +92,7 @@ defineExpose<SwitchInstance>({
           />
         </template>
         <template v-else-if="activeText || inactiveText">
-          <span class="px-switch__core-inner-text" :aria-hidden="!checked">
+          <span class="px-switch__core-inner-text">
             {{ checked ? activeText : inactiveText }}
           </span>
         </template>
@@ -115,9 +113,7 @@ defineExpose<SwitchInstance>({
       :class="{ 'is-active': checked }"
     >
       <px-icon v-if="activeIcon" :icon="activeIcon" />
-      <span v-if="!activeIcon && activeText" :aria-hidden="checked">{{
-        activeText
-      }}</span>
+      <span v-if="!activeIcon && activeText">{{ activeText }}</span>
     </span>
   </div>
 </template>
