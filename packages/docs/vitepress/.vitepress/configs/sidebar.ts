@@ -28,7 +28,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     text: 'Form 表单组件',
     collapsed: false,
     base: '/components/',
-    items: [{ text: 'Input 输入框', link: 'input' }]
+    items: [
+      { text: 'Input 输入框', link: 'input' },
+      { text: 'Switch 开关', link: 'switch' }
+    ],
   },
   {
     text: 'Data 数据展示',

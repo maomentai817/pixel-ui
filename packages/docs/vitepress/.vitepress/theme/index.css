@@ -84,11 +84,11 @@ table code,
 
 .VPNav .VPNavBar .wrapper .container>.title {
   padding-left: 48px;
-  width: calc(var(--vp-sidebar-width) + 48px)
+  width: calc(var(--vp-sidebar-width) + 48px);
 }
 
 .VPNav .VPNavBar .wrapper .container>.content {
-  padding-left: calc(var(--vp-sidebar-width) + 48px)
+  padding-left: calc(var(--vp-sidebar-width) + 48px);
 }
 
 .VPNavBarTitle .title span {
@@ -113,4 +113,5 @@ table code,
 
 .VPContent.has-sidebar {
   padding-left: calc(var(--vp-sidebar-width) + 48px) !important;
+  padding-right: 0 !important;
 }

@@ -7,8 +7,8 @@ next:
   text: Card 卡片
 
 prev:
-  link: /components/input
-  text: Input 输入框
+  link: /components/switch
+  text: Switch 开关
 ---
 
 # Badge 徽章

@@ -7,8 +7,8 @@ import PxIcon from '../Icon/Icon.vue'
 
 const COMP_NAME = 'PxSwitch' as const
 defineOptions({
-  name: COMP_NAME,
-  inheritAttrs: false
+  name: COMP_NAME
+  // inheritAttrs: false
 })
 
 const props = withDefaults(defineProps<SwitchProps>(), {
@@ -46,6 +46,13 @@ watch(checked, (val) => {
   inputRef.value!.checked = val
   //todo form 表单校验
 })
+
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    innerValue.value = newVal
+  }
+)
 
 // 暴露方法
 defineExpose<SwitchInstance>({

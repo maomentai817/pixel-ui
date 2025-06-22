@@ -3,8 +3,8 @@ title: Input
 description: Input 组件文档
 
 next:
-  link: /components/badge
-  text: Badge 徽章
+  link: /components/switch
+  text: Switch 开关
 
 prev:
   link: /components/configProvider
