@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<SwitchProps>(), {
 
 const emits = defineEmits<SwitchEmits>()
 // 禁用
-const isDisabled = computed(() => props.disabled)
+const isDisabled = computed(() => props.disabled || props.loading)
 // 表单值相关
 const innerValue = ref(props.modelValue)
 const inputRef = ref<HTMLInputElement>()
@@ -67,6 +67,7 @@ defineExpose<SwitchInstance>({
     :class="{
       [`px-switch--${size}`]: size,
       'is-disabled': isDisabled,
+      'is-loading': loading,
       'is-checked': checked
     }"
     @click="handleChange"
@@ -105,7 +106,7 @@ defineExpose<SwitchInstance>({
         </template>
       </div>
       <div class="px-switch__core-action">
-        <px-icon v-if="loading" icon="spinner-third" />
+        <px-icon v-if="loading" icon="spinner-third" spin />
         <slot v-else-if="checked" name="active-action">
           <px-icon v-if="activeActionIcon" :icon="activeActionIcon" />
         </slot>

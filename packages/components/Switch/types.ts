@@ -132,7 +132,7 @@ export interface SwitchEvents {
    */
   (_e: 'update:modelValue', _value: SwitchValueType): void
   /**
-   * @property update:modelValue
+   * @property change
    * @description 绑定值发生改变时触发
    * @type Function - (value: SwitchValueType) => void
    */
@@ -151,7 +151,7 @@ export interface SwitchInstance {
    */
   checked: ComputedRef<boolean>
 }
-export interface SwitchExposes {
+export interface SwitchExpose {
   /**
    * @property focus
    * @description 获取焦点

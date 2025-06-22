@@ -33,7 +33,7 @@
     }
   }
 
-  &.is-disabled {
+  &.is-disabled, &.is-loading {
     opacity: .6;
     .px-switch__core {
       cursor: not-allowed;

@@ -59,3 +59,36 @@ demo-preview=../demo/Switch/CustomIcon.vue
 :::preview
 demo-preview=../demo/Switch/CustomActionIcon.vue
 :::
+
+## 扩展的 value 类型​
+
+你可以设置 `active-value` 和 `inactive-value` 属性, 它们接受 `Boolean`、`String` 或 `Number` 类型的值。
+
+:::preview
+demo-preview=../demo/Switch/ExtendedValue.vue
+:::
+
+## 禁用状态​
+
+设置 `disabled` 属性, 接受一个 `Boolean`, 设置 `true` 即可禁用。
+
+:::preview
+demo-preview=../demo/Switch/Disabled.vue
+:::
+
+## 加载状态​
+
+设置 `loading` 属性, 接受一个 `Boolean`, 设置 `true` 即加载中状态。
+
+:::preview
+demo-preview=../demo/Switch/Loading.vue
+:::
+
+## API_Table插件测试
+
+:::danger
+该插件基于 `markdown-it` 开发, 解析组件 `types.ts` 文件生成 API 表格, 测试中
+:::
+
+::: api-table src=components/Switch/types.ts
+:::
