@@ -217,6 +217,11 @@ const openAlert = () => {
 
 // switch
 const switch1 = ref(true)
+
+// 取色器
+const eyeDropperClick = (open: () => void) => {
+  open()
+}
 </script>
 
 <template>
@@ -905,6 +910,20 @@ const switch1 = ref(true)
     <px-button @click="openAlert">MessageBox</px-button>
     <hr />
     <px-switch v-model="switch1" />
+    <hr />
+    <px-eye-dropper v-slot="{ open, sRGBHex }">
+      <px-badge
+        is-dot
+        :color="sRGBHex || 'black'"
+        :style="{ '--px-badge-size': '50px' }"
+      >
+        <px-button @click="() => eyeDropperClick(open)">
+          <px-text :color="sRGBHex || 'black'">{{
+            sRGBHex || 'black'
+          }}</px-text>
+        </px-button>
+      </px-badge>
+    </px-eye-dropper>
     <div class="h-300"></div>
   </div>
 </template>

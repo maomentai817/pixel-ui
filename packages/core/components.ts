@@ -24,7 +24,8 @@ import {
   PxOverlay,
   PxMessageBox,
   PxLoading,
-  PxSwitch
+  PxSwitch,
+  PxEyeDropper
 } from '@pixel-ui/components'
 import type { Plugin } from 'vue'
 
@@ -55,5 +56,6 @@ export default [
   PxOverlay,
   PxMessageBox,
   PxLoading,
-  PxSwitch
+  PxSwitch,
+  PxEyeDropper
 ] as Plugin[]
