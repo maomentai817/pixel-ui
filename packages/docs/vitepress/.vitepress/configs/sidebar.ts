@@ -71,6 +71,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     base: '/components/',
     items: [
       { text: 'AnimationFrame 动画帧', link: 'animationFrame' },
+      { text: 'EyeDropper 取色器', link: 'eyeDropper' },
       { text: 'Image 像素滤镜', link: 'image' },
       { text: 'PixelIt 像素化', link: 'pixelit' }
     ]

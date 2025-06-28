@@ -3,8 +3,8 @@ title: AnimationFrame
 description: AnimationFrame 组件文档
 
 next:
-  link: /components/image
-  text: Image 图片像素化
+  link: /components/eyeDropper
+  text: EyeDropper 取色器
 
 prev:
   link: /components/tooltip

@@ -7,8 +7,8 @@ next:
   text: Pixelit 图片像素化
 
 prev:
-  link: /components/animationFrame
-  text: AniamtionFrame 动画帧
+  link: /components/eyeDropper
+  text: EyeDropper 取色器
 ---
 
 # Image 图片像素滤镜

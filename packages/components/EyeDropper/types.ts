@@ -19,7 +19,7 @@ export interface UseEyeDropperOptions {
    * @property initialValue
    * @description 初始化选中的颜色值
    * @type string
-   * @default ''
+   * @default -
    */
   initialValue?: string
 }
@@ -41,7 +41,7 @@ export interface EyeDropperProps {
    * @property initialValue
    * @description 选中的初始颜色值
    * @type string
-   * @default ''
+   * @default -
    */
   initialValue?: string
 }
