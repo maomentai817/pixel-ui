@@ -24,7 +24,8 @@ import {
   PxInput,
   PxOverlay,
   PxLoading,
-  PxSwitch
+  PxSwitch,
+  PxEyeDropper
 } from '..'
 import { map, get } from 'lodash-es'
 
@@ -51,7 +52,8 @@ const components = [
   PxInput,
   PxOverlay,
   PxLoading,
-  PxSwitch
+  PxSwitch,
+  PxEyeDropper
 ] as Plugin[]
 
 describe('components/index.ts', () => {
