@@ -26,7 +26,7 @@ export function useEventsToTriggerNode(
     const el = triggerNode.value
     isElement(el) &&
       each(
-        ['mouseenter', 'click', 'contextmenu'],
+        ['mouseenter', 'mouseleave', 'click', 'contextmenu'],
         (key) =>
           _eventHandleMap.has(key) &&
           el?.removeEventListener(key, _eventHandleMap.get(key))

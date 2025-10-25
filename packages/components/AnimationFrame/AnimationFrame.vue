@@ -133,5 +133,5 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-@import './styl.css';
+@import './style.css';
 </style>
