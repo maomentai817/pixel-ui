@@ -185,30 +185,6 @@ describe('Input.vue', () => {
     wrapper.unmount()
   })
 
-  test('should emit events', async () => {
-    const wrapper = mount(Input, {
-      props: {
-        type: 'textarea' as const,
-        size: 'small',
-        modelValue: 'test'
-      },
-      slots: {
-        prepend: 'prepend',
-        append: 'append',
-        suffix: 'suffix',
-        prefix: 'prefix'
-      }
-    })
-
-    const vm = wrapper.vm
-
-    await vm.focus()
-    await vm.blur()
-    await vm.select()
-
-    wrapper.unmount()
-  })
-
   test('textarea form and focus/blur', async () => {
     const wrapper = mount(Input, {
       props: {

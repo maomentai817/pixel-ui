@@ -97,8 +97,17 @@ function setVisible(val: boolean) {
 const triggerStrategyMap: Map<string, () => void> = new Map()
 triggerStrategyMap.set('hover', () => {
   events.value['mouseenter'] = openFinal
-  outerEvents.value['mouseleave'] = closeFinal
-  dropdownEvents.value['mouseenter'] = openFinal
+  if (props.virtualTriggering) {
+    // 虚拟触发模式：为外部 triggerNode 添加 mouseleave 事件
+    events.value['mouseleave'] = closeFinal
+    dropdownEvents.value['mouseenter'] = openFinal
+    // 外部 triggerNode 不在容器内：outerEvents 无法检测到外部按钮的鼠标事件
+    dropdownEvents.value['mouseleave'] = closeFinal
+  } else {
+    // 普通模式
+    outerEvents.value['mouseleave'] = closeFinal
+    dropdownEvents.value['mouseenter'] = openFinal
+  }
 })
 triggerStrategyMap.set('click', () => {
   events.value['click'] = togglePopper
